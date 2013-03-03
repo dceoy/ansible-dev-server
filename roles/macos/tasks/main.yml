@@ -39,5 +39,6 @@
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: latest
+  ignore_errors: yes
   loop: "{{ brew_cask_packages }}"
   notify: Notify updates of the system via Slack
