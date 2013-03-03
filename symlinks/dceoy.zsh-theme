@@ -1,0 +1,1 @@
+../roles/cli/files/dceoy.zsh-theme
