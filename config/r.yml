@@ -1,0 +1,72 @@
+r_repos:
+  cran:
+    - https://cran.rstudio.com/
+    - https://cran.ism.ac.jp/
+  drat:
+    - dmlc
+    - eddelbuettel
+    - RcppCore
+r_packages:
+  cran:
+    - abc
+    - amap
+    - binom
+    - broom
+    - caret
+    - coin
+    - data.table
+    - diffusionMap
+    - doSNOW
+    - dplyr
+    - dtplyr
+    - feather
+    - foreach
+    - fst
+    - ggdendro
+    - ggmcmc
+    - ggplot2
+    - glmmML
+    - glmnet
+    - GMD
+    - gridExtra
+    - h2o
+    - kernlab
+    - knitr
+    - leaflet
+    - lle
+    - loo
+    - MCMCpack
+    - phangorn
+    - plyr
+    - purrr
+    - ranger
+    - rbenchmark
+    - RcppSMC
+    - RcppTOML
+    - rmarkdown
+    - RSQLite
+    - rstan
+    - Rtsne
+    - rvest
+    - shiny
+    - snow
+    - som
+    - stringr
+    - testthat
+    - tidyr
+    - tidyverse
+    - tm
+  github:
+    roxygen2: klutometis/roxygen
+    httpuv:   rstudio/httpuv
+    tensorflow: rstudio/tensorflow
+  drat:
+    - xgboost
+    - mxnet
+  bioconductor:
+    - Biobase
+    - BiocInstaller
+    - Biostrings
+    - GEOquery
+    - PhViD
+    - RDRToolbox

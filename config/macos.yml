@@ -1,0 +1,82 @@
+brew_packages:
+  with_options:
+    - name: vim
+      options: with-lua
+  without_options:
+    - ansible
+    - bats
+    - boost
+    - cabal-install
+    - cairo
+    - corkscrew
+    - curl
+    - elixir
+    - fabric
+    - gawk
+    - gcc
+    - gdal
+    - gdbm
+    - gflags
+    - ghc
+    - glog
+    - gnu-sed
+    - go
+    - hunspell
+    - jq
+    - leveldb
+    - librsvg
+    - libxml2
+    - lmdb
+    - lua
+    - mariadb
+    - mercurial
+    - mongodb
+    - nmap
+    - node
+    - nkf
+    - open-mpi
+    - openssl
+    - pandoc
+    - parallel
+    - pigz
+    - pkg-config
+    - postgresql
+    - protobuf
+    - readline
+    - redis
+    - rename
+    - rust
+    - sbt
+    - scala
+    - snappy
+    - sqlite
+    - supervisor
+    - szip
+    - tmux
+    - tree
+    - watch
+    - wget
+    - xml2
+    - zsh
+
+brew_tap_packages:
+  dups:
+    - grep
+  science:
+    - hdf5
+    - opencv
+    - r
+
+brew_cask_packages:
+  - chrome-remote-desktop-host
+  - dropbox
+  - endnote
+  - firefox
+  - google-chrome
+  - google-drive
+  - iterm2
+  - java
+  - julia
+  - mendeley-desktop
+  - rstudio
+  - xquartz

@@ -1,0 +1,49 @@
+---
+- name: Clone rbenv
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - repo: "{{ ansible_env.HOME }}/.rbenv"
+      dest: 'https://github.com/rbenv/rbenv.git'
+    - repo: "{{ ansible_env.HOME }}/.rbenv/plugins/ruby-build"
+      dest: 'https://github.com/rbenv/ruby-build.git'
+  notify: Notify updates of Ruby via Slack
+
+- name: Set commands
+  set_fact:
+    rbenv: "{{ ansible_env.HOME }}/.rbenv/bin/rbenv"
+    rbenv_ruby: "{{ ansible_env.HOME }}/.rbenv/shims/ruby"
+    rbenv_gem: "{{ ansible_env.HOME }}/.rbenv/shims/gem"
+
+- name: Fetch the latest version
+  shell: |
+    {{ rbenv }} install --list \
+      | awk '$1 ~ /^{{ ruby_version }}\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
+  register: ruby_v
+
+- name: Check installed versions
+  shell: |
+    {{ rbenv }} versions \
+      | grep -e '\\s{{ ruby_v.stdout }}'
+  register: ruby_v_installed
+  ignore_errors: true
+
+- name: Install Ruby
+  when: ruby_v_installed|failed
+  shell: |
+    {{ rbenv }} install {{ ruby_v.stdout }}
+  notify: Notify updates of Ruby via Slack
+
+- name: Set the global version
+  shell: |
+    {{ rbenv }} global {{ ruby_v.stdout }}
+  notify: Notify updates of Ruby via Slack
+
+- name: Install and update packages
+  gem:
+    name: "{{ item }}"
+    executable: "{{ rbenv_gem }}"
+    state: latest
+  with_items: "{{ gem_packages }}"
+  notify: Notify updates of Ruby via Slack

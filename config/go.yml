@@ -1,0 +1,5 @@
+go_packages:
+  - github.com/codegangsta/cli
+  - github.com/naoina/toml
+  - github.com/opencontainers/runc
+  - github.com/spf13/hugo

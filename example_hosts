@@ -1,0 +1,18 @@
+[mac]
+mini        ansible_connection=ssh
+
+[pi3]
+pi3         ansible_connection=ssh
+
+[pi1]
+pi1         ansible_connection=ssh
+
+[localhost]
+localhost   ansible_connection=ssh
+
+[all:vars]
+git_user_name=dceoy
+git_user_email=d.narsil@gmail.com
+slack_channel=ansible
+slack_icon_url=https://pbs.twimg.com/profile_images/428287509047435264/ElOjna20.png
+slack_token=XXXXXXXXX/YYYYYYYYY/ZZZZZZZZZZZZZZZZZZZZZZZZZZ

@@ -1,0 +1,38 @@
+---
+- name: Update homebrew and upgrade all packages
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+  notify: Notify updates of the system via Slack
+
+- name: Tap repositories
+  homebrew_tap:
+    name: homebrew/dupes,homebrew/science
+    state: present
+  notify: Notify updates of the system via Slack
+
+- name: Install packages
+  homebrew:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - git
+    - "{{ brew_packages.without_options }}"
+    - "{{ brew_tap_packages.dups }}"
+    - "{{ brew_tap_packages.science }}"
+  notify: Notify updates of the system via Slack
+
+- name: Install packages with options
+  homebrew:
+    name: "{{ item.name }}"
+    install_options: "{{ item.options }}"
+    state: latest
+  with_items: "{{ brew_packages.with_options }}"
+  notify: Notify updates of the system via Slack
+
+- name: Install packages using casks
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ brew_cask_packages }}"
+  notify: Notify updates of the system via Slack

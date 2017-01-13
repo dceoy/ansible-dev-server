@@ -1,0 +1,86 @@
+---
+- name: Upgrade all packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+  notify: Notify updates of the system via Slack
+
+- name: Install required packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+  notify: Notify updates of the system via Slack
+
+- name: Add the GPG key for Docker
+  become: true
+  apt_key:
+    id: 58118E89F3A912897C070ADBF76221572C52609D
+    keyserver: hkp://ha.pool.sks-keyservers.net:80
+  notify: Notify updates of the system via Slack
+
+- name: Add Docker repo
+  apt_repository:
+    repo: deb https://apt.dockerproject.org/repo ubuntu-xenial main
+    state: present
+    filename: 'docker'
+  notify: Notify updates of the system via Slack
+
+- name: Add the GPG key for R
+  become: true
+  apt_key:
+    id: E084DAB9
+    keyserver: keyserver.ubuntu.com
+  notify: Notify updates of the system via Slack
+
+- name: Add R repo
+  apt_repository:
+    repo: deb https://cloud.r-project.org/bin/linux/ubuntu xenial/
+    state: present
+    filename: 'r'
+  notify: Notify updates of the system via Slack
+
+- name: Install packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - docker-engine
+    - git
+    - sudo
+    - r-base-dev
+    - "{{ apt_packages }}"
+  notify: Notify updates of the system via Slack
+
+- name: Add %wheel
+  when: enable_nopass_sudo
+  become: true
+  group:
+    name: wheel
+    state: present
+  notify: Notify updates of the system via Slack
+
+- name: Write %wheel in /etc/sudoers
+  when: enable_nopass_sudo
+  become: true
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: '%wheel  ALL=(ALL)       NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+  notify: Notify updates of the system via Slack
+
+- name: Set users
+  become: true
+  user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    groups: "{{ item.groups }}"
+    append: yes
+  with_items: "{{ users }}"
+  notify: Notify updates of the system via Slack

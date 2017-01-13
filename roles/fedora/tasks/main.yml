@@ -1,0 +1,38 @@
+---
+- name: Upgrade all packages
+  become: true
+  dnf: name=* state=latest
+  notify: Notify updates of the system via Slack
+
+- name: Install packages
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - docker-engine
+    - git
+    - sudo
+    - "{{ dnf_packages }}"
+  notify: Notify updates of the system via Slack
+
+- name: Write %wheel in /etc/sudoers
+  when: enable_nopass_sudo
+  become: true
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel  ALL=(ALL)       NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+  notify: Notify updates of the system via Slack
+
+- name: Set users
+  become: true
+  user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    groups: "{{ item.groups }}"
+    append: yes
+  with_items: "{{ users }}"
+  notify: Notify updates of the system via Slack

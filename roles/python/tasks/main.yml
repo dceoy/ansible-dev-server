@@ -1,0 +1,44 @@
+---
+- name: Clone pyenv
+  git:
+    repo: "{{ ansible_env.HOME }}/.pyenv"
+    dest: 'https://github.com/yyuu/pyenv.git'
+  notify: Notify updates of Python via Slack
+
+- name: Set commands
+  set_fact:
+    pyenv: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv"
+    pyenv_python: "{{ ansible_env.HOME }}/.pyenv/shims/python"
+    pyenv_pip: "{{ ansible_env.HOME }}/.pyenv/shims/pip"
+
+- name: Fetch the latest version
+  shell: |
+    {{ pyenv }} install --list \
+      | awk '$1 ~ /^{{ python_version }}\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
+  register: python_v
+
+- name: Check installed versions
+  shell: |
+    {{ pyenv }} versions \
+      | grep -e '\s{{ python_v.stdout }}'
+  register: python_v_installed
+  ignore_errors: true
+
+- name: Install Python
+  when: python_v_installed|failed
+  shell: |
+    {{ pyenv }} install {{ python_v.stdout }}
+  notify: Notify updates of Python via Slack
+
+- name: Set the global version
+  shell: |
+    {{ pyenv }} global {{ python_v.stdout }}
+  notify: Notify updates of Python via Slack
+
+- name: Install and update packages
+  pip:
+    name: "{{ item }}"
+    executable: "{{ pyenv_pip }}"
+    state: latest
+  with_items: "{{ pip_packages }}"
+  notify: Notify updates of Python via Slack

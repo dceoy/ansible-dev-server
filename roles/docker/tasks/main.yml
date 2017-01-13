@@ -1,0 +1,19 @@
+---
+- name: Start and enable Docker
+  become: true
+  systemd:
+    name: docker
+    state: started
+    daemon_reload: yes
+    enabled: true
+  notify: Notify updates of Docker via Slack
+
+- name: Pull images
+  become: true
+  docker_image:
+    name: "{{ item }}"
+  with_items:
+    - ubuntu
+    - centos
+    - fedora
+  notify: Notify updates of Docker via Slack

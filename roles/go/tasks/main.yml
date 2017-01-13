@@ -1,0 +1,30 @@
+---
+- name: Check go command
+  shell: |
+    go version
+
+- name: Set gopath
+  set_fact:
+    gopath: "{{ ansible_env.HOME }}/.go"
+
+- name: Create .go
+  file:
+    path: "{{ gopath }}"
+    state: directory
+  register: mkdir_go
+
+- name: Update packages
+  when: mkdir_go|changed
+  environment:
+    GOPATH: "{{ gopath }}"
+  shell: |
+    go get -u all
+  notify: Notify updates of Go via Slack
+
+- name: Install packages
+  environment:
+    GOPATH: "{{ gopath }}"
+  shell: |
+    get -v {{ item }}
+  with_items: "{{ go_packages }}"
+  notify: Notify updates of Go via Slack
