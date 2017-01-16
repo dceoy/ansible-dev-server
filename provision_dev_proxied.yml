@@ -2,7 +2,11 @@
 - name: Set up a development server
   hosts: dev
   vars:
-    use_proxy: false
+    use_proxy: true
+  environment:
+    http_proxy: "{{ http_proxy }}"
+    https_proxy: "{{ http_proxy }}"
+    no_proxy: "{{ no_proxy }}"
   roles:
     - role: fedora
       when: ansible_distribution == 'Fedora'

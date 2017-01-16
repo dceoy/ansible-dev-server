@@ -16,4 +16,5 @@
     - ubuntu
     - centos
     - fedora
+  ignore_errors: true
   notify: Notify updates of Docker via Slack

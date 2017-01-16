@@ -20,6 +20,7 @@
     - "{{ brew_packages.without_options }}"
     - "{{ brew_tap_packages.dups }}"
     - "{{ brew_tap_packages.science }}"
+  ignore_errors: true
   notify: Notify updates of the system via Slack
 
 - name: Install packages with options
@@ -28,6 +29,7 @@
     install_options: "{{ item.options }}"
     state: latest
   with_items: "{{ brew_packages.with_options }}"
+  ignore_errors: true
   notify: Notify updates of the system via Slack
 
 - name: Install packages using casks
@@ -35,4 +37,5 @@
     name: "{{ item }}"
     state: present
   with_items: "{{ brew_cask_packages }}"
+  ignore_errors: true
   notify: Notify updates of the system via Slack

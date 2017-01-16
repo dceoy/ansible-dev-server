@@ -19,6 +19,7 @@
     GOPATH: "{{ gopath }}"
   shell: |
     go get -u all
+  ignore_errors: true
   notify: Notify updates of Go via Slack
 
 - name: Install packages
@@ -27,4 +28,5 @@
   shell: |
     get -v {{ item }}
   with_items: "{{ go_packages }}"
+  ignore_errors: true
   notify: Notify updates of Go via Slack

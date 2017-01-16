@@ -1,4 +1,33 @@
 ---
+- name: Add http_proxy to /etc/environment
+  when: use_proxy
+  become: true
+  lineinfile:
+    create: yes
+    dest: /etc/environment
+    regexp: "{{ item.regexp }}"
+    state: present
+    line: "{{ item.line }}"
+  with_items:
+    - regexp: '^HTTP_PROXY'
+      line: 'HTTP_PROXY={{ http_proxy }}'
+    - regexp: '^HTTPS_PROXY'
+      line: 'HTTPS_PROXY={{ https_proxy }}'
+    - regexp: '^NO_PROXY'
+      line: 'NO_PROXY={{ no_proxy }}'
+  notify: Notify updates of the system via Slack
+
+- name: Add proxy to /etc/dnf.conf
+  when: use_proxy
+  become: true
+  lineinfile:
+    create: yes
+    dest: /etc/dnf.conf
+    regexp: '^proxy='
+    state: present
+    line: 'proxy={{ https_proxy }}'
+    notify: Notify updates of the system via Slack
+
 - name: Upgrade all packages
   become: true
   dnf: name=* state=latest
@@ -12,12 +41,16 @@
   with_items:
     - docker-engine
     - git
+    - python3-pip
     - sudo
     - "{{ dnf_packages }}"
+  ignore_errors: true
   notify: Notify updates of the system via Slack
 
 - name: Write %wheel in /etc/sudoers
-  when: enable_nopass_sudo
+  when:
+    - enable_nopass_sudo is defined
+    - enable_nopass_sudo
   become: true
   lineinfile:
     dest: /etc/sudoers
@@ -35,4 +68,15 @@
     groups: "{{ item.groups }}"
     append: yes
   with_items: "{{ users }}"
+  notify: Notify updates of the system via Slack
+
+- name: Install packages via pip3
+  become: true
+  pip:
+    name: "{{ item }}"
+    executable: /usr/bin/pip3
+    state: latest
+  with_items:
+    - docker
+    - docker-compose
   notify: Notify updates of the system via Slack

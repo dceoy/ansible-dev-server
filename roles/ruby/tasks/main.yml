@@ -33,17 +33,22 @@
   when: ruby_v_installed|failed
   shell: |
     {{ rbenv }} install {{ ruby_v.stdout }}
+  register: install_ruby
+  ignore_errors: true
   notify: Notify updates of Ruby via Slack
 
 - name: Set the global version
+  when: install_ruby|success
   shell: |
     {{ rbenv }} global {{ ruby_v.stdout }}
   notify: Notify updates of Ruby via Slack
 
 - name: Install and update packages
+  when: install_ruby|success
   gem:
     name: "{{ item }}"
     executable: "{{ rbenv_gem }}"
     state: latest
   with_items: "{{ gem_packages }}"
+  ignore_errors: true
   notify: Notify updates of Ruby via Slack

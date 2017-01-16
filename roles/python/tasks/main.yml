@@ -28,17 +28,23 @@
   when: python_v_installed|failed
   shell: |
     {{ pyenv }} install {{ python_v.stdout }}
+  register: install_python
+  ignore_errors: true
   notify: Notify updates of Python via Slack
 
 - name: Set the global version
+  when: install_python|success
   shell: |
     {{ pyenv }} global {{ python_v.stdout }}
   notify: Notify updates of Python via Slack
 
 - name: Install and update packages
+  when: install_python|success
   pip:
     name: "{{ item }}"
     executable: "{{ pyenv_pip }}"
     state: latest
-  with_items: "{{ pip_packages }}"
+  with_items:
+    - "{{ pip_packages }}"
+  ignore_errors: true
   notify: Notify updates of Python via Slack
