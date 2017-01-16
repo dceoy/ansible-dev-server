@@ -1,6 +1,6 @@
 ---
 - name: Set up a development server
-  hosts: localhost
+  hosts: dev
   roles:
     - role: fedora
       when: ansible_distribution == 'Fedora'

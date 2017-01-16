@@ -1,5 +1,9 @@
 ---
 - name: Notify updates of CLI via Slack
+  when:
+    - slack_token is defined
+    - slack_channel is defined
+    - slack_icon_url is defined
   local_action:
     module: slack
     msg: 'The configuration of CLI was updated.'

@@ -1,5 +1,8 @@
 ---
 - name: Configure git
+  when:
+    - git_user_name is defined
+    - git_user_email is defined
   git_config:
     name: "{{ item.name }}"
     value: "{{ item.value }}"

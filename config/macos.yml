@@ -50,6 +50,7 @@ brew_packages:
     - scala
     - snappy
     - sqlite
+    - sshrc
     - supervisor
     - szip
     - tmux

@@ -7,7 +7,7 @@ pi3         ansible_connection=ssh
 [pi1]
 pi1         ansible_connection=ssh
 
-[localhost]
+[dev]
 localhost   ansible_connection=ssh
 
 [all:vars]
