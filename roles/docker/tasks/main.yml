@@ -1,4 +1,24 @@
 ---
+- name: Create docker.service.d/
+  when: use_proxy
+  become: true
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Put /etc/systemd/system/docker.service.d/option.conf
+  when: use_proxy
+  become: true
+  template:
+    src: option.conf.j2
+    dest: /etc/systemd/system/docker.service.d/option.conf
+  notify:
+    - Restart Docker
+    - Notify updates about Docker via Slack
+
 - name: Start and enable Docker
   become: true
   systemd:

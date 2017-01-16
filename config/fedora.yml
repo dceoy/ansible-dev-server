@@ -125,7 +125,6 @@ dnf_packages:
   - wxMaxima
   - xfig
   - zsh
-
 users:
   - name: dceoy
     groups: wheel,docker

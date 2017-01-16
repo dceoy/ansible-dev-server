@@ -95,7 +95,6 @@ apt_packages:
   - zip
   - zlib1g-dev
   - zsh
-
 users:
   - name: dceoy
     groups: docker

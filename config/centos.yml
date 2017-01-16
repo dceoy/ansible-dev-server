@@ -127,7 +127,6 @@ yum_packages:
   - wxMaxima
   - xfig
   - zsh
-
 users:
   - name: dceoy
     groups: docker

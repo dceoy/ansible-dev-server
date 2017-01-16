@@ -18,19 +18,36 @@
       value: "{{ git_user_email }}"
   notify: Notify updates of CLI via Slack
 
-- name: Set .zshrc
+- name: Put ~/.zshrc
   file:
     src: zshrc
     dest: "{{ ansible_env.HOME }}/.zshrc"
   notify: Notify updates of CLI via Slack
 
-- name: Set .vimrc
+- name: Set proxy at ~/.zprofile
+  when: use_proxy
+  become: true
+  lineinfile:
+    create: yes
+    dest: "{{ ansible_env.HOME }}/.zprofile"
+    insertafter: '# proxy'
+    state: present
+    block: |
+      export HTTP_PROXY={{ http_proxy }}
+      export HTTPS_PROXY={{ https_proxy }}
+      export NO_PROXY={{ no_proxy }}
+      export http_proxy=${HTTP_PROXY}
+      export https_proxy=${HTTP_PROXY}
+      export no_proxy=${NO_PROXY}
+  notify: Notify updates of CLI via Slack
+
+- name: Put ~/.vimrc
   file:
     src: vimrc
     dest: "{{ ansible_env.HOME }}/.vimrc"
   notify: Notify updates of CLI via Slack
 
-- name: Create .vim/bundle/
+- name: Create ~/.vim/bundle/
   file:
     path: "{{ ansible_env.HOME }}/.vim/bundle"
     state: directory
@@ -49,7 +66,7 @@
   register: update_neobundle
   notify: Notify updates of CLI via Slack
 
-- name: Make vimproc
+- name: Make vimproc.vim
   when: update_vimproc|changed
   make:
     chdir: "{{ ansible_env.HOME }}/.vim/bundle/vimproc.vim"
