@@ -1,0 +1,15 @@
+#!/usr/bin/env Rscript
+
+.First <- function() {
+  options(repos = c(CRAN = 'https://cran.rstudio.com/'),
+          browserNLdisabled = TRUE,
+          deparse.max.lines = 2)
+}
+
+.libPaths(c(paste0(Sys.getenv('HOME'), '/.clir/r/library')))
+
+if (interactive()) {
+  suppressMessages(sapply(c('dplyr', 'tidyr', 'dtplyr', 'ggplot2', 'data.table'),
+                          require,
+                          character.only = TRUE))
+}
