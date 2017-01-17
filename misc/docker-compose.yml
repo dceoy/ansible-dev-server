@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+
+  nginx-autoindex:
+    image: dceoy/nginx-autoindex
+    container_name: nginx-autoindex
+    ports:
+      - "80:80"
+    volumes:
+      - ${HOME}/vm:/var/www/html:ro
+
+  rstudio-server:
+    image: dceoy/rstudio-server
+    container_name: rstudio-server
+    ports:
+      - "8787:8787"
+    volumes:
+      - ${HOME}/vm/rstudio:/home/rstudio

@@ -69,8 +69,8 @@
     PATH: "{{ path }}"
     R_LIBS: "{{ r_libs }}"
   shell: |
-    {{ clir }} github-install --quiet {{ item.value }}
-  with_dict:
+    {{ clir }} github-install --quiet {{ item }}
+  with_items:
     - "{{ r_packages.github }}"
   ignore_errors: true
   notify: Notify updates of R via Slack

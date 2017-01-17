@@ -57,9 +57,9 @@ r_packages:
     - tidyverse
     - tm
   github:
-    roxygen2: klutometis/roxygen
-    httpuv:   rstudio/httpuv
-    tensorflow: rstudio/tensorflow
+    - klutometis/roxygen
+    - rstudio/httpuv
+    - rstudio/tensorflow
   drat:
     - xgboost
     - mxnet
