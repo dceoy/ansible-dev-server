@@ -37,7 +37,9 @@
   dnf:
     name: '*'
     state: latest
-  notify: Notify updates of the system via Slack
+  notify:
+    - Clean dnf
+    - Notify updates of the system via Slack
 
 - name: Install packages
   become: true
@@ -51,7 +53,9 @@
     - sudo
     - "{{ dnf_packages }}"
   ignore_errors: true
-  notify: Notify updates of the system via Slack
+  notify:
+    - Clean dnf
+    - Notify updates of the system via Slack
 
 - name: Set users
   become: true

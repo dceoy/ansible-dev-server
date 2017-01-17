@@ -1,1 +1,18 @@
-../../fedora/handlers/main.yml
+---
+- name: Clean yum
+  become: true
+  shell: |
+    yum clean all
+
+- name: Notify updates of the system via Slack
+  when:
+    - slack_token is defined
+    - slack_channel is defined
+    - slack_icon_url is defined
+  local_action:
+    module: slack
+    msg: 'The system was updated.'
+    token: "{{ slack_token }}"
+    channel: "#{{ slack_channel }}"
+    username: "{{ ansible_ssh_user }}@{{ inventory_hostname }}"
+    icon_url: "{{ slack_icon_url }}"
