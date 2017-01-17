@@ -1,6 +1,7 @@
 apt_packages:
   - ansible
   - apt-file
+  - aptitude
   - bats
   - build-essential
   - bzip2
@@ -63,7 +64,6 @@ apt_packages:
   - nmap
   - nodejs
   - npm
-  - nvidia-cuda-toolkit
   - pandoc
   - patch
   - pigz
@@ -71,9 +71,8 @@ apt_packages:
   - postgresql
   - protobuf-compiler
   - python3-dev
-  - python-dev
-  - python-scipy
-  - python-yaml
+  - python3-scipy
+  - r-base-dev
   - redis-server
   - rust
   - samba
@@ -95,5 +94,5 @@ apt_packages:
   - zsh
 users:
   - name: dceoy
-    groups: docker
+    groups: sudo
     shell: /bin/zsh

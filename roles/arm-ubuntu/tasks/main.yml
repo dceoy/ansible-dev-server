@@ -1,0 +1,54 @@
+---
+- name: Add %wheel
+  when: enable_nopass_sudo
+  become: true
+  group:
+    name: wheel
+    state: present
+  notify: Notify updates of the system via Slack
+
+- name: Write %wheel in /etc/sudoers
+  when: enable_nopass_sudo
+  become: true
+  blockinfile:
+    dest: /etc/sudoers
+    state: present
+    block: |
+      %wheel  ALL=(ALL)       NOPASSWD: ALL
+    validate: 'visudo -cf %s'
+  notify: Notify updates of the system via Slack
+
+- name: Upgrade all packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+  notify:
+    - Clean apt
+    - Notify updates of the system via Slack
+
+- name: Install packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - git
+    - sudo
+    - "{{ apt_packages }}"
+  ignore_errors: true
+  notify:
+    - Clean apt
+    - Notify updates of the system via Slack
+
+- name: Set users
+  become: true
+  user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    groups: "{{ item.groups }}"
+    append: yes
+  with_items: "{{ users }}"
+  notify: Notify updates of the system via Slack
