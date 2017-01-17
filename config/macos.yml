@@ -3,7 +3,6 @@ brew_packages:
     - name: vim
       options: with-lua
   without_options:
-    - ansible
     - bats
     - boost
     - cabal-install

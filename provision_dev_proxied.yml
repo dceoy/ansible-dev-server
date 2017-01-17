@@ -28,7 +28,7 @@
     - role: docker
       when:
         - ansible_architecture == 'x86_64'
-        - ansible_os_family in ['RedHat', 'Debian']
+        - ansible_os_family in [ 'RedHat', 'Debian' ]
     - role: cli
     - role: python
     - role: ruby

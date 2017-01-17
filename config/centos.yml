@@ -1,5 +1,4 @@
 yum_packages:
-  - ansible
   - atlas-devel
   - atlas-sse3-devel
   - autoconf
