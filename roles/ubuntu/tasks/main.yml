@@ -50,7 +50,9 @@
   apt:
     upgrade: yes
     update_cache: yes
-  notify: Notify updates of the system via Slack
+  notify:
+    - Clean apt
+    - Notify updates of the system via Slack
 
 - name: Install required packages
   become: true
@@ -60,7 +62,9 @@
   with_items:
     - apt-transport-https
     - ca-certificates
-  notify: Notify updates of the system via Slack
+  notify:
+    - Clean apt
+    - Notify updates of the system via Slack
 
 - name: Add the GPG key for Docker
   become: true
@@ -103,7 +107,9 @@
     - sudo
     - "{{ apt_packages }}"
   ignore_errors: true
-  notify: Notify updates of the system via Slack
+  notify:
+    - Clean apt
+    - Notify updates of the system via Slack
 
 - name: Set users
   become: true

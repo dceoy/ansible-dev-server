@@ -1,4 +1,9 @@
 ---
+- name: Clean dnf
+  become: true
+  shell: |
+    dnf clean all
+
 - name: Notify updates of the system via Slack
   when:
     - slack_token is defined
