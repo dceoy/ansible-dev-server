@@ -19,30 +19,29 @@
   notify: Notify updates of CLI via Slack
 
 - name: Put ~/.zshrc
-  file:
+  copy:
     src: zshrc
     dest: "{{ ansible_env.HOME }}/.zshrc"
   notify: Notify updates of CLI via Slack
 
 - name: Set proxy at ~/.zprofile
   when: use_proxy
-  become: true
-  lineinfile:
+  blockinfile:
     create: yes
     dest: "{{ ansible_env.HOME }}/.zprofile"
     insertafter: '# proxy'
     state: present
     block: |
-      export HTTP_PROXY={{ http_proxy }}
-      export HTTPS_PROXY={{ https_proxy }}
-      export NO_PROXY={{ no_proxy }}
-      export http_proxy=${HTTP_PROXY}
-      export https_proxy=${HTTP_PROXY}
-      export no_proxy=${NO_PROXY}
+      export HTTP_PROXY='{{ http_proxy }}'
+      export HTTPS_PROXY='{{ https_proxy }}'
+      export NO_PROXY='{{ no_proxy }}'
+      export http_proxy="${HTTP_PROXY}"
+      export https_proxy="${HTTP_PROXY}"
+      export no_proxy="${NO_PROXY}"
   notify: Notify updates of CLI via Slack
 
 - name: Put ~/.vimrc
-  file:
+  copy:
     src: vimrc
     dest: "{{ ansible_env.HOME }}/.vimrc"
   notify: Notify updates of CLI via Slack
@@ -54,15 +53,15 @@
 
 - name: Clone vimproc.vim
   git:
-    repo: "{{ ansible_env.HOME }}/.vim/bundle/vimproc.vim"
-    dest: 'https://github.com/Shougo/vimproc.vim.git'
+    repo: 'https://github.com/Shougo/vimproc.vim.git'
+    dest: "{{ ansible_env.HOME }}/.vim/bundle/vimproc.vim"
   register: update_vimproc
   notify: Notify updates of CLI via Slack
 
 - name: Clone neobundle.vim
   git:
-    repo: "{{ ansible_env.HOME }}/.vim/bundle/neobundle.vim"
-    dest: 'https://github.com/Shougo/neobundle.vim.git'
+    repo: 'https://github.com/Shougo/neobundle.vim.git'
+    dest: "{{ ansible_env.HOME }}/.vim/bundle/neobundle.vim"
   register: update_neobundle
   notify: Notify updates of CLI via Slack
 

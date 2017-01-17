@@ -104,7 +104,6 @@ dnf_packages:
   - snappy-devel
   - speedcrunch
   - sqlite-devel
-  - sshrc
   - strace
   - supervisor
   - swig

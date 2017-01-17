@@ -3,7 +3,6 @@
   when: use_proxy
   become: true
   blockinfile:
-    create: yes
     dest: /etc/environment
     state: present
     block: |
@@ -15,12 +14,22 @@
 - name: Set proxy at /etc/yum.conf
   when: use_proxy
   become: true
-  lineinfile:
-    create: yes
+  blockinfile:
     dest: /etc/yum.conf
-    regexp: '^proxy='
     state: present
-    line: "proxy={{ https_proxy }}"
+    block: |
+      proxy={{ https_proxy }}
+  notify: Notify updates of the system via Slack
+
+- name: Write %wheel in /etc/sudoers
+  when: enable_nopass_sudo
+  become: true
+  blockinfile:
+    dest: /etc/sudoers
+    state: present
+    block: |
+      %wheel  ALL=(ALL)       NOPASSWD: ALL
+    validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
 - name: Add EPEL YUM repo
@@ -58,24 +67,11 @@
     state: latest
   with_items:
     - docker-engine
+    - docker-python
     - git
-    - python34-pip
     - sudo
     - "{{ yum_packages }}"
   ignore_errors: true
-  notify: Notify updates of the system via Slack
-
-- name: Write %wheel in /etc/sudoers
-  when:
-    - enable_nopass_sudo is defined
-    - enable_nopass_sudo
-  become: true
-  lineinfile:
-    dest: /etc/sudoers
-    state: present
-    regexp: '^%wheel'
-    line: '%wheel  ALL=(ALL)       NOPASSWD: ALL'
-    validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
 - name: Set users
@@ -86,15 +82,4 @@
     groups: "{{ item.groups }}"
     append: yes
   with_items: "{{ users }}"
-  notify: Notify updates of the system via Slack
-
-- name: Install packages via pip3
-  become: true
-  pip:
-    name: "{{ item }}"
-    executable: /usr/bin/pip3
-    state: latest
-  with_items:
-    - docker
-    - docker-compose
   notify: Notify updates of the system via Slack

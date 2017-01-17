@@ -112,13 +112,15 @@ case "${OSTYPE}" in
   linux*)
     alias ls="ls --color=auto"
     alias grep="grep --color=auto"
-    export PATH="${HOME}/.rbenv/bin:${PATH}"
-    export PATH="${HOME}/.pyenv/bin:${PATH}"
     ;;
 esac
 
-[[ -d "${HOME}/.rbenv" ]] && eval "$(rbenv init -)"
-[[ -d "${HOME}/.pyenv" ]] && eval "$(pyenv init -)"
+[[ -d "${HOME}/.rbenv" ]] \
+  && export PATH="${HOME}/.rbenv/bin:${PATH}" \
+  && eval "$(rbenv init -)"
+[[ -d "${HOME}/.pyenv" ]] \
+  && export PATH="${HOME}/.pyenv/bin:${PATH}" \
+  && eval "$(pyenv init -)"
 alias rv="R --quiet --vanilla"
 export R_LIBS="${HOME}/.clir/r/library"
 export GOPATH="${HOME}/.go"

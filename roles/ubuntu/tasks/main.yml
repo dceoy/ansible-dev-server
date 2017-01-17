@@ -6,6 +6,7 @@
     create: yes
     dest: /etc/environment
     state: present
+    marker: false
     block: |
       HTTP_PROXY={{ http_proxy }}
       HTTPS_PROXY={{ https_proxy }}
@@ -19,9 +20,29 @@
     create: yes
     dest: /etc/apt/apt.conf
     state: present
+    marker: false
     block: |
       Acquire::http::proxy "{{ http_proxy }}";
       Acquire::https::proxy "{{ https_proxy }}";
+  notify: Notify updates of the system via Slack
+
+- name: Add %wheel
+  when: enable_nopass_sudo
+  become: true
+  group:
+    name: wheel
+    state: present
+  notify: Notify updates of the system via Slack
+
+- name: Write %wheel in /etc/sudoers
+  when: enable_nopass_sudo
+  become: true
+  blockinfile:
+    dest: /etc/sudoers
+    state: present
+    block: |
+      %wheel  ALL=(ALL)       NOPASSWD: ALL
+    validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
 - name: Upgrade all packages
@@ -77,31 +98,11 @@
   with_items:
     - docker-engine
     - git
-    - python3-pip
+    - python-docker
     - r-base-dev
     - sudo
     - "{{ apt_packages }}"
   ignore_errors: true
-  notify: Notify updates of the system via Slack
-
-- name: Add %wheel
-  when:
-    - enable_nopass_sudo is defined
-    - enable_nopass_sudo
-  become: true
-  group:
-    name: wheel
-    state: present
-  notify: Notify updates of the system via Slack
-
-- name: Write %wheel in /etc/sudoers
-  when: enable_nopass_sudo
-  become: true
-  lineinfile:
-    dest: /etc/sudoers
-    state: present
-    line: '%wheel  ALL=(ALL)       NOPASSWD: ALL'
-    validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
 - name: Set users
@@ -112,15 +113,4 @@
     groups: "{{ item.groups }}"
     append: yes
   with_items: "{{ users }}"
-  notify: Notify updates of the system via Slack
-
-- name: Install packages via pip3
-  become: true
-  pip:
-    name: "{{ item }}"
-    executable: /usr/bin/pip3
-    state: latest
-  with_items:
-    - docker
-    - docker-compose
   notify: Notify updates of the system via Slack

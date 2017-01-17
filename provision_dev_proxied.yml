@@ -3,6 +3,7 @@
   hosts: dev
   vars:
     use_proxy: true
+    enable_nopass_sudo: true
   environment:
     http_proxy: "{{ http_proxy }}"
     https_proxy: "{{ http_proxy }}"

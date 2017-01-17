@@ -3,6 +3,7 @@
   hosts: dev
   vars:
     use_proxy: false
+    enable_nopass_sudo: true
   roles:
     - role: fedora
       when: ansible_distribution == 'Fedora'

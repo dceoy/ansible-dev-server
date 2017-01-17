@@ -8,7 +8,7 @@ pi3         ansible_connection=ssh
 pi1         ansible_connection=ssh
 
 [dev]
-localhost   ansible_connection=ssh
+localhost   ansible_connection=local
 
 [all:vars]
 git_user_name=dceoy
