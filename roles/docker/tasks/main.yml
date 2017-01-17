@@ -17,7 +17,7 @@
     dest: /etc/systemd/system/docker.service.d/option.conf
   notify:
     - Restart Docker
-    - Notify updates about Docker via Slack
+    - Notify updates of Docker via Slack
 
 - name: Start and enable Docker
   become: true

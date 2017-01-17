@@ -23,7 +23,6 @@ pip_packages:
   - mxnet
   - nose
   - numpy
-  - numba
   - pandas
   - pycuda
   - pymc

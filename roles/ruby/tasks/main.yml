@@ -4,13 +4,13 @@
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
   with_items:
-    - repo: "{{ ansible_env.HOME }}/.rbenv"
-      dest: 'https://github.com/rbenv/rbenv.git'
-    - repo: "{{ ansible_env.HOME }}/.rbenv/plugins/ruby-build"
-      dest: 'https://github.com/rbenv/ruby-build.git'
+    - repo: 'https://github.com/rbenv/rbenv.git'
+      dest: "{{ ansible_env.HOME }}/.rbenv"
+    - repo: 'https://github.com/rbenv/ruby-build.git'
+      dest: "{{ ansible_env.HOME }}/.rbenv/plugins/ruby-build"
   notify: Notify updates of Ruby via Slack
 
-- name: Set commands
+- name: Set variables
   set_fact:
     rbenv: "{{ ansible_env.HOME }}/.rbenv/bin/rbenv"
     rbenv_ruby: "{{ ansible_env.HOME }}/.rbenv/shims/ruby"
@@ -25,12 +25,12 @@
 - name: Check installed versions
   shell: |
     {{ rbenv }} versions \
-      | grep -e '\\s{{ ruby_v.stdout }}'
+      | grep -ce '\s{{ ruby_v.stdout }}'
   register: ruby_v_installed
   ignore_errors: true
 
 - name: Install Ruby
-  when: ruby_v_installed|failed
+  when: ruby_v_installed.stdout|int == 0
   shell: |
     {{ rbenv }} install {{ ruby_v.stdout }}
   register: install_ruby
@@ -38,13 +38,14 @@
   notify: Notify updates of Ruby via Slack
 
 - name: Set the global version
-  when: install_ruby|success
+  when: ruby_v_installed.stdout|int > 0 or install_ruby|success
   shell: |
     {{ rbenv }} global {{ ruby_v.stdout }}
+  register: set_global_ruby
   notify: Notify updates of Ruby via Slack
 
 - name: Install and update packages
-  when: install_ruby|success
+  when: set_global_ruby|success
   gem:
     name: "{{ item }}"
     executable: "{{ rbenv_gem }}"

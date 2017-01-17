@@ -50,7 +50,6 @@ brew_packages:
     - scala
     - snappy
     - sqlite
-    - sshrc
     - supervisor
     - szip
     - tmux
@@ -59,7 +58,6 @@ brew_packages:
     - wget
     - xml2
     - zsh
-
 brew_tap_packages:
   dups:
     - grep
@@ -67,7 +65,6 @@ brew_tap_packages:
     - hdf5
     - opencv
     - r
-
 brew_cask_packages:
   - chrome-remote-desktop-host
   - dropbox

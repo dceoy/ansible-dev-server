@@ -3,7 +3,6 @@
   when: use_proxy
   become: true
   blockinfile:
-    create: yes
     dest: /etc/environment
     state: present
     block: |
@@ -12,15 +11,25 @@
       NO_PROXY={{ no_proxy }}
   notify: Notify updates of the system via Slack
 
-- name: Set proxy at /etc/dnf.conf
+- name: Set proxy at /etc/dnf/dnf.conf
   when: use_proxy
   become: true
-  lineinfile:
-    create: yes
-    dest: /etc/dnf.conf
-    regexp: '^proxy='
+  blockinfile:
+    dest: /etc/dnf/dnf.conf
     state: present
-    line: "proxy={{ https_proxy }}"
+    block: |
+      proxy={{ https_proxy }}
+  notify: Notify updates of the system via Slack
+
+- name: Write %wheel in /etc/sudoers
+  when: enable_nopass_sudo
+  become: true
+  blockinfile:
+    dest: /etc/sudoers
+    state: present
+    block: |
+      %wheel  ALL=(ALL)       NOPASSWD: ALL
+    validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
 - name: Upgrade all packages
@@ -38,23 +47,10 @@
   with_items:
     - docker-engine
     - git
-    - python3-pip
+    - python-docker-py
     - sudo
     - "{{ dnf_packages }}"
   ignore_errors: true
-  notify: Notify updates of the system via Slack
-
-- name: Write %wheel in /etc/sudoers
-  when:
-    - enable_nopass_sudo is defined
-    - enable_nopass_sudo
-  become: true
-  lineinfile:
-    dest: /etc/sudoers
-    state: present
-    regexp: '^%wheel'
-    line: '%wheel  ALL=(ALL)       NOPASSWD: ALL'
-    validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
 - name: Set users
@@ -65,15 +61,4 @@
     groups: "{{ item.groups }}"
     append: yes
   with_items: "{{ users }}"
-  notify: Notify updates of the system via Slack
-
-- name: Install packages via pip3
-  become: true
-  pip:
-    name: "{{ item }}"
-    executable: /usr/bin/pip3
-    state: latest
-  with_items:
-    - docker
-    - docker-compose
   notify: Notify updates of the system via Slack

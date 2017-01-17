@@ -7,7 +7,7 @@ gem_packages:
   - middleman
   - rails
   - rake
-  - selenium
+  - selenium-webdriver
   - toml-rb
   - tugboat
   - twitter
