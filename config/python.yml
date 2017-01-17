@@ -1,5 +1,5 @@
-python_version: 3
 pip_packages:
+  - ansible
   - awscli
   - beautifulsoup4
   - bottle

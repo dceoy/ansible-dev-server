@@ -1,5 +1,4 @@
 apt_packages:
-  - ansible
   - apt-file
   - aptitude
   - bats
