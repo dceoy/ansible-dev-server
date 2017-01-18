@@ -1,0 +1,23 @@
+r_repos:
+  cran:
+    - https://cran.rstudio.com/
+    - https://cran.ism.ac.jp/
+  drat:
+    - dmlc
+    - RcppCore
+r_packages:
+  cran:
+    - dplyr
+    - ggplot2
+    - mxnet
+    - Rcpp
+    - tidyr
+  github:
+    - rstudio/httpuv
+    - rstudio/tensorflow
+  drat:
+    - xgboost
+    - mxnet
+  bioconductor:
+    - Biobase
+    - BiocInstaller
