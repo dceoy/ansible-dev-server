@@ -68,9 +68,6 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - docker-engine
-    - docker-python
-    - git
     - sudo
     - "{{ yum_packages }}"
   ignore_errors: true
