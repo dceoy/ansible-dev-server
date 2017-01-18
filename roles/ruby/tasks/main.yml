@@ -19,7 +19,7 @@
 - name: Fetch a latest version
   shell: |
     {{ rbenv }} install --list \
-      | awk '$1 ~ /^{{ ruby_version }}\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
+      | awk '$1 ~ /^2\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
   register: ruby_v
 
 - name: Install Ruby
