@@ -24,9 +24,9 @@ build:
     - script:
         name: Set up a server
         code: |
-          cp test/config/*.yml config/
-          cp test/test_hosts hosts
-          ansible-playbook provision_dev.yml
+          cp -r roles dotfiles test
+          cd test
+          ansible-playbook test_provision.yml
   after-steps:
     - slack-notifier:
         url: $SLACK_URL
