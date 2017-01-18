@@ -1,3 +1,2 @@
 # m h dom mon dow command
-AP_DIR=/home/dceoy/ansible-dev
-0  7  *  *  0   ansible-playbook -i $AP_DIR/hosts $AP_DIR/provision_dev.yml
+0  7  *  *  0   cd /home/dceoy/ansible-dev && ansible-playbook provision_dev.yml
