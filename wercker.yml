@@ -1,0 +1,30 @@
+box:
+  id: ubuntu
+  entrypoint: /bin/bash -c
+build:
+  steps:
+    - script:
+        name: Prepare required packages
+        code: |
+          apt-get -y update
+          apt-get -y upgrade
+          apt-get -y install sudo ssh ansible python-pip
+          pip install -U ansible
+    - script:
+        name: Set up ssh
+        code: |
+          systemctl start sshd
+          cp -r test/ssh ~/.ssh
+    - script:
+        name: Set up a server
+        code: |
+          cp test/hosts .
+          ansible-playbook provision_dev.yml
+  after-steps:
+    - script:
+        code: |
+          apt-get -y update
+          apt-get -y install curl
+    - slack-notifier:
+        url: $SLACK_URL
+        channel: $SLACK_CHANNEL
