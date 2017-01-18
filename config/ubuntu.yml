@@ -64,7 +64,6 @@ apt_packages:
   - nmap
   - nodejs
   - npm
-  - nvidia-cuda-toolkit
   - pandoc
   - patch
   - pigz
