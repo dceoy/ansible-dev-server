@@ -1,4 +1,4 @@
-[dev]
+[local]
 localhost   ansible_connection=ssh
 
 [all:vars]

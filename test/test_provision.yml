@@ -1,0 +1,13 @@
+---
+- name: Test provisioning
+  hosts: local
+  vars:
+    use_proxy: false
+    enable_nopass_sudo: true
+  roles:
+    - role: ubuntu
+    - role: cli
+    - role: python
+    - role: ruby
+    - role: go
+    - role: r
