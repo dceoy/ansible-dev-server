@@ -100,10 +100,6 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - docker-engine
-    - git
-    - python-docker
-    - r-base-dev
     - sudo
     - "{{ apt_packages }}"
   ignore_errors: true

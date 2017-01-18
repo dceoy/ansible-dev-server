@@ -14,9 +14,6 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - apt-transport-https
-    - ca-certificates
-    - git
     - sudo
     - "{{ apt_packages }}"
   ignore_errors: true

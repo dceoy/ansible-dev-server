@@ -21,6 +21,8 @@ yum_packages:
   - cvs
   - diffstat
   - dkms
+  - docker-engine
+  - docker-python
   - doxygen
   - elfutils
   - elixir
@@ -37,6 +39,7 @@ yum_packages:
   - gdbm-devel
   - gflags-devel
   - ghc
+  - git
   - glibc-devel
   - glog-devel
   - gmp-devel
