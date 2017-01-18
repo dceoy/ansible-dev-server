@@ -1,23 +1,4 @@
 ---
-- name: Add %wheel
-  when: enable_nopass_sudo
-  become: true
-  group:
-    name: wheel
-    state: present
-  notify: Notify updates of the system via Slack
-
-- name: Write %wheel in /etc/sudoers
-  when: enable_nopass_sudo
-  become: true
-  blockinfile:
-    dest: /etc/sudoers
-    state: present
-    block: |
-      %wheel  ALL=(ALL)       NOPASSWD: ALL
-    validate: 'visudo -cf %s'
-  notify: Notify updates of the system via Slack
-
 - name: Upgrade all packages
   become: true
   apt:
