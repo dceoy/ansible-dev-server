@@ -8,5 +8,5 @@ apt_packages:
   - zsh
 users:
   - name: test
-    groups: docker
+    groups: sudo
     shell: /bin/zsh
