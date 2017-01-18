@@ -112,6 +112,7 @@
     - Notify updates of the system via Slack
 
 - name: Set users
+  when: users is defined
   become: true
   user:
     name: "{{ item.name }}"

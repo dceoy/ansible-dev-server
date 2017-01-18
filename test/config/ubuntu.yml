@@ -1,0 +1,12 @@
+apt_packages:
+  - curl
+  - make
+  - time
+  - tree
+  - vim-gnome
+  - wget
+  - zsh
+users:
+  - name: test
+    groups: docker
+    shell: /bin/zsh

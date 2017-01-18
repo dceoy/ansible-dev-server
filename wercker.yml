@@ -4,27 +4,30 @@ box:
 build:
   steps:
     - script:
-        name: Prepare required packages
+        name: Install required packages
         code: |
           apt-get -y update
           apt-get -y upgrade
-          apt-get -y install sudo ssh ansible python-pip
+          apt-get -y install aptitude sudo ssh libssl-dev python-dev python-pip
+    - script:
+        name: Install ansible
+        code: |
+          pip install -U pip
           pip install -U ansible
     - script:
         name: Set up ssh
         code: |
-          systemctl start sshd
+          service ssh start
           cp -r test/ssh ~/.ssh
+          chmod 600 ~/.ssh/*
+          ssh localhost 'echo Connected!'
     - script:
         name: Set up a server
         code: |
-          cp test/hosts .
+          cp test/config/*.yml config/
+          cp test/test_hosts hosts
           ansible-playbook provision_dev.yml
   after-steps:
-    - script:
-        code: |
-          apt-get -y update
-          apt-get -y install curl
     - slack-notifier:
         url: $SLACK_URL
         channel: $SLACK_CHANNEL
