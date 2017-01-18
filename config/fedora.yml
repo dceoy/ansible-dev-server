@@ -21,6 +21,7 @@ dnf_packages:
   - cvs
   - diffstat
   - dkms
+  - docker-engine
   - doxygen
   - elfutils
   - elixir
@@ -37,6 +38,7 @@ dnf_packages:
   - gdbm-devel
   - gflags-devel
   - ghc
+  - git
   - glibc-devel
   - glog-devel
   - gmp-devel
@@ -91,6 +93,7 @@ dnf_packages:
   - protobuf-devel
   - python3-devel
   - python-devel
+  - python-docker-py
   - python-yaml
   - R-devel
   - rcs

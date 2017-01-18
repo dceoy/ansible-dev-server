@@ -1,6 +1,11 @@
 apt_packages:
+  - build-essential
   - curl
-  - make
+  - git
+  - golang
+  - libcurl4-gnutls-dev
+  - libssl-dev
+  - r-base-dev
   - time
   - tree
   - vim-gnome

@@ -1,9 +1,11 @@
 apt_packages:
   - apt-file
   - aptitude
+  - apt-transport-https
   - build-essential
   - bzip2
   - cabal-install
+  - ca-certificates
   - cmake
   - corkscrew
   - curl
@@ -12,8 +14,10 @@ apt_packages:
   - expect
   - fabric
   - g++
+  - gcc
   - gdebi-core
   - ghc
+  - git
   - golang
   - imagemagick
   - incron

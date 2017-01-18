@@ -47,9 +47,6 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - docker-engine
-    - git
-    - python-docker-py
     - sudo
     - "{{ dnf_packages }}"
   ignore_errors: true
