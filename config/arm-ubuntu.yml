@@ -5,7 +5,6 @@ apt_packages:
   - build-essential
   - bzip2
   - cabal-install
-  - cargo
   - cmake
   - corkscrew
   - curl
@@ -73,7 +72,6 @@ apt_packages:
   - python3-scipy
   - r-base-dev
   - redis-server
-  - rust
   - samba
   - scala
   - sqlite3

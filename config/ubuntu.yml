@@ -4,7 +4,6 @@ apt_packages:
   - build-essential
   - bzip2
   - cabal-install
-  - cargo
   - cmake
   - corkscrew
   - curl
@@ -70,11 +69,8 @@ apt_packages:
   - postgresql
   - protobuf-compiler
   - python3-dev
-  - python-dev
-  - python-scipy
-  - python-yaml
+  - python3-scipy
   - redis-server
-  - rust
   - samba
   - scala
   - sqlite3

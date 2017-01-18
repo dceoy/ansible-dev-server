@@ -24,7 +24,6 @@ pip_packages:
   - nose
   - numpy
   - pandas
-  - pycuda
   - pymc
   - pyper
   - pystan
