@@ -12,7 +12,6 @@ yum_packages:
   - bzip2-devel
   - cabal-install
   - cairo-devel
-  - cargo
   - ccache
   - cmake
   - corkscrew
@@ -98,7 +97,6 @@ yum_packages:
   - rcs
   - readline-devel
   - redis
-  - rust
   - samba
   - sbt
   - scala

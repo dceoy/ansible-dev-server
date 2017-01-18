@@ -1,16 +1,13 @@
 apt_packages:
   - apt-file
   - aptitude
-  - bats
   - build-essential
   - bzip2
   - cabal-install
-  - cargo
   - cmake
   - corkscrew
   - curl
   - dkms
-  - elixir
   - ethtool
   - expect
   - fabric
@@ -21,7 +18,6 @@ apt_packages:
   - imagemagick
   - incron
   - inotify-tools
-  - julia
   - libapparmor1
   - libatlas-base-dev
   - libblas-dev
@@ -73,7 +69,6 @@ apt_packages:
   - python3-scipy
   - r-base-dev
   - redis-server
-  - rust
   - samba
   - scala
   - sqlite3
