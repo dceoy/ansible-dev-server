@@ -1,5 +1,5 @@
 ---
-- name: Set up a development server
+- name: Set up development servers
   hosts: dev
   vars:
     use_proxy: false
