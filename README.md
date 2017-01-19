@@ -27,7 +27,7 @@ $ ansible-playbook -i hosts provison_dev.yml
 Set up the systems with proxy
 
 ```sh
-$ ansible-playbook -i hosts provison_dev_proxied.yml
+$ ansible-playbook -i hosts provison_proxied_dev.yml
 ```
 
 Set passwords
