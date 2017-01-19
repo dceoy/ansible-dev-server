@@ -1,6 +1,6 @@
 ---
-- name: Set up a development server
-  hosts: dev
+- name: Set up development servers with sudo
+  hosts: dev_sudo
   vars:
     use_proxy: true
     enable_nopass_sudo: true
@@ -21,14 +21,24 @@
       when:
         - ansible_architecture == 'x86_64'
         - ansible_distribution == 'Ubuntu'
-    - role: macos
-      when:
-        - ansible_architecture == 'x86_64'
-        - ansible_distribution == 'MacOSX'
     - role: docker
       when:
         - ansible_architecture == 'x86_64'
         - ansible_os_family in [ 'RedHat', 'Debian' ]
+
+- name: Set up development servers without sudo
+  hosts: dev
+  vars:
+    use_proxy: true
+  environment:
+    http_proxy: "{{ http_proxy }}"
+    https_proxy: "{{ http_proxy }}"
+    no_proxy: "{{ no_proxy }}"
+  roles:
+    - role: macos
+      when:
+        - ansible_architecture == 'x86_64'
+        - ansible_distribution == 'MacOSX'
     - role: cli
     - role: python
     - role: ruby
