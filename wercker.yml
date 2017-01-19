@@ -24,7 +24,8 @@ build:
     - script:
         name: Set up a server
         code: |
-          ./test/run.sh
+          cd test
+          ansible-playbook test_provision.yml
   after-steps:
     - slack-notifier:
         url: $SLACK_URL
