@@ -1,0 +1,18 @@
+---
+- name: Set up a development server
+  hosts: local
+  vars:
+    use_proxy: false
+    enable_nopass_sudo: true
+  roles:
+    - role: fedora
+      when:
+        - ansible_distribution == 'Fedora'
+    - role: ubuntu
+      when:
+        - ansible_distribution == 'Ubuntu'
+    - role: cli
+    - role: python
+    - role: ruby
+    - role: go
+    - role: r

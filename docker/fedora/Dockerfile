@@ -2,7 +2,7 @@ FROM fedora
 
 RUN set -e \
       && dnf -y upgrade \
-      && dnf -y install git sudo ssh libssl-dev python-devel python-pip \
+      && dnf -y install git gcc sudo openssh openssl-devel python-devel python-pip \
       && dnf clean all
 
 RUN set -e \
@@ -11,7 +11,7 @@ RUN set -e \
 
 RUN set -e \
       && git clone https://github.com/dceoy/ansible-dev.git \
-      && cd ansible-dev \
-      && ansible-playbook -i docker/local_hosts provision_dev.yml
+      && cd ansible-dev/docker/playbooks \
+      && ansible-playbook docker_provision.yml
 
 ENTRYPOINT ["/bin/zsh", "-l"]
