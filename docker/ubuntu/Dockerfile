@@ -15,4 +15,4 @@ RUN set -e \
       && cd ansible-dev/docker/playbooks \
       && ansible-playbook docker_provision.yml
 
-ENTRYPOINT ["/bin/zsh", "-l"]
+ENTRYPOINT ["/usr/bin/zsh", "-l"]
