@@ -12,7 +12,7 @@ RUN set -e \
 
 RUN set -e \
       && git clone https://github.com/dceoy/ansible-dev.git \
-      && cd ansible-dev \
-      && ansible-playbook -i docker/local_hosts provision_dev.yml
+      && cd ansible-dev/docker/playbooks \
+      && ansible-playbook docker_provision.yml
 
 ENTRYPOINT ["/bin/zsh", "-l"]
