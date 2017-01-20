@@ -68,6 +68,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - git
     - sudo
     - "{{ yum_packages }}"
   ignore_errors: true
