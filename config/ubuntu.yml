@@ -94,5 +94,5 @@ apt_packages:
   - zsh
 users:
   - name: dceoy
-    groups: docker
+    groups: sudo
     shell: /bin/zsh
