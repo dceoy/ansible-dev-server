@@ -4,11 +4,13 @@ box:
 build:
   steps:
     - script:
-        name: Install required packages
+        name: Install packages
         code: |
           apt-get -y update
           apt-get -y upgrade
-          apt-get -y install aptitude sudo ssh libssl-dev python-dev python-pip curl
+          apt-get -y install \
+            aptitude sudo ssh libssl-dev python-dev python-pip python-cffi \
+            gcc make golang libcurl4-gnutls-dev r-base-dev
     - script:
         name: Install ansible
         code: |

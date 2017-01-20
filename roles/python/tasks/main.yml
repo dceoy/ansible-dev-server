@@ -39,8 +39,7 @@
     name: "{{ item }}"
     executable: "{{ pyenv_pip }}"
     state: latest
-  with_items:
-    - "{{ pip_packages }}"
+  with_items: "{{ pip_packages }}"
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
@@ -54,7 +53,6 @@
     name: "{{ item }}"
     executable: "{{ pyenv_pip }}"
     state: latest
-  with_items:
-    - "{{ pip_packages }}"
+  with_items: "{{ pip_packages }}"
   ignore_errors: true
   notify: Notify updates of Python via Slack
