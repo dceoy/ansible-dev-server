@@ -18,7 +18,7 @@
     dest: /etc/dnf/dnf.conf
     state: present
     block: |
-      proxy={{ https_proxy }}
+      proxy={{ http_proxy }}
   notify: Notify updates of the system via Slack
 
 - name: Write %wheel in /etc/sudoers
