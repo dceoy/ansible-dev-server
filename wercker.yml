@@ -9,8 +9,7 @@ build:
           apt-get -y update
           apt-get -y upgrade
           apt-get -y install \
-            aptitude sudo ssh libssl-dev python-dev python-pip python-cffi \
-            gcc make golang libcurl4-gnutls-dev r-base-dev
+            aptitude sudo ssh libssl-dev python-dev python-pip python-cffi curl
     - script:
         name: Install ansible
         code: |
@@ -24,10 +23,9 @@ build:
           chmod 600 ~/.ssh/*
           ssh localhost 'echo Connected!'
     - script:
-        name: Set up a server
+        name: Test a build
         code: |
-          cd test/playbooks
-          ansible-playbook test_provision.yml
+          ./test/build.sh
   after-steps:
     - slack-notifier:
         url: $SLACK_URL

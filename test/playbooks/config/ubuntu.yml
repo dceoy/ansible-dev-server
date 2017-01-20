@@ -1,7 +1,11 @@
 apt_packages:
-  - curl
+  - gcc
+  - golang
+  - libcurl4-gnutls-dev
+  - make
+  - r-base-dev
   - tree
-  - vim
+  - vim-gnome
   - zsh
 users:
   - name: test
