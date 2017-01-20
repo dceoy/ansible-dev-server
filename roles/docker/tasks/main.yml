@@ -32,9 +32,16 @@
   become: true
   docker_image:
     name: "{{ item }}"
-  with_items:
-    - ubuntu
-    - centos
-    - fedora
+  with_items: "{{ docker_images }}"
   ignore_errors: true
   notify: Notify updates of Docker via Slack
+
+- name: Add users to %docker
+  when: docker_users is defined
+  become: true
+  user:
+    name: "{{ item }}"
+    groups: docker
+    append: yes
+  with_items: "{{ docker_users }}"
+  notify: Notify updates of the system via Slack

@@ -128,5 +128,5 @@ dnf_packages:
   - zsh
 users:
   - name: dceoy
-    groups: wheel,docker
+    groups: wheel
     shell: /bin/zsh
