@@ -1,15 +1,7 @@
 apt_packages:
-  - build-essential
   - curl
-  - git
-  - golang
-  - libcurl4-gnutls-dev
-  - libssl-dev
-  - r-base-dev
-  - time
   - tree
-  - vim-gnome
-  - wget
+  - vim
   - zsh
 users:
   - name: test
