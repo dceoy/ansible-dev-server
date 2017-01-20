@@ -47,6 +47,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - git
     - sudo
     - "{{ dnf_packages }}"
   ignore_errors: true
