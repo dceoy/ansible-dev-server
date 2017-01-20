@@ -129,5 +129,5 @@ yum_packages:
   - zsh
 users:
   - name: dceoy
-    groups: docker
+    groups: users
     shell: /bin/zsh
