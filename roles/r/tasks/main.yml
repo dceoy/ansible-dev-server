@@ -56,7 +56,9 @@
   notify: Notify updates of R via Slack
 
 - name: Install and update drat packages
-  when: r_packages.drat is defined
+  when:
+    - r_repos.drat is defined
+    - r_packages.drat is defined
   environment:
     PATH: "{{ path }}"
     R_LIBS: "{{ r_libs }}"

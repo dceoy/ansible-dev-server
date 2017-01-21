@@ -1,15 +1,9 @@
 r_repos:
   cran:
     - https://cran.rstudio.com/
-  drat:
-    - dmlc
 r_packages:
   cran:
-    - dplyr
-    - tidyr
+    - Rcpp
+    - RSQLite
   github:
     - tidyverse/ggplot2
-  drat:
-    - xgboost
-  bioconductor:
-    - Biobase
