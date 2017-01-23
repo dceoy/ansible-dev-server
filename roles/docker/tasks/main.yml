@@ -36,6 +36,14 @@
   ignore_errors: true
   notify: Notify updates of Docker via Slack
 
+- name: Add %docker
+  when: docker_users is defined
+  become: true
+  group:
+    name: docker
+    state: present
+  notify: Notify updates of Docker via Slack
+
 - name: Add users to %docker
   when: docker_users is defined
   become: true
@@ -44,4 +52,4 @@
     groups: docker
     append: yes
   with_items: "{{ docker_users }}"
-  notify: Notify updates of the system via Slack
+  notify: Notify updates of Docker via Slack
