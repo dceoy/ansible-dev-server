@@ -3,7 +3,7 @@ r_repos:
     - https://cran.rstudio.com/
 r_packages:
   cran:
-    - Rcpp
-    - RSQLite
+    - dplyr
+    - tidyr
   github:
     - tidyverse/ggplot2
