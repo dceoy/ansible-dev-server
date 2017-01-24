@@ -9,6 +9,8 @@ r_repos:
 r_packages:
   cran:
     - abc
+    - abc.data
+    - abctools
     - amap
     - binom
     - broom
