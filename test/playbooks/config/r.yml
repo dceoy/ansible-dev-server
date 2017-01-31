@@ -1,9 +1,0 @@
-r_repos:
-  cran:
-    - https://cran.rstudio.com/
-r_packages:
-  cran:
-    - dplyr
-    - tidyr
-  github:
-    - tidyverse/ggplot2

@@ -10,4 +10,3 @@
     - role: python
     - role: ruby
     - role: go
-    - role: r
