@@ -8,6 +8,7 @@ dnf_packages:
   - bison
   - blas-devel
   - boost-devel
+  - bwa
   - byacc
   - bzip2-devel
   - cabal-install
@@ -101,6 +102,7 @@ dnf_packages:
   - redis
   - samba
   - sbt
+  - samtools
   - scala
   - scipy
   - snappy-devel

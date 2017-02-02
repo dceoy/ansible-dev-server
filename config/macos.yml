@@ -5,6 +5,7 @@ brew_packages:
   without_options:
     - bats
     - boost
+    - bwa
     - cabal-install
     - cairo
     - corkscrew
@@ -45,6 +46,7 @@ brew_packages:
     - redis
     - rename
     - rust
+    - samtools
     - sbt
     - scala
     - snappy

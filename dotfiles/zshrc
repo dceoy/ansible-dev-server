@@ -100,8 +100,8 @@ alias llh="ll -h"
 alias less="less -iMRW"
 alias d="docker"
 alias dc="docker-compose"
-alias rmc="docker ps -aq | xargs docker rm"
-alias rmi="docker images | awk '/^<none>/ { print \$3 }' | xargs docker rmi"
+alias drmc="docker ps -aq | xargs docker rm"
+alias drmi="docker images | awk '/^<none>/ { print \$3 }' | xargs docker rmi"
 
 case "${OSTYPE}" in
   darwin*)

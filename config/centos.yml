@@ -8,6 +8,7 @@ yum_packages:
   - bison
   - blas-devel
   - boost-devel
+  - bwa
   - byacc
   - bzip2-devel
   - cabal-install
@@ -101,6 +102,7 @@ yum_packages:
   - readline-devel
   - redis
   - samba
+  - samtools
   - sbt
   - scala
   - scipy
