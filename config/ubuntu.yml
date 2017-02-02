@@ -2,6 +2,7 @@ apt_packages:
   - apt-file
   - bats
   - build-essential
+  - bwa
   - bzip2
   - cabal-install
   - cmake
@@ -76,6 +77,7 @@ apt_packages:
   - r-base-dev
   - redis-server
   - samba
+  - samtools
   - scala
   - sqlite3
   - supervisor
