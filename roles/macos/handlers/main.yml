@@ -1,7 +1,7 @@
 ---
 - name: Clean homebrew
   shell: |
-    brew cleanup
+    /usr/local/bin/brew cleanup
 
 - name: Notify updates of the system via Slack
   when:
