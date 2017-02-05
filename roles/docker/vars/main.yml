@@ -1,1 +1,8 @@
-../../../config/docker.yml
+docker_images:
+  - ubuntu
+  - centos
+  - fedora
+  - dceoy/nginx-autoindex
+  - dceoy/rstudio-server
+docker_users:
+  - dceoy
