@@ -1,12 +1,1 @@
-gem_packages:
-  - bundler
-  - clockwork
-  - compass
-  - mechanize
-  - middleman
-  - rails
-  - rake
-  - selenium-webdriver
-  - toml-rb
-  - tugboat
-  - twitter
+../roles/ruby/vars/main.yml
