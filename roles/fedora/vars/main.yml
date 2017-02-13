@@ -13,6 +13,7 @@ dnf_packages:
   - bzip2-devel
   - cabal-install
   - cairo-devel
+  - cargo
   - ccache
   - cmake
   - corkscrew
@@ -100,6 +101,7 @@ dnf_packages:
   - rcs
   - readline-devel
   - redis
+  - rust
   - samba
   - sbt
   - samtools
