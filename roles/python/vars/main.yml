@@ -22,6 +22,7 @@ pip_packages:
   - mock
   - mxnet
   - nose
+  - numexpr
   - numpy
   - pandas
   - pymc
@@ -51,3 +52,4 @@ pip_packages:
   - twitter
   - virtualenv
   - webtest
+  - xgboost
