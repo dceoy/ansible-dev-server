@@ -43,6 +43,7 @@ r_packages:
     - purrr
     - ranger
     - rbenchmark
+    - RcppGSL
     - RcppSMC
     - RcppTOML
     - rmarkdown

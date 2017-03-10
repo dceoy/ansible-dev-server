@@ -17,6 +17,7 @@ apt_packages:
   - g++
   - gcc
   - gdebi-core
+  - gfortran
   - ghc
   - git
   - golang
@@ -30,6 +31,7 @@ apt_packages:
   - libboost-all-dev
   - libbz2-dev
   - libcairo2-dev
+  - libcupti-dev
   - libcurl4-openssl-dev
   - libffi-dev
   - libfreetype6-dev
@@ -39,6 +41,7 @@ apt_packages:
   - libgoogle-glog-dev
   - libhdf5-serial-dev
   - libhunspell-dev
+  - liblapack-dev
   - libleveldb-dev
   - liblmdb-dev
   - libmariadb-client-lgpl-dev
