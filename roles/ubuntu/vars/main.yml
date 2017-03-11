@@ -31,7 +31,6 @@ apt_packages:
   - libboost-all-dev
   - libbz2-dev
   - libcairo2-dev
-  - libcupti-dev
   - libcurl4-openssl-dev
   - libffi-dev
   - libfreetype6-dev
@@ -94,7 +93,6 @@ apt_packages:
   - wakeonlan
   - wget
   - whois
-  - zfs
   - zip
   - zlib1g-dev
   - zsh

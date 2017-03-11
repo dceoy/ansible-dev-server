@@ -87,7 +87,6 @@ apt_packages:
   - wakeonlan
   - wget
   - whois
-  - zfs
   - zip
   - zlib1g-dev
   - zsh
