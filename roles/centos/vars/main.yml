@@ -128,7 +128,6 @@ yum_packages:
   - wol
   - wxMaxima
   - xfig
-  - zfs
   - zsh
 users:
   - name: dceoy
