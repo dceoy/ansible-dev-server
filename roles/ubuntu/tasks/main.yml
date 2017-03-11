@@ -74,6 +74,7 @@
   notify: Notify updates of the system via Slack
 
 - name: Add Docker repo
+  become: true
   apt_repository:
     repo: deb https://apt.dockerproject.org/repo ubuntu-xenial main
     state: present
@@ -88,6 +89,7 @@
   notify: Notify updates of the system via Slack
 
 - name: Add R repo
+  become: true
   apt_repository:
     repo: deb https://cloud.r-project.org/bin/linux/ubuntu xenial/
     state: present

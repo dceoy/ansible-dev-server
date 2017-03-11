@@ -8,7 +8,7 @@ build:
         code: |
           apt-get -y update
           apt-get -y upgrade
-          apt-get -y install aptitude sudo libssl-dev python-pip python-cffi curl
+          apt-get -y install aptitude ssh sudo libssl-dev python-pip python-cffi curl
     - script:
         name: Install ansible
         code: |
