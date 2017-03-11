@@ -11,7 +11,10 @@ RUN set -e \
 
 RUN set -e \
       && git clone https://github.com/dceoy/ansible-dev.git \
-      && cd ansible-dev/docker/playbooks \
-      && ansible-playbook docker_provision.yml
+      && cp -a ansible-dev/docker/playbooks /tmp \
+      && cp -a ansible-dev/roles /tmp/playbooks \
+      && cd /tmp/playbooks \
+      && sed -ie '/docker-engine/d' roles/fedora/vars/main.yml \
+      && ansible-playbook provision_container.yml
 
 ENTRYPOINT ["/usr/bin/zsh", "-l"]
