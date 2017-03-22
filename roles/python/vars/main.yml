@@ -1,9 +1,12 @@
 pip_packages:
   - ansible
   - awscli
+  - biopython
   - beautifulsoup4
   - bottle
+  - coloredlogs
   - csvkit
+  - cutadapt
   - cython
   - docker
   - docker-compose
@@ -25,8 +28,10 @@ pip_packages:
   - numexpr
   - numpy
   - pandas
+  - psutil
   - pymc
   - pyper
+  - pysam
   - pystan
   - pytest
   - pytoml
@@ -34,6 +39,7 @@ pip_packages:
   - redis
   - requests
   - requests_oauthlib
+  - rpy2
   - scikit-learn
   - scipy
   - scss

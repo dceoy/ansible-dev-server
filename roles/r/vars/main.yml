@@ -32,12 +32,14 @@ r_packages:
     - gridExtra
     - h2o
     - kernlab
+    - KernSmooth
     - knitr
     - leaflet
     - lle
     - loo
     - MCMCpack
     - miniCRAN
+    - mlr
     - phangorn
     - plyr
     - purrr
@@ -47,6 +49,7 @@ r_packages:
     - RcppSMC
     - RcppTOML
     - rmarkdown
+    - RPMM
     - RSQLite
     - rstan
     - Rtsne
@@ -59,6 +62,7 @@ r_packages:
     - tidyr
     - tidyverse
     - tm
+    - VGAM
   github:
     - klutometis/roxygen
     - rstudio/httpuv
