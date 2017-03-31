@@ -11,6 +11,7 @@ r_packages:
     - abc
     - abctools
     - amap
+    - animation
     - binom
     - broom
     - caret
