@@ -26,6 +26,7 @@ brew_packages:
     - leveldb
     - librsvg
     - libxml2
+    - llvm
     - lmdb
     - lua
     - mariadb
