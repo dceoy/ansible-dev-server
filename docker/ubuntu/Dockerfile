@@ -18,4 +18,4 @@ RUN set -e \
       && sed -ie '/docker-engine/d' roles/ubuntu/vars/main.yml \
       && ansible-playbook provision_container.yml
 
-ENTRYPOINT ["/usr/bin/zsh", "-l"]
+ENTRYPOINT ["/usr/bin/zsh", "-lc"]
