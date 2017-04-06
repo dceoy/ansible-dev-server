@@ -65,6 +65,7 @@ r_packages:
     - tm
     - VGAM
   github:
+    - docopt/docopt.R
     - klutometis/roxygen
     - rstudio/httpuv
     - rstudio/tensorflow
