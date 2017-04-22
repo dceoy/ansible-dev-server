@@ -62,7 +62,6 @@ apt_packages:
   - nkf
   - nmap
   - nodejs
-  - npm
   - pandoc
   - patch
   - pigz
