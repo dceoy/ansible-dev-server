@@ -11,10 +11,9 @@
     pyenv_python: "{{ ansible_env.HOME }}/.pyenv/shims/python"
     pyenv_pip: "{{ ansible_env.HOME }}/.pyenv/shims/pip"
 
-- name: Fetch latest versions
+- name: Fetch the latest versions
   shell: |
-    {{ pyenv }} install --list \
-      | awk '$1 ~ /^{{ item }}\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
+    {{ pyenv }} install --list | awk '$1 ~ /^{{ item }}\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
   with_items:
     - 2
     - 3
@@ -22,19 +21,19 @@
 
 - name: Install Python
   shell: |
-    [[ $({{ pyenv }} versions | grep -ce '\s{{ item.stdout }}') -gt 0 ]] \
-      || {{ pyenv }} install {{ item.stdout }}
+    {{ pyenv }} versions | grep -e ' {{ item.stdout }}' || {{ pyenv }} install {{ item.stdout }}
   with_items: "{{ python_v.results }}"
-  register: install_python
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
 - name: Set the global version for Python 2
-  when: install_python.results[0]|success
   shell: |
     {{ pyenv }} global {{ python_v.results[0].stdout }}
+  ignore_errors: true
+  register: set_python2
 
 - name: Install and update packages for Python 2
+  when: set_python2|success
   pip:
     name: "{{ item }}"
     executable: "{{ pyenv_pip }}"
@@ -44,11 +43,13 @@
   notify: Notify updates of Python via Slack
 
 - name: Set the global version for Python 3
-  when: install_python.results[1]|success
   shell: |
     {{ pyenv }} global {{ python_v.results[1].stdout }}
+  ignore_errors: true
+  register: set_python3
 
 - name: Install and update packages for Python 3
+  when: set_python3|success
   pip:
     name: "{{ item }}"
     executable: "{{ pyenv_pip }}"

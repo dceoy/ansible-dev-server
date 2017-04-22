@@ -16,26 +16,25 @@
     rbenv_ruby: "{{ ansible_env.HOME }}/.rbenv/shims/ruby"
     rbenv_gem: "{{ ansible_env.HOME }}/.rbenv/shims/gem"
 
-- name: Fetch a latest version
+- name: Fetch the latest version
   shell: |
-    {{ rbenv }} install --list \
-      | awk '$1 ~ /^2\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
+    {{ rbenv }} install --list | awk '$1 ~ /^2\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
   register: ruby_v
 
 - name: Install Ruby
   shell: |
-    [[ $({{ rbenv }} versions | grep -ce '\s{{ ruby_v.stdout }}') -gt 0 ]] \
-      || {{ rbenv }} install {{ ruby_v.stdout }}
-  register: install_ruby
+    {{ rbenv }} versions | grep -e ' {{ ruby_v.stdout }}' || {{ rbenv }} install {{ ruby_v.stdout }}
   ignore_errors: true
   notify: Notify updates of Ruby via Slack
 
 - name: Set the global version
-  when: install_ruby|success
   shell: |
     {{ rbenv }} global {{ ruby_v.stdout }}
+  ignore_errors: true
+  register: set_ruby
 
 - name: Install and update packages
+  when: set_ruby|success
   gem:
     name: "{{ item }}"
     executable: "{{ rbenv_gem }}"
