@@ -13,32 +13,41 @@
 - name: Set variables
   set_fact:
     rbenv: "{{ ansible_env.HOME }}/.rbenv/bin/rbenv"
-    rbenv_ruby: "{{ ansible_env.HOME }}/.rbenv/shims/ruby"
-    rbenv_gem: "{{ ansible_env.HOME }}/.rbenv/shims/gem"
+    rbenv_root: "{{ ansible_env.HOME }}/.rbenv"
 
-- name: Fetch the latest version
+- name: Fetch the latest version for 2
   shell: |
     {{ rbenv }} install --list | awk '$1 ~ /^2\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
-  register: ruby_v
+  register: rb_v
 
-- name: Install Ruby
+- name: Check if the latest version exists
+  stat:
+    path: "{{ rbenv_root }}/versions/{{ rb_v.stdout }}/bin/ruby"
+  register: rb_x
+
+- name: Install the latest version
+  when: not rb_x.stat.exists
   shell: |
-    {{ rbenv }} versions | grep -e ' {{ ruby_v.stdout }}' || {{ rbenv }} install {{ ruby_v.stdout }}
+    {{ rbenv }} install {{ rb_v.stdout }}
   ignore_errors: true
   notify: Notify updates of Ruby via Slack
 
-- name: Set the global version
-  shell: |
-    {{ rbenv }} global {{ ruby_v.stdout }}
-  ignore_errors: true
-  register: set_ruby
+- name: Check if gem exists
+  stat:
+    path: "{{ rbenv_root }}/versions/{{ rb_v.stdout }}/bin/gem"
+  register: gem_x
 
 - name: Install and update packages
-  when: set_ruby|success
+  when: gem_x.stat.exists
   gem:
     name: "{{ item }}"
-    executable: "{{ rbenv_gem }}"
+    executable: "{{ gem_x.stat.path }}"
     state: latest
   with_items: "{{ gem_packages }}"
   ignore_errors: true
   notify: Notify updates of Ruby via Slack
+
+- name: Set the global version
+  when: gem_x.stat.exists
+  shell: |
+    {{ rbenv }} global {{ rb_v.stdout }}

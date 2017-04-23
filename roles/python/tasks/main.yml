@@ -8,52 +8,67 @@
 - name: Set variables
   set_fact:
     pyenv: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv"
-    pyenv_python: "{{ ansible_env.HOME }}/.pyenv/shims/python"
-    pyenv_pip: "{{ ansible_env.HOME }}/.pyenv/shims/pip"
+    pyenv_root: "{{ ansible_env.HOME }}/.pyenv"
 
-- name: Fetch the latest versions
+- name: Fetch the latest versions for 2 and 3
   shell: |
     {{ pyenv }} install --list | awk '$1 ~ /^{{ item }}\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
   with_items:
     - 2
     - 3
-  register: python_v
+  register: py_v
 
-- name: Install Python
+- name: Check if the latest versions exist
+  stat:
+    path: "{{ pyenv_root }}/versions/{{ item.stdout }}/bin/python"
+  with_items: "{{ py_v.results }}"
+  register: py_x
+
+- name: Set a list for new versions to install
+  set_fact:
+    new_v: |
+      {% set o = [] %}
+      {% for p in py_x.results if not p.stat.exists %}
+      {%   set _ = o.append(p.item.stdout) %}
+      {% endfor %}
+      {{ o }}
+
+- name: Install the latest versions
+  when: new_v|length > 0
   shell: |
-    {{ pyenv }} versions | grep -e ' {{ item.stdout }}' || {{ pyenv }} install {{ item.stdout }}
-  with_items: "{{ python_v.results }}"
+    {{ pyenv }} install {{ item }}
+  with_items: "{{ new_v }}"
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
-- name: Set the global version for Python 2
-  shell: |
-    {{ pyenv }} global {{ python_v.results[0].stdout }}
-  ignore_errors: true
-  register: set_python2
+- name: Check if pip exists
+  stat:
+    path: "{{ pyenv_root }}/versions/{{ item.stdout }}/bin/pip"
+  with_items: "{{ py_v.results }}"
+  register: pip_x
 
-- name: Install and update packages for Python 2
-  when: set_python2|success
+- name: Set a list for pip
+  set_fact:
+    pip_paths: |
+      {% set o = [] %}
+      {% for p in pip_x.results if p.stat.exists %}
+      {%   set _ = o.append(p.stat.path) %}
+      {% endfor %}
+      {{ o }}
+
+- name: Install and update packages
+  when: pip_paths|length > 0
   pip:
-    name: "{{ item }}"
-    executable: "{{ pyenv_pip }}"
+    name: "{{ item[0] }}"
+    executable: "{{ item[1] }}"
     state: latest
-  with_items: "{{ pip_packages }}"
+  with_nested:
+    - "{{ pip_packages }}"
+    - "{{ pip_paths }}"
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
-- name: Set the global version for Python 3
+- name: Set the global version for Python
+  when: pip_x.results[1].stat.exists
   shell: |
-    {{ pyenv }} global {{ python_v.results[1].stdout }}
-  ignore_errors: true
-  register: set_python3
-
-- name: Install and update packages for Python 3
-  when: set_python3|success
-  pip:
-    name: "{{ item }}"
-    executable: "{{ pyenv_pip }}"
-    state: latest
-  with_items: "{{ pip_packages }}"
-  ignore_errors: true
-  notify: Notify updates of Python via Slack
+    {{ pyenv }} global {{ py_v.results[1].stdout }}

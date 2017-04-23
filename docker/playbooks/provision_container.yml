@@ -3,7 +3,7 @@
   hosts: local
   vars:
     use_proxy: false
-    enable_nopass_sudo: true
+    enable_nopass_sudo: false
   roles:
     - role: fedora
       when:

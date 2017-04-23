@@ -1,6 +1,4 @@
 pip_packages:
-  - ansible
   - csvkit
-  - docker
-  - docker-compose
   - flake8
+  - ipython

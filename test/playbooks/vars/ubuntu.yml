@@ -3,7 +3,7 @@ apt_packages:
   - golang
   - libcurl4-gnutls-dev
   - make
-  - r-base-dev
+  - r-base
   - tree
   - vim-gnome
   - zsh
