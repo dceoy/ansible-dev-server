@@ -12,6 +12,7 @@ Preparing notification
 $ git clone https://github.com/dceoy/ansible-dev.git
 $ cd ansible-dev
 $ cp example_hosts hosts
+$ echo -n 'your_vault_pass' > vault_password_file
 $ vim hosts   # => edit
 ```
 
@@ -21,19 +22,20 @@ Usage
 Set up the systems
 
 ```sh
-$ ansible-playbook -i hosts provison_dev.yml
+$ ansible-playbook provison_dev.yml
 ```
 
 Set up the systems with proxy
 
 ```sh
-$ ansible-playbook -i hosts provison_proxied_dev.yml
+$ ansible-playbook provison_proxied_dev.yml
 ```
 
-Set passwords
+Set passwords for sudo
 
 ```sh
-$ echo 'ansible_become_pass: password_of_dev' > group_vars/dev.yml
+# password for sudo
+$ echo 'ansible_become_pass: sudo_pass_of_dev' > group_vars/dev.yml
 
 # encrypt
 $ ansible-vault encrypt group_vars/dev.yml
