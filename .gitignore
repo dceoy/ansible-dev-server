@@ -4,3 +4,4 @@ hosts
 group_vars/*
 !.gitkeep
 tmp/*
+vault_password_file
