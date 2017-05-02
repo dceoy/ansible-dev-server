@@ -21,7 +21,6 @@ pip_packages:
   - keras
   - luigi
   - matplotlib
-  - mechanize
   - mock
   - mxnet
   - nose
