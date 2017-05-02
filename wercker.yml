@@ -18,13 +18,13 @@ build:
         name: Set up ssh
         code: |
           service ssh start
-          cp -r test/ssh ~/.ssh
+          cp -r tests/ssh ~/.ssh
           chmod 600 ~/.ssh/*
           ssh localhost 'echo Connected!'
     - script:
         name: Test a build
         code: |
-          ./test/build.sh
+          ./tests/build.sh
   after-steps:
     - slack-notifier:
         url: $SLACK_URL
