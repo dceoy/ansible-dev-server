@@ -18,6 +18,7 @@ r_packages:
     - coin
     - data.table
     - diffusionMap
+    - dlm
     - doSNOW
     - dplyr
     - dtplyr
