@@ -49,5 +49,8 @@
 
 - name: Set the global version
   when: gem_x.stat.exists
-  shell: |
-    {{ rbenv }} global {{ rb_v.stdout }}
+  lineinfile:
+    path: "{{ rbenv_root }}/version"
+    create: yes
+    regexp: '^.*$'
+    line: "{{ rb_v.stdout }}"
