@@ -70,5 +70,8 @@
 
 - name: Set the global version for Python
   when: pip_x.results[1].stat.exists
-  shell: |
-    {{ pyenv }} global {{ py_v.results[1].stdout }}
+  lineinfile:
+    path: "{{ pyenv_root }}/version"
+    create: yes
+    regexp: '^.*$'
+    line: "{{ py_v.results[1].stdout }}"
