@@ -57,33 +57,22 @@
   copy:
     src: vimrc
     dest: "{{ ansible_env.HOME }}/.vimrc"
+  register: copy_vimrc
   notify: Notify updates of CLI via Slack
 
-- name: Create ~/.vim/bundle/
+- name: Create ~/.vim/bundles/
   file:
-    path: "{{ ansible_env.HOME }}/.vim/bundle"
+    path: "{{ ansible_env.HOME }}/.vim/bundles"
     state: directory
 
-- name: Clone vimproc.vim
+- name: Clone dein.vim
   git:
-    repo: 'https://github.com/Shougo/vimproc.vim.git'
-    dest: "{{ ansible_env.HOME }}/.vim/bundle/vimproc.vim"
-  register: update_vimproc
+    repo: 'https://github.com/Shougo/dein.vim'
+    dest: "{{ ansible_env.HOME }}/.vim/bundles/repos/github.com/Shougo/dein.vim"
   notify: Notify updates of CLI via Slack
-
-- name: Clone neobundle.vim
-  git:
-    repo: 'https://github.com/Shougo/neobundle.vim.git'
-    dest: "{{ ansible_env.HOME }}/.vim/bundle/neobundle.vim"
-  register: update_neobundle
-  notify: Notify updates of CLI via Slack
-
-- name: Make vimproc.vim
-  when: update_vimproc|changed
-  make:
-    chdir: "{{ ansible_env.HOME }}/.vim/bundle/vimproc.vim"
 
 - name: Install Vim plugins
   shell: |
-    {{ ansible_env.HOME }}/.vim/bundle/neobundle.vim/bin/neoinstall
+    vim -c "try | call dein#update() | finally | qall! | endtry" \
+      -N -u {{ copy_vimrc.dest }} -U NONE -i NONE -V1 -e -s
   notify: Notify updates of CLI via Slack
