@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
-
 # ------------------------------
 # General Settings
 # ------------------------------
+
 export EDITOR=vim
 export KCODE=u
 export AUTOFEATURE=true
@@ -26,8 +26,8 @@ setopt auto_list
 setopt auto_menu
 setopt list_packed
 setopt list_types
-bindkey "^[[Z" reverse-menu-complete
-zstyle ":completion:*" matcher-list "m:{a-z}={A-Z}"
+bindkey '^[[Z' reverse-menu-complete
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 ### Glob ###
 setopt extended_glob
@@ -46,8 +46,8 @@ setopt hist_reduce_blanks
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+bindkey '^P' history-beginning-search-backward-end
+bindkey '^N' history-beginning-search-forward-end
 
 function history-all { history -E 1 }
 
@@ -55,12 +55,13 @@ function history-all { history -E 1 }
 # ------------------------------
 # Look And Feel Settings
 # ------------------------------
+
 ### Ls Color ###
 export LSCOLORS=Exfxcxdxbxegedabagacad
-export LS_COLORS="di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30"
+export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 export ZLS_COLORS="${LS_COLORS}"
 export CLICOLOR=true
-zstyle ":completion:*:default" list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
 ### Prompt ###
 autoload -U colors; colors
@@ -92,26 +93,27 @@ SPROMPT="${tmp_sprompt}"
 ### Custom ###
 export LC_ALL=en_US.UTF-8
 setopt nonomatch
-alias v="vim"
-alias vi="vi -u NONE --noplugin -N"
-alias ll="ls -lF"
-alias lla="ll -a"
-alias llh="ll -h"
-alias less="less -iMRW"
-alias d="docker"
-alias dc="docker-compose"
-alias drmc="docker ps -aq | xargs docker rm"
-alias drmi="docker images | awk '/^<none>/ { print \$3 }' | xargs docker rmi"
+alias v='vim'
+alias vi='vi -u NONE --noplugin -N'
+alias ll='ls -lF'
+alias lla='ll -a'
+alias llh='ll -h'
+alias less='less -iMRW'
+alias d='docker'
+alias dc='docker-compose'
+alias drmc='docker ps -aq | xargs docker rm'
+alias drmi='docker images | awk "/^<none>/ { print \$3 }" | xargs docker rmi'
+alias rv='R --quiet --vanilla'
 
 case "${OSTYPE}" in
   darwin*)
-    alias grep="ggrep --color=auto"
-    alias sed="gsed"
-    alias awk="gawk"
+    alias grep='ggrep --color=auto'
+    alias sed='gsed'
+    alias awk='gawk'
     ;;
   linux*)
-    alias ls="ls --color=auto"
-    alias grep="grep --color=auto"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
     ;;
 esac
 
@@ -121,15 +123,15 @@ esac
 [[ -d "${HOME}/.pyenv" ]] \
   && export PATH="${HOME}/.pyenv/bin:${PATH}" \
   && eval "$(pyenv init -)"
-alias rv="R --quiet --vanilla"
+
 export R_LIBS="${HOME}/.clir/r/library"
 export GOPATH="${HOME}/.go"
 export PATH="${GOPATH}/bin:${PATH}:${HOME}/.clir/bin"
 
 ### Git ###
 autoload -Uz vcs_info
-zstyle ":vcs_info:*" formats "%b "
-zstyle ":vcs_info:*" actionformats "%b|%a "
+zstyle ':vcs_info:*' formats '%b '
+zstyle ':vcs_info:*' actionformats '%b|%a '
 function precmd {
   psvar=()
   LANG=en_US.UTF-8 vcs_info
