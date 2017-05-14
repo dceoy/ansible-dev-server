@@ -8,6 +8,7 @@
 - name: Check R command
   shell: |
     R --version
+  changed_when: False
 
 - name: Check .clir
   stat:
