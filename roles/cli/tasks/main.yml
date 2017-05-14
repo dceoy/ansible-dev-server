@@ -73,6 +73,7 @@
 
 - name: Install Vim plugins
   shell: |
-    vim -c "try | call dein#update() | finally | qall! | endtry" \
+    vim -c 'try | call dein#update() | finally | qall! | endtry' \
       -N -u {{ copy_vimrc.dest }} -U NONE -i NONE -V1 -e -s
+  ignore_errors: true
   notify: Notify updates of CLI via Slack

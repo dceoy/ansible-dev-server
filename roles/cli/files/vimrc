@@ -18,7 +18,11 @@ if dein#load_state('$HOME/.vim/bundles')
   " plugins:
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+  call dein#add('Shougo/vimshell.vim')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/vimfiler.vim')
 
   " vim-scripts repos
   call dein#add('vim-scripts/L9')                         " some utility functions and commands for programming in vim
@@ -28,19 +32,15 @@ if dein#load_state('$HOME/.vim/bundles')
   call dein#add('tyru/open-browser.vim')                  " open uri with your favorite browser from your favorite editor
   " syntax
   call dein#add('scrooloose/syntastic')                   " syntax checking hacks for vim
-  call dein#add('elzr/vim-json')                          " a better json for vim
+  "call dein#add('elzr/vim-json')                          " a better json for vim
   " edit
-  call dein#add('Shougo/neocomplete.vim')                 " next generation completion framework after neocomplcache
-  call dein#add('AndrewRadev/switch.vim')                 " switch segments of text with predefined replacements
+  "call dein#add('AndrewRadev/switch.vim')                 " switch segments of text with predefined replacements
   " surroundings
   call dein#add('tpope/vim-surround')                     " quoting/parenthesizing made simple
   call dein#add('vim-scripts/matchit.zip')                " extended % matching for html, latex, and many other languages
   " run
   call dein#add('thinca/vim-quickrun')                    " run commands quickly
-  call dein#add('Shougo/vimshell.vim')                    " powerful shell implemented by vim
   " file
-  call dein#add('Shougo/unite.vim')                       " unite and create user interfaces
-  call dein#add('Shougo/vimfiler.vim')                    " powerful file explorer implemented by vim script
   call dein#add('kien/ctrlp.vim')                         " fuzzy file, buffer, mru, tag, etc finder
   call dein#add('scrooloose/nerdtree')                    " a tree explorer plugin for vim
   " Git
