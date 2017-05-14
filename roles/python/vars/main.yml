@@ -8,6 +8,7 @@ pip_packages:
   - csvkit
   - cutadapt
   - cython
+  - deltw
   - docker
   - docker-compose
   - fabric
@@ -54,6 +55,7 @@ pip_packages:
   - theano
   - tornado
   - tox
+  - twine
   - twitter
   - virtualenv
   - webtest
