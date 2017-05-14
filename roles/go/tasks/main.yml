@@ -9,6 +9,7 @@
     PATH: "{{ path }}"
   shell: |
     go version
+  changed_when: False
 
 - name: Create .go
   file:
