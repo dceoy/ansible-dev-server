@@ -1,11 +1,14 @@
 ---
 - name: Set variables
   set_fact:
+    path:  "{{ ansible_env.PATH }}:/usr/local/bin"
     r_libs: "{{ ansible_env.HOME }}/.clir/r/library"
     clir_root: "{{ ansible_env.HOME }}/.clir"
     clir: "{{ ansible_env.HOME }}/.clir/bin/clir"
 
 - name: Check R command
+  environment:
+    PATH: "{{ path }}"
   shell: |
     R --version
   changed_when: False
@@ -23,6 +26,7 @@
 
 - name: Set cran repositories
   environment:
+    PATH: "{{ path }}"
     R_LIBS: "{{ r_libs }}"
   shell: |
     {{ clir }} set-cran {{ item }}
@@ -32,6 +36,7 @@
 - name: Set drat repositories
   when: r_repos.drat is defined
   environment:
+    PATH: "{{ path }}"
     R_LIBS: "{{ r_libs }}"
   shell: |
     {{ clir }} set-drat {{ item }}
@@ -40,6 +45,7 @@
 
 - name: Install and update cran packages
   environment:
+    PATH: "{{ path }}"
     R_LIBS: "{{ r_libs }}"
   shell: |
     {{ clir }} cran-install --quiet {{ item }}
@@ -55,6 +61,7 @@
     - r_repos.drat is defined
     - r_packages.drat is defined
   environment:
+    PATH: "{{ path }}"
     R_LIBS: "{{ r_libs }}"
   shell: |
     {{ clir }} cran-install --quiet {{ item }}
@@ -65,6 +72,7 @@
 - name: Install and update github packages
   when: r_packages.github is defined
   environment:
+    PATH: "{{ path }}"
     R_LIBS: "{{ r_libs }}"
   shell: |
     {{ clir }} github-install --quiet {{ item }}
@@ -75,6 +83,7 @@
 - name: Install and update bioconductor packages
   when: r_packages.bioconductor is defined
   environment:
+    PATH: "{{ path }}"
     R_LIBS: "{{ r_libs }}"
   shell: |
     {{ clir }} bioc-install --quiet {{ item }}
