@@ -8,7 +8,6 @@ pip_packages:
   - csvkit
   - cutadapt
   - cython
-  - deltw
   - docker
   - docker-compose
   - fabric
@@ -28,6 +27,7 @@ pip_packages:
   - numexpr
   - numpy
   - pandas
+  - plotly
   - psutil
   - pymc
   - pyper
