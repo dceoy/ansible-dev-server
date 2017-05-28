@@ -19,6 +19,7 @@ r_packages:
     - data.table
     - diffusionMap
     - dlm
+    - docopt
     - doSNOW
     - dplyr
     - dtplyr
@@ -43,6 +44,7 @@ r_packages:
     - miniCRAN
     - mlr
     - phangorn
+    - plotly
     - plyr
     - purrr
     - ranger

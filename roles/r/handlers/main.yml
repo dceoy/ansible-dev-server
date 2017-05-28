@@ -9,5 +9,5 @@
     msg: 'The configuration of R was updated.'
     token: "{{ slack_token }}"
     channel: "#{{ slack_channel }}"
-    username: "{{ ansible_ssh_user }}@{{ inventory_hostname }}"
+    username: "{{ ansible_user }}@{{ inventory_hostname }}"
     icon_url: "{{ slack_icon_url }}"
