@@ -30,6 +30,7 @@ pip_packages:
   - plotly
   - psutil
   - pymc
+  - pypdf2
   - pyper
   - pysam
   - pystan

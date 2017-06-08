@@ -16,7 +16,7 @@
   with_items:
     - 2
     - 3
-  changed_when: False
+  changed_when: false
   register: py_v
 
 - name: Check if the latest versions exist
