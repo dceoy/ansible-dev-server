@@ -11,7 +11,7 @@
     PATH: "{{ path }}"
   shell: |
     R --version
-  changed_when: False
+  changed_when: false
 
 - name: Check .clir
   stat:
