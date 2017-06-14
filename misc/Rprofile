@@ -9,7 +9,5 @@
 .libPaths(c(paste0(Sys.getenv('HOME'), '/.clir/r/library')))
 
 if (interactive()) {
-  suppressMessages(sapply(c('dplyr', 'tidyr', 'dtplyr', 'ggplot2', 'data.table'),
-                          require,
-                          character.only = TRUE))
+  suppressMessages(require('tidyverse'))
 }
