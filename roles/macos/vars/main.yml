@@ -23,6 +23,7 @@ brew_packages:
     - gnu-sed
     - go
     - hunspell
+    - imagemagick
     - jq
     - leveldb
     - librsvg
