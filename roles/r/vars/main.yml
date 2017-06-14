@@ -17,6 +17,7 @@ r_packages:
     - caret
     - coin
     - data.table
+    - dbplyr
     - diffusionMap
     - dlm
     - docopt
@@ -48,6 +49,7 @@ r_packages:
     - plyr
     - purrr
     - ranger
+    - readr
     - rbenchmark
     - RcppGSL
     - RcppSMC
@@ -68,7 +70,6 @@ r_packages:
     - tm
     - VGAM
   github:
-    - docopt/docopt.R
     - klutometis/roxygen
     - rstudio/httpuv
     - rstudio/tensorflow
