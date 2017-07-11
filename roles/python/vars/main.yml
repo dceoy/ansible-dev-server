@@ -1,4 +1,5 @@
 pip_packages:
+  - airflow
   - ansible
   - awscli
   - biopython
