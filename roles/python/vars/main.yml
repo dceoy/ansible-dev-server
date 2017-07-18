@@ -11,6 +11,7 @@ pip_packages:
   - cython
   - docker
   - docker-compose
+  - edward
   - fabric
   - feather-format
   - flake8
@@ -29,6 +30,7 @@ pip_packages:
   - numpy
   - pandas
   - plotly
+  - prophet
   - psutil
   - pymc
   - pypdf2
