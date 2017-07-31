@@ -41,6 +41,7 @@ brew_packages:
     - openssl
     - pandoc
     - parallel
+    - pbzip2
     - pigz
     - pkg-config
     - postgresql

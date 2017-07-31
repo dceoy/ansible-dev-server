@@ -69,6 +69,7 @@ apt_packages:
   - npm
   - pandoc
   - patch
+  - pbzip2
   - pigz
   - pkg-config
   - postgresql
