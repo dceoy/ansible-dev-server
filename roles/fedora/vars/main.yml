@@ -87,6 +87,7 @@ dnf_packages:
   - parallel
   - patch
   - patchutils
+  - pbzip2
   - pigz
   - pkgconfig
   - postgresql-devel
