@@ -71,17 +71,20 @@ brew_tap_packages:
     - opencv
     - r
 brew_cask_packages:
+  - amazon-music
   - chrome-remote-desktop-host
+  - docker
   - dropbox
   - endnote
   - firefox
+  - google-backup-and-sync
   - google-chrome
-  - google-drive
   - google-japanese-ime
   - iterm2
   - java
   - julia
   - mendeley-desktop
+  - microsoft-office
   - opera
   - rstudio
   - skype
