@@ -2,12 +2,13 @@ brew_packages:
   with_options:
     - name: vim
       options: with-lua
+    - name: cairo
+      options: with-x11
   without_options:
     - bats
     - boost
     - bwa
     - cabal-install
-    - cairo
     - corkscrew
     - curl
     - elixir
@@ -71,6 +72,7 @@ brew_tap_packages:
     - opencv
     - r
 brew_cask_packages:
+  - adobe-acrobat-reader
   - amazon-music
   - chrome-remote-desktop-host
   - docker
