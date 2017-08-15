@@ -16,14 +16,17 @@ r_packages:
     - broom
     - caret
     - coin
+    - corrplot
     - data.table
     - dbplyr
     - diffusionMap
     - dlm
     - docopt
+    - doParallel
     - doSNOW
     - dplyr
     - dtplyr
+    - fdrtool
     - feather
     - foreach
     - fst
@@ -62,7 +65,6 @@ r_packages:
     - Rtsne
     - rvest
     - shiny
-    - snow
     - som
     - stringr
     - testthat
