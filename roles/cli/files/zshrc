@@ -110,6 +110,7 @@ case "${OSTYPE}" in
     alias grep='ggrep --color=auto'
     alias sed='gsed'
     alias awk='gawk'
+    alias sse='/System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
     ;;
   linux*)
     alias ls='ls --color=auto'
