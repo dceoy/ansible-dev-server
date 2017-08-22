@@ -47,10 +47,49 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - dnf-plugins-core
     - git
     - sudo
     - "{{ dnf_packages }}"
+  notify:
+    - Clean dnf
+    - Notify updates of the system via Slack
+
+- name: Check installed Docker CE
+  become: true
+  dnf:
+    name: docker-ce
+    state: present
   ignore_errors: true
+  register: docker_ce_installed
+
+- name: Uninstall old versions of Docker
+  when: docker_ce_installed|failed
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - docker
+    - docker-common
+    - docker-selinux
+    - docker-engine-selinux
+    - docker-engine
+
+- name: Set up the Docker CE repository
+  when: docker_ce_installed|failed
+  become: true
+  shell: |
+    dnf config-manager --add-repo \
+      https://download.docker.com/linux/fedora/docker-ce.repo
+    dnf makecache fast
+
+- name: Install Docker CE
+  when: docker_ce_installed|failed
+  become: true
+  dnf:
+    name: docker-ce
+    state: latest
   notify:
     - Clean dnf
     - Notify updates of the system via Slack

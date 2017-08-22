@@ -42,17 +42,6 @@
     gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
   notify: Notify updates of the system via Slack
 
-- name: Add Docker repo
-  become: true
-  yum_repository:
-    name: dockerrepo
-    description: Docker Repository
-    baseurl: https://yum.dockerproject.org/repo/main/centos/$releasever/
-    enabled: yes
-    gpgcheck: yes
-    gpgkey: https://yum.dockerproject.org/gpg
-  notify: Notify updates of the system via Slack
-
 - name: Upgrade all packages
   become: true
   yum:
@@ -68,10 +57,51 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - device-mapper-persistent-data
     - git
+    - lvm2
     - sudo
+    - yum-utils
     - "{{ yum_packages }}"
   ignore_errors: true
+  notify:
+    - Clean yum
+    - Notify updates of the system via Slack
+
+- name: Check installed Docker CE
+  become: true
+  yum:
+    name: docker-ce
+    state: present
+  ignore_errors: true
+  register: docker_ce_installed
+
+- name: Uninstall old versions of Docker
+  when: docker_ce_installed|failed
+  become: true
+  yum:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - docker
+    - docker-common
+    - docker-selinux
+    - docker-engine
+
+- name: Set up the Docker CE repository
+  when: docker_ce_installed|failed
+  become: true
+  shell: |
+    yum-config-manager --add-repo \
+      https://download.docker.com/linux/centos/docker-ce.repo
+    yum makecache fast
+
+- name: Install Docker CE
+  when: docker_ce_installed|failed
+  become: true
+  yum:
+    name: docker-ce
+    state: latest
   notify:
     - Clean yum
     - Notify updates of the system via Slack

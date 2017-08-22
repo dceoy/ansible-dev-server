@@ -22,7 +22,6 @@ yum_packages:
   - cvs
   - diffstat
   - dkms
-  - docker-engine
   - docker-python
   - doxygen
   - elfutils
