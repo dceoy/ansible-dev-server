@@ -69,14 +69,15 @@
 - name: Add the GPG key for Docker
   become: true
   apt_key:
-    id: 58118E89F3A912897C070ADBF76221572C52609D
-    keyserver: hkp://ha.pool.sks-keyservers.net:80
+    url: https://download.docker.com/linux/ubuntu/gpg
+    id: 0EBFCD88
+    state: latest
   notify: Notify updates of the system via Slack
 
 - name: Add Docker repo
   become: true
   apt_repository:
-    repo: deb https://apt.dockerproject.org/repo ubuntu-xenial main
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
     state: present
     filename: 'docker'
   notify: Notify updates of the system via Slack
@@ -103,9 +104,39 @@
     state: latest
   with_items:
     - git
+    - software-properties-common
     - sudo
     - "{{ apt_packages }}"
   ignore_errors: true
+  notify:
+    - Clean apt
+    - Notify updates of the system via Slack
+
+- name: Check installed Docker CE
+  become: true
+  apt:
+    name: docker-ce
+    state: present
+  ignore_errors: true
+  register: docker_ce_installed
+
+- name: Uninstall old versions of Docker
+  when: docker_ce_installed|failed
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - docker
+    - docker-engine
+    - docker.io
+
+- name: Install Docker CE
+  when: docker_ce_installed|failed
+  become: true
+  apt:
+    name: docker-ce
+    state: latest
   notify:
     - Clean apt
     - Notify updates of the system via Slack
