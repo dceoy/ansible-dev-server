@@ -82,14 +82,16 @@
   shell: |
     dnf config-manager --add-repo \
       https://download.docker.com/linux/fedora/docker-ce.repo
-    dnf makecache fast
+    dnf makecache
 
 - name: Install Docker CE
   when: docker_ce_installed|failed
   become: true
   dnf:
     name: docker-ce
+    enablerepo: docker-ce-stable
     state: latest
+  ignore_errors: true
   notify:
     - Clean dnf
     - Notify updates of the system via Slack

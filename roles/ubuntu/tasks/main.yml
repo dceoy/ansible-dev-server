@@ -71,7 +71,7 @@
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     id: 0EBFCD88
-    state: latest
+    state: present
   notify: Notify updates of the system via Slack
 
 - name: Add Docker repo

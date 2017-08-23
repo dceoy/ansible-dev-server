@@ -23,7 +23,6 @@ dnf_packages:
   - cvs
   - diffstat
   - dkms
-  - docker-python
   - doxygen
   - elfutils
   - elixir
