@@ -14,7 +14,6 @@ RUN set -e \
       && cp -a ansible-dev/docker/playbooks /tmp \
       && cp -a ansible-dev/roles /tmp/playbooks \
       && cd /tmp/playbooks \
-      && sed -ie '/docker-engine/d' roles/fedora/vars/main.yml \
       && ansible-playbook provision_container.yml
 
 ENTRYPOINT ["/usr/bin/zsh", "-lc"]

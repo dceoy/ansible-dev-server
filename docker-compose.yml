@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  dev:
+    container_name: dev
+    build:
+      context: build/fedora
+    image: dceoy/dev
+    user: ${UID}:${GID}
+    volumes:
+      - ${HOME}:/home/dceoy
+    entrypoint:
+      - zsh
+      - -lc
