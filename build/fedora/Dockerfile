@@ -11,7 +11,7 @@ RUN set -e \
 
 RUN set -e \
       && git clone https://github.com/dceoy/ansible-dev.git \
-      && cp -a ansible-dev/docker/playbooks /tmp \
+      && cp -a ansible-dev/build/playbooks /tmp \
       && cp -a ansible-dev/roles /tmp/playbooks \
       && cd /tmp/playbooks \
       && ansible-playbook provision_container.yml
