@@ -1,6 +1,16 @@
 ---
+- name: Check installed Docker CE
+  become: true
+  yum:
+    name: docker-ce
+    state: present
+  ignore_errors: true
+  register: docker_ce_installed
+
 - name: Create docker.service.d/
-  when: use_proxy
+  when:
+    - docker_ce_installed|succeeded
+    - use_proxy
   become: true
   file:
     path: /etc/systemd/system/docker.service.d
@@ -10,7 +20,9 @@
     mode: 0755
 
 - name: Put /etc/systemd/system/docker.service.d/option.conf
-  when: use_proxy
+  when:
+    - docker_ce_installed|succeeded
+    - use_proxy
   become: true
   template:
     src: option.conf.j2
@@ -20,6 +32,7 @@
     - Notify updates of Docker via Slack
 
 - name: Start and enable Docker
+  when: docker_ce_installed|succeeded
   become: true
   systemd:
     name: docker
@@ -29,6 +42,7 @@
   notify: Notify updates of Docker via Slack
 
 - name: Pull images
+  when: docker_ce_installed|succeeded
   become: true
   docker_image:
     name: "{{ item }}"
@@ -37,7 +51,9 @@
   notify: Notify updates of Docker via Slack
 
 - name: Add %docker
-  when: docker_users is defined
+  when:
+    - docker_ce_installed|succeeded
+    - docker_users is defined
   become: true
   group:
     name: docker
@@ -45,7 +61,9 @@
   notify: Notify updates of Docker via Slack
 
 - name: Add users to %docker
-  when: docker_users is defined
+  when:
+    - docker_ce_installed|succeeded
+    - docker_users is defined
   become: true
   user:
     name: "{{ item }}"
