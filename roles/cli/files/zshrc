@@ -95,8 +95,9 @@ export LC_ALL=en_US.UTF-8
 setopt nonomatch
 alias v='vim'
 alias vi='vi -u NONE --noplugin -N'
+alias l='ls -CF'
 alias ll='ls -lF'
-alias lla='ll -a'
+alias lla='ll -A'
 alias llh='ll -h'
 alias less='less -iMRW'
 alias d='docker'
@@ -115,6 +116,8 @@ case "${OSTYPE}" in
   linux*)
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
+    alias grep='fgrep --color=auto'
+    alias grep='egrep --color=auto'
     ;;
 esac
 
