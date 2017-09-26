@@ -13,6 +13,7 @@ brew_packages:
     - curl
     - elixir
     - fabric
+    - ffmpeg
     - gawk
     - gcc
     - gcc5
