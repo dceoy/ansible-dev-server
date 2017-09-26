@@ -54,6 +54,7 @@ apt_packages:
   - libsnappy-dev
   - libsqlite3-dev
   - libssl-dev
+  - librsvg2-bin
   - librsvg2-dev
   - libv8-dev
   - libxml2-dev
