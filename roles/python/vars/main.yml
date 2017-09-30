@@ -8,6 +8,7 @@ pip_packages:
   - bottle
   - coloredlogs
   - csvkit
+  - cupy
   - cutadapt
   - cython
   - docker
@@ -58,7 +59,6 @@ pip_packages:
   - tensorflow
   - tensorflow-gpu
   - testfixtures
-  - theano
   - tornado
   - tox
   - twine

@@ -12,7 +12,6 @@ apt_packages:
   - elixir
   - ethtool
   - expect
-  - fabric
   - g++
   - gcc
   - gdebi-core
