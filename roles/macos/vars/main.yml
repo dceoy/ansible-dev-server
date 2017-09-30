@@ -12,7 +12,6 @@ brew_packages:
     - corkscrew
     - curl
     - elixir
-    - fabric
     - ffmpeg
     - gawk
     - gcc

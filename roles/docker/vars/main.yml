@@ -5,6 +5,8 @@ docker_images:
   - fedora
   - python
   - dceoy/nginx-autoindex
+  - dceoy/pydata
+  - dceoy/r-tidyverse
   - dceoy/rstudio-server
 docker_users:
   - dceoy
