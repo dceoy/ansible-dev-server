@@ -52,6 +52,7 @@ r_packages:
     - prophet
     - plotly
     - plyr
+    - prophet
     - purrr
     - ranger
     - readr

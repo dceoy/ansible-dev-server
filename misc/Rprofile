@@ -10,8 +10,7 @@
 
 if(interactive()) {
   suppressMessages({
-    n <- sapply(c('dbplyr', 'doParallel', 'foreach', 'tidyverse'),
-                require,
-                character.only = TRUE)
+    n <- sapply(c('dbplyr', 'doParallel', 'foreach', 'stringr', 'tidyverse'),
+                require, character.only = TRUE, quietly = TRUE)
   })
 }

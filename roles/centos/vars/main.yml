@@ -27,7 +27,6 @@ yum_packages:
   - elfutils
   - elixir
   - expect
-  - fabric
   - fftw-devel
   - flex
   - freetype-devel
