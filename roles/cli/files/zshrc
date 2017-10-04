@@ -105,9 +105,10 @@ alias dc='docker-compose'
 alias drun='docker container run --rm -it --workdir /work -v $(pwd):/work'
 alias drmc='docker container ps -aq | xargs docker container rm'
 alias drmi='docker image ls | awk "/^<none>/ { print \$3 }" | xargs docker image rm'
+alias dnginx='docker container run --rm -p 80:80 -v $(pwd):/var/www/html:ro -d dceoy/nginx-autoindex'
+alias drstudio='docker container run --rm -p 8787:8787 -v $(pwd):/home/rstudio -w /home/rstudio -d dceoy/rstudio-server'
+alias djupyter='docker container run --rm -it -p 8888:8888 -v $(pwd):/work -w /work dceoy/jupyter'
 alias dcrmf='docker-compose stop && docker-compose rm -f'
-alias dnginx='docker container run -p 80:80 -v $(pwd):/var/www/html:ro -d dceoy/nginx-autoindex'
-alias drstudio='docker container run -p 8787:8787 -v $(pwd):/home/rstudio -d dceoy/rstudio-server'
 alias rv='R --quiet --vanilla'
 
 case "${OSTYPE}" in
@@ -133,6 +134,8 @@ esac
   && export PATH="${HOME}/.pyenv/bin:${PATH}" \
   && eval "$(pyenv init -)"
 
+[[ -n "${UID}" ]] || export UID="$(id -u)"
+[[ -n "${GID}" ]] || export GID="$(id -g)"
 export R_LIBS="${HOME}/.clir/r/library"
 export GOPATH="${HOME}/.go"
 export PATH="${GOPATH}/bin:${PATH}:${HOME}/.clir/bin"

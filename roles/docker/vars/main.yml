@@ -4,6 +4,7 @@ docker_images:
   - centos
   - fedora
   - python
+  - dceoy/jupyter
   - dceoy/nginx-autoindex
   - dceoy/pydata
   - dceoy/r-tidyverse
