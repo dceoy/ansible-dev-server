@@ -13,7 +13,6 @@ pip_packages:
   - cython
   - docker
   - docker-compose
-  - edward
   - fabric
   - fbprophet
   - feather-format
