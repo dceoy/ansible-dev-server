@@ -105,7 +105,7 @@ if dein#load_state('$HOME/.vim/bundles')
   " Docker
   call dein#add('ekalinin/Dockerfile.vim')                " syntax file and snippets for docker's dockerfile
   " Nginx
-  call dein#add('evanmiller/nginx-vim-syntax')            " nginx vim syntax
+  call dein#add('chr4/nginx.vim')                         " nginx syntax highlighting
   " Bats
   call dein#add('vim-scripts/bats.vim')                   " syntax highlighting for bats
 
