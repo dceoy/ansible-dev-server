@@ -68,6 +68,7 @@ r_packages:
     - Rtsne
     - rvest
     - shiny
+    - slackr
     - som
     - stringr
     - testthat
