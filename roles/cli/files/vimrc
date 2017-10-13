@@ -58,6 +58,7 @@ if dein#load_state('$HOME/.vim/bundles')
   call dein#add('slim-template/vim-slim')                 " a clone of the slim vim plugin from stonean
   call dein#add('tpope/vim-haml')                         " vim runtime files for haml, sass, and scss
   call dein#add('plasticboy/vim-markdown')                " syntax highlighting, matching rules and mappings for markdown
+  call dein#add('Rykka/riv.vim')                          " plugin for rst
   " CSS
   call dein#add('hail2u/vim-css3-syntax')                 " add css3 syntax support to vim's built-in `syntax/css.vim`
   call dein#add('cakebaker/scss-syntax.vim')              " vim syntax file for scss
@@ -82,11 +83,11 @@ if dein#load_state('$HOME/.vim/bundles')
   " R
   call dein#add('vim-scripts/R-syntax-highlighting')      " r syntax highlighting
   " BUGS
-  call dein#add('vim-scripts/BUGS-language')              " bugs syntax highlighting
+  "call dein#add('vim-scripts/BUGS-language')              " bugs syntax highlighting
   " Stan
   call dein#add('maverickg/stan.vim')                     " syntax highlighting for stan modeling lauguage
   " SAS
-  call dein#add('EricGebhart/SAS-Vim')                    " syntax and indention for sas
+  "call dein#add('EricGebhart/SAS-Vim')                    " syntax and indention for sas
   " Haskell
   call dein#add('vim-scripts/haskell.vim')                " syntax highlight for haskell
   " Scala
@@ -284,5 +285,6 @@ endif
 let g:syntastic_python_checkers = ['flake8']                  " use flake8
 let g:syntastic_python_flake8_args = '--max-line-length=100'  " permit long lines
 
-" markdown
-let g:vim_markdown_folding_disabled=1
+" disable folding in markdown or rest
+let g:vim_markdown_folding_disabled = 1
+let g:riv_disable_folding = 1
