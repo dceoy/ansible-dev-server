@@ -57,7 +57,6 @@
   copy:
     src: vimrc
     dest: "{{ ansible_env.HOME }}/.vimrc"
-  register: copy_vimrc
   notify: Notify updates of CLI via Slack
 
 - name: Create ~/.vim/bundles/
@@ -74,6 +73,6 @@
 - name: Install Vim plugins
   shell: |
     vim -c 'try | call dein#update() | finally | qall! | endtry' \
-      -N -u {{ copy_vimrc.dest }} -U NONE -i NONE -V1 -e -s
+      -N -u ${HOME}/.vimrc -U NONE -i NONE -V1 -e -s
   ignore_errors: true
   notify: Notify updates of CLI via Slack
