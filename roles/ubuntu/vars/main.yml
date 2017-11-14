@@ -81,6 +81,7 @@ apt_packages:
   - samba
   - samtools
   - scala
+  - software-properties-common
   - sqlite3
   - supervisor
   - swig

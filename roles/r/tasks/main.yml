@@ -13,11 +13,6 @@
     R --version
   changed_when: false
 
-- name: Check .clir
-  stat:
-    path: "{{ clir_root }}"
-  register: clir_st
-
 - name: Clone clir
   git:
     repo: 'https://github.com/dceoy/clir.git'
