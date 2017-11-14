@@ -75,6 +75,7 @@ brew_cask_packages:
   - adobe-acrobat-reader
   - amazon-music
   - chrome-remote-desktop-host
+  - discord
   - docker
   - dropbox
   - endnote
