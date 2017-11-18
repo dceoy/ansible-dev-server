@@ -1,6 +1,7 @@
 apt_packages:
   - apt-file
   - bats
+  - bridge-utils
   - build-essential
   - bwa
   - bzip2
@@ -59,6 +60,7 @@ apt_packages:
   - libxml2-dev
   - libxslt1-dev
   - libzmq3-dev
+  - linux-libc-dev
   - make
   - mercurial
   - nginx
@@ -83,6 +85,7 @@ apt_packages:
   - scala
   - software-properties-common
   - sqlite3
+  - sshfs
   - supervisor
   - swig
   - time
@@ -90,6 +93,7 @@ apt_packages:
   - tmux
   - traceroute
   - tree
+  - unzip
   - vim-gnome
   - wakeonlan
   - wget
