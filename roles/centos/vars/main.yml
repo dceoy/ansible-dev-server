@@ -107,6 +107,7 @@ yum_packages:
   - snappy-devel
   - speedcrunch
   - sqlite-devel
+  - sshfs
   - strace
   - supervisor
   - swig

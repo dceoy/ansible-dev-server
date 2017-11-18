@@ -134,7 +134,7 @@ esac
 [[ -d "${HOME}/.pyenv" ]] \
   && export PATH="${HOME}/.pyenv/bin:${PATH}" \
   && eval "$(pyenv init -)"
-
+[[ -n ${commands[kubectl]} ]] && source <(kubectl completion zsh)
 [[ -n "${UID}" ]] || export UID="$(id -u)"
 [[ -n "${GID}" ]] || export GID="$(id -g)"
 export R_LIBS="${HOME}/.clir/r/library"

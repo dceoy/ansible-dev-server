@@ -62,6 +62,7 @@
     state: latest
   with_items:
     - apt-transport-https
+    - aptitude
     - ca-certificates
   notify:
     - Clean apt
