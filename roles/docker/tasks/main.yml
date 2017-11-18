@@ -1,5 +1,24 @@
 ---
-- name: Check installed Docker CE
+- name: Check installed Docker CE in Ubuntu or Debian
+  when: ansible_os_family == 'Debian'
+  become: true
+  apt:
+    name: docker-ce
+    state: present
+  ignore_errors: true
+  register: docker_ce_installed
+
+- name: Check installed Docker CE in Fedora
+  when: ansible_distribution == 'Fedora'
+  become: true
+  dnf:
+    name: docker-ce
+    state: present
+  ignore_errors: true
+  register: docker_ce_installed
+
+- name: Check installed Docker CE in CentOS
+  when: ansible_distribution == 'CentOS'
   become: true
   yum:
     name: docker-ce

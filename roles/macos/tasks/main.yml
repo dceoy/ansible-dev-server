@@ -13,6 +13,14 @@
     state: present
   notify: Notify updates of the system via Slack
 
+- name: Install packages using casks
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ brew_cask_packages }}"
+  ignore_errors: true
+  notify: Notify updates of the system via Slack
+
 - name: Install packages
   homebrew:
     name: "{{ item }}"
@@ -37,11 +45,3 @@
   notify:
     - Clean homebrew
     - Notify updates of the system via Slack
-
-- name: Install packages using casks
-  homebrew_cask:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ brew_cask_packages }}"
-  ignore_errors: true
-  notify: Notify updates of the system via Slack

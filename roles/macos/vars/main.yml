@@ -25,7 +25,7 @@ brew_packages:
     - go
     - hunspell
     - imagemagick
-    - jq
+    - kubectl
     - leveldb
     - librsvg
     - libxml2
@@ -56,10 +56,12 @@ brew_packages:
     - scala
     - snappy
     - sqlite
+    - sshfs
     - supervisor
     - szip
     - tmux
     - tree
+    - wakeonlan
     - watch
     - wget
     - xml2
@@ -89,6 +91,7 @@ brew_cask_packages:
   - mendeley-desktop
   - microsoft-office
   - opera
+  - osxfuse
   - rstudio
   - skype
   - slack
