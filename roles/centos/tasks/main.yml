@@ -105,6 +105,7 @@
   yum:
     name: docker-ce
     state: latest
+  ignore_errors: true
   notify:
     - Clean yum
     - Notify updates of the system via Slack

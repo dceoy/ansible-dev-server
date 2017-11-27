@@ -139,6 +139,7 @@
   apt:
     name: docker-ce
     state: latest
+  ignore_errors: true
   notify:
     - Clean apt
     - Notify updates of the system via Slack
