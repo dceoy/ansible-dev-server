@@ -9,6 +9,7 @@ brew_packages:
     - boost
     - bwa
     - cabal-install
+    - conjure-up
     - corkscrew
     - curl
     - elixir

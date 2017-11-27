@@ -18,7 +18,6 @@ apt_packages:
   - gdebi-core
   - gfortran
   - ghc
-  - git
   - golang
   - imagemagick
   - incron
@@ -83,7 +82,7 @@ apt_packages:
   - samba
   - samtools
   - scala
-  - software-properties-common
+  - snapd
   - sqlite3
   - sshfs
   - supervisor

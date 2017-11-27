@@ -37,7 +37,6 @@ dnf_packages:
   - gdbm-devel
   - gflags-devel
   - ghc
-  - git
   - glibc-devel
   - glog-devel
   - gmp-devel
