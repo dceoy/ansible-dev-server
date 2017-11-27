@@ -1,6 +1,5 @@
 dnf_packages:
   - atlas-devel
-  - atlas-sse3-devel
   - autoconf
   - automake
   - bats
