@@ -1,8 +1,9 @@
 ---
-- name: Clean apt
+- name: Remove useless and unneeded packages
   become: true
-  shell: |
-    apt-get clean
+  apt:
+    autoclean: yes
+    autoremove: yes
 
 - name: Notify updates of the system via Slack
   when:

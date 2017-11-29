@@ -5,7 +5,7 @@
     upgrade: yes
     update_cache: yes
   notify:
-    - Clean apt
+    - Remove useless and unneeded packages
     - Notify updates of the system via Slack
 
 - name: Install packages
@@ -19,7 +19,7 @@
     - "{{ apt_packages }}"
   ignore_errors: true
   notify:
-    - Clean apt
+    - Remove useless and unneeded packages
     - Notify updates of the system via Slack
 
 - name: Set users
