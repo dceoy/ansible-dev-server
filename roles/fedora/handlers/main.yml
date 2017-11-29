@@ -1,8 +1,8 @@
 ---
-- name: Clean dnf
+- name: Remove unneeded packages
   become: true
-  shell: |
-    dnf clean all
+  dnf:
+    autoremove: yes
 
 - name: Notify updates of the system via Slack
   when:

@@ -1,9 +1,4 @@
 ---
-- name: Clean yum
-  become: true
-  shell: |
-    yum clean all
-
 - name: Notify updates of the system via Slack
   when:
     - slack_token is defined

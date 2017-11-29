@@ -52,7 +52,7 @@
     upgrade: yes
     update_cache: yes
   notify:
-    - Clean apt
+    - Remove useless and unneeded packages
     - Notify updates of the system via Slack
 
 - name: Install required packages
@@ -65,7 +65,7 @@
     - aptitude
     - ca-certificates
   notify:
-    - Clean apt
+    - Remove useless and unneeded packages
     - Notify updates of the system via Slack
 
 - name: Add the GPG key for Docker
@@ -111,7 +111,7 @@
     - "{{ apt_packages }}"
   ignore_errors: true
   notify:
-    - Clean apt
+    - Remove useless and unneeded packages
     - Notify updates of the system via Slack
 
 - name: Check installed Docker CE
@@ -141,7 +141,7 @@
     state: latest
   ignore_errors: true
   notify:
-    - Clean apt
+    - Remove useless and unneeded packages
     - Notify updates of the system via Slack
 
 - name: Set users
