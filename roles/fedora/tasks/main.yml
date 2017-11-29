@@ -41,7 +41,7 @@
     name: '*'
     state: latest
   notify:
-    - Clean dnf
+    - Remove unneeded packages
     - Notify updates of the system via Slack
 
 - name: Install packages
@@ -55,7 +55,7 @@
     - sudo
     - "{{ dnf_packages }}"
   notify:
-    - Clean dnf
+    - Remove unneeded packages
     - Notify updates of the system via Slack
 
 - name: Check installed Docker CE
@@ -96,7 +96,7 @@
     state: latest
   ignore_errors: true
   notify:
-    - Clean dnf
+    - Remove unneeded packages
     - Notify updates of the system via Slack
 
 - name: Set users
