@@ -1,9 +1,12 @@
 brew_packages:
   with_options:
     - name: vim
-      options: with-lua
+      options:
+        - with-lua
+        - with-python3
     - name: cairo
-      options: with-x11
+      options:
+        - with-x11
   without_options:
     - bats
     - boost
