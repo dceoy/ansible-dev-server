@@ -95,6 +95,17 @@
     enablerepo: docker-ce-stable
     state: latest
   ignore_errors: true
+  register: install_docker_ce
+  notify:
+    - Remove unneeded packages
+    - Notify updates of the system via Slack
+
+- name: Install docker-engine instead of docker-ce
+  when: install_docker_ce|failed
+  become: true
+  dnf:
+    name: docker-engine
+    state: latest
   notify:
     - Remove unneeded packages
     - Notify updates of the system via Slack

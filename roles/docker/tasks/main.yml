@@ -1,34 +1,12 @@
 ---
-- name: Check installed Docker CE in Ubuntu or Debian
-  when: ansible_os_family == 'Debian'
-  become: true
-  apt:
-    name: docker-ce
-    state: present
-  ignore_errors: true
-  register: docker_ce_installed
-
-- name: Check installed Docker CE in Fedora
-  when: ansible_distribution == 'Fedora'
-  become: true
-  dnf:
-    name: docker-ce
-    state: present
-  ignore_errors: true
-  register: docker_ce_installed
-
-- name: Check installed Docker CE in CentOS
-  when: ansible_distribution == 'CentOS'
-  become: true
-  yum:
-    name: docker-ce
-    state: present
-  ignore_errors: true
-  register: docker_ce_installed
+- name: Check executable docker
+  stat:
+    path: /usr/bin/docker
+  register: docker
 
 - name: Create docker.service.d/
   when:
-    - docker_ce_installed|succeeded
+    - docker.stat.executable
     - use_proxy
   become: true
   file:
@@ -40,7 +18,7 @@
 
 - name: Put /etc/systemd/system/docker.service.d/option.conf
   when:
-    - docker_ce_installed|succeeded
+    - docker.stat.executable
     - use_proxy
   become: true
   template:
@@ -51,7 +29,7 @@
     - Notify updates of Docker via Slack
 
 - name: Start and enable Docker
-  when: docker_ce_installed|succeeded
+  when: docker.stat.executable
   become: true
   systemd:
     name: docker
@@ -61,7 +39,7 @@
   notify: Notify updates of Docker via Slack
 
 - name: Pull images
-  when: docker_ce_installed|succeeded
+  when: docker.stat.executable
   become: true
   docker_image:
     name: "{{ item }}"
@@ -71,7 +49,7 @@
 
 - name: Add %docker
   when:
-    - docker_ce_installed|succeeded
+    - docker.stat.executable
     - docker_users is defined
   become: true
   group:
@@ -81,7 +59,7 @@
 
 - name: Add users to %docker
   when:
-    - docker_ce_installed|succeeded
+    - docker.stat.executable
     - docker_users is defined
   become: true
   user:
