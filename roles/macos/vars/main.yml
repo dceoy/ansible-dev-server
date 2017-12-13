@@ -80,6 +80,7 @@ brew_tap_packages:
 brew_cask_packages:
   - adobe-acrobat-reader
   - amazon-music
+  - atom
   - chrome-remote-desktop-host
   - discord
   - docker
@@ -92,6 +93,7 @@ brew_cask_packages:
   - iterm2
   - java
   - julia
+  - kindle
   - mendeley-desktop
   - microsoft-office
   - opera
@@ -99,5 +101,6 @@ brew_cask_packages:
   - rstudio
   - skype
   - slack
+  - spotify
   - visual-studio-code
   - xquartz
