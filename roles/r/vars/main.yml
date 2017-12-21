@@ -30,6 +30,7 @@ r_packages:
     - feather
     - foreach
     - fst
+    - getopt
     - ggdendro
     - ggmcmc
     - ggplot2
@@ -39,6 +40,7 @@ r_packages:
     - greta
     - gridExtra
     - h2o
+    - HMM
     - kernlab
     - KernSmooth
     - knitr
@@ -49,6 +51,8 @@ r_packages:
     - MCMCpack
     - miniCRAN
     - mlr
+    - naturalsort
+    - optparse
     - phangorn
     - prophet
     - plotly
@@ -87,6 +91,7 @@ r_packages:
     - Biobase
     - BiocInstaller
     - Biostrings
+    - DNAcopy
     - GEOquery
     - PhViD
     - RDRToolbox
