@@ -4,6 +4,7 @@ RUN set -e \
       && apt-get -y update \
       && apt-get -y upgrade \
       && apt-get -y install git aptitude sudo ssh libssl-dev python-dev python-pip \
+      && apt-get -y autoremove \
       && apt-get clean
 
 RUN set -e \
