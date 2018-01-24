@@ -283,7 +283,7 @@ endif
 
 " flake8
 let g:syntastic_python_checkers = ['flake8']                  " use flake8
-let g:syntastic_python_flake8_args = '--max-line-length=100'  " permit long lines
+"let g:syntastic_python_flake8_args = '--max-line-length=100'  " permit long lines
 
 " disable folding in markdown or rest
 let g:vim_markdown_folding_disabled = 1
