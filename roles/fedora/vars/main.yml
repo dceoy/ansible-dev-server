@@ -79,6 +79,7 @@ dnf_packages:
   - openmpi-devel
   - openssl-devel
   - oprofile
+  - p7zip
   - pandoc
   - parallel
   - patch
