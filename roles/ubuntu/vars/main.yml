@@ -67,6 +67,7 @@ apt_packages:
   - nmap
   - nodejs
   - npm
+  - p7zip-full
   - pandoc
   - patch
   - pbzip2
