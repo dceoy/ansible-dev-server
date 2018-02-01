@@ -138,6 +138,7 @@ esac
 [[ -n "${UID}" ]] || export UID="$(id -u)"
 [[ -n "${GID}" ]] || export GID="$(id -g)"
 export R_LIBS="${HOME}/.clir/r/library"
+export R_LIBS_USER="${R_LIBS}"
 export GOPATH="${HOME}/.go"
 export PATH="${GOPATH}/bin:${PATH}:${HOME}/.clir/bin"
 
