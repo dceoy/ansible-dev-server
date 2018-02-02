@@ -9,8 +9,6 @@
 .libPaths(c(paste0(Sys.getenv('HOME'), '/.clir/r/library')))
 
 if(interactive()) {
-  suppressMessages({
-    n <- sapply(c('dbplyr', 'doParallel', 'foreach', 'stringr', 'tidyverse'),
-                require, character.only = TRUE, quietly = TRUE)
-  })
+  sapply(c('dbplyr', 'doParallel', 'foreach', 'stringr', 'tidyverse'),
+         require, character.only = TRUE, quietly = TRUE)
 }
