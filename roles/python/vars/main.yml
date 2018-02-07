@@ -35,6 +35,7 @@ pip_packages:
     - numexpr
     - numpy
     - pandas
+    - pandas-datareader
     - plotly
     - psutil
     - pymc
