@@ -38,6 +38,7 @@ pip_packages:
     - pandas-datareader
     - plotly
     - psutil
+    - pybitflyer
     - pymc
     - pypdf2
     - pyper
