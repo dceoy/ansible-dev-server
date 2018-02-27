@@ -91,7 +91,7 @@ SPROMPT="${tmp_sprompt}"
 # ------------------------------
 
 ### Custom ###
-export LC_ALL=en_US.UTF-8
+export LC_ALL='en_US.UTF-8'
 setopt nonomatch
 alias v='vim'
 alias vi='vi -u NONE --noplugin -N'
@@ -117,7 +117,7 @@ case "${OSTYPE}" in
     alias grep='ggrep --color=auto'
     alias sed='gsed'
     alias awk='gawk'
-    alias sse='/System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
+    alias tree='tree -N'
     alias dropbox='/Applications/Dropbox.app/Contents/MacOS/Dropbox'
     ;;
   linux*)
