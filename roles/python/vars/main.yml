@@ -10,6 +10,7 @@ pip_packages:
     - beautifulsoup4
     - bokeh
     - bottle
+    - ccxt
     - coloredlogs
     - csvkit
     - cutadapt
@@ -39,7 +40,6 @@ pip_packages:
     - plotly
     - psutil
     - pubnub
-    - pybitflyer
     - pymc
     - pypdf2
     - pyper

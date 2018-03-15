@@ -36,6 +36,8 @@
 
 - name: Install the latest versions
   when: new_v|length > 0
+  environment:
+    PYTHON_CONFIGURE_OPTS: '--enable-framework'
   shell: |
     {{ pyenv }} install {{ item }}
   with_items: "{{ new_v }}"
