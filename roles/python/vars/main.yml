@@ -26,6 +26,8 @@ pip_packages:
     - ipykernel
     - ipython
     - jupyter
+    - jupyter_contrib_nbextensions
+    - jupyterthemes
     - keras
     - lightgbm
     - luigi
@@ -72,3 +74,4 @@ pip_packages:
     - virtualenv
     - webtest
     - xgboost
+    - xmltodict
