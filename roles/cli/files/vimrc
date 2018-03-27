@@ -50,6 +50,8 @@ if dein#load_state('$HOME/.vim/bundles')
   call dein#add('ingydotnet/yaml-vim')                    " yaml highlight script for vim
   " TOML
   call dein#add('cespare/vim-toml')                       " vim syntax for toml
+  " Protocol Buffers
+  call dein#add('uarun/vim-protobuf')                     " vim syntax for google's protocol buffers
   " Crontab
   call dein#add('vim-scripts/crontab.vim')                " syntax highlight for crontab files
   " HTML

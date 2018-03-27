@@ -12,10 +12,11 @@
 
 - name: Fetch the latest versions for 2 and 3
   shell: |
-    {{ pyenv }} install --list | awk '$1 ~ /^{{ item }}\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
+    {{ pyenv }} install --list | awk '$1 ~ /^{{ item }}[\.\-0-9]+$/ { v=$1 } END{ print v }'
   with_items:
     - 2
     - 3
+    - anaconda
   changed_when: false
   register: py_v
 
