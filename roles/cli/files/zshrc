@@ -137,7 +137,6 @@ esac
 [[ -n ${commands[kubectl]} ]] && source <(kubectl completion zsh)
 [[ -n "${UID}" ]] || export UID="$(id -u)"
 [[ -n "${GID}" ]] || export GID="$(id -g)"
-export PYTHON_CONFIGURE_OPTS='--enable-framework'
 export R_LIBS="${HOME}/.clir/r/library"
 export R_LIBS_USER="${R_LIBS}"
 export GOPATH="${HOME}/.go"
