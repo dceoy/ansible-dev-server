@@ -123,7 +123,7 @@
   register: docker_ce_installed
 
 - name: Uninstall old versions of Docker
-  when: docker_ce_installed|failed
+  when: docker_ce_installed is failed
   become: true
   apt:
     name: "{{ item }}"
@@ -134,7 +134,7 @@
     - docker.io
 
 - name: Install Docker CE
-  when: docker_ce_installed|failed
+  when: docker_ce_installed is failed
   become: true
   apt:
     name: docker-ce
