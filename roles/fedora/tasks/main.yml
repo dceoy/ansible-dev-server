@@ -67,7 +67,7 @@
   register: docker_ce_installed
 
 - name: Uninstall old versions of Docker
-  when: docker_ce_installed|failed
+  when: docker_ce_installed is failed
   become: true
   dnf:
     name: "{{ item }}"
@@ -80,7 +80,7 @@
     - docker-engine
 
 - name: Set up the Docker CE repository
-  when: docker_ce_installed|failed
+  when: docker_ce_installed is failed
   become: true
   shell: |
     dnf config-manager --add-repo \
@@ -88,7 +88,7 @@
     dnf makecache
 
 - name: Install Docker CE
-  when: docker_ce_installed|failed
+  when: docker_ce_installed is failed
   become: true
   dnf:
     name: docker-ce
@@ -101,7 +101,7 @@
     - Notify updates of the system via Slack
 
 - name: Install docker-engine instead of docker-ce
-  when: install_docker_ce|failed
+  when: install_docker_ce is failed
   become: true
   dnf:
     name: docker-engine

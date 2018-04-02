@@ -78,7 +78,7 @@
   register: docker_ce_installed
 
 - name: Uninstall old versions of Docker
-  when: docker_ce_installed|failed
+  when: docker_ce_installed is failed
   become: true
   yum:
     name: "{{ item }}"
@@ -90,7 +90,7 @@
     - docker-engine
 
 - name: Set up the Docker CE repository
-  when: docker_ce_installed|failed
+  when: docker_ce_installed is failed
   become: true
   shell: |
     yum-config-manager --add-repo \
@@ -98,7 +98,7 @@
     yum makecache fast
 
 - name: Install Docker CE
-  when: docker_ce_installed|failed
+  when: docker_ce_installed is failed
   become: true
   yum:
     name: docker-ce
