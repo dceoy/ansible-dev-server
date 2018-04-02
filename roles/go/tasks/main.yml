@@ -18,7 +18,7 @@
   register: mkdir_go
 
 - name: Update packages
-  when: mkdir_go|changed
+  when: mkdir_go is changed
   environment:
     PATH: "{{ path }}"
     GOPATH: "{{ gopath }}"
