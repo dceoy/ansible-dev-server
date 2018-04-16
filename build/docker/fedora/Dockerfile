@@ -7,8 +7,7 @@ RUN set -e \
       && dnf clean all
 
 RUN set -e \
-      && pip install -U pip \
-      && pip install -U ansible
+      && pip install -U pip ansible
 
 RUN set -e \
       && git clone https://github.com/dceoy/ansible-dev.git \
