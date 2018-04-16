@@ -7,12 +7,11 @@ build:
         name: Install packages
         code: |
           apt-get -y update
-          apt-get -y install aptitude ssh sudo libssl-dev python-pip python-cffi
+          apt-get -y install aptitude ssh sudo libffi-dev libssl-dev python3-crypto python3-dev python3-pip
     - script:
         name: Install ansible
         code: |
-          pip install -U pip
-          pip install -U ansible
+          pip3 install -U ansible
     - script:
         name: Set up ssh
         code: |
