@@ -1,4 +1,0 @@
-pip_packages:
-  - csvkit
-  - flake8
-  - ipython
