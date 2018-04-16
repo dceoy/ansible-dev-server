@@ -3,13 +3,12 @@ FROM ubuntu
 RUN set -e \
       && apt-get -y update \
       && apt-get -y upgrade \
-      && apt-get -y install git aptitude sudo ssh libssl-dev python-dev python-pip \
+      && apt-get -y install git aptitude ssh sudo libffi-dev libssl-dev python3-crypto python3-dev python3-pip \
       && apt-get -y autoremove \
       && apt-get clean
 
 RUN set -e \
-      && pip install -U pip \
-      && pip install -U ansible
+      && pip3 install -U pip ansible
 
 RUN set -e \
       && git clone https://github.com/dceoy/ansible-dev.git \
