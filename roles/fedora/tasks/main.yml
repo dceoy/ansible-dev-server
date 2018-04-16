@@ -35,6 +35,18 @@
     validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
+- name: Add Kubernetes repo
+  become: true
+  yum_repository:
+    name: kubernetes
+    description: Kubernetes repo
+    baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-$basearch
+    enabled: yes
+    gpgcheck: yes
+    repo_gpgcheck: yes
+    gpgkey: "https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
+  notify: Notify updates of the system via Slack
+
 - name: Upgrade all packages
   become: true
   dnf:
@@ -120,3 +132,17 @@
     append: yes
   with_items: "{{ users }}"
   notify: Notify updates of the system via Slack
+
+- name: Install Kubernetes
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - kubelet
+    - kubeadm
+    - kubectl
+  ignore_errors: true
+  notify:
+    - Remove unneeded packages
+    - Notify updates of the system via Slack
