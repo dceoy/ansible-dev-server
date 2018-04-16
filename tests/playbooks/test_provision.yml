@@ -4,6 +4,31 @@
   vars:
     use_proxy: false
     enable_nopass_sudo: true
+    apt_packages:
+      - gcc
+      - golang
+      - libcurl4-gnutls-dev
+      - make
+      - r-base
+      - tree
+      - vim-gnome
+      - zsh
+    users:
+      - name: test
+        groups: sudo
+        shell: /bin/zsh
+    pip_packages:
+      - csvkit
+      - flake8
+      - ipython
+    gem_packages:
+      - bundler
+      - clockwork
+      - rake
+    go_packages:
+      - github.com/codegangsta/cli
+      - github.com/naoina/toml
+      - github.com/spf13/hugo
   roles:
     - role: fedora
       when:

@@ -1,4 +1,0 @@
-gem_packages:
-  - bundler
-  - clockwork
-  - rake
