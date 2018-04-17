@@ -176,9 +176,10 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - kubelet
+    - flannel
     - kubeadm
     - kubectl
+    - kubelet
   ignore_errors: true
   notify:
     - Remove useless and unneeded packages
