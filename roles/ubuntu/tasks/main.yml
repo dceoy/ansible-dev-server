@@ -176,7 +176,6 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - flannel
     - kubeadm
     - kubectl
     - kubelet
@@ -184,3 +183,12 @@
   notify:
     - Remove useless and unneeded packages
     - Notify updates of the system via Slack
+
+- name: Start and enable kubelet
+  become: true
+  systemd:
+    name: kubelet
+    state: started
+    daemon_reload: yes
+    enabled: true
+  notify: Notify updates of the system via Slack
