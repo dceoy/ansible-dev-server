@@ -7,7 +7,6 @@ dnf_packages:
   - bison
   - blas-devel
   - boost-devel
-  - bwa
   - byacc
   - bzip2-devel
   - cabal-install
@@ -26,8 +25,10 @@ dnf_packages:
   - elfutils
   - elixir
   - expect
+  - fabric
   - fftw-devel
   - flex
+  - freetds-devel
   - freetype-devel
   - gcc
   - gcc-c++
@@ -102,7 +103,6 @@ dnf_packages:
   - rust
   - samba
   - sbt
-  - samtools
   - scala
   - scipy
   - snappy-devel

@@ -13,6 +13,7 @@ apt_packages:
   - ethtool
   - expect
   - fabric
+  - freetds-dev
   - g++
   - gcc
   - gdebi-core

@@ -17,6 +17,7 @@ brew_packages:
     - curl
     - elixir
     - ffmpeg
+    - freetds
     - gawk
     - gcc
     - gcc5

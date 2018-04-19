@@ -3,7 +3,6 @@ apt_packages:
   - bats
   - bridge-utils
   - build-essential
-  - bwa
   - bzip2
   - cabal-install
   - cmake
@@ -13,6 +12,8 @@ apt_packages:
   - elixir
   - ethtool
   - expect
+  - fabric
+  - freetds-dev
   - g++
   - gcc
   - gdebi-core
@@ -81,7 +82,6 @@ apt_packages:
   - r-base-dev
   - redis-server
   - samba
-  - samtools
   - scala
   - snapd
   - sqlite3
