@@ -102,12 +102,9 @@ alias llh='ll -h'
 alias less='less -iMRW'
 alias d='docker'
 alias dc='docker-compose'
-alias drun='docker container run --rm -it --workdir /work -v $(pwd):/work'
 alias drmc='docker container ps -aq | xargs docker container rm'
 alias drmi='docker image ls | awk "/^<none>/ { print \$3 }" | xargs docker image rm'
 alias dnginx='docker container run --rm -p 80:80 -v $(pwd):/var/www/html:ro -d dceoy/nginx-autoindex'
-alias drstudio='docker container run --rm -p 8787:8787 -v $(pwd):/home/rstudio -w /home/rstudio -d dceoy/rstudio-server'
-alias djupyter='docker container run --rm -it -p 8888:8888 -v $(pwd):/work -w /work dceoy/jupyter'
 alias dcrmf='docker-compose stop && docker-compose rm -f'
 alias rv='R --quiet --vanilla'
 alias vim-plugin-update='vim -c "try | call dein#update() | finally | qall! | endtry" -N -u ~/.vimrc -U NONE -i NONE -V1 -e -s'
@@ -118,13 +115,15 @@ case "${OSTYPE}" in
     alias sed='gsed'
     alias awk='gawk'
     alias tree='tree -N'
-    alias dropbox='/Applications/Dropbox.app/Contents/MacOS/Dropbox'
+    function restart-app {
+      for a (${*}) killall ${a} && open -a ${a}
+    }
     ;;
   linux*)
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
-    alias grep='fgrep --color=auto'
-    alias grep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
     ;;
 esac
 
