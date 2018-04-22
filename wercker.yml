@@ -11,7 +11,7 @@ build:
     - script:
         name: Install ansible
         code: |
-          pip install -U ansible
+          pip install -U ansible pyopenssl
     - script:
         name: Set up ssh
         code: |
