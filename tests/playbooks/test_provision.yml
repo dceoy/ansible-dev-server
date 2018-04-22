@@ -18,15 +18,19 @@
         groups: sudo
         shell: /bin/zsh
     pip_packages:
-      - csvkit
-      - flake8
-      - ipython
+      2:
+        - ipython
+        - flake8
+      3:
+        - ipython
+        - flake8
+      anaconda:
+        - ipython
+        - flake8
     gem_packages:
       - bundler
-      - clockwork
       - rake
     go_packages:
-      - github.com/codegangsta/cli
       - github.com/naoina/toml
       - github.com/spf13/hugo
   roles:

@@ -69,6 +69,33 @@
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
+- name: Check if conda exists
+  stat:
+    path: "{{ pyenv_root }}/versions/{{ py_v.results[2].stdout }}/bin/conda"
+  register: conda_x
+
+- name: Update Anaconda packages
+  when: conda_x.stat.exists
+  shell: |
+    {{ conda_x.stat.path }} upgrade --all -y
+  ignore_errors: true
+  notify: Notify updates of Python via Slack
+
+- name: Install Anaconda packages
+  when: conda_x.stat.exists
+  shell: |
+    {{ conda_x.stat.path }} install -y {{ item }}
+  with_items: "{{ pip_packages.anaconda }}"
+  ignore_errors: true
+  notify: Notify updates of Python via Slack
+
+- name: Install Anaconda packages
+  when: conda_x.stat.exists
+  shell: |
+    {{ conda_x.stat.path }} clean -tipsy
+  ignore_errors: true
+  notify: Notify updates of Python via Slack
+
 - name: Set the global version for Python
   when: pip_x.results[1].stat.exists
   lineinfile:
