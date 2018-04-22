@@ -45,6 +45,7 @@ pip_packages:
     - psutil
     - pubnub
     - pymc
+    - pyopenssl
     - pypdf2
     - pyper
     - pysam
@@ -78,3 +79,34 @@ pip_packages:
     - webtest
     - xgboost
     - xmltodict
+  anaconda:
+    - biopython
+    - bokeh
+    - cython
+    - csvkit
+    - docopt
+    - fbprophet
+    - feather-format
+    - flake8
+    - ggplot
+    - jupyter
+    - jupyter_contrib_nbextensions
+    - jupyterthemes
+    - keras
+    - lightgbm
+    - luigi
+    - numpy
+    - pandas
+    - plotly
+    - psutil
+    - pymc
+    - pystan
+    - pytoml
+    - pyyaml
+    - scikit-learn
+    - scipy
+    - seaborn
+    - sphinx
+    - sympy
+    - tensorflow
+    - xgboost
