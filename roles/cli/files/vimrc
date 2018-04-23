@@ -285,9 +285,10 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 endif
 
-" flake8
+" syntastic
 let g:syntastic_python_checkers = ['flake8']                  " use flake8
 "let g:syntastic_python_flake8_args = '--max-line-length=100'  " permit long lines
+let g:syntastic_yaml_checkers = ['yamllint']
 
 " markdown
 let g:vim_markdown_folding_disabled = 1   " disable folding in markdown
