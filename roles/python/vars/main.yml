@@ -79,6 +79,7 @@ pip_packages:
     - webtest
     - xgboost
     - xmltodict
+    - yamllint
   anaconda:
     - biopython
     - bokeh
