@@ -42,6 +42,7 @@ apt_packages:
   - liblapack-dev
   - libleveldb-dev
   - liblmdb-dev
+  - libmariadbclient-dev
   - libmariadb-client-lgpl-dev
   - libopencv-dev
   - libopenmpi-dev

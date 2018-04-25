@@ -70,8 +70,10 @@ yum_packages:
   - ltrace
   - make
   - mariadb-devel
+  - mariadb-connector-c-devel
   - maxima
   - mercurial
+  - mysql-devel
   - nginx
   - nkf
   - nmap

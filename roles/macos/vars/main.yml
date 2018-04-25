@@ -38,6 +38,7 @@ brew_packages:
     - lmdb
     - lua
     - mariadb
+    - mariadb-connector-c
     - mercurial
     - mongodb
     - nmap
