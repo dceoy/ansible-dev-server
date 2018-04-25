@@ -46,6 +46,7 @@ r_packages:
     - knitr
     - latex2exp
     - leaflet
+    - lintr
     - lle
     - loo
     - MCMCpack
@@ -80,6 +81,7 @@ r_packages:
     - tidyverse
     - tm
     - VGAM
+    - yaml
   github:
     - klutometis/roxygen
     - rstudio/httpuv
