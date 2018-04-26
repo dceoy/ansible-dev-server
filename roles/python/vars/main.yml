@@ -1,8 +1,5 @@
 ---
 pip_packages:
-  2:
-    - ansible
-    - fabric
   3:
     - git+https://github.com/oanda/oandapy.git
     - ansible

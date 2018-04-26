@@ -34,8 +34,6 @@ users:
     groups: sudo
     shell: /bin/zsh
 pip_packages:
-  2:
-    - flake8
   3:
     - flake8
   anaconda:
