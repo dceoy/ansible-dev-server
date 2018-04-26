@@ -1,8 +1,9 @@
-" vim: set ft=vim et tw=78 sw=2:
+scriptencoding utf-8
 
 "dein Scripts-----------------------------
 if &compatible
-  set nocompatible               " Be iMproved
+  " vint: -ProhibitSetNoCompatible
+  set nocompatible
 endif
 
 " Required:
@@ -109,6 +110,10 @@ if dein#load_state('$HOME/.vim/bundles')
   call dein#add('vim-scripts/sql.vim--Stinson')           " better sql syntax
   " Docker
   call dein#add('ekalinin/Dockerfile.vim')                " syntax file and snippets for docker's dockerfile
+  " Kubernetes
+  call dein#add('andrewstuart/vim-kubernetes')            " kubectl integration
+  " Ansible
+  call dein#add('pearofducks/ansible-vim')                " syntax highlighting Ansible's common filetypes
   " Nginx
   call dein#add('chr4/nginx.vim')                         " nginx syntax highlighting
   " Bats
@@ -159,9 +164,9 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  return (pumvisible() ? '\<C-y>' : '' ) . '\<CR>'
   " For no inserting <CR> key.
   "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
@@ -183,11 +188,13 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup omni_completion
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -214,8 +221,8 @@ set t_Co=256                                " enable 256 colors
 syntax enable
 set background=dark
 let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
+let g:solarized_contrast='high'
+let g:solarized_visibility='high'
 colorscheme solarized
 
 " files/backups
@@ -243,7 +250,7 @@ set shortmess=atI                           " shorten messages to avoid 'press a
 set report=0                                " tell us when any line is changed via : commands
 set noerrorbells                            " don't make noise on error messages
 set novisualbell                            " don't blink
-"
+
 " visual cues
 set showmatch                               " show matching brackets for a moment
 set matchtime=2                             " blink brackets
@@ -281,17 +288,29 @@ set modeline                                " read modelines
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 
 " enable :DiffOrig
-if !exists(":DiffOrig")
+if !exists(':DiffOrig')
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 endif
 
 " syntastic
-let g:syntastic_python_checkers = ['flake8']                  " use flake8
-"let g:syntastic_python_flake8_args = '--max-line-length=100'  " permit long lines
+let g:syntastic_python_checkers = ['python', 'flake8']
+"let g:syntastic_python_flake8_args = '--max-line-length=100'
 let g:syntastic_yaml_checkers = ['yamllint']
+let g:syntastic_yaml_yamllint_args = '-d "{extends: default, rules: {line-length: disable, truthy: disable}}"'
+let g:syntastic_ansible_checkers = ['ansible_lint']
+let g:syntastic_dockerfile_checkers= ['hadolint']
+let g:syntastic_sh_checkers = ['shellcheck']
+let g:syntastic_zsh_checkers = ['zsh']
 let g:syntastic_enable_r_lintr_checker = 1
 let g:syntastic_r_checkers = ['lintr']
+let g:syntastic_rmd_checkers = ['lintr']
 let g:syntastic_r_lintr_linters = 'with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL)'
+let g:syntastic_rmd_lintr_linters = 'with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL)'
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_go_checkers=['go', 'gofmt', 'golint']
+let g:syntastic_vim_checkers = ['vint']
+let g:syntastic_sql_checkers = ['sqlint']
+let g:syntastic_markdown_checkers = ['proselint']
 
 " markdown
 let g:vim_markdown_folding_disabled = 1   " disable folding in markdown

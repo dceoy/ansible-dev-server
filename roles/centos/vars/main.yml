@@ -107,6 +107,7 @@ yum_packages:
   - sbt
   - scala
   - scipy
+  - ShellCheck
   - snappy-devel
   - speedcrunch
   - sqlite-devel

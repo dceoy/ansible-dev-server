@@ -9,6 +9,7 @@ gem_packages:
   - rails
   - rake
   - selenium-webdriver
+  - sqlint
   - toml-rb
   - tugboat
   - twitter

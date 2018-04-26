@@ -50,7 +50,10 @@
   register: pip_x
 
 - name: Install and update Python 2 packages
-  when: pip_x.results[0].stat.exists
+  when:
+    - pip_x.results[0].stat.exists
+    - pip_packages is defined
+    - pip_packages[2] is defined
   pip:
     name: "{{ item }}"
     executable: "{{ pip_x.results[0].stat.path }}"
@@ -60,7 +63,10 @@
   notify: Notify updates of Python via Slack
 
 - name: Install and update Python 3 packages
-  when: pip_x.results[1].stat.exists
+  when:
+    - pip_x.results[1].stat.exists
+    - pip_packages is defined
+    - pip_packages[3] is defined
   pip:
     name: "{{ item }}"
     executable: "{{ pip_x.results[1].stat.path }}"
@@ -82,7 +88,10 @@
   notify: Notify updates of Python via Slack
 
 - name: Install Anaconda packages
-  when: conda_x.stat.exists
+  when:
+    - conda_x.stat.exists
+    - pip_packages is defined
+    - pip_packages.anaconda is defined
   shell: |
     {{ conda_x.stat.path }} install -y {{ item }}
   with_items: "{{ pip_packages.anaconda }}"
