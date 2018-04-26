@@ -10,11 +10,10 @@
     pyenv: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv"
     pyenv_root: "{{ ansible_env.HOME }}/.pyenv"
 
-- name: Fetch the latest versions for 2 and 3
+- name: Fetch the latest versions
   shell: |
     {{ pyenv }} install --list | awk '$1 ~ /^{{ item }}[\.\-0-9]+$/ { v=$1 } END{ print v }'
   with_items:
-    - 2
     - 3
     - anaconda
   changed_when: false
@@ -49,27 +48,14 @@
   with_items: "{{ py_v.results }}"
   register: pip_x
 
-- name: Install and update Python 2 packages
-  when:
-    - pip_x.results[0].stat.exists
-    - pip_packages is defined
-    - pip_packages[2] is defined
-  pip:
-    name: "{{ item }}"
-    executable: "{{ pip_x.results[0].stat.path }}"
-    state: latest
-  with_items: "{{ pip_packages[2] }}"
-  ignore_errors: true
-  notify: Notify updates of Python via Slack
-
 - name: Install and update Python 3 packages
   when:
-    - pip_x.results[1].stat.exists
+    - pip_x.results[0].stat.exists
     - pip_packages is defined
     - pip_packages[3] is defined
   pip:
     name: "{{ item }}"
-    executable: "{{ pip_x.results[1].stat.path }}"
+    executable: "{{ pip_x.results[0].stat.path }}"
     state: latest
   with_items: "{{ pip_packages[3] }}"
   ignore_errors: true
@@ -77,38 +63,39 @@
 
 - name: Check if conda exists
   stat:
-    path: "{{ pyenv_root }}/versions/{{ py_v.results[2].stdout }}/bin/conda"
+    path: "{{ pyenv_root }}/versions/{{ item.stdout }}/bin/conda"
+  with_items: "{{ py_v.results }}"
   register: conda_x
 
 - name: Update Anaconda packages
-  when: conda_x.stat.exists
+  when: conda_x.results[1].stat.exists
   shell: |
-    {{ conda_x.stat.path }} upgrade --all -y
+    {{ conda_x.results[1].stat.path }} upgrade --all -y
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
 - name: Install Anaconda packages
   when:
-    - conda_x.stat.exists
+    - conda_x.results[1].stat.exists
     - pip_packages is defined
     - pip_packages.anaconda is defined
   shell: |
-    {{ conda_x.stat.path }} install -y {{ item }}
+    {{ conda_x.results[1].stat.path }} install -y {{ item }}
   with_items: "{{ pip_packages.anaconda }}"
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
 - name: Install Anaconda packages
-  when: conda_x.stat.exists
+  when: conda_x.results[1].stat.exists
   shell: |
-    {{ conda_x.stat.path }} clean -tipsy
+    {{ conda_x.results[1].stat.path }} clean -tipsy
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
 - name: Set the global version for Python
-  when: pip_x.results[1].stat.exists
+  when: pip_x.results[0].stat.exists
   lineinfile:
     path: "{{ pyenv_root }}/version"
     create: yes
     regexp: '^.*$'
-    line: "{{ py_v.results[1].stdout }}"
+    line: "{{ py_v.results[0].stdout }}"
