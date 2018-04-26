@@ -1,3 +1,4 @@
+---
 box:
   id: dceoy/wercker-base
   entrypoint: /bin/bash -c
@@ -7,7 +8,8 @@ build:
         name: Install packages
         code: |
           apt-get -y update
-          apt-get -y install aptitude ssh sudo libffi-dev libssl-dev python-crypto python-dev python-pip
+          apt-get -y install aptitude ssh sudo libffi-dev libssl-dev \
+                             python-crypto python-dev python-pip
     - script:
         name: Install ansible
         code: |
