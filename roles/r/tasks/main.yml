@@ -3,8 +3,8 @@
   set_fact:
     path: "{{ ansible_env.PATH }}:/usr/local/bin"
     r_libs: "{{ ansible_env.HOME }}/.clir/r/library"
-    clir_root: "{{ ansible_env.HOME }}/.clir"
     clir: "{{ ansible_env.HOME }}/.clir/bin/clir"
+    install_clir_sh: '/tmp/install_clir.sh'
 
 - name: Check R command
   environment:
@@ -13,19 +13,23 @@
     R --version
   changed_when: false
 
-- name: Clone clir
-  git:
-    repo: 'https://github.com/dceoy/clir.git'
-    dest: "{{ ansible_env.HOME }}/.clir"
-  notify: Notify updates of R via Slack
+- name: Download the installer of clir
+  get_url:
+    url: 'https://raw.githubusercontent.com/dceoy/clir/master/install.sh'
+    dest: "{{ install_clir_sh }}"
 
-- name: Install clir
+- name: Install or update clir
   environment:
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
   shell: |
-    {{ clir }} validate docopt yaml || {{ clir_root }}/install.sh
+    bash {{ install_clir_sh }}
   notify: Notify updates of R via Slack
+
+- name: Remove the installer
+  file:
+    path: "{{ install_clir_sh }}"
+    state: absent
 
 - name: Set cran repositories
   environment:
@@ -51,7 +55,7 @@
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
   shell: |
-    {{ clir }} install --quiet {{ item }}
+    {{ clir }} install --devt=cran --quiet {{ item }}
   with_items:
     - devtools
     - drat
@@ -67,7 +71,7 @@
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
   shell: |
-    {{ clir }} install --quiet {{ item }}
+    {{ clir }} install --devt=cran --quiet {{ item }}
   with_items: "{{ r_packages.drat }}"
   ignore_errors: true
   notify: Notify updates of R via Slack
@@ -78,7 +82,7 @@
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
   shell: |
-    {{ clir }} install --from=github --quiet {{ item }}
+    {{ clir }} install --devt=github --quiet {{ item }}
   with_items: "{{ r_packages.github }}"
   ignore_errors: true
   notify: Notify updates of R via Slack
@@ -89,7 +93,7 @@
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
   shell: |
-    {{ clir }} install --from=bioconductor --quiet {{ item }}
+    {{ clir }} install --devt=bioc --quiet {{ item }}
   with_items: "{{ r_packages.bioconductor }}"
   ignore_errors: true
   notify: Notify updates of R via Slack
