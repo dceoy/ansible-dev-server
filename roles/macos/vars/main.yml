@@ -1,3 +1,4 @@
+---
 brew_packages:
   with_options:
     - name: vim
