@@ -57,6 +57,7 @@
     - Notify updates of the system via Slack
 
 - name: Install packages
+  when: dnf_packages is defined
   become: true
   dnf:
     name: "{{ item }}"

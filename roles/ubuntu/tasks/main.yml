@@ -115,6 +115,7 @@
   notify: Notify updates of the system via Slack
 
 - name: Install packages
+  when: apt_packages is defined
   become: true
   apt:
     name: "{{ item }}"

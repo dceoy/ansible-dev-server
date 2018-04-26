@@ -85,6 +85,7 @@ apt_packages:
   - redis-server
   - samba
   - scala
+  - shellcheck
   - snapd
   - sqlite3
   - sshfs

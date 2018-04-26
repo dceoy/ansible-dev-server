@@ -77,6 +77,7 @@ apt_packages:
   - redis-server
   - samba
   - scala
+  - shellcheck
   - sqlite3
   - supervisor
   - swig

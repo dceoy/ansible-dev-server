@@ -29,6 +29,7 @@ brew_packages:
     - glog
     - gnu-sed
     - go
+    - hadolint
     - hunspell
     - imagemagick
     - kubectl
@@ -62,6 +63,7 @@ brew_packages:
     - samtools
     - sbt
     - scala
+    - shellcheck
     - snappy
     - sqlite
     - sshfs

@@ -4,3 +4,4 @@ go_packages:
   - github.com/kahing/goofys
   - github.com/naoina/toml
   - github.com/spf13/hugo
+  - golang.org/x/lint/golint

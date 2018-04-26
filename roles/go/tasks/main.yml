@@ -1,7 +1,7 @@
 ---
 - name: Set variables
   set_fact:
-    path:  "{{ ansible_env.PATH }}:/usr/local/bin"
+    path: "{{ ansible_env.PATH }}:/usr/local/bin"
     gopath: "{{ ansible_env.HOME }}/.go"
 
 - name: Check go command
@@ -28,6 +28,7 @@
   notify: Notify updates of Go via Slack
 
 - name: Install packages
+  when: go_packages is defined
   environment:
     PATH: "{{ path }}"
     GOPATH: "{{ gopath }}"
