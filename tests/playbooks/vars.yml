@@ -7,7 +7,6 @@ apt_packages:
   - libssl-dev
   - make
   - r-base
-  - tree
   - vim-gnome
   - zsh
 fedora:
@@ -18,7 +17,6 @@ fedora:
   - make
   - openssl-devel
   - R-devel
-  - tree
   - vim-enhanced
   - zsh
 centos:
@@ -29,7 +27,6 @@ centos:
   - make
   - openssl-devel
   - R-devel
-  - tree
   - vim-enhanced
   - zsh
 users:
@@ -38,20 +35,15 @@ users:
     shell: /bin/zsh
 pip_packages:
   2:
-    - ipython
     - flake8
   3:
-    - ipython
     - flake8
   anaconda:
-    - ipython
     - flake8
 gem_packages:
   - bundler
-  - rake
 go_packages:
   - github.com/naoina/toml
-  - github.com/spf13/hugo
 r_repos:
   cran:
     - https://cran.rstudio.com/
