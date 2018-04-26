@@ -1,8 +1,10 @@
 ---
 apt_packages:
   - gcc
+  - git
   - golang
   - libcurl4-gnutls-dev
+  - libssl-dev
   - make
   - r-base
   - tree
@@ -10,9 +12,22 @@ apt_packages:
   - zsh
 fedora:
   - gcc
+  - git
   - go
-  - openssl-devel
+  - libcurl-devel
   - make
+  - openssl-devel
+  - R-devel
+  - tree
+  - vim-enhanced
+  - zsh
+centos:
+  - gcc
+  - git
+  - go
+  - libcurl-devel
+  - make
+  - openssl-devel
   - R-devel
   - tree
   - vim-enhanced
@@ -37,3 +52,9 @@ gem_packages:
 go_packages:
   - github.com/naoina/toml
   - github.com/spf13/hugo
+r_repos:
+  cran:
+    - https://cran.rstudio.com/
+r_packages:
+  cran:
+    - lintr
