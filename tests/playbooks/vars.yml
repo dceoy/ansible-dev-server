@@ -1,0 +1,39 @@
+---
+apt_packages:
+  - gcc
+  - golang
+  - libcurl4-gnutls-dev
+  - make
+  - r-base
+  - tree
+  - vim-gnome
+  - zsh
+fedora:
+  - gcc
+  - go
+  - openssl-devel
+  - make
+  - R-devel
+  - tree
+  - vim-enhanced
+  - zsh
+users:
+  - name: test
+    groups: sudo
+    shell: /bin/zsh
+pip_packages:
+  2:
+    - ipython
+    - flake8
+  3:
+    - ipython
+    - flake8
+  anaconda:
+    - ipython
+    - flake8
+gem_packages:
+  - bundler
+  - rake
+go_packages:
+  - github.com/naoina/toml
+  - github.com/spf13/hugo
