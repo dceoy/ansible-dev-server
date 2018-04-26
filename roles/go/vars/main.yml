@@ -1,3 +1,4 @@
+---
 go_packages:
   - github.com/codegangsta/cli
   - github.com/kahing/goofys

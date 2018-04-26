@@ -1,3 +1,4 @@
+---
 dnf_packages:
   - atlas-devel
   - autoconf
