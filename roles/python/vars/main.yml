@@ -6,6 +6,7 @@ pip_packages:
   3:
     - git+https://github.com/oanda/oandapy.git
     - ansible
+    - ansible-lint
     - apache-airflow
     - awscli
     - biopython
@@ -76,6 +77,7 @@ pip_packages:
     - tox
     - twine
     - twitter
+    - vim-vint
     - virtualenv
     - webtest
     - xgboost
@@ -100,6 +102,7 @@ pip_packages:
     - numpy
     - pandas
     - plotly
+    - proselint
     - psutil
     - pymc
     - pystan
