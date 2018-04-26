@@ -1,19 +1,9 @@
 ---
 box:
-  id: dceoy/wercker-base
+  id: dceoy/wercker-base:ansible
   entrypoint: /bin/bash -c
 build:
   steps:
-    - script:
-        name: Install packages
-        code: |
-          apt-get -y update
-          apt-get -y install aptitude ssh sudo libffi-dev libssl-dev \
-                             python-crypto python-dev python-pip
-    - script:
-        name: Install ansible
-        code: |
-          pip install -U ansible pyopenssl
     - script:
         name: Set up ssh
         code: |
