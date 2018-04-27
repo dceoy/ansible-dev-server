@@ -15,7 +15,8 @@
     {{ pyenv }} install --list | awk '$1 ~ /^{{ item }}[\.\-0-9]+$/ { v=$1 } END{ print v }'
   with_items:
     - 3
-    - anaconda
+  # - anaconda
+  # - 2
   changed_when: false
   register: py_v
 
