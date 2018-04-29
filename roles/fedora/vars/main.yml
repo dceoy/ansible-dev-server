@@ -27,6 +27,7 @@ dnf_packages:
   - elixir
   - expect
   - fabric
+  - fcrackzip
   - fftw-devel
   - flex
   - freetds-devel
@@ -47,6 +48,7 @@ dnf_packages:
   - gsl-devel
   - hdf5-devel
   - hunspell-devel
+  - ImageMagick-c++-devel
   - ImageMagick-devel
   - incron
   - indent
@@ -63,6 +65,7 @@ dnf_packages:
   - libpng-devel
   - libsqlite3x-devel
   - librsvg2-devel
+  - libssh2-devel
   - libtool
   - libxml2-devel
   - libxslt-devel

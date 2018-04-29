@@ -1,13 +1,17 @@
 ---
 brew_packages:
   with_options:
+    - name: cairo
+      options:
+        - with-x11
+    - name: imagemagick
+      options:
+        - with-fontconfig
+        - with-librsvg
     - name: vim
       options:
         - with-lua
         - with-python3
-    - name: cairo
-      options:
-        - with-x11
   without_options:
     - bats
     - boost
@@ -35,6 +39,7 @@ brew_packages:
     - kubectl
     - leveldb
     - librsvg
+    - libssh2
     - libxml2
     - llvm
     - lmdb
@@ -93,6 +98,7 @@ brew_cask_packages:
   - dropbox
   - endnote
   - firefox
+  - fcrackzip
   - google-backup-and-sync
   - google-chrome
   - google-japanese-ime
