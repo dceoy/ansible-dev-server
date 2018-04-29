@@ -28,6 +28,7 @@ yum_packages:
   - elixir
   - expect
   - fabric
+  - fcrackzip
   - fftw-devel
   - flex
   - freetds-devel
@@ -48,6 +49,7 @@ yum_packages:
   - gsl-devel
   - hdf5-devel
   - hunspell-devel
+  - ImageMagick-c++-devel
   - ImageMagick-devel
   - incron
   - indent
@@ -63,6 +65,7 @@ yum_packages:
   - libpcap-devel
   - libpng-devel
   - libsqlite3x-devel
+  - libssh2-devel
   - librsvg2-devel
   - libtool
   - libxml2-devel
