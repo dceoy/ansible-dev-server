@@ -14,6 +14,7 @@ apt_packages:
   - ethtool
   - expect
   - fabric
+  - fcrackzip
   - freetds-dev
   - g++
   - gcc
@@ -43,7 +44,7 @@ apt_packages:
   - liblapack-dev
   - libleveldb-dev
   - liblmdb-dev
-  - libmariadbclient-dev
+  - libmagick++-dev
   - libmariadb-client-lgpl-dev
   - libopencv-dev
   - libopenmpi-dev
@@ -55,6 +56,7 @@ apt_packages:
   - libreadline6-dev
   - libsnappy-dev
   - libsqlite3-dev
+  - libssh2-1-dev
   - libssl-dev
   - librsvg2-bin
   - librsvg2-dev
