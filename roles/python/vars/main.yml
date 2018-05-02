@@ -35,6 +35,7 @@ pip_packages:
     - mock
     - mxnet
     - nose
+    - notedown
     - numexpr
     - numpy
     - pandas
