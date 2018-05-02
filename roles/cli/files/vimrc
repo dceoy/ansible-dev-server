@@ -86,6 +86,7 @@ if dein#load_state('$HOME/.vim/bundles')
   call dein#add('nvie/vim-flake8')                        " a static syntax and style checker for python source code
   call dein#add('hynek/vim-python-pep8-indent')           " a nicer python indentation style for vim
   call dein#add('ivanov/vim-ipython')                     " integration between vim and ipython
+  call dein#add('vyzyv/vimpyter')                         " edit jupyter notebooks in vim
   " R
   call dein#add('vim-scripts/R-syntax-highlighting')      " r syntax highlighting
   " BUGS
@@ -155,7 +156,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
+  let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
@@ -199,7 +200,7 @@ augroup END
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+    let g:neocomplete#sources#omni#input_patterns = {}
 endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
@@ -312,6 +313,11 @@ let g:syntastic_go_checkers=['go', 'gofmt', 'golint']
 let g:syntastic_vim_checkers = ['vint']
 let g:syntastic_sql_checkers = ['sqlint']
 let g:syntastic_markdown_checkers = ['proselint']
+
+" jupyter
+autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 
 " markdown
 let g:vim_markdown_folding_disabled = 1   " disable folding in markdown
