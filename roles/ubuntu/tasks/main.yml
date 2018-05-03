@@ -85,6 +85,7 @@
   notify: Notify updates of the system via Slack
 
 - name: Add the GPG key for Kubernetes
+  when: ansible_distribution_release != 'bionic'
   become: true
   apt_key:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
@@ -92,6 +93,7 @@
   notify: Notify updates of the system via Slack
 
 - name: Add Kubernetes repo
+  when: ansible_distribution_release != 'bionic'
   become: true
   apt_repository:
     repo: "deb [arch=amd64] http://apt.kubernetes.io/ kubernetes-{{ ansible_distribution_release }} main"
@@ -100,6 +102,7 @@
   notify: Notify updates of the system via Slack
 
 - name: Add the GPG key for R
+  when: ansible_distribution_release != 'bionic'
   become: true
   apt_key:
     id: E084DAB9
@@ -107,6 +110,7 @@
   notify: Notify updates of the system via Slack
 
 - name: Add R repo
+  when: ansible_distribution_release != 'bionic'
   become: true
   apt_repository:
     repo: "deb https://cloud.r-project.org/bin/linux/ubuntu {{ ansible_distribution_release }}/"
