@@ -63,8 +63,7 @@
   yum:
     name: '*'
     state: latest
-  notify:
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Install packages
   when: yum_packages is defined
@@ -80,8 +79,7 @@
     - yum-utils
     - "{{ yum_packages }}"
   ignore_errors: true
-  notify:
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Check installed Docker CE
   become: true
@@ -118,8 +116,7 @@
     name: docker-ce
     state: latest
   ignore_errors: true
-  notify:
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Set users
   when: users is defined
@@ -143,5 +140,4 @@
     - kubectl
     - kubelet
   ignore_errors: true
-  notify:
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
