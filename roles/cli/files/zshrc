@@ -108,6 +108,7 @@ alias dnginx='docker container run --rm -p 80:80 -v $(pwd):/var/www/html:ro -d d
 alias dcrmf='docker-compose stop && docker-compose rm -f'
 alias rv='R --quiet --vanilla'
 alias vim-plugin-update='vim -c "try | call dein#update() | finally | qall! | endtry" -N -u ~/.vimrc -U NONE -i NONE -V1 -e -s'
+alias exec-ipynb='jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=-1 --execute --inplace --ExecutePreprocessor.kernel_name=python'
 
 case "${OSTYPE}" in
   darwin*)
