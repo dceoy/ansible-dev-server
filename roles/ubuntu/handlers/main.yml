@@ -1,10 +1,4 @@
 ---
-- name: Remove useless and unneeded packages
-  become: true
-  apt:
-    autoclean: yes
-    autoremove: yes
-
 - name: Notify updates of the system via Slack
   when:
     - slack_token is defined
