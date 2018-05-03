@@ -10,16 +10,20 @@ endif
 set runtimepath+=$HOME/.vim/bundles/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('$HOME/.vim/bundles')
-  call dein#begin('$HOME/.vim/bundles')
+if dein#load_state('~/.vim/bundles')
+  call dein#begin('~/.vim/bundles')
+  call dein#add('~/.vim/bundles')
 
   " Required:
-  call dein#add('$HOME/.vim/bundles/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  let g:deoplete#enable_at_startup = 1
 
-  " plugins:
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('Shougo/vimshell.vim')
   call dein#add('Shougo/unite.vim')
@@ -86,7 +90,7 @@ if dein#load_state('$HOME/.vim/bundles')
   call dein#add('nvie/vim-flake8')                        " a static syntax and style checker for python source code
   call dein#add('hynek/vim-python-pep8-indent')           " a nicer python indentation style for vim
   call dein#add('ivanov/vim-ipython')                     " integration between vim and ipython
-  call dein#add('vyzyv/vimpyter')                         " edit jupyter notebooks in vim
+  "call dein#add('vyzyv/vimpyter')                         " edit jupyter notebooks in vim
   " R
   call dein#add('vim-scripts/R-syntax-highlighting')      " r syntax highlighting
   " BUGS
@@ -121,95 +125,13 @@ if dein#load_state('$HOME/.vim/bundles')
   " Bats
   call dein#add('vim-scripts/bats.vim')                   " syntax highlighting for bats
 
-  " Required:
   call dein#end()
   call dein#save_state()
 endif
 
-" Required:
 filetype plugin indent on
 syntax enable
-
-if dein#check_install()
-  call dein#install()
-endif
-
 "End dein Scripts-------------------------
-
-
-"neocomplete Scripts-------------------------
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? '\<C-y>' : '' ) . '\<CR>'
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-augroup omni_completion
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup END
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-"End neocomplete Scripts-------------------------
 
 
 " general
@@ -220,7 +142,6 @@ set ttyfast                                 " fast terminal connection
 set t_Co=256                                " enable 256 colors
 
 " theme/colors
-syntax enable
 set background=dark
 let g:solarized_termcolors=256
 let g:solarized_contrast='high'
@@ -309,15 +230,15 @@ let g:syntastic_rmd_checkers = ['lintr']
 let g:syntastic_r_lintr_linters = 'with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL)'
 let g:syntastic_rmd_lintr_linters = 'with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL)'
 let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_go_checkers=['go', 'gofmt', 'golint']
+let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
 let g:syntastic_vim_checkers = ['vint']
 let g:syntastic_sql_checkers = ['sqlint']
 let g:syntastic_markdown_checkers = ['proselint']
 
 " jupyter
-autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
-autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
-autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
+"autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+"autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+"autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 
 " markdown
 let g:vim_markdown_folding_disabled = 1   " disable folding in markdown
