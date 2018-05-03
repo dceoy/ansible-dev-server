@@ -50,16 +50,16 @@
 - name: Upgrade all packages
   become: true
   dnf:
+    autoremove: yes
     name: '*'
     state: latest
-  notify:
-    - Remove unneeded packages
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Install packages
   when: dnf_packages is defined
   become: true
   dnf:
+    autoremove: yes
     name: "{{ item }}"
     state: latest
   with_items:
@@ -67,9 +67,7 @@
     - git
     - sudo
     - "{{ dnf_packages }}"
-  notify:
-    - Remove unneeded packages
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Check installed Docker CE
   become: true
@@ -83,6 +81,7 @@
   when: docker_ce_installed is failed
   become: true
   dnf:
+    autoremove: yes
     name: "{{ item }}"
     state: absent
   with_items:
@@ -104,14 +103,13 @@
   when: docker_ce_installed is failed
   become: true
   dnf:
+    autoremove: yes
     name: docker-ce
     enablerepo: docker-ce-stable
     state: latest
   ignore_errors: true
   register: install_docker_ce
-  notify:
-    - Remove unneeded packages
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Install docker-engine instead of docker-ce
   when: install_docker_ce is failed
@@ -119,9 +117,7 @@
   dnf:
     name: docker-engine
     state: latest
-  notify:
-    - Remove unneeded packages
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Set users
   when: users is defined
@@ -137,6 +133,7 @@
 - name: Install Kubernetes
   become: true
   dnf:
+    autoremove: yes
     name: "{{ item }}"
     state: latest
   with_items:
@@ -145,6 +142,4 @@
     - kubectl
     - kubelet
   ignore_errors: true
-  notify:
-    - Remove unneeded packages
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack

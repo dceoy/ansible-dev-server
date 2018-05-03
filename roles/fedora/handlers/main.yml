@@ -1,9 +1,4 @@
 ---
-- name: Remove unneeded packages
-  become: true
-  dnf:
-    autoremove: yes
-
 - name: Notify updates of the system via Slack
   when:
     - slack_token is defined
