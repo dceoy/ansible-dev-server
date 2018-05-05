@@ -5,6 +5,7 @@ pip_packages:
     - ansible
     - ansible-lint
     - apache-airflow
+    - apache-libcloud
     - awscli
     - biopython
     - beautifulsoup4
