@@ -83,6 +83,7 @@ apt_packages:
   - python3-dev
   - python3-scipy
   - python-docker
+  - qemu-user-static
   - r-base-dev
   - redis-server
   - samba
