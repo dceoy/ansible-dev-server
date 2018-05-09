@@ -63,11 +63,20 @@
   file:
     path: "{{ ansible_env.HOME }}/.vim/bundles"
     state: directory
+  register: create_vim_dirs
+  notify: Notify updates of CLI via Slack
 
 - name: Clone dein.vim
   git:
     repo: 'https://github.com/Shougo/dein.vim'
     dest: "{{ ansible_env.HOME }}/.vim/bundles/repos/github.com/Shougo/dein.vim"
+  notify: Notify updates of CLI via Slack
+
+- name: Install dein.vim
+  when: create_vim_dirs is changed
+  shell: |
+    ~/.vim/bundles/repos/github.com/Shougo/dein.vim/bin/installer.sh ~/.vim/bundles
+  ignore_errors: true
   notify: Notify updates of CLI via Slack
 
 - name: Install Vim plugins
