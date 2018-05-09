@@ -1,4 +1,10 @@
 ---
+- name: Add Vim repo
+  become: true
+  apt_repository:
+    repo: ppa:jonathonf/vim
+  notify: Notify updates of the system via Slack
+
 - name: Add the GPG key for Docker
   become: true
   apt_key:
@@ -32,6 +38,7 @@
     autoremove: yes
     name: "{{ item }}"
     state: latest
+    update_cache: yes
   with_items:
     - apt-transport-https
     - aptitude

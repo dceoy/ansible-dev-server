@@ -46,26 +46,24 @@
     validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
-- name: Upgrade all packages
+- name: Install required packages
   become: true
   apt:
     autoclean: yes
     autoremove: yes
     upgrade: yes
     update_cache: yes
-  notify: Notify updates of the system via Slack
-
-- name: Install required packages
-  become: true
-  apt:
-    autoclean: yes
-    autoremove: yes
     name: "{{ item }}"
     state: latest
   with_items:
     - apt-transport-https
     - aptitude
     - ca-certificates
+  notify: Notify updates of the system via Slack
+
+- name: Add Vim repo
+  apt_repository:
+    repo: ppa:jonathonf/vim
   notify: Notify updates of the system via Slack
 
 - name: Add the GPG key for Docker
@@ -116,6 +114,15 @@
     repo: "deb https://cloud.r-project.org/bin/linux/ubuntu {{ ansible_distribution_release }}/"
     state: present
     filename: r
+  notify: Notify updates of the system via Slack
+
+- name: Upgrade all packages
+  become: true
+  apt:
+    autoclean: yes
+    autoremove: yes
+    upgrade: yes
+    update_cache: yes
   notify: Notify updates of the system via Slack
 
 - name: Install packages
