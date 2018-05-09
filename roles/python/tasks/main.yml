@@ -49,8 +49,28 @@
   with_items: "{{ py_v.results }}"
   register: pip_x
 
-- name: Install and update Python 3 packages
+- name: Install and update base packages
   when:
+    - ansible_architecture == 'x86_64'
+    - pip_x.results[0].stat.exists
+    - pip_packages is defined
+    - pip_packages[3] is defined
+  pip:
+    name: "{{ item }}"
+    executable: "{{ pip_x.results[0].stat.path }}"
+    state: latest
+  with_items:
+    - docker-compose
+    - flake8
+    - pandas
+    - pip
+    - scipy
+  ignore_errors: true
+  notify: Notify updates of Python via Slack
+
+- name: Install and update Python packages
+  when:
+    - ansible_architecture == 'x86_64'
     - pip_x.results[0].stat.exists
     - pip_packages is defined
     - pip_packages[3] is defined

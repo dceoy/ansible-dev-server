@@ -21,6 +21,23 @@
     filename: docker
   notify: Notify updates of the system via Slack
 
+- name: Add the GPG key for Kubernetes
+  when: ansible_distribution_release != 'bionic'
+  become: true
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+  notify: Notify updates of the system via Slack
+
+- name: Add Kubernetes repo
+  when: ansible_distribution_release != 'bionic'
+  become: true
+  apt_repository:
+    repo: "deb [arch=armhf] http://apt.kubernetes.io/ kubernetes-{{ ansible_distribution_release }} main"
+    state: present
+    filename: kubernetes
+  notify: Notify updates of the system via Slack
+
 - name: Upgrade all packages
   become: true
   apt:
@@ -43,11 +60,25 @@
     - apt-transport-https
     - aptitude
     - ca-certificates
-    - docker-ce
     - git
     - software-properties-common
     - sudo
     - "{{ apt_packages }}"
+  ignore_errors: true
+  notify: Notify updates of the system via Slack
+
+- name: Install Docker and Kubernetes
+  become: true
+  apt:
+    autoclean: yes
+    autoremove: yes
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - docker-ce
+    - kubeadm
+    - kubectl
+    - kubelet
   ignore_errors: true
   notify: Notify updates of the system via Slack
 

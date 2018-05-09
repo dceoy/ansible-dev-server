@@ -37,5 +37,3 @@
     - role: ruby
     - role: go
     - role: r
-      when:
-        - ansible_architecture == 'x86_64'
