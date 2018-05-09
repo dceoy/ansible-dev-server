@@ -81,6 +81,7 @@ dnf_packages:
   - nkf
   - nmap
   - nodejs
+  - npm
   - octave
   - opencv-devel
   - openmpi-devel

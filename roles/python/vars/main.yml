@@ -2,6 +2,7 @@
 pip_packages:
   3:
     - git+https://github.com/oanda/oandapy.git
+    - git+https://github.com/dceoy/fract.git
     - ansible
     - ansible-lint
     - apache-airflow
@@ -16,6 +17,7 @@ pip_packages:
     - csvkit
     - cutadapt
     - cython
+    - deltw
     - docker
     - docker-compose
     - fabric
@@ -24,6 +26,7 @@ pip_packages:
     - flake8
     - ggplot
     - grip
+    - holoviews
     - ipykernel
     - ipython
     - jupyter
