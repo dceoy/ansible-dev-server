@@ -2,16 +2,18 @@
 - name: Upgrade all packages
   become: true
   apt:
+    autoclean: yes
+    autoremove: yes
     upgrade: yes
     update_cache: yes
-  notify:
-    - Remove useless and unneeded packages
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Install packages
   when: apt_packages is defined
   become: true
   apt:
+    autoclean: yes
+    autoremove: yes
     name: "{{ item }}"
     state: latest
   with_items:
@@ -23,9 +25,7 @@
     - sudo
     - "{{ apt_packages }}"
   ignore_errors: true
-  notify:
-    - Remove useless and unneeded packages
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Set users
   when: users is defined
