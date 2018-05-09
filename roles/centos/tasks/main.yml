@@ -46,6 +46,20 @@
     gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
   notify: Notify updates of the system via Slack
 
+- name: Add EPEL Vim repo
+  become: true
+  get_url:
+    url: https://copr.fedorainfracloud.org/coprs/mcepl/vim8/repo/epel-7/mcepl-vim8-epel-7.repo
+    dest: /etc/yum.repos.d/mcepl-vim8-epel-7.repo
+  notify: Notify updates of the system via Slack
+
+- name: Add Docker repo
+  become: true
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+  notify: Notify updates of the system via Slack
+
 - name: Add Kubernetes repo
   become: true
   yum_repository:
@@ -61,6 +75,7 @@
 - name: Upgrade all packages
   become: true
   yum:
+    update_cache: yes
     name: '*'
     state: latest
   notify: Notify updates of the system via Slack
@@ -101,14 +116,6 @@
     - docker-selinux
     - docker-engine
 
-- name: Set up the Docker CE repository
-  when: docker_ce_installed is failed
-  become: true
-  shell: |
-    yum-config-manager --add-repo \
-      https://download.docker.com/linux/centos/docker-ce.repo
-    yum makecache fast
-
 - name: Install Docker CE
   when: docker_ce_installed is failed
   become: true
@@ -116,17 +123,6 @@
     name: docker-ce
     state: latest
   ignore_errors: true
-  notify: Notify updates of the system via Slack
-
-- name: Set users
-  when: users is defined
-  become: true
-  user:
-    name: "{{ item.name }}"
-    shell: "{{ item.shell }}"
-    groups: "{{ item.groups }}"
-    append: yes
-  with_items: "{{ users }}"
   notify: Notify updates of the system via Slack
 
 - name: Install Kubernetes
@@ -140,4 +136,15 @@
     - kubectl
     - kubelet
   ignore_errors: true
+  notify: Notify updates of the system via Slack
+
+- name: Set users
+  when: users is defined
+  become: true
+  user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    groups: "{{ item.groups }}"
+    append: yes
+  with_items: "{{ users }}"
   notify: Notify updates of the system via Slack

@@ -35,6 +35,13 @@
     validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
+- name: Add Docker repo
+  become: true
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+  notify: Notify updates of the system via Slack
+
 - name: Add Kubernetes repo
   become: true
   yum_repository:
@@ -115,19 +122,9 @@
   when: install_docker_ce is failed
   become: true
   dnf:
+    autoremove: yes
     name: docker-engine
     state: latest
-  notify: Notify updates of the system via Slack
-
-- name: Set users
-  when: users is defined
-  become: true
-  user:
-    name: "{{ item.name }}"
-    shell: "{{ item.shell }}"
-    groups: "{{ item.groups }}"
-    append: yes
-  with_items: "{{ users }}"
   notify: Notify updates of the system via Slack
 
 - name: Install Kubernetes
@@ -142,4 +139,15 @@
     - kubectl
     - kubelet
   ignore_errors: true
+  notify: Notify updates of the system via Slack
+
+- name: Set users
+  when: users is defined
+  become: true
+  user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    groups: "{{ item.groups }}"
+    append: yes
+  with_items: "{{ users }}"
   notify: Notify updates of the system via Slack

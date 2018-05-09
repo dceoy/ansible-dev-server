@@ -31,10 +31,11 @@
         - ansible_distribution == 'MacOSX'
     - role: docker
       when:
-        - ansible_architecture == 'x86_64'
         - ansible_os_family in [ 'RedHat', 'Debian' ]
     - role: cli
     - role: python
     - role: ruby
     - role: go
     - role: r
+      when:
+        - ansible_architecture == 'x86_64'
