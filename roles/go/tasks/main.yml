@@ -18,7 +18,9 @@
   register: mkdir_go
 
 - name: Update packages
-  when: mkdir_go is changed
+  when:
+    - mkdir_go is changed
+    - ansible_architecture == 'x86_64'
   environment:
     PATH: "{{ path }}"
     GOPATH: "{{ gopath }}"
@@ -28,7 +30,9 @@
   notify: Notify updates of Go via Slack
 
 - name: Install packages
-  when: go_packages is defined
+  when:
+    - ansible_architecture == 'x86_64'
+    - go_packages is defined
   environment:
     PATH: "{{ path }}"
     GOPATH: "{{ gopath }}"

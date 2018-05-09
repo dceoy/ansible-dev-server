@@ -41,6 +41,7 @@
 
 - name: Install and update packages
   when:
+    - ansible_architecture == 'x86_64'
     - gem_x.stat.exists
     - gem_packages is defined
   gem:

@@ -57,6 +57,7 @@
 
 - name: Install and update cran packages
   when:
+    - ansible_architecture == 'x86_64'
     - r_repos is defined
     - r_repos.cran is defined
     - r_packages is defined
@@ -73,6 +74,7 @@
 
 - name: Install and update drat packages
   when:
+    - ansible_architecture == 'x86_64'
     - r_repos is defined
     - r_repos.drat is defined
     - r_packages is defined
@@ -88,6 +90,7 @@
 
 - name: Install and update github packages
   when:
+    - ansible_architecture == 'x86_64'
     - r_packages is defined
     - r_packages.github is defined
   environment:
@@ -101,6 +104,7 @@
 
 - name: Install and update bioconductor packages
   when:
+    - ansible_architecture == 'x86_64'
     - r_packages is defined
     - r_packages.bioconductor is defined
   environment:

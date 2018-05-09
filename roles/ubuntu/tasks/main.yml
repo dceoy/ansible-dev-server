@@ -51,7 +51,6 @@
   apt:
     autoclean: yes
     autoremove: yes
-    upgrade: yes
     update_cache: yes
     name: "{{ item }}"
     state: latest
@@ -141,36 +140,18 @@
   ignore_errors: true
   notify: Notify updates of the system via Slack
 
-- name: Check installed Docker CE
-  become: true
-  apt:
-    name: docker-ce
-    state: present
-  ignore_errors: true
-  register: docker_ce_installed
-
-- name: Uninstall old versions of Docker
-  when: docker_ce_installed is failed
+- name: Install Docker and Kubernetes
   become: true
   apt:
     autoclean: yes
     autoremove: yes
     name: "{{ item }}"
-    state: absent
-    purge: yes
-  with_items:
-    - docker
-    - docker-engine
-    - docker.io
-
-- name: Install Docker CE
-  when: docker_ce_installed is failed
-  become: true
-  apt:
-    autoclean: yes
-    autoremove: yes
-    name: docker-ce
     state: latest
+  with_items:
+    - docker-ce
+    - kubeadm
+    - kubectl
+    - kubelet
   ignore_errors: true
   notify: Notify updates of the system via Slack
 
@@ -183,18 +164,4 @@
     groups: "{{ item.groups }}"
     append: yes
   with_items: "{{ users }}"
-  notify: Notify updates of the system via Slack
-
-- name: Install Kubernetes
-  become: true
-  apt:
-    autoclean: yes
-    autoremove: yes
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - kubeadm
-    - kubectl
-    - kubelet
-  ignore_errors: true
   notify: Notify updates of the system via Slack

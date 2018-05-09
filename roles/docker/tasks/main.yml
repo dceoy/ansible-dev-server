@@ -39,7 +39,9 @@
   notify: Notify updates of Docker via Slack
 
 - name: Pull images
-  when: docker.stat.executable
+  when:
+    - docker.stat.executable
+    - ansible_architecture == 'x86_64'
   become: true
   docker_image:
     name: "{{ item }}"
@@ -76,4 +78,5 @@
     state: started
     daemon_reload: yes
     enabled: true
+  ignore_errors: true
   notify: Notify updates of Docker via Slack
