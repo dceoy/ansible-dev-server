@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:latest
 
 RUN set -e \
       && dnf -y upgrade \
