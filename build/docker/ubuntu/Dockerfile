@@ -1,4 +1,6 @@
-FROM ubuntu
+FROM ubuntu:latest
+
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN set -e \
       && apt-get -y update \
