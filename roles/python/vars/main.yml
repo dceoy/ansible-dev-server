@@ -109,6 +109,7 @@ pip_packages:
     - pymc
     - pystan
     - pytoml
+    - pyvcf
     - pyyaml
     - scikit-learn
     - scipy

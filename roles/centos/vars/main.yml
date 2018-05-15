@@ -72,11 +72,14 @@ yum_packages:
   - libxslt-devel
   - lmdb-devel
   - ltrace
+  - lua-devel
   - make
   - mariadb-devel
   - mariadb-connector-c-devel
   - maxima
   - mercurial
+  - mesa-libGL-devel
+  - mesa-libGLU-devel
   - mysql-devel
   - nginx
   - nkf
@@ -93,6 +96,7 @@ yum_packages:
   - parallel
   - patch
   - patchutils
+  - pbzip2
   - pigz
   - pkgconfig
   - postgresql-devel
