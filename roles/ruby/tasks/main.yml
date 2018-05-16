@@ -4,9 +4,9 @@
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
   with_items:
-    - repo: 'https://github.com/rbenv/rbenv.git'
+    - repo: https://github.com/rbenv/rbenv.git
       dest: "{{ ansible_env.HOME }}/.rbenv"
-    - repo: 'https://github.com/rbenv/ruby-build.git'
+    - repo: https://github.com/rbenv/ruby-build.git
       dest: "{{ ansible_env.HOME }}/.rbenv/plugins/ruby-build"
   notify: Notify updates of Ruby via Slack
 
