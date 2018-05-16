@@ -1,2 +1,0 @@
-# m h dom mon dow command
-0  7  *  *  0   cd /home/dceoy/ansible-dev && ansible-playbook provision_dev.yml
