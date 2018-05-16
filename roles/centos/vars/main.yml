@@ -1,7 +1,6 @@
 ---
 yum_packages:
   - atlas-devel
-  - atlas-sse3-devel
   - autoconf
   - automake
   - bats
@@ -15,7 +14,6 @@ yum_packages:
   - cairo-devel
   - ccache
   - cmake
-  - corkscrew
   - cscope
   - ctags
   - curl
@@ -28,7 +26,6 @@ yum_packages:
   - elixir
   - expect
   - fabric
-  - fcrackzip
   - fftw-devel
   - flex
   - freetds-devel
@@ -54,7 +51,6 @@ yum_packages:
   - incron
   - indent
   - inotify-tools
-  - julia
   - kernel-devel
   - kernel-headers
   - lapack-devel
@@ -103,20 +99,14 @@ yum_packages:
   - proj-devel
   - proj-epsg
   - protobuf-devel
-  - python3-devel
-  - python-devel
-  - python-yaml
+  - python36-devel
   - R-devel
   - rcs
   - readline-devel
   - redis
   - samba
-  - sbt
-  - scala
-  - scipy
   - ShellCheck
   - snappy-devel
-  - speedcrunch
   - sqlite-devel
   - sshfs
   - strace
@@ -135,8 +125,6 @@ yum_packages:
   - vim-enhanced
   - wget
   - whois
-  - wol
-  - wxMaxima
   - xfig
   - zsh
 users:

@@ -68,7 +68,7 @@
 
 - name: Clone dein.vim
   git:
-    repo: 'https://github.com/Shougo/dein.vim'
+    repo: https://github.com/Shougo/dein.vim
     dest: "{{ ansible_env.HOME }}/.vim/bundles/repos/github.com/Shougo/dein.vim"
   notify: Notify updates of CLI via Slack
 

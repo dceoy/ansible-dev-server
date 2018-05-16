@@ -105,7 +105,6 @@ dnf_packages:
   - python3-devel
   - python-devel
   - python-docker-py
-  - python-yaml
   - R-devel
   - rcs
   - readline-devel
@@ -114,7 +113,6 @@ dnf_packages:
   - samba
   - sbt
   - scala
-  - scipy
   - ShellCheck
   - snappy-devel
   - speedcrunch
@@ -134,9 +132,9 @@ dnf_packages:
   - v8-devel
   - valgrind
   - vim-enhanced
+  - wakeonlan
   - wget
   - whois
-  - wol
   - wxMaxima
   - xfig
   - zsh

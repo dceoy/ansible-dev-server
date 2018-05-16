@@ -1,7 +1,7 @@
 ---
 - name: Clone pyenv
   git:
-    repo: 'https://github.com/yyuu/pyenv.git'
+    repo: https://github.com/yyuu/pyenv.git
     dest: "{{ ansible_env.HOME }}/.pyenv"
   notify: Notify updates of Python via Slack
 
