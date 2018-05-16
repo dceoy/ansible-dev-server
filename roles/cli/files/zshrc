@@ -139,7 +139,7 @@ esac
 [[ -n "${GID}" ]] || export GID="$(id -g)"
 export R_LIBS_USER="${HOME}/.clir/r/library"
 export GOPATH="${HOME}/.go"
-export PATH="${GOPATH}/bin:${PATH}:${HOME}/.clir/bin"
+export PATH="${HOME}/.vim/bin:${GOPATH}/bin:${PATH}:${HOME}/.clir/bin"
 
 ### Git ###
 autoload -Uz vcs_info
