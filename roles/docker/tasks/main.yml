@@ -70,13 +70,3 @@
     append: yes
   with_items: "{{ docker_users }}"
   notify: Notify updates of Docker via Slack
-
-- name: Start and enable kubelet
-  become: true
-  systemd:
-    name: kubelet
-    state: started
-    daemon_reload: yes
-    enabled: true
-  ignore_errors: true
-  notify: Notify updates of Docker via Slack

@@ -1,0 +1,10 @@
+---
+- name: Start and enable kubelet
+  become: true
+  systemd:
+    name: kubelet
+    state: started
+    daemon_reload: yes
+    enabled: true
+  ignore_errors: true
+  notify: Notify updates of Kubernetes via Slack

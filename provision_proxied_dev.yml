@@ -22,9 +22,9 @@
         - ansible_architecture == 'x86_64'
         - ansible_distribution == 'Ubuntu'
     - role: docker
-      when:
-        - ansible_architecture == 'x86_64'
-        - ansible_os_family in [ 'RedHat', 'Debian' ]
+      when: ansible_os_family in [ 'RedHat', 'Debian' ]
+    - role: kubernetes
+      when: ansible_os_family in [ 'RedHat', 'Debian' ]
 
 - name: Set up development servers without sudo
   hosts: dev
@@ -36,9 +36,7 @@
     no_proxy: "{{ no_proxy }}"
   roles:
     - role: macos
-      when:
-        - ansible_architecture == 'x86_64'
-        - ansible_distribution == 'MacOSX'
+      when: ansible_distribution == 'MacOSX'
     - role: cli
     - role: vim
     - role: python
