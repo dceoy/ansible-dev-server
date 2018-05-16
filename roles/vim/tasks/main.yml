@@ -1,0 +1,54 @@
+---
+- name: Put ~/.vimrc
+  copy:
+    src: vimrc
+    dest: "{{ ansible_env.HOME }}/.vimrc"
+  notify: Notify updates of Vim via Slack
+
+- name: Check vim
+  stat:
+    path: "{{ ansible_env.HOME }}/.vim/bin/vim"
+  register: vim
+  notify: Notify updates of Vim via Slack
+
+- name: Create directories in ~/.vim/
+  file:
+    path: "{{ ansible_env.HOME }}/.vim/{{ item }}"
+    state: directory
+  with_items:
+    - src
+    - bundles
+  register: create_vim_dirs
+  notify: Notify updates of Vim via Slack
+
+- name: Clone vim
+  git:
+    repo: https://github.com/vim/vim.git
+    dest: "{{ ansible_env.HOME }}/.vim/src/vim"
+  register: clone_vim
+  notify: Notify updates of Vim via Slack
+
+- name: Install vim
+  when: clone_vim is changed or not vim.stat.exists
+  script: install_vim.sh
+  notify: Notify updates of Vim via Slack
+
+- name: Clone dein.vim
+  git:
+    repo: https://github.com/Shougo/dein.vim
+    dest: "{{ ansible_env.HOME }}/.vim/bundles/repos/github.com/Shougo/dein.vim"
+  notify: Notify updates of Vim via Slack
+
+- name: Install dein.vim
+  when: not vim.stat.exists
+  shell: |
+    ~/.vim/bundles/repos/github.com/Shougo/dein.vim/bin/installer.sh ~/.vim/bundles
+  ignore_errors: true
+  notify: Notify updates of Vim via Slack
+
+- name: Install Vim plugins
+  shell: |
+    .vim/bin/vim -c 'try | call dein#update() | finally | qall! | endtry' \
+      -N -u ${HOME}/.vimrc -U NONE -i NONE -V1 -e -s
+  ignore_errors: true
+  notify: Notify updates of Vim via Slack

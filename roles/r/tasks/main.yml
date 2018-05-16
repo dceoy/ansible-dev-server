@@ -4,7 +4,7 @@
     path: "{{ ansible_env.PATH }}:/usr/local/bin"
     r_libs: "{{ ansible_env.HOME }}/.clir/r/library"
     clir: "{{ ansible_env.HOME }}/.clir/bin/clir"
-    install_clir_sh: '/tmp/install_clir.sh'
+    install_clir_sh: /tmp/install_clir.sh
 
 - name: Check R command
   environment:

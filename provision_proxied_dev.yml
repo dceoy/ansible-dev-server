@@ -40,6 +40,7 @@
         - ansible_architecture == 'x86_64'
         - ansible_distribution == 'MacOSX'
     - role: cli
+    - role: vim
     - role: python
     - role: ruby
     - role: go
