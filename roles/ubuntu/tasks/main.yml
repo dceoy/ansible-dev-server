@@ -61,6 +61,7 @@
   notify: Notify updates of the system via Slack
 
 - name: Add Vim repo
+  become: true
   apt_repository:
     repo: ppa:jonathonf/vim
   notify: Notify updates of the system via Slack

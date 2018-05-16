@@ -6,7 +6,7 @@
 
 - name: Create docker.service.d/
   when:
-    - docker.stat.executable
+    - docker.stat.exists
     - use_proxy
   become: true
   file:
@@ -18,7 +18,7 @@
 
 - name: Put /etc/systemd/system/docker.service.d/option.conf
   when:
-    - docker.stat.executable
+    - docker.stat.exists
     - use_proxy
   become: true
   template:
@@ -29,7 +29,7 @@
     - Notify updates of Docker via Slack
 
 - name: Start and enable Docker
-  when: docker.stat.executable
+  when: docker.stat.exists
   become: true
   systemd:
     name: docker
@@ -40,7 +40,7 @@
 
 - name: Pull images
   when:
-    - docker.stat.executable
+    - docker.stat.exists
     - ansible_architecture == 'x86_64'
   become: true
   docker_image:
@@ -51,7 +51,7 @@
 
 - name: Add %docker
   when:
-    - docker.stat.executable
+    - docker.stat.exists
     - docker_users is defined
   become: true
   group:
@@ -61,7 +61,7 @@
 
 - name: Add users to %docker
   when:
-    - docker.stat.executable
+    - docker.stat.exists
     - docker_users is defined
   become: true
   user:

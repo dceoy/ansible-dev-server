@@ -44,6 +44,8 @@ apt_packages:
   - liblapack-dev
   - libleveldb-dev
   - liblmdb-dev
+  - liblua5.1-dev
+  - libluajit-5.1-dev
   - libmagick++-dev
   - libmariadb-client-lgpl-dev
   - libopencv-dev
@@ -65,6 +67,7 @@ apt_packages:
   - libxslt1-dev
   - libzmq3-dev
   - linux-libc-dev
+  - luajit
   - make
   - mercurial
   - nginx
@@ -86,6 +89,7 @@ apt_packages:
   - qemu-user-static
   - r-base-dev
   - redis-server
+  - ruby-dev
   - samba
   - scala
   - shellcheck

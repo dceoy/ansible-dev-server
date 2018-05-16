@@ -33,6 +33,7 @@
       when:
         - ansible_os_family in [ 'RedHat', 'Debian' ]
     - role: cli
+    - role: vim
     - role: python
     - role: ruby
     - role: go

@@ -72,6 +72,7 @@ dnf_packages:
   - lmdb-devel
   - ltrace
   - lua-devel
+  - luajit-devel
   - make
   - mariadb-devel
   - mariadb-connector-c-devel
@@ -109,6 +110,7 @@ dnf_packages:
   - rcs
   - readline-devel
   - redis
+  - ruby-devel
   - rust
   - samba
   - sbt

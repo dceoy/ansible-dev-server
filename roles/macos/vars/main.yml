@@ -13,6 +13,7 @@ brew_packages:
         - with-lua
         - with-python3
   without_options:
+    - atk
     - bats
     - boost
     - bwa
@@ -44,6 +45,7 @@ brew_packages:
     - llvm
     - lmdb
     - lua
+    - luajit
     - mariadb
     - mariadb-connector-c
     - mercurial
@@ -61,9 +63,11 @@ brew_packages:
     - pkg-config
     - postgresql
     - protobuf
+    - python3
     - readline
     - redis
     - rename
+    - ruby
     - rust
     - samtools
     - sbt

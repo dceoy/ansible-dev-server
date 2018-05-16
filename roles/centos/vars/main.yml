@@ -69,6 +69,8 @@ yum_packages:
   - lmdb-devel
   - ltrace
   - lua-devel
+  - luajit-devel
+  - luajit
   - make
   - mariadb-devel
   - mariadb-connector-c-devel
@@ -104,6 +106,7 @@ yum_packages:
   - rcs
   - readline-devel
   - redis
+  - ruby-devel
   - samba
   - ShellCheck
   - snappy-devel
