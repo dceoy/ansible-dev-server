@@ -1,6 +1,6 @@
 ---
-- name: Set up development servers
-  hosts: dev
+- name: Set up development servers with sudo
+  hosts: dev_sudo
   vars:
     use_proxy: false
     enable_nopass_sudo: true
@@ -25,12 +25,18 @@
       when:
         - ansible_architecture in [ 'armv6l', 'armv7l' ]
         - ansible_distribution == 'Debian'
-    - role: macos
-      when: ansible_distribution == 'MacOSX'
     - role: docker
       when: ansible_os_family in [ 'RedHat', 'Debian' ]
     - role: kubernetes
       when: ansible_os_family in [ 'RedHat', 'Debian' ]
+
+- name: Set up development servers
+  hosts: dev
+  vars:
+    use_proxy: false
+  roles:
+    - role: macos
+      when: ansible_distribution == 'MacOSX'
     - role: cli
     - role: vim
     - role: python
