@@ -66,22 +66,6 @@
     repo: ppa:jonathonf/vim
   notify: Notify updates of the system via Slack
 
-- name: Add the GPG key for Docker
-  become: true
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    id: 0EBFCD88
-    state: present
-  notify: Notify updates of the system via Slack
-
-- name: Add Docker repo
-  become: true
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
-    state: present
-    filename: docker
-  notify: Notify updates of the system via Slack
-
 - name: Add the GPG key for R
   when: ansible_distribution_release != 'bionic'
   become: true
