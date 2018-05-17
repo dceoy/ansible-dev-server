@@ -6,21 +6,11 @@
     enable_nopass_sudo: true
   roles:
     - role: fedora
-      when:
-        - ansible_architecture == 'x86_64'
-        - ansible_distribution == 'Fedora'
+      when: ansible_distribution == 'Fedora'
     - role: centos
-      when:
-        - ansible_architecture == 'x86_64'
-        - ansible_distribution == 'CentOS'
+      when: ansible_distribution == 'CentOS'
     - role: ubuntu
-      when:
-        - ansible_architecture == 'x86_64'
-        - ansible_distribution == 'Ubuntu'
-    - role: arm-ubuntu
-      when:
-        - ansible_architecture in ['armv6l', 'armv7l']
-        - ansible_distribution == 'Ubuntu'
+      when: ansible_distribution == 'Ubuntu'
     - role: arm-debian
       when:
         - ansible_architecture in ['armv6l', 'armv7l']

@@ -18,9 +18,7 @@
         - ansible_architecture == 'x86_64'
         - ansible_distribution == 'CentOS'
     - role: ubuntu
-      when:
-        - ansible_architecture == 'x86_64'
-        - ansible_distribution == 'Ubuntu'
+      when: ansible_distribution == 'Ubuntu'
     - role: docker
       when: ansible_os_family in ['RedHat', 'Debian']
     - role: kubernetes
