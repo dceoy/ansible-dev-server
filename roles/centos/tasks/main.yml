@@ -60,18 +60,6 @@
     dest: /etc/yum.repos.d/docker-ce.repo
   notify: Notify updates of the system via Slack
 
-- name: Add Kubernetes repo
-  become: true
-  yum_repository:
-    name: kubernetes
-    description: Kubernetes repo
-    baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-$basearch
-    enabled: yes
-    gpgcheck: yes
-    repo_gpgcheck: yes
-    gpgkey: "https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
-  notify: Notify updates of the system via Slack
-
 - name: Upgrade all packages
   become: true
   yum:
@@ -122,19 +110,6 @@
   yum:
     name: docker-ce
     state: latest
-  ignore_errors: true
-  notify: Notify updates of the system via Slack
-
-- name: Install Kubernetes
-  become: true
-  yum:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - flannel
-    - kubeadm
-    - kubectl
-    - kubelet
   ignore_errors: true
   notify: Notify updates of the system via Slack
 
