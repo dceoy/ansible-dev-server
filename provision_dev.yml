@@ -19,16 +19,16 @@
         - ansible_distribution == 'Ubuntu'
     - role: arm-ubuntu
       when:
-        - ansible_architecture in [ 'armv6l', 'armv7l' ]
+        - ansible_architecture in ['armv6l', 'armv7l']
         - ansible_distribution == 'Ubuntu'
     - role: arm-debian
       when:
-        - ansible_architecture in [ 'armv6l', 'armv7l' ]
+        - ansible_architecture in ['armv6l', 'armv7l']
         - ansible_distribution == 'Debian'
     - role: docker
-      when: ansible_os_family in [ 'RedHat', 'Debian' ]
+      when: ansible_os_family in ['RedHat', 'Debian']
     - role: kubernetes
-      when: ansible_os_family in [ 'RedHat', 'Debian' ]
+      when: ansible_os_family in ['RedHat', 'Debian']
 
 - name: Set up development servers
   hosts: dev

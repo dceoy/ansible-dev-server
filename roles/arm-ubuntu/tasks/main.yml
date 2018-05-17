@@ -13,14 +13,6 @@
     state: present
   notify: Notify updates of the system via Slack
 
-- name: Add Docker repo
-  become: true
-  apt_repository:
-    repo: "deb [arch=armhf] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
-    state: present
-    filename: docker
-  notify: Notify updates of the system via Slack
-
 - name: Upgrade all packages
   become: true
   apt:
