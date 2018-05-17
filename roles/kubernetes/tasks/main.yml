@@ -26,7 +26,7 @@
   when: ansible_os_family == 'Debian'
   become: true
   apt_repository:
-    repo: "deb [arch=amd64] http://apt.kubernetes.io/ kubernetes-xenial main"
+    repo: "deb [arch=amd64] http://apt.kubernetes.io/ kubernetes-{{ ansible_distribution_release }} main"
     state: present
     filename: kubernetes
   notify: Notify updates of Kubernetes via Slack
