@@ -1,14 +1,10 @@
-[mac]
-mini        ansible_connection=ssh
-
-[pi3]
-pi3         ansible_connection=ssh
-
-[pi1]
-pi1         ansible_connection=ssh
+[dev_sudo]
+localhost   ansible_connection=local
 
 [dev]
 localhost   ansible_connection=local
+mini        ansible_connection=ssh
+pi3         ansible_connection=ssh
 
 [all:vars]
 git_user_name=dceoy
