@@ -1,1 +1,46 @@
-../../arm-ubuntu/tasks/main.yml
+---
+- name: Add Vim repo
+  become: true
+  apt_repository:
+    repo: ppa:jonathonf/vim
+  notify: Notify updates of the system via Slack
+
+- name: Upgrade all packages
+  become: true
+  apt:
+    autoclean: yes
+    autoremove: yes
+    upgrade: yes
+    update_cache: yes
+  notify: Notify updates of the system via Slack
+
+- name: Install packages
+  when: apt_packages is defined
+  become: true
+  apt:
+    autoclean: yes
+    autoremove: yes
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - apt-transport-https
+    - aptitude
+    - ca-certificates
+    - git
+    - software-properties-common
+    - sudo
+    - "{{ apt_packages }}"
+  ignore_errors: true
+  notify: Notify updates of the system via Slack
+
+- name: Set users
+  when: users is defined
+  become: true
+  user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    groups: "{{ item.groups }}"
+    append: yes
+  with_items: "{{ users }}"
+  notify: Notify updates of the system via Slack

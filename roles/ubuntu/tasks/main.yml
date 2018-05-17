@@ -67,7 +67,6 @@
   notify: Notify updates of the system via Slack
 
 - name: Add the GPG key for R
-  when: ansible_distribution_release != 'bionic'
   become: true
   apt_key:
     id: E084DAB9
