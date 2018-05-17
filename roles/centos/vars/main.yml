@@ -70,7 +70,6 @@ yum_packages:
   - ltrace
   - lua-devel
   - luajit-devel
-  - luajit
   - make
   - mariadb-devel
   - mariadb-connector-c-devel
