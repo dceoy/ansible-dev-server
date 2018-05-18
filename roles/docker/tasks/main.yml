@@ -50,8 +50,19 @@
     filename: docker
   notify: Notify updates of Docker via Slack
 
-- name: Uninstall old versions of Docker in Fedora
+- name: Check installed Docker CE in Fedora
   when: ansible_distribution == 'Fedora'
+  become: true
+  dnf:
+    name: docker-ce
+    state: present
+  ignore_errors: true
+  register: dnf_docker_ce_installed
+
+- name: Uninstall old versions of Docker in Fedora
+  when:
+    - ansible_distribution == 'Fedora'
+    - dnf_docker_ce_installed is failed
   become: true
   dnf:
     autoremove: yes
@@ -69,8 +80,19 @@
     - docker-engine-selinux
     - docker-engine
 
-- name: Uninstall old versions of Docker in CentOS
+- name: Check installed Docker CE in CentOS
   when: ansible_distribution == 'CentOS'
+  become: true
+  yum:
+    name: docker-ce
+    state: present
+  ignore_errors: true
+  register: yum_docker_ce_installed
+
+- name: Uninstall old versions of Docker in CentOS
+  when:
+    - ansible_distribution == 'CentOS'
+    - yum_docker_ce_installed is failed
   become: true
   yum:
     name: "{{ item }}"
@@ -87,8 +109,19 @@
     - docker-engine-selinux
     - docker-engine
 
-- name: Uninstall old versions of Docker in Ubuntu
+- name: Check installed Docker CE in Ubuntu
   when: ansible_distribution == 'Ubuntu'
+  become: true
+  apt:
+    name: docker-ce
+    state: present
+  ignore_errors: true
+  register: apt_docker_ce_installed
+
+- name: Uninstall old versions of Docker in Ubuntu
+  when:
+    - ansible_distribution == 'Ubuntu'
+    - apt_docker_ce_installed is failed
   become: true
   apt:
     autoclean: yes
@@ -135,6 +168,13 @@
   notify:
     - Restart Docker
     - Notify updates of Docker via Slack
+
+- name: Put /etc/docker/daemon.json
+  become: true
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+  notify: Notify updates of Docker via Slack
 
 - name: Create docker.service.d/
   when: use_proxy
