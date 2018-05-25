@@ -24,6 +24,7 @@ pip_packages:
     - fbprophet
     - feather-format
     - flake8
+    - floyd-cli
     - ggplot
     - grip
     - holoviews
@@ -70,6 +71,7 @@ pip_packages:
     - setuptools
     - six
     - sphinx
+    - statsmodels
     - streamz
     - sympy
     - tensorflow
@@ -97,6 +99,8 @@ pip_packages:
     - ggplot
     - jupyter
     - jupyter_contrib_nbextensions
+    - jupyterhub
+    - jupyterlab
     - jupyterthemes
     - keras
     - lightgbm
