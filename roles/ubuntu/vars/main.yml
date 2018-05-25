@@ -68,7 +68,6 @@ apt_packages:
   - libzmq3-dev
   - linux-libc-dev
   - luajit
-  - mailutils
   - make
   - mercurial
   - nginx
