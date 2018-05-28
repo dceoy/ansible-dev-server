@@ -6,6 +6,9 @@ localhost   ansible_connection=local
 mini        ansible_connection=ssh
 pi3         ansible_connection=ssh
 
+[wifi]
+pi3         ansible_connection=ssh
+
 [all:vars]
 git_user_name = dceoy
 git_user_email = d.narsil@gmail.com
