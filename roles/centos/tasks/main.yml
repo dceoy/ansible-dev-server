@@ -46,13 +46,6 @@
     gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
   notify: Notify updates of the system via Slack
 
-- name: Add EPEL Vim repo
-  become: true
-  get_url:
-    url: https://copr.fedorainfracloud.org/coprs/mcepl/vim8/repo/epel-7/mcepl-vim8-epel-7.repo
-    dest: /etc/yum.repos.d/mcepl-vim8-epel-7.repo
-  notify: Notify updates of the system via Slack
-
 - name: Upgrade all packages
   become: true
   yum:
