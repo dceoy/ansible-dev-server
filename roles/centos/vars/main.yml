@@ -8,6 +8,7 @@ yum_packages:
   - bison
   - blas-devel
   - boost-devel
+  - bridge-utils
   - byacc
   - bzip2-devel
   - cabal-install
@@ -45,6 +46,7 @@ yum_packages:
   - go
   - gsl-devel
   - hdf5-devel
+  - hostapd
   - hunspell-devel
   - ImageMagick-c++-devel
   - ImageMagick-devel

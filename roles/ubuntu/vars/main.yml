@@ -22,6 +22,7 @@ apt_packages:
   - gfortran
   - ghc
   - golang
+  - hostapd
   - imagemagick
   - incron
   - inotify-tools
