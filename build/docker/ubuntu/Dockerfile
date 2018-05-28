@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN set -e \
       && apt-get -y update \
-      && apt-get -y upgrade \
+      && apt-get -y dist-upgrade \
       && apt-get -y install git aptitude ssh sudo libffi-dev libssl-dev python3-crypto python3-dev python3-pip \
       && apt-get -y autoremove \
       && apt-get clean
