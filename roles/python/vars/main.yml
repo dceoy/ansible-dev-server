@@ -14,6 +14,7 @@ pip_packages:
     - bottle
     - ccxt
     - coloredlogs
+    - cookiecutter
     - csvkit
     - cutadapt
     - cython
