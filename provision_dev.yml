@@ -15,9 +15,9 @@
       when:
         - ansible_architecture in ['armv6l', 'armv7l']
         - ansible_distribution == 'Debian'
-    - role: docker
+    - role: submodules/ansible-container-engine/roles/docker
       when: ansible_os_family in ['RedHat', 'Debian']
-    - role: kubernetes
+    - role: submodules/ansible-container-engine/roles/kubernetes
       when: ansible_os_family in ['RedHat', 'Debian']
 
 - name: Set up development servers
