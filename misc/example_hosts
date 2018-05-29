@@ -1,6 +1,3 @@
-[dev_sudo]
-localhost   ansible_connection=local
-
 [dev]
 localhost   ansible_connection=local
 mini        ansible_connection=ssh
