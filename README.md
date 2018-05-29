@@ -25,12 +25,6 @@ Set up the systems
 $ ansible-playbook provison_dev.yml
 ```
 
-Set up the systems with proxy
-
-```sh
-$ ansible-playbook provison_proxied_dev.yml
-```
-
 Set passwords for sudo
 
 ```sh

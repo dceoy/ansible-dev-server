@@ -1,9 +1,13 @@
 ---
 - name: Set up development servers with sudo
-  hosts: dev_sudo
+  hosts: dev
   vars:
-    use_proxy: false
+    use_proxy: "{{ http_proxy is defined }}"
     enable_nopass_sudo: true
+  environment:
+    http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
+    https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
+    no_proxy: "{{ no_proxy if no_proxy is defined else '' }}"
   roles:
     - role: fedora
       when: ansible_distribution == 'Fedora'
@@ -15,6 +19,19 @@
       when:
         - ansible_architecture in ['armv6l', 'armv7l']
         - ansible_distribution == 'Debian'
+
+- name: Set up container environments
+  hosts: dev
+  vars_files:
+    - group_vars/container.yml
+  vars:
+    ignore_running_containers: true
+    use_proxy: "{{ http_proxy is defined }}"
+  environment:
+    http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
+    https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
+    no_proxy: "{{ no_proxy if no_proxy is defined else '' }}"
+  roles:
     - role: submodules/ansible-container-engine/roles/docker
       when: ansible_os_family in ['RedHat', 'Debian']
     - role: submodules/ansible-container-engine/roles/kubernetes
@@ -23,7 +40,11 @@
 - name: Set up development servers
   hosts: dev
   vars:
-    use_proxy: false
+    use_proxy: "{{ http_proxy is defined }}"
+  environment:
+    http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
+    https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
+    no_proxy: "{{ no_proxy if no_proxy is defined else '' }}"
   roles:
     - role: macos
       when: ansible_distribution == 'MacOSX'
