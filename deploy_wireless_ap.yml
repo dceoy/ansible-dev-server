@@ -1,6 +1,0 @@
----
-- name: Set up a wireless access point
-  hosts:
-    - wifi
-  roles:
-    - role: submodules/ansible-wifi/roles/wireless
