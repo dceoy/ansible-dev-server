@@ -4,6 +4,3 @@
 [submodule "submodules/ansible-container-engine"]
 	path = submodules/ansible-container-engine
 	url = git@github.com:dceoy/ansible-container-engine.git
-[submodule "submodules/ansible-wifi"]
-	path = submodules/ansible-wifi
-	url = git@github.com:dceoy/ansible-wifi.git
