@@ -3,7 +3,7 @@
   hosts: dev
   vars:
     use_proxy: "{{ http_proxy is defined }}"
-    enable_nopass_sudo: true
+    enable_nopass_sudo: false
   environment:
     http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
     https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
