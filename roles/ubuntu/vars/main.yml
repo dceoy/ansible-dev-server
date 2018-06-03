@@ -49,6 +49,7 @@ apt_packages:
   - libluajit-5.1-dev
   - libmagick++-dev
   - libmariadb-client-lgpl-dev
+  - libncurses5-dev
   - libopencv-dev
   - libopenmpi-dev
   - libpcap-dev
@@ -111,8 +112,7 @@ apt_packages:
   - whois
   - zip
   - zlib1g-dev
-  - zsh
 users:
   - name: dceoy
     groups: sudo
-    shell: /bin/zsh
+    shell: /usr/bin/zsh

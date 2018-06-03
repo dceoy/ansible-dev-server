@@ -35,17 +35,9 @@
     validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
-- name: Add Docker repo
-  become: true
-  get_url:
-    url: https://download.docker.com/linux/centos/docker-ce.repo
-    dest: /etc/yum.repos.d/docker-ce.repo
-  notify: Notify updates of the system via Slack
-
 - name: Upgrade all packages
   become: true
   dnf:
-    autoremove: yes
     name: '*'
     state: latest
   notify: Notify updates of the system via Slack
@@ -54,13 +46,15 @@
   when: dnf_packages is defined
   become: true
   dnf:
-    autoremove: yes
     name: "{{ item }}"
     state: latest
   with_items:
     - dnf-plugins-core
     - git
+    - libselinux-python   # requied to be preinstalled
+    - redhat-rpm-config
     - sudo
+    - zsh
     - "{{ dnf_packages }}"
   notify: Notify updates of the system via Slack
 

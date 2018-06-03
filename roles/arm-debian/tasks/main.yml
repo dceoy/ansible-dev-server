@@ -24,6 +24,7 @@
     - git
     - software-properties-common
     - sudo
+    - zsh
     - "{{ apt_packages }}"
   ignore_errors: true
   notify: Notify updates of the system via Slack

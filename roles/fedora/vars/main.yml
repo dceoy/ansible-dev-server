@@ -29,7 +29,6 @@ dnf_packages:
   - elixir
   - expect
   - fabric
-  - fcrackzip
   - fftw-devel
   - flex
   - freetds-devel
@@ -84,6 +83,8 @@ dnf_packages:
   - mesa-libGL-devel
   - mesa-libGLU-devel
   - mysql-devel
+  - ncurses-compat-libs
+  - ncurses-devel
   - nginx
   - nkf
   - nmap
@@ -137,13 +138,12 @@ dnf_packages:
   - v8-devel
   - valgrind
   - vim-enhanced
-  - wakeonlan
+  - wol
   - wget
   - whois
   - wxMaxima
   - xfig
-  - zsh
 users:
   - name: dceoy
     groups: wheel
-    shell: /bin/zsh
+    shell: /usr/bin/zsh
