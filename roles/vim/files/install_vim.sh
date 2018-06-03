@@ -7,7 +7,7 @@ VIM_SRC_DIR="${VIM_DIR}/src"
 VIM_SRC_VIM_DIR="${VIM_SRC_DIR}/vim"
 case "${OSTYPE}" in
   darwin*)
-    ADD_OPT_ARGS="--with-lua-prefix=/usr/local"
+    ADD_OPT_ARGS='--with-lua-prefix=/usr/local'
     ;;
   linux*)
     ADD_OPT_ARGS=''
@@ -31,10 +31,10 @@ cd "${VIM_SRC_VIM_DIR}"
   --with-features=huge \
   --with-luajit \
   --enable-python3interp \
-  --enable-rubyinterp \
   --enable-largefile \
   --disable-netbeans \
   --enable-fail-if-missing \
   --enable-cscope
-make && make install
+make
+make install
 cd "${WD}"

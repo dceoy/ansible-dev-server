@@ -80,6 +80,7 @@ yum_packages:
   - mesa-libGL-devel
   - mesa-libGLU-devel
   - mysql-devel
+  - ncurses-devel
   - nginx
   - nkf
   - nmap
@@ -130,8 +131,7 @@ yum_packages:
   - wget
   - whois
   - xfig
-  - zsh
 users:
   - name: dceoy
     groups: sudo
-    shell: /bin/zsh
+    shell: /usr/bin/zsh

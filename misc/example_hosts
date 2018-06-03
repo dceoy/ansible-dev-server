@@ -1,9 +1,7 @@
 [dev]
 localhost   ansible_connection=local
 mini        ansible_connection=ssh
-pi3         ansible_connection=ssh
-
-[wifi]
+nano        ansible_connection=ssh
 pi3         ansible_connection=ssh
 
 [all:vars]
