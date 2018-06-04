@@ -62,8 +62,6 @@
 
 - name: Add the GPG key for R
   become: true
-  environment:
-    https_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
   apt_key:
     id: E084DAB9
     keyserver: keyserver.ubuntu.com

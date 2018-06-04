@@ -21,6 +21,10 @@
       when:
         - ansible_architecture in ['armv6l', 'armv7l']
         - ansible_distribution == 'Debian'
+    - role: submodules/ansible-dropbox/roles/dropbox
+      when:
+        - ansible_architecture == 'x86_64'
+        - ansible_distribution in ['Fedora', 'CentOS', 'Ubuntu']
 
 - name: Set up container environments
   hosts:
