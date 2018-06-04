@@ -19,6 +19,7 @@ brew_packages:
     - bwa
     - cabal-install
     - conjure-up
+    - coreutils
     - corkscrew
     - curl
     - elixir
@@ -97,6 +98,7 @@ brew_cask_packages:
   - amazon-music
   - atom
   - chrome-remote-desktop-host
+  - cuda
   - discord
   - docker
   - dropbox

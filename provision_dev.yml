@@ -1,7 +1,8 @@
 ---
 - name: Set up development servers with root
   hosts:
-    - priv
+    - priv_cpu
+    - priv_gpu
   vars:
     use_proxy: "{{ http_proxy is defined or https_proxy is defined }}"
     enable_nopass_sudo: false
@@ -23,7 +24,8 @@
 
 - name: Set up container environments
   hosts:
-    - priv
+    - priv_cpu
+    - priv_gpu
   vars_files:
     - group_vars/container.yml
   vars:
@@ -39,10 +41,25 @@
     - role: submodules/ansible-container-engine/roles/kubernetes
       when: ansible_os_family in ['RedHat', 'Debian']
 
+- name: Set up GPU environments
+  hosts:
+    - priv_gpu
+  vars:
+    use_proxy: "{{ http_proxy is defined or https_proxy is defined }}"
+  environment:
+    http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
+    https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
+    no_proxy: "{{ no_proxy if no_proxy is defined else '' }}"
+  roles:
+    - role: submodules/ansible-container-engine/roles/nvidia-docker
+      when: ansible_os_family in ['RedHat', 'Debian']
+
 - name: Set up development servers
   hosts:
-    - priv
-    - no_priv
+    - priv_cpu
+    - priv_gpu
+    - no_priv_cpu
+    - no_priv_gpu
   vars:
     use_proxy: "{{ http_proxy is defined or https_proxy is defined }}"
   environment:
