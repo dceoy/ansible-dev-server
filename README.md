@@ -29,11 +29,11 @@ Set passwords for sudo
 
 ```sh
 # password for sudo
-$ echo 'ansible_become_pass: sudo_pass_of_dev' > group_vars/dev.yml
+$ echo 'ansible_become_pass: sudo_pass' > group_vars/all.yml
 
 # encrypt
-$ ansible-vault encrypt group_vars/dev.yml
+$ ansible-vault encrypt group_vars/all.yml
 
 # edit
-$ ansible-vault edit group_vars/dev.yml
+$ ansible-vault edit group_vars/all.yml
 ```
