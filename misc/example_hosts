@@ -1,8 +1,11 @@
-[priv]
+[priv_cpu]
 localhost   ansible_connection=local
 
-[no_priv]
-server      ansible_connection=ssh
+[priv_gpu]
+gpu-server  ansible_connection=ssh
+
+[no_priv_cpu]
+cpu-server  ansible_connection=ssh
 
 [all:vars]
 git_user_name = foo
