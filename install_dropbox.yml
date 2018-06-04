@@ -1,0 +1,15 @@
+---
+- name: Set up container environments
+  hosts:
+    - dbox
+  vars:
+    use_proxy: "{{ http_proxy is defined }}"
+  environment:
+    http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
+    https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
+    no_proxy: "{{ no_proxy if no_proxy is defined else '' }}"
+  roles:
+    - role: submodules/ansible-dropbox/roles/dropbox
+      when:
+        - ansible_architecture == 'x86_64'
+        - ansible_distribution in ['Fedora', 'CentOS', 'Ubuntu']
