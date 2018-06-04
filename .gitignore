@@ -1,8 +1,7 @@
 *.retry
 .python-version
 hosts
-group_vars/dev.yml
+group_vars/all.yml
 group_vars/awx.yml
-group_vars/wifi.yml
 tmp/*
 .vault_password_file

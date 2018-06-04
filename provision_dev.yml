@@ -1,8 +1,9 @@
 ---
-- name: Set up development servers with sudo
-  hosts: dev
+- name: Set up development servers with root
+  hosts:
+    - priv
   vars:
-    use_proxy: "{{ http_proxy is defined }}"
+    use_proxy: "{{ http_proxy is defined or https_proxy is defined }}"
     enable_nopass_sudo: false
   environment:
     http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
@@ -21,12 +22,13 @@
         - ansible_distribution == 'Debian'
 
 - name: Set up container environments
-  hosts: dev
+  hosts:
+    - priv
   vars_files:
     - group_vars/container.yml
   vars:
+    use_proxy: "{{ http_proxy is defined or https_proxy is defined }}"
     ignore_running_containers: true
-    use_proxy: "{{ http_proxy is defined }}"
   environment:
     http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
     https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
@@ -38,9 +40,11 @@
       when: ansible_os_family in ['RedHat', 'Debian']
 
 - name: Set up development servers
-  hosts: dev
+  hosts:
+    - priv
+    - no_priv
   vars:
-    use_proxy: "{{ http_proxy is defined }}"
+    use_proxy: "{{ http_proxy is defined or https_proxy is defined }}"
   environment:
     http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
     https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
