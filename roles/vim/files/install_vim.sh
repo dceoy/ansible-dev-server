@@ -24,6 +24,7 @@ else
 fi
 
 cd "${VIM_SRC_VIM_DIR}"
+set +e
 ./configure \
   --prefix="${VIM_DIR}" \
   --enable-luainterp \
@@ -34,7 +35,14 @@ cd "${VIM_SRC_VIM_DIR}"
   --enable-largefile \
   --disable-netbeans \
   --enable-fail-if-missing \
-  --enable-cscope
-make
-make install
+  --enable-cscope \
+  || make distclean
+EXIT_CONFIGURE=${PIPESTATUS[0]}
+
+if [[ ${EXIT_CONFIGURE} -eq 0 ]]; then
+  make && make install
+else
+  exit "${EXIT_CONFIGURE}"
+fi
+
 cd "${WD}"
