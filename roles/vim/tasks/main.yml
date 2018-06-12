@@ -31,6 +31,7 @@
 - name: Install vim
   when: clone_vim is changed or not vim.stat.exists
   script: install_vim.sh
+  ignore_errors: true
   notify: Notify updates of Vim via Slack
 
 - name: Clone dein.vim

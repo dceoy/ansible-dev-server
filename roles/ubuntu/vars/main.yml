@@ -45,7 +45,7 @@ apt_packages:
   - liblapack-dev
   - libleveldb-dev
   - liblmdb-dev
-  - liblua5.1-dev
+  - liblua5.3-dev
   - libluajit-5.1-dev
   - libmagick++-dev
   - libmariadb-client-lgpl-dev
