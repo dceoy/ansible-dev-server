@@ -1,5 +1,6 @@
 ---
 dnf_packages:
+  - ant
   - atlas-devel
   - autoconf
   - automake

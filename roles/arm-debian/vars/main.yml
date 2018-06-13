@@ -1,5 +1,6 @@
 ---
 apt_packages:
+  - ant
   - apt-file
   - aptitude
   - apt-transport-https
