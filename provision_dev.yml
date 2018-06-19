@@ -21,13 +21,12 @@
       when:
         - ansible_architecture in ['armv6l', 'armv7l']
         - ansible_distribution == 'Debian'
+    - role: edevice
 
 - name: Set up container environments
   hosts:
     - priv_cpu
     - priv_gpu
-  vars_files:
-    - group_vars/container.yml
   vars:
     use_proxy: "{{ http_proxy is defined or https_proxy is defined }}"
     ignore_running_containers: true
