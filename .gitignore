@@ -1,7 +1,7 @@
 *.retry
 .python-version
 hosts
-group_vars/all.yml
-group_vars/awx.yml
-tmp/*
+group_vars/
+host_vars/
+tmp/
 .vault_password_file
