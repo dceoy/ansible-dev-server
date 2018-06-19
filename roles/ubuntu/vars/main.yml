@@ -13,6 +13,8 @@ apt_packages:
   - dkms
   - elixir
   - ethtool
+  - exfat-fuse
+  - exfat-utils
   - expect
   - fabric
   - fcrackzip
@@ -34,7 +36,7 @@ apt_packages:
   - libboost-all-dev
   - libbz2-dev
   - libcairo2-dev
-  - libcurl4-openssl-dev
+  - libcurl4-gnutls-dev
   - libffi-dev
   - libfreetype6-dev
   - libgdal1-dev

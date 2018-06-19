@@ -1,0 +1,15 @@
+---
+- name: Mount external devices
+  when:
+    - external_storages is defined
+    - inventory_hostname == item.host
+  become: true
+  mount:
+    path: "{{ item.path }}"
+    src: "{{ item.src }}"
+    fstype: "{{ item.fstype }}"
+    state: "{{ item.state }}"
+  with_items: "{{ external_storages }}"
+  ignore_errors: true
+  notify:
+    - Notify updates of the external devices via Slack
