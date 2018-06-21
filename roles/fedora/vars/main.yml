@@ -111,8 +111,6 @@ dnf_packages:
   - proj-epsg
   - protobuf-devel
   - python3-devel
-  - python-devel
-  - python-docker-py
   - R-devel
   - rcs
   - readline-devel
