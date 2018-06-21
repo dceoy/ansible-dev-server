@@ -60,11 +60,11 @@
     executable: "{{ pip_x.results[0].stat.path }}"
     state: latest
   with_items:
+    - docker
     - docker-compose
     - flake8
-    - pandas
+    - ipython
     - pip
-    - scipy
   ignore_errors: true
   notify: Notify updates of Python via Slack
 

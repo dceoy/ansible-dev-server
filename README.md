@@ -9,11 +9,19 @@ Setup
 -----
 
 ```sh
-$ git clone --recursive https://github.com/dceoy/ansible-dev.git
+$ git clone --recurse-submodules https://github.com/dceoy/ansible-dev.git
 $ cd ansible-dev
 $ echo -n 'your_vault_pass' > .vault_password_file
 $ cp misc/example_hosts hosts
 $ vim hosts   # => edit
+```
+
+Update
+------
+
+```sh
+$ git pull origin master
+$ git submodule update --recursive --remote
 ```
 
 Usage
