@@ -12,8 +12,8 @@ Setup
 $ git clone --recursive https://github.com/dceoy/ansible-dev.git
 $ cd ansible-dev
 $ echo -n 'your_vault_pass' > .vault_password_file
-$ cp misc/example_inventory inventory
-$ vim inventory   # => edit
+$ cp misc/example_hosts hosts
+$ vim hosts   # => edit
 ```
 
 Usage

@@ -1,6 +1,6 @@
 *.retry
 .python-version
-inventory
+hosts
 group_vars/
 host_vars/
 tmp/
