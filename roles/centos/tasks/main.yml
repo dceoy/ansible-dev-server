@@ -35,17 +35,6 @@
     validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
-- name: Add EPEL YUM repo
-  become: true
-  yum_repository:
-    name: epel
-    description: EPEL YUM repo
-    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
-    enabled: yes
-    gpgcheck: yes
-    gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
-  notify: Notify updates of the system via Slack
-
 - name: Upgrade all packages
   become: true
   yum:
