@@ -15,6 +15,7 @@ brew_packages:
   without_options:
     - atk
     - bats
+    - bazel
     - boost
     - bwa
     - cabal-install

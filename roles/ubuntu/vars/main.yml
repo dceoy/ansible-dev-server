@@ -24,6 +24,7 @@ apt_packages:
   - gdebi-core
   - gfortran
   - ghc
+  - gnome-terminal
   - golang
   - hostapd
   - imagemagick
