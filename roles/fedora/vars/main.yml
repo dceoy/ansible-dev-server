@@ -45,6 +45,7 @@ dnf_packages:
   - glibc-devel
   - glog-devel
   - gmp-devel
+  - gnome-terminal
   - gnuplot
   - go
   - gsl-devel
@@ -102,6 +103,7 @@ dnf_packages:
   - patch
   - patchutils
   - pbzip2
+  - pciutils
   - pigz
   - pkgconfig
   - postgresql-devel
