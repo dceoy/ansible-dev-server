@@ -78,6 +78,7 @@ pip_packages:
     - tensorflow
     - tensorflow-gpu
     - testfixtures
+    - tflearn
     - tornado
     - tox
     - twine
