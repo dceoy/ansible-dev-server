@@ -49,7 +49,6 @@ brew_packages:
     - lua
     - luajit
     - mariadb
-    - mariadb-connector-c
     - md5sha1sum
     - mercurial
     - mongodb

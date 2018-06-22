@@ -2,7 +2,6 @@
 r_repos:
   cran:
     - https://cran.rstudio.com/
-    - https://cran.ism.ac.jp/
   drat:
     - dmlc
     - eddelbuettel
@@ -95,5 +94,6 @@ r_packages:
     - Biostrings
     - DNAcopy
     - GEOquery
+    - org.Hs.eg.db
     - PhViD
     - RDRToolbox
