@@ -55,9 +55,20 @@
   with_items: "{{ r_repos.drat }}"
   notify: Notify updates of R via Slack
 
+- name: Update installed packages
+  when:
+    - r_repos is defined
+    - r_repos.cran is defined
+  environment:
+    PATH: "{{ path }}"
+    R_LIBS_USER: "{{ r_libs }}"
+  shell: |
+    {{ clir }} update --bioc
+  ignore_errors: true
+  notify: Notify updates of R via Slack
+
 - name: Install and update cran packages
   when:
-    - ansible_architecture == 'x86_64'
     - r_repos is defined
     - r_repos.cran is defined
     - r_packages is defined
@@ -74,7 +85,6 @@
 
 - name: Install and update drat packages
   when:
-    - ansible_architecture == 'x86_64'
     - r_repos is defined
     - r_repos.drat is defined
     - r_packages is defined
@@ -90,7 +100,6 @@
 
 - name: Install and update github packages
   when:
-    - ansible_architecture == 'x86_64'
     - r_packages is defined
     - r_packages.github is defined
   environment:
@@ -104,7 +113,6 @@
 
 - name: Install and update bioconductor packages
   when:
-    - ansible_architecture == 'x86_64'
     - r_packages is defined
     - r_packages.bioconductor is defined
   environment:
