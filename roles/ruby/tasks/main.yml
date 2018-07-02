@@ -3,6 +3,7 @@
   git:
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
+    force: yes
   with_items:
     - repo: https://github.com/rbenv/rbenv.git
       dest: "{{ ansible_env.HOME }}/.rbenv"
