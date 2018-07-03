@@ -30,7 +30,7 @@ Usage
 Set up the systems
 
 ```sh
-$ ansible-playbook provison_dev.yml
+$ ansible-playbook provison.yml
 ```
 
 Set passwords for sudo
