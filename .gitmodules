@@ -1,6 +1,3 @@
-[submodule "submodules/awx"]
-	path = submodules/awx
-	url = git@github.com:ansible/awx.git
 [submodule "submodules/ansible-container-engine"]
 	path = submodules/ansible-container-engine
 	url = git@github.com:dceoy/ansible-container-engine.git
