@@ -61,6 +61,7 @@ brew_packages:
     - pandoc
     - parallel
     - pbzip2
+    - pdf2svg
     - pigz
     - pkg-config
     - postgresql
