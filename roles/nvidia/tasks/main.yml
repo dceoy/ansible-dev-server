@@ -1,0 +1,15 @@
+---
+- name: Check NVIDIA drivers
+  when: nvidia_installer is defined
+  stat:
+    path: /usr/bin/nvidia-smi
+  register: nvidia_smi
+
+- name: Install NVIDIA drivers
+  when:
+    - nvidia_installer is defined
+    - not nvidia_smi.stat.exists
+  become: true
+  shell: |
+    bash {{ nvidia_installer }} --dkms --silent
+  notify: Notify updates of NVIDIA via Slack
