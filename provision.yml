@@ -52,6 +52,8 @@
     https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
     no_proxy: "{{ no_proxy if no_proxy is defined else '' }}"
   roles:
+    - role: nvidia
+      when: ansible_os_family in ['RedHat', 'Debian']
     - role: submodules/ansible-container-engine/roles/docker
       when: ansible_os_family in ['RedHat', 'Debian']
     - role: submodules/ansible-container-engine/roles/kubernetes
