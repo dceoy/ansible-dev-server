@@ -107,6 +107,7 @@ brew_cask_packages:
   - endnote
   - firefox
   - fcrackzip
+  - gimp
   - google-backup-and-sync
   - google-chrome
   - google-japanese-ime
