@@ -79,7 +79,9 @@ apt_packages:
   - samba
   - scala
   - shellcheck
+  - software-properties-common
   - sqlite3
+  - sudo
   - supervisor
   - swig
   - time
@@ -93,6 +95,7 @@ apt_packages:
   - whois
   - zip
   - zlib1g-dev
+  - zsh
 users:
   - name: dceoy
     groups: sudo

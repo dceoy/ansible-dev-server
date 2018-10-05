@@ -13,6 +13,7 @@ pip_packages:
     - bokeh
     - bottle
     - ccxt
+    - colored-traceback
     - coloredlogs
     - cookiecutter
     - csvkit
@@ -28,6 +29,7 @@ pip_packages:
     - floyd-cli
     - ggplot
     - grip
+    - hiredis
     - holoviews
     - ipykernel
     - ipython

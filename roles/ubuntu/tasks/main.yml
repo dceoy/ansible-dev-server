@@ -52,12 +52,11 @@
     autoclean: yes
     autoremove: yes
     update_cache: yes
-    name: "{{ item }}"
+    name:
+      - apt-transport-https
+      - aptitude
+      - ca-certificates
     state: latest
-  with_items:
-    - apt-transport-https
-    - aptitude
-    - ca-certificates
   notify: Notify updates of the system via Slack
 
 - name: Add the GPG key for R
@@ -91,14 +90,8 @@
   apt:
     autoclean: yes
     autoremove: yes
-    name: "{{ item }}"
+    name: "{{ apt_packages }}"
     state: latest
-  with_items:
-    - git
-    - software-properties-common
-    - sudo
-    - zsh
-    - "{{ apt_packages }}"
   ignore_errors: true
   notify: Notify updates of the system via Slack
 
