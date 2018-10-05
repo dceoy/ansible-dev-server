@@ -1,6 +1,6 @@
 ---
 go_packages:
-  - github.com/codegangsta/cli
+  - github.com/docopt/docopt-go
   - github.com/kahing/goofys
   - github.com/naoina/toml
   - github.com/spf13/hugo

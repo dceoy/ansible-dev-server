@@ -46,16 +46,8 @@
   when: dnf_packages is defined
   become: true
   dnf:
-    name: "{{ item }}"
+    name: "{{ dnf_packages }}"
     state: latest
-  with_items:
-    - dnf-plugins-core
-    - git
-    - libselinux-python   # requied to be preinstalled
-    - redhat-rpm-config
-    - sudo
-    - zsh
-    - "{{ dnf_packages }}"
   notify: Notify updates of the system via Slack
 
 - name: Set users

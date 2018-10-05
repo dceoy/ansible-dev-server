@@ -24,6 +24,7 @@ dnf_packages:
   - cvs
   - diffstat
   - dkms
+  - dnf-plugins-core
   - dnf-plugin-system-upgrade
   - doxygen
   - elfutils
@@ -42,6 +43,7 @@ dnf_packages:
   - gdbm-devel
   - gflags-devel
   - ghc
+  - git
   - glibc-devel
   - glog-devel
   - gmp-devel
@@ -67,6 +69,7 @@ dnf_packages:
   - libffi-devel
   - libpcap-devel
   - libpng-devel
+  - libselinux-python   # requied to be preinstalled
   - libsqlite3x-devel
   - librsvg2-devel
   - libssh2-devel
@@ -114,6 +117,7 @@ dnf_packages:
   - R-devel
   - rcs
   - readline-devel
+  - redhat-rpm-config
   - redis
   - ruby-devel
   - rust
@@ -126,6 +130,7 @@ dnf_packages:
   - sqlite-devel
   - sshfs
   - strace
+  - sudo
   - supervisor
   - swig
   - systemtap
@@ -144,6 +149,7 @@ dnf_packages:
   - whois
   - wxMaxima
   - xfig
+  - zsh
 users:
   - name: dceoy
     groups: wheel

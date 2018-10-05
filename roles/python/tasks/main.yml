@@ -57,15 +57,12 @@
     - pip_packages is defined
     - pip_packages[3] is defined
   pip:
-    name: "{{ item }}"
+    name:
+      - flake8
+      - ipython
+      - pip
     executable: "{{ pip_x.results[0].stat.path }}"
     state: latest
-  with_items:
-    - docker
-    - docker-compose
-    - flake8
-    - ipython
-    - pip
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
@@ -76,10 +73,9 @@
     - pip_packages is defined
     - pip_packages[3] is defined
   pip:
-    name: "{{ item }}"
+    name: "{{ pip_packages[3] }}"
     executable: "{{ pip_x.results[0].stat.path }}"
     state: latest
-  with_items: "{{ pip_packages[3] }}"
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
