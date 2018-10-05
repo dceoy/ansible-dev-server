@@ -1,5 +1,13 @@
 ---
 brew_packages:
+  from_third_party_repos:
+    - tap: homebrew/dupes
+      name: grep
+    - tap: homebrew/science
+      name:
+        - hdf5
+        - opencv
+        - r
   with_options:
     - name: cairo
       options:
@@ -33,6 +41,7 @@ brew_packages:
     - gdbm
     - gflags
     - ghc
+    - git
     - glog
     - gnu-sed
     - go
@@ -88,13 +97,6 @@ brew_packages:
     - wget
     - xml2
     - zsh
-brew_tap_packages:
-  dups:
-    - grep
-  science:
-    - hdf5
-    - opencv
-    - r
 brew_cask_packages:
   - adobe-acrobat-reader
   - amazon-music

@@ -8,9 +8,13 @@
     - Notify updates of the system via Slack
 
 - name: Tap repositories
+  when:
+    - brew_packages is defined
+    - brew_packages.from_third_party_repos is defined
   homebrew_tap:
-    name: homebrew/dupes,homebrew/science
+    name: "{{ item.tap }}"
     state: present
+  with_items: "{{ brew_packages.from_third_party_repos }}"
   notify: Notify updates of the system via Slack
 
 - name: Install packages using casks
@@ -27,24 +31,21 @@
     - brew_packages is defined
     - brew_packages.without_options is defined
   homebrew:
-    name: "{{ item }}"
+    name: "{{ brew_packages.without_options }}"
     state: latest
-  with_items:
-    - git
-    - "{{ brew_packages.without_options }}"
   ignore_errors: true
   notify:
     - Clean homebrew
     - Notify updates of the system via Slack
 
 - name: Install tap packages
-  when: brew_tap_packages is defined
+  when:
+    - brew_packages is defined
+    - brew_packages.from_third_party_repos is defined
   homebrew:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     state: latest
-  with_items:
-    - "{{ brew_tap_packages.dups }}"
-    - "{{ brew_tap_packages.science }}"
+  with_items: "{{ brew_packages.from_third_party_repos }}"
   ignore_errors: true
   notify:
     - Clean homebrew

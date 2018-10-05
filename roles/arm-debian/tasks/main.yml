@@ -14,18 +14,9 @@
   apt:
     autoclean: yes
     autoremove: yes
-    name: "{{ item }}"
+    name: "{{ apt_packages }}"
     state: latest
     update_cache: yes
-  with_items:
-    - apt-transport-https
-    - aptitude
-    - ca-certificates
-    - git
-    - software-properties-common
-    - sudo
-    - zsh
-    - "{{ apt_packages }}"
   ignore_errors: true
   notify: Notify updates of the system via Slack
 

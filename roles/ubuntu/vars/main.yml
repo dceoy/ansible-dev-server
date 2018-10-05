@@ -24,6 +24,7 @@ apt_packages:
   - gdebi-core
   - gfortran
   - ghc
+  - git
   - gnome-terminal
   - golang
   - hostapd
@@ -90,13 +91,16 @@ apt_packages:
   - qemu-user-static
   - r-base-dev
   - redis-server
+  - rename
   - ruby-dev
   - samba
   - scala
   - shellcheck
   - snapd
+  - software-properties-common
   - sqlite3
   - sshfs
+  - sudo
   - supervisor
   - swig
   - time
@@ -111,6 +115,7 @@ apt_packages:
   - whois
   - zip
   - zlib1g-dev
+  - zsh
 users:
   - name: dceoy
     groups: sudo

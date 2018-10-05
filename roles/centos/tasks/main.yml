@@ -47,17 +47,8 @@
   when: yum_packages is defined
   become: true
   yum:
-    name: "{{ item }}"
+    name: "{{ yum_packages }}"
     state: latest
-  with_items:
-    - device-mapper-persistent-data
-    - epel-release
-    - git
-    - lvm2
-    - sudo
-    - yum-utils
-    - zsh
-    - "{{ yum_packages }}"
   ignore_errors: true
   notify: Notify updates of the system via Slack
 
