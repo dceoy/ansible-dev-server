@@ -2,17 +2,20 @@
 pip_packages:
   3:
     - git+https://github.com/oanda/oandapy.git
+    - git+https://github.com/dceoy/oanda-cli.git
     - git+https://github.com/dceoy/fract.git
     - ansible
     - ansible-lint
-    - apache-airflow
+  # - apache-airflow
     - apache-libcloud
     - awscli
+    - bcolz
     - biopython
     - beautifulsoup4
     - bokeh
     - bottle
-    - ccxt
+  # - cntk
+  # - cntk-gpu
     - colored-traceback
     - coloredlogs
     - cookiecutter
@@ -29,6 +32,7 @@ pip_packages:
     - floyd-cli
     - ggplot
     - grip
+    - h5py
     - hiredis
     - holoviews
     - ipykernel
@@ -40,19 +44,23 @@ pip_packages:
     - lightgbm
     - luigi
     - matplotlib
+    - mkl
     - mock
     - mxnet
     - nose
+    - notebook
     - notedown
     - numexpr
     - numpy
     - pandas
     - pandas-datareader
+    - pillow
     - pip
     - plotly
     - psutil
     - pubnub
     - plyvel
+    - pydot
     - pymc
     - pyopenssl
     - pypdf2
@@ -74,14 +82,17 @@ pip_packages:
     - selenium
     - setuptools
     - six
+    - sklearn-pandas
     - sphinx
     - statsmodels
     - streamz
     - sympy
-    - tensorflow
-    - tensorflow-gpu
+  # - tensorflow
+  # - tensorflow-gpu
     - testfixtures
     - tflearn
+    - torch
+    - torchvision
     - tornado
     - tox
     - twine
