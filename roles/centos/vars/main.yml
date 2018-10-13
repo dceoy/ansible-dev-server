@@ -98,6 +98,7 @@ yum_packages:
   - openssl-devel
   - oprofile
   - p7zip
+  - pamtester
   - pandoc
   - parallel
   - patch

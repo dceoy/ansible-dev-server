@@ -34,6 +34,8 @@ brew_packages:
     - elixir
     - ffmpeg
     - freetds
+    - freetype
+    - fribidi
     - gawk
     - gcc
     - gcc5
@@ -46,13 +48,17 @@ brew_packages:
     - gnu-sed
     - go
     - hadolint
+    - harfbuzz
     - hunspell
     - imagemagick
     - kubectl
     - leveldb
+    - libjpeg
     - librsvg
     - libssh2
+    - libtiff
     - libxml2
+    - little-cms2
     - llvm
     - lmdb
     - lua
@@ -94,6 +100,7 @@ brew_packages:
     - tree
     - wakeonlan
     - watch
+    - webp
     - wget
     - xml2
     - zsh

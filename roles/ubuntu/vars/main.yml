@@ -80,6 +80,7 @@ apt_packages:
   - nodejs
   - npm
   - p7zip-full
+  - pamtester
   - pandoc
   - patch
   - pbzip2
