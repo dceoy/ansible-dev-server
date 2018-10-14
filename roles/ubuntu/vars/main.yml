@@ -8,6 +8,7 @@ apt_packages:
   - bzip2
   - cabal-install
   - cmake
+  - colordiff
   - corkscrew
   - curl
   - dkms

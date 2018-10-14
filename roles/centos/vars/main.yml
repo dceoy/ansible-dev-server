@@ -16,6 +16,7 @@ yum_packages:
   - cairo-devel
   - ccache
   - cmake
+  - colordiff
   - cscope
   - ctags
   - curl

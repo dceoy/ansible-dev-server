@@ -27,6 +27,7 @@ brew_packages:
     - boost
     - bwa
     - cabal-install
+    - colordiff
     - conjure-up
     - coreutils
     - corkscrew

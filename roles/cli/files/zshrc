@@ -100,6 +100,7 @@ alias ll='ls -lF'
 alias lla='ls -lA'
 alias llh='ls -lh'
 alias less='less -iMRW'
+alias diff='diff -u'
 alias d='docker'
 alias dc='docker-compose'
 alias drmc='docker container ps -aq | xargs docker container rm'
@@ -125,7 +126,6 @@ case "${OSTYPE}" in
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
-    alias diff='diff --color'
     ;;
 esac
 
