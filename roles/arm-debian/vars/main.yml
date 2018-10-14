@@ -9,6 +9,7 @@ apt_packages:
   - cabal-install
   - ca-certificates
   - cmake
+  - colordiff
   - corkscrew
   - curl
   - dkms
