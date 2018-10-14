@@ -17,6 +17,7 @@ dnf_packages:
   - cargo
   - ccache
   - cmake
+  - colordiff
   - corkscrew
   - cscope
   - ctags
