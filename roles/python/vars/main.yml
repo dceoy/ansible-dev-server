@@ -8,6 +8,7 @@ pip_packages:
     - ansible-lint
   # - apache-airflow
     - apache-libcloud
+    - autopep8
     - awscli
     - bcolz
     - biopython
@@ -35,6 +36,7 @@ pip_packages:
     - h5py
     - hiredis
     - holoviews
+    - hyperopt
     - ipykernel
     - ipython
     - jupyter
@@ -95,6 +97,7 @@ pip_packages:
     - torchvision
     - tornado
     - tox
+    - tqdm
     - twine
     - twitter
     - vim-vint
