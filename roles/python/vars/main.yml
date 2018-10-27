@@ -10,6 +10,7 @@ pip_packages:
     - apache-libcloud
     - autopep8
     - awscli
+    - bash_kernel
     - bcolz
     - biopython
     - beautifulsoup4

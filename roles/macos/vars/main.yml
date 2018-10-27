@@ -54,6 +54,7 @@ brew_packages:
     - imagemagick
     - kubectl
     - leveldb
+    - libgit2
     - libjpeg
     - librsvg
     - libssh2
