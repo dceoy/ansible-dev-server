@@ -66,6 +66,7 @@ yum_packages:
   - libcurl-devel
   - libdb4-devel
   - libffi-devel
+  - libgit2-devel
   - libpcap-devel
   - libpng-devel
   - libsqlite3x-devel

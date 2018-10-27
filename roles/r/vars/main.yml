@@ -82,6 +82,7 @@ r_packages:
     - VGAM
     - yaml
   github:
+    - IRkernel/IRkernel
     - klutometis/roxygen
     - rstudio/httpuv
     - rstudio/tensorflow
