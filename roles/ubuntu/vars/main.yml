@@ -43,6 +43,7 @@ apt_packages:
   - libfreetype6-dev
   - libgdbm-dev
   - libgflags-dev
+  - libgit2-dev
   - libgoogle-glog-dev
   - libhdf5-serial-dev
   - libhunspell-dev
