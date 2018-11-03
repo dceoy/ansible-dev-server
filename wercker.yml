@@ -1,6 +1,6 @@
 ---
 box:
-  id: dceoy/wercker-base:ansible
+  id: dceoy/ansible:latest
   entrypoint: /bin/bash -c
 build:
   steps:
