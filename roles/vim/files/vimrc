@@ -91,7 +91,7 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('tell-k/vim-autopep8')                    " an automatic python code formatter by pep8
   call dein#add('hynek/vim-python-pep8-indent')           " a nicer python indentation style for vim
   call dein#add('ivanov/vim-ipython')                     " integration between vim and ipython
-  call dein#add('vyzyv/vimpyter')                         " edit jupyter notebooks in vim
+  "call dein#add('vyzyv/vimpyter')                         " edit jupyter notebooks in vim
   " R
   call dein#add('vim-scripts/R-syntax-highlighting')      " r syntax highlighting
   " BUGS
