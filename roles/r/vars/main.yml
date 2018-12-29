@@ -97,4 +97,5 @@ r_packages:
     - GEOquery
     - org.Hs.eg.db
     - PhViD
+    - qvalue
     - RDRToolbox
