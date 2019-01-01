@@ -123,6 +123,7 @@ brew_cask_packages:
   - google-backup-and-sync
   - google-chrome
   - google-japanese-ime
+  - handrake
   - iterm2
   - java
   - julia
