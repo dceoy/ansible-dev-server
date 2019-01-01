@@ -28,9 +28,18 @@
   register: clone_vim
   notify: Notify updates of Vim via Slack
 
+- name: Copy install_vim.sh
+  copy:
+    src: install_vim.sh
+    dest: "{{ ansible_env.HOME }}/.vim/install_vim.sh"
+    mode: 0755
+  register: copy_install_vim_sh
+  notify: Notify updates of Vim via Slack
+
 - name: Install vim
-  when: clone_vim is changed or not vim.stat.exists
-  script: install_vim.sh
+  when: clone_vim is changed or copy_install_vim_sh is changed or not vim.stat.exists
+  shell: |
+    {{ ansible_env.HOME }}/.vim/install_vim.sh
   ignore_errors: true
   notify: Notify updates of Vim via Slack
 
