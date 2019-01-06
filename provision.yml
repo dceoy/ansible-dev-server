@@ -5,7 +5,6 @@
     - priv_gpu
   vars:
     use_proxy: "{{ http_proxy is defined or https_proxy is defined }}"
-    enable_nopass_sudo: false
   environment:
     http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
     https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
