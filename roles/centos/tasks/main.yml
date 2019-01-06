@@ -25,7 +25,9 @@
   notify: Notify updates of the system via Slack
 
 - name: Write %wheel in /etc/sudoers
-  when: enable_nopass_sudo
+  when:
+    - enable_nopass_sudo is defined
+    - enable_nopass_sudo
   become: true
   blockinfile:
     dest: /etc/sudoers
