@@ -104,6 +104,8 @@ brew_packages:
     - watch
     - webp
     - wget
+    - wine
+    - winetricks
     - xml2
     - zlib
     - zsh
