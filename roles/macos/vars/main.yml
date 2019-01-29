@@ -124,6 +124,7 @@ brew_cask_packages:
   - gimp
   - google-backup-and-sync
   - google-chrome
+  - google-cloud-sdk
   - google-japanese-ime
   - handrake
   - iterm2
