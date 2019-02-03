@@ -3,9 +3,7 @@
   homebrew:
     update_homebrew: yes
     upgrade_all: yes
-  notify:
-    - Clean homebrew
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Tap repositories
   when:
@@ -34,9 +32,7 @@
     name: "{{ brew_packages.without_options }}"
     state: latest
   ignore_errors: true
-  notify:
-    - Clean homebrew
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Install tap packages
   when:
@@ -47,9 +43,7 @@
     state: latest
   with_items: "{{ brew_packages.from_third_party_repos }}"
   ignore_errors: true
-  notify:
-    - Clean homebrew
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
 
 - name: Install packages with options
   when:
@@ -61,6 +55,4 @@
     state: latest
   with_items: "{{ brew_packages.with_options }}"
   ignore_errors: true
-  notify:
-    - Clean homebrew
-    - Notify updates of the system via Slack
+  notify: Notify updates of the system via Slack
