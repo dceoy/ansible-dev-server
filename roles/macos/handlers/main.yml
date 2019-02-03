@@ -1,8 +1,4 @@
 ---
-- name: Clean homebrew
-  shell: |
-    /usr/local/bin/brew cleanup
-
 - name: Notify updates of the system via Slack
   when:
     - slack_token is defined
