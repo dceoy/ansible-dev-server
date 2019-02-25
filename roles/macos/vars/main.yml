@@ -24,6 +24,7 @@ brew_packages:
     - atk
     - bats
     - bazel
+    - bcftools
     - boost
     - bwa
     - cabal-install
@@ -51,6 +52,7 @@ brew_packages:
     - hadolint
     - harfbuzz
     - hunspell
+    - igv
     - imagemagick
     - kubectl
     - leveldb
