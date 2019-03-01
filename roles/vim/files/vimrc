@@ -185,7 +185,8 @@ set wrapscan                                " search wrap around the end of the 
 set ignorecase                              " ignore case sensitivity on search patterns
 set smartcase                               " case insensitive searches become sensitive with capitals
 set list listchars=eol:\ ,tab:>-,trail:_,extends:>,precedes:<       " show invisible chars
-au BufNewFile,BufRead *.go set nolist
+hi NonText    ctermbg=NONE ctermfg=002 guibg=NONE guifg=NONE
+hi SpecialKey ctermbg=NONE ctermfg=000 guibg=NONE guifg=NONE
 set display=lastline                                                " display as much as possible of the last line in a window
 set display+=uhex                                                   " show unprintable characters hexadecimal
 set laststatus=2                                                    " always show the status line
@@ -203,7 +204,8 @@ set autoindent                              " take indent for new line from prev
 set cindent                                 " do c-style indenting
 set expandtab                               " replace tabs with ${tabstop} spaces
 set tabstop=2 shiftwidth=2 softtabstop=0    " set tabstop, shiftwidth, softtabstop
-au BufNewFile,BufRead *.py set ts=4 sw=4 sts=0
+au BufNewFile,BufRead *.py,*.go set ts=4 sw=4 sts=0
+au BufNewFile,BufRead *.go setlocal noexpandtab
 set smarttab                                " sw at the start of the line, sts everywhere else
 set textwidth=0                             " don't wrap lines by default
 set modeline                                " read modelines
