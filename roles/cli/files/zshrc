@@ -112,7 +112,7 @@ alias vim-plugin-update='vim -c "try | call dein#update() | finally | qall! | en
 alias exec-ipynb='docker container run --rm --user $(id -u):$(id -g) -v ${PWD}:/wd --workdir /wd --entrypoint jupyter dceoy/pydata nbconvert --to notebook --ExecutePreprocessor.timeout=-1 --execute --inplace --ExecutePreprocessor.kernel_name=python'
 
 case "${OSTYPE}" in
-  darwin*)
+  darwin* )
     alias grep='ggrep --color=auto'
     alias sed='gsed'
     alias awk='gawk'
@@ -126,7 +126,7 @@ case "${OSTYPE}" in
       && source "${GCSDK_DIR}/path.zsh.inc" \
       && source "${GCSDK_DIR}/completion.zsh.inc"
     ;;
-  linux*)
+  linux* )
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
