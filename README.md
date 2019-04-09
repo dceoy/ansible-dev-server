@@ -37,6 +37,7 @@ Set passwords for sudo
 
 ```sh
 # password for sudo
+$ mkdir group_vars
 $ echo 'ansible_become_pass: sudo_pass' > group_vars/all.yml
 
 # encrypt
