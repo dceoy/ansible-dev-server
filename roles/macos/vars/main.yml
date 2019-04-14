@@ -54,6 +54,7 @@ brew_packages:
     - hunspell
     - igv
     - imagemagick
+    - kompose
     - kubectl
     - leveldb
     - libgit2
@@ -71,9 +72,10 @@ brew_packages:
     - md5sha1sum
     - mercurial
     - mongodb
+    - nkf
     - nmap
     - node
-    - nkf
+    - npm
     - open-mpi
     - openssl
     - p7zip
