@@ -61,7 +61,7 @@ apt_packages:
   - libpq-dev
   - libproj-dev
   - libprotobuf-dev
-  - libreadline6-dev
+  - libreadline-dev
   - libsnappy-dev
   - libsqlite3-dev
   - libssh2-1-dev
