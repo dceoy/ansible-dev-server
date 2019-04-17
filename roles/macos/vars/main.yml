@@ -1,8 +1,6 @@
 ---
 brew_packages:
   from_third_party_repos:
-    - tap: homebrew/dupes
-      name: grep
     - tap: homebrew/science
       name:
         - hdf5
@@ -25,6 +23,7 @@ brew_packages:
     - bats
     - bazel
     - bcftools
+    - binutils
     - boost
     - bwa
     - cabal-install
@@ -33,8 +32,11 @@ brew_packages:
     - coreutils
     - corkscrew
     - curl
+    - diffutils
+    - ed
     - elixir
     - ffmpeg
+    - findutils
     - freetds
     - freetype
     - fribidi
@@ -47,8 +49,15 @@ brew_packages:
     - ghc
     - git
     - glog
+    - gnu-indent
     - gnu-sed
+    - gnu-tar
+    - gnu-which
+    - gnutls
     - go
+    - gpg
+    - grep
+    - gzip
     - hadolint
     - harfbuzz
     - hunspell
@@ -96,6 +105,7 @@ brew_packages:
     - samtools
     - sbt
     - scala
+    - screen
     - shellcheck
     - snappy
     - sqlite
@@ -106,6 +116,7 @@ brew_packages:
     - tree
     - wakeonlan
     - watch
+    - wdiff
     - webp
     - wget
     - wine
