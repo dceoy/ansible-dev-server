@@ -19,7 +19,7 @@
 - name: Fetch the latest version for 2
   shell: |
     {{ rbenv }} install --list \
-      | awk '$1 ~ /^2\.[0-9]+\.[0-9]+$/ { v=$1 } END{ print v }'
+      | awk '$1 ~ /^2\.[0-9]+\.[0-9]+$/ { v=$1 } END { print v }'
   register: rb_v
   changed_when: false
 
@@ -30,8 +30,8 @@
 
 - name: Install the latest version
   when: not rb_x.stat.exists
-  shell: |
-    {{ rbenv }} install {{ rb_v.stdout }}
+  script: |
+    install_rbenv.sh {{ rb_v.stdout }}
   ignore_errors: true
   notify: Notify updates of Ruby via Slack
 
@@ -52,11 +52,3 @@
   with_items: "{{ gem_packages }}"
   ignore_errors: true
   notify: Notify updates of Ruby via Slack
-
-- name: Set the global version
-  when: gem_x.stat.exists
-  lineinfile:
-    path: "{{ rbenv_root }}/version"
-    create: yes
-    regexp: '^.*$'
-    line: "{{ rb_v.stdout }}"
