@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#
+# https://github.com/dceoy/ansible-dev/blob/master/roles/vim/files/install_vim.sh
 
 set -uex
 
@@ -13,12 +15,11 @@ case "${OSTYPE}" in
     ADD_OPT_ARGS=''
     ;;
 esac
-WD="${PWD}"
 
 [[ -d "${VIM_SRC_DIR}" ]] || mkdir -p "${VIM_SRC_DIR}"
 
 if [[ -d "${VIM_SRC_VIM_DIR}" ]]; then
-  cd "${VIM_SRC_VIM_DIR}" && git pull
+  cd "${VIM_SRC_VIM_DIR}" && git pull && cd -
 else
   git clone https://github.com/vim/vim.git "${VIM_SRC_VIM_DIR}"
 fi
@@ -41,8 +42,7 @@ EXIT_CONFIGURE=${PIPESTATUS[0]}
 
 if [[ ${EXIT_CONFIGURE} -eq 0 ]]; then
   make && make install
+  cd -
 else
   exit "${EXIT_CONFIGURE}"
 fi
-
-cd "${WD}"

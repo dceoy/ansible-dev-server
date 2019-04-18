@@ -13,11 +13,11 @@
 
 - name: Fetch the latest versions
   shell: |
-    {{ pyenv }} install --list | awk '$1 ~ /^{{ item }}[\.\-0-9]+$/ { v=$1 } END{ print v }'
+    {{ pyenv }} install --list \
+      | awk '$1 ~ /^{{ item }}[\.\-0-9]+$/ { v=$1 } END { print v }'
   with_items:
-    - 3
-  # - anaconda
   # - 2
+    - 3
   changed_when: false
   register: py_v
 
@@ -38,8 +38,8 @@
 
 - name: Install the latest versions
   when: new_v|length > 0
-  shell: |
-    {{ pyenv }} install {{ item }}
+  script: |
+    install_pyenv.sh {{ item }}
   with_items: "{{ new_v }}"
   ignore_errors: true
   notify: Notify updates of Python via Slack
@@ -64,6 +64,7 @@
       - ipython
       - pandas
       - pip
+      - yamllint
     executable: "{{ pip_x.results[0].stat.path }}"
     state: latest
   ignore_errors: true
@@ -81,11 +82,3 @@
     state: latest
   ignore_errors: true
   notify: Notify updates of Python via Slack
-
-- name: Set the global version for Python
-  when: pip_x.results[0].stat.exists
-  lineinfile:
-    path: "{{ pyenv_root }}/version"
-    create: yes
-    regexp: '^.*$'
-    line: "{{ py_v.results[0].stdout }}"
