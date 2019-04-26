@@ -26,6 +26,7 @@ apt_packages:
   - imagemagick
   - incron
   - inotify-tools
+  - jq
   - libapparmor1
   - libatlas-base-dev
   - libblas-dev
