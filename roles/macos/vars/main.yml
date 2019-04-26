@@ -6,6 +6,9 @@ brew_packages:
         - hdf5
         - opencv
         - r
+    - tap: staticfloat/julia
+      name:
+        - julia
   with_options:
     - name: cairo
       options:
@@ -63,6 +66,8 @@ brew_packages:
     - hunspell
     - igv
     - imagemagick
+    - jq
+    - julia
     - kompose
     - kubectl
     - leveldb

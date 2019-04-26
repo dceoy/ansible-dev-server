@@ -1,7 +1,6 @@
 ---
 pip_packages:
   3:
-    - git+https://github.com/oanda/oandapy.git
     - git+https://github.com/dceoy/oanda-cli.git
     - git+https://github.com/dceoy/fract.git
     - ansible

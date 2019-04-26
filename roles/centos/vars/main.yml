@@ -59,6 +59,7 @@ yum_packages:
   - incron
   - indent
   - inotify-tools
+  - jq
   - kernel-devel
   - kernel-headers
   - lapack-devel

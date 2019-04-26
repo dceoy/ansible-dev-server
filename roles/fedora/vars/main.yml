@@ -60,6 +60,7 @@ dnf_packages:
   - incron
   - indent
   - inotify-tools
+  - jq
   - julia
   - kernel-devel
   - kernel-headers
