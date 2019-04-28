@@ -39,10 +39,6 @@
       when:
         - ansible_os_family in ['RedHat', 'Debian']
         - ansible_architecture == 'x86_64'
-    - role: submodules/ansible-container-engine/roles/kubernetes
-      when:
-        - ansible_os_family in ['RedHat', 'Debian']
-        - ansible_architecture == 'x86_64'
 
 - name: Set up GPU environments
   hosts:
@@ -62,10 +58,6 @@
         - ansible_os_family in ['RedHat', 'Debian']
         - ansible_architecture == 'x86_64'
     - role: submodules/ansible-container-engine/roles/docker
-      when:
-        - ansible_os_family in ['RedHat', 'Debian']
-        - ansible_architecture == 'x86_64'
-    - role: submodules/ansible-container-engine/roles/kubernetes
       when:
         - ansible_os_family in ['RedHat', 'Debian']
         - ansible_architecture == 'x86_64'
