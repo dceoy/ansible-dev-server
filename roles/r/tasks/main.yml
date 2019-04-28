@@ -15,7 +15,7 @@
 
 - name: Download the installer of clir
   get_url:
-    url: https://raw.githubusercontent.com/dceoy/clir/master/install.sh
+    url: https://raw.githubusercontent.com/dceoy/clir/master/install_clir.sh
     dest: "{{ install_clir_sh }}"
 
 - name: Install or update clir
