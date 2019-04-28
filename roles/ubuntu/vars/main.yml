@@ -81,7 +81,6 @@ apt_packages:
   - nkf
   - nmap
   - nodejs
-  - npm
   - p7zip-full
   - pamtester
   - pandoc
