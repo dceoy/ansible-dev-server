@@ -29,6 +29,7 @@ apt_packages:
   - gnome-terminal
   - golang
   - hostapd
+  - ibus-mozc
   - imagemagick
   - incron
   - inotify-tools
