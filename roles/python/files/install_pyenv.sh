@@ -16,10 +16,12 @@ fi
 
 PY_LATEST_VER=$(
   ${PYENV} install --list \
-    | awk "\$1 ~ /^${PY_MAJOR_VER}[\.\-0-9]+$/ { v=\$1 } END { print v }"
+    | awk "\$1 ~ /^${PY_MAJOR_VER}[\.\-0-9]*$/ { v=\$1 } END { print v }"
 )
 
-if [[ -f "${PYENV_DIR}/versions/${PY_LATEST_VER}/bin/python" ]]; then
+if [[ -z "${PY_LATEST_VER}" ]]; then
+  echo 'version not found' && exit 1
+elif [[ -f "${PYENV_DIR}/versions/${PY_LATEST_VER}/bin/python" ]]; then
   :
 else
   ${PYENV} install "${PY_LATEST_VER}" && ${PYENV} global "${PY_LATEST_VER}"

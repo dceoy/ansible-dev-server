@@ -19,10 +19,12 @@ fi
 
 RB_LATEST_VER=$(
   ${RBENV} install --list \
-    | awk "\$1 ~ /^${RB_MAJOR_VER}[\.\-0-9]+$/ { v=\$1 } END { print v }"
+    | awk "\$1 ~ /^${RB_MAJOR_VER}[\.\-0-9]*$/ { v=\$1 } END { print v }"
 )
 
-if [[ -f "${RBENV_DIR}/versions/${RB_LATEST_VER}/bin/ruby" ]]; then
+if [[ -z "${RB_LATEST_VER}" ]]; then
+  echo 'version not found' && exit 1
+elif [[ -f "${RBENV_DIR}/versions/${RB_LATEST_VER}/bin/ruby" ]]; then
   :
 else
   ${RBENV} install "${RB_LATEST_VER}" && ${RBENV} global "${RB_LATEST_VER}"
