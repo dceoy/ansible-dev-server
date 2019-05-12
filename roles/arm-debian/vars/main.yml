@@ -64,6 +64,7 @@ apt_packages:
   - nkf
   - nmap
   - nodejs
+  - ntp
   - pandoc
   - patch
   - pbzip2

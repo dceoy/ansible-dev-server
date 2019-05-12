@@ -95,6 +95,7 @@ yum_packages:
   - nmap
   - nodejs
   - npm
+  - ntp
   - octave
   - opencv-devel
   - openmpi-devel
