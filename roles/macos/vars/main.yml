@@ -147,6 +147,7 @@ brew_cask_packages:
   - google-cloud-sdk
   - google-japanese-ime
   - handrake
+  - igv
   - iterm2
   - java
   - julia
