@@ -30,6 +30,7 @@ apt_packages:
   - golang
   - hostapd
   - ibus-mozc
+  - igv
   - imagemagick
   - incron
   - inotify-tools
