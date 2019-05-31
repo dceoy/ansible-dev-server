@@ -9,7 +9,7 @@ PYENV="${PYENV_DIR}/bin/pyenv"
 [[ ${#} -ge 1 ]] && PY_MAJOR_VER="${1}" || PY_MAJOR_VER=3
 
 if [[ -d "${PYENV_DIR}" ]]; then
-  cd "${PYENV_DIR}" && git pull && cd -
+  cd "${PYENV_DIR}" && git pull --prune && cd -
 else
   git clone https://github.com/yyuu/pyenv.git "${PYENV_DIR}"
 fi
