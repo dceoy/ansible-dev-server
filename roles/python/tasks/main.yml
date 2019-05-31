@@ -59,6 +59,7 @@
   pip:
     name:
       - ansible
+      - csvkit
       - docker-compose
       - flake8
       - ipython

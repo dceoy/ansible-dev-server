@@ -19,7 +19,7 @@ esac
 [[ -d "${VIM_SRC_DIR}" ]] || mkdir -p "${VIM_SRC_DIR}"
 
 if [[ -d "${VIM_SRC_VIM_DIR}" ]]; then
-  cd "${VIM_SRC_VIM_DIR}" && git pull && cd -
+  cd "${VIM_SRC_VIM_DIR}" && git pull --prune && cd -
 else
   git clone https://github.com/vim/vim.git "${VIM_SRC_VIM_DIR}"
 fi
