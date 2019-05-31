@@ -10,8 +10,8 @@ RBENV="${RBENV_DIR}/bin/rbenv"
 [[ ${#} -ge 1 ]] && RB_MAJOR_VER="${1}" || RB_MAJOR_VER=2
 
 if [[ -d "${RBENV_DIR}" ]]; then
-  cd "${RBENV_DIR}" && git pull && cd -
-  cd "${RB_BUILD_DIR}" && git pull && cd -
+  cd "${RBENV_DIR}" && git pull --prune && cd -
+  cd "${RB_BUILD_DIR}" && git pull --prune && cd -
 else
   git clone https://github.com/rbenv/rbenv.git "${RBENV_DIR}"
   git clone https://github.com/rbenv/ruby-build.git "${RB_BUILD_DIR}"
