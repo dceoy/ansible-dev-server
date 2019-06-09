@@ -32,6 +32,9 @@ pip_packages:
     - fbprophet
     - feather-format
     - flake8
+    - flake8-bugbear
+    - flake8-import-order
+    - flake8-isort
     - floyd-cli
     - ggplot
     - grip
@@ -58,6 +61,7 @@ pip_packages:
     - numpy
     - pandas
     - pandas-datareader
+    - pep8-naming
     - pillow
     - pip
     - plotly
@@ -106,6 +110,7 @@ pip_packages:
     - virtualenv
     - vulture
     - webtest
+  # - wemake-python-styleguide
     - xgboost
     - xmltodict
     - yamllint

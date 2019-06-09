@@ -59,12 +59,17 @@
   pip:
     name:
       - ansible
+      - ansible-lint
       - csvkit
       - docker-compose
+      - docopt
       - flake8
-      - ipython
+      - grip
+      - jupyter
       - pandas
       - pip
+      - vim-vint
+      - vulture
       - yamllint
     executable: "{{ pip_x.results[0].stat.path }}"
     state: latest
