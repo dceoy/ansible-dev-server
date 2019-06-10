@@ -64,9 +64,12 @@
       - docker-compose
       - docopt
       - flake8
+      - flake8-bugbear
+      - flake8-isort
       - grip
       - jupyter
       - pandas
+      - pep8-naming
       - pip
       - vim-vint
       - vulture
