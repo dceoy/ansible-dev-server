@@ -33,10 +33,11 @@ pip_packages:
     - feather-format
     - flake8
     - flake8-bugbear
-    - flake8-import-order
+  # - flake8-import-order
     - flake8-isort
     - floyd-cli
     - ggplot
+    - greenlet
     - grip
     - h5py
     - hiredis

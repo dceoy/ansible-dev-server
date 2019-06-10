@@ -141,6 +141,9 @@ set scrolloff=16                            " minimal number of screen lines to 
 "set clipboard=unnamed,autoselect            " share clipboard
 set ttyfast                                 " fast terminal connection
 set t_Co=256                                " enable 256 colors
+augroup CustomAutocmd
+  autocmd!
+augroup END
 
 " theme/colors
 set background=dark
@@ -195,17 +198,23 @@ set statusline+=%=%{fugitive#statusline()}\ %1l/%L,%c%V\ %P
 set ambiwidth=double                        " understand double-byte chars
 set formatoptions=lmoq                      " add multi-byte chars to options
 set spelllang+=cjk                          " exclude jp from spell check
-au BufNewFile,BufRead *.md,*.Rmd,*.txt set spell  " check spelling
+augroup CustomAutocmd
+  au BufNewFile,BufRead *.md,*.Rmd,*.txt set spell  " check spelling
+augroup END
 hi ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
-au BufNewFile,BufRead * match ZenkakuSpace /　/
+augroup CustomAutocmd
+  au BufNewFile,BufRead * match ZenkakuSpace /　/
+augroup END
 
 " text formatting/layout
 set autoindent                              " take indent for new line from previous line
 set cindent                                 " do c-style indenting
 set expandtab                               " replace tabs with ${tabstop} spaces
 set tabstop=2 shiftwidth=2 softtabstop=0    " set tabstop, shiftwidth, softtabstop
-au BufNewFile,BufRead *.py,*.go set ts=4 sw=4 sts=0
-au BufNewFile,BufRead *.go setlocal noexpandtab
+augroup CustomAutocmd
+  au BufNewFile,BufRead *.py,*.go set ts=4 sw=4 sts=0
+  au BufNewFile,BufRead *.go setlocal noexpandtab
+augroup END
 set smarttab                                " sw at the start of the line, sts everywhere else
 set textwidth=0                             " don't wrap lines by default
 set modeline                                " read modelines
@@ -220,7 +229,8 @@ endif
 
 " syntastic
 let g:syntastic_python_checkers = ['python', 'flake8']
-"let g:syntastic_python_flake8_args = '--max-line-length=100'
+let g:syntastic_python_flake8_args = ['--no-isort-config']
+"let g:syntastic_python_flake8_args = ['--no-isort-config', '--max-line-length=100']
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_yaml_yamllint_args = '-d "{extends: default, rules: {line-length: disable, truthy: disable}}"'
 let g:syntastic_ansible_checkers = ['ansible_lint']
