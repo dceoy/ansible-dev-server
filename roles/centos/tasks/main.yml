@@ -1,6 +1,6 @@
 ---
 - name: Set proxy at /etc/environment
-  when: use_proxy
+  when: http_proxy is defined or https_proxy is defined
   become: true
   blockinfile:
     dest: /etc/environment
@@ -15,7 +15,7 @@
   notify: Notify updates of the system via Slack
 
 - name: Set proxy at /etc/yum.conf
-  when: use_proxy
+  when: http_proxy is defined or https_proxy is defined
   become: true
   blockinfile:
     dest: /etc/yum.conf
