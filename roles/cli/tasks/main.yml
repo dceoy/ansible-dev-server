@@ -9,9 +9,9 @@
     scope: global
   with_items:
     - name: color.ui
-      value: true
+      value: 'true'
     - name: push.default
-      value: matching
+      value: 'matching'
     - name: user.name
       value: "{{ git_user_name }}"
     - name: user.email
@@ -19,7 +19,7 @@
   notify: Notify updates of CLI via Slack
 
 - name: Set proxy for git
-  when: use_proxy
+  when: http_proxy is defined or https_proxy is defined
   git_config:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
@@ -38,7 +38,7 @@
   notify: Notify updates of CLI via Slack
 
 - name: Set proxy at ~/.zprofile
-  when: use_proxy
+  when: http_proxy is defined or https_proxy is defined
   blockinfile:
     create: yes
     dest: "{{ ansible_env.HOME }}/.zprofile"
