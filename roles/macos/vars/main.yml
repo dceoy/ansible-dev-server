@@ -82,7 +82,6 @@ brew_packages:
     - lmdb
     - lua
     - luajit
-    - mariadb
     - md5sha1sum
     - mercurial
     - mongodb
