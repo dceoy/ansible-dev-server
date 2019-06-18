@@ -4,7 +4,7 @@
   apt:
     autoclean: yes
     autoremove: yes
-    upgrade: yes
+    upgrade: dist
     update_cache: yes
   notify: Notify updates of the system via Slack
 
