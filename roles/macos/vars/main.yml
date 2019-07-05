@@ -84,7 +84,6 @@ brew_packages:
     - luajit
     - md5sha1sum
     - mercurial
-    - mongodb
     - nkf
     - nmap
     - node
