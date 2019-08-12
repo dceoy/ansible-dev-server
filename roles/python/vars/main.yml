@@ -71,6 +71,7 @@ pip_packages:
     - plyvel
     - pydot
     - pymc
+    - pynvim
     - pyopenssl
     - pypdf2
     - pyper
