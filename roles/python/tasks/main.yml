@@ -71,6 +71,7 @@
       - pandas
       - pep8-naming
       - pip
+      - pynvim
       - vim-vint
       - vulture
       - yamllint
