@@ -49,6 +49,7 @@ pip_packages:
     - jupyter_contrib_nbextensions
     - jupyterthemes
     - keras
+    - lifelines
     - lightgbm
     - luigi
     - matplotlib
