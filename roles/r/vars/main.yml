@@ -97,6 +97,7 @@ r_packages:
     - Biostrings
     - DNAcopy
     - GEOquery
+    - GenomicRanges
     - org.Hs.eg.db
     - PhViD
     - qvalue
