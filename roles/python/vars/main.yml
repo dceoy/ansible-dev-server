@@ -109,6 +109,7 @@ pip_packages:
     - tqdm
     - twine
     - twitter
+    - umap-learn
     - vim-vint
     - virtualenv
     - vulture

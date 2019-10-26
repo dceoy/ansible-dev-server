@@ -38,6 +38,7 @@ r_packages:
     - glmmML
     - glmnet
     - GMD
+    - gplots
     - greta
     - gridExtra
     - HMM
@@ -82,6 +83,7 @@ r_packages:
     - tidyr
     - tidyverse
     - tm
+    - umap
     - VGAM
     - yaml
   github:
