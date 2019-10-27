@@ -83,7 +83,7 @@ r_packages:
     - tidyr
     - tidyverse
     - tm
-    - umap
+    - uwot
     - VGAM
     - yaml
   github:
