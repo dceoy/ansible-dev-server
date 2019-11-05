@@ -61,6 +61,7 @@ apt_packages:
   - libopencv-dev
   - libopenmpi-dev
   - libpcap-dev
+  - libpng-dev
   - libpq-dev
   - libproj-dev
   - libprotobuf-dev
