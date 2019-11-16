@@ -125,6 +125,8 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('chr4/nginx.vim')                         " nginx syntax highlighting
   " Bats
   call dein#add('vim-scripts/bats.vim')                   " syntax highlighting for bats
+  " WDL
+  call dein#add('broadinstitute/vim-wdl')                 " syntax highlighting for wdl
 
   call dein#end()
   call dein#save_state()
