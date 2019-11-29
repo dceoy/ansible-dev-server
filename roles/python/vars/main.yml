@@ -1,11 +1,13 @@
 ---
 pip_packages:
   3:
+    - git+https://github.com/dceoy/deltw.git
+    - git+https://github.com/dceoy/pdbio.git
     - git+https://github.com/dceoy/oanda-cli.git
     - git+https://github.com/dceoy/fract.git
     - ansible
     - ansible-lint
-  # - apache-airflow
+    - apache-airflow
     - apache-libcloud
     - autopep8
     - awscli
@@ -33,7 +35,6 @@ pip_packages:
     - feather-format
     - flake8
     - flake8-bugbear
-  # - flake8-import-order
     - flake8-isort
     - floyd-cli
     - ggplot
@@ -43,6 +44,7 @@ pip_packages:
     - hiredis
     - holoviews
     - hyperopt
+    - interpret
     - ipykernel
     - ipython
     - jupyter
@@ -55,7 +57,7 @@ pip_packages:
     - matplotlib
     - mkl
     - mock
-    - mxnet
+  # - mxnet
     - nose
     - notebook
     - notedown
@@ -71,6 +73,7 @@ pip_packages:
     - pubnub
     - plyvel
     - pydot
+    - pygam
     - pymc
     - pynvim
     - pyopenssl
