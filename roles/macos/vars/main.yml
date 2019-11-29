@@ -38,6 +38,7 @@ brew_packages:
     - diffutils
     - ed
     - elixir
+    - fcrackzip
     - ffmpeg
     - findutils
     - freetds
@@ -132,19 +133,17 @@ brew_cask_packages:
   - amazon-music
   - atom
   - chrome-remote-desktop-host
-  - cuda
   - discord
   - docker
   - dropbox
   - endnote
   - firefox
-  - fcrackzip
   - gimp
   - google-backup-and-sync
   - google-chrome
   - google-cloud-sdk
   - google-japanese-ime
-  - handrake
+  - handbrake
   - igv
   - iterm2
   - java
@@ -157,6 +156,5 @@ brew_cask_packages:
   - rstudio
   - skype
   - slack
-  - spotify
   - visual-studio-code
   - xquartz
