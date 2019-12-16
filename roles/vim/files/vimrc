@@ -121,6 +121,8 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('andrewstuart/vim-kubernetes')            " kubectl integration
   " Ansible
   call dein#add('pearofducks/ansible-vim')                " syntax highlighting Ansible's common filetypes
+  " Jinja2
+  call dein#add('Glench/Vim-Jinja2-Syntax')               " jinja2 syntax
   " Nginx
   call dein#add('chr4/nginx.vim')                         " nginx syntax highlighting
   " Bats
