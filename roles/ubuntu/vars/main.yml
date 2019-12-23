@@ -115,7 +115,7 @@ apt_packages:
   - traceroute
   - tree
   - unzip
-  - vim
+  - vim-gnome
   - wakeonlan
   - wget
   - whois
