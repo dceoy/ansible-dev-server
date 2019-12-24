@@ -2,7 +2,7 @@
 #
 # https://github.com/dceoy/ansible-dev/blob/master/roles/ruby/files/install_rbenv.sh
 
-set -uex
+set -eoux pipefail
 
 RBENV_DIR="${HOME}/.rbenv"
 RB_BUILD_DIR="${HOME}/.rbenv/plugins/ruby-build"

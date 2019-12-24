@@ -2,7 +2,7 @@
 #
 # https://github.com/dceoy/ansible-dev/blob/master/roles/vim/files/install_vim.sh
 
-set -uex
+set -eux
 
 VIM_DIR="${HOME}/.vim"
 VIM_SRC_DIR="${VIM_DIR}/src"
@@ -25,7 +25,6 @@ else
 fi
 
 cd "${VIM_SRC_VIM_DIR}"
-set +e
 ./configure \
   --prefix="${VIM_DIR}" \
   --enable-luainterp \
@@ -36,13 +35,10 @@ set +e
   --enable-largefile \
   --disable-netbeans \
   --enable-fail-if-missing \
-  --enable-cscope \
-  || make distclean
-EXIT_CONFIGURE=${PIPESTATUS[0]}
+  --enable-cscope
 
-if [[ ${EXIT_CONFIGURE} -eq 0 ]]; then
-  make && make install
-  cd -
+if make; then
+  make install
 else
-  exit "${EXIT_CONFIGURE}"
+  make distclean && exit 1
 fi
