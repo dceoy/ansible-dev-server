@@ -2,7 +2,7 @@
 #
 # https://github.com/dceoy/ansible-dev/blob/master/roles/python/files/install_pyenv.sh
 
-set -uex
+set -eoux pipefail
 
 PYENV_DIR="${HOME}/.pyenv"
 PYENV="${PYENV_DIR}/bin/pyenv"
