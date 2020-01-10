@@ -234,7 +234,6 @@ endif
 " syntastic
 let g:syntastic_python_checkers = ['python', 'flake8']
 let g:syntastic_python_flake8_args = ['--no-isort-config']
-"let g:syntastic_python_flake8_args = ['--no-isort-config', '--max-line-length=100']
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_yaml_yamllint_args = '-d "{extends: default, rules: {line-length: disable, truthy: disable}}"'
 let g:syntastic_ansible_checkers = ['ansible_lint']
@@ -251,6 +250,7 @@ let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
 let g:syntastic_vim_checkers = ['vint']
 let g:syntastic_sql_checkers = ['sqlint']
 let g:syntastic_markdown_checkers = ['proselint']
+let g:syntastic_html_tidy_ignore_errors=[' proprietary attribute ', 'trimming empty ', ' is not recognized!', 'discarding unexpected ']
 
 " jupyter
 "autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
