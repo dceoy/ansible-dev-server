@@ -29,6 +29,7 @@ apt_packages:
   - gnome-terminal
   - golang
   - hostapd
+  - htop
   - ibus-mozc
   - igv
   - imagemagick
