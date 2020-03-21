@@ -64,6 +64,7 @@ brew_packages:
     - gzip
     - hadolint
     - harfbuzz
+    - htop
     - hunspell
     - igv
     - imagemagick

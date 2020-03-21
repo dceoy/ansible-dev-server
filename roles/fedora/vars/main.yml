@@ -55,6 +55,7 @@ dnf_packages:
   - hdf5-devel
   - hostapd
   - hunspell-devel
+  - htop
   - ImageMagick-c++-devel
   - ImageMagick-devel
   - incron
