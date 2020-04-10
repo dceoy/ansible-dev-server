@@ -23,9 +23,11 @@ brew_packages:
         - with-python3
   without_options:
     - atk
+    - amazon-ecs-cli
     - bats
     - bazel
     - bcftools
+    - bedtools
     - binutils
     - boost
     - bwa
@@ -97,6 +99,7 @@ brew_packages:
     - parallel
     - pbzip2
     - pdf2svg
+    - picard-tools
     - pigz
     - pkg-config
     - postgresql
