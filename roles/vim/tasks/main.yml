@@ -8,7 +8,6 @@
 - name: Check vim
   stat:
     path: "{{ ansible_env.HOME }}/.vim/bin/vim"
-  register: vim
   notify: Notify updates of Vim via Slack
 
 - name: Create directories in ~/.vim/
@@ -18,7 +17,6 @@
   with_items:
     - src
     - bundles
-  register: create_vim_dirs
   notify: Notify updates of Vim via Slack
 
 - name: Clone vim
@@ -28,37 +26,23 @@
   register: clone_vim
   notify: Notify updates of Vim via Slack
 
-- name: Copy install_vim.sh
-  copy:
-    src: install_vim.sh
-    dest: "{{ ansible_env.HOME }}/.vim/install_vim.sh"
-    mode: 0755
-  register: copy_install_vim_sh
-  notify: Notify updates of Vim via Slack
-
-- name: Install vim
-  when: clone_vim is changed or copy_install_vim_sh is changed or not vim.stat.exists
-  shell: |
-    {{ ansible_env.HOME }}/.vim/install_vim.sh
-  ignore_errors: true
+- name: Clone install-latest-vim
+  git:
+    repo: https://github.com/dceoy/install-latest-vim.git
+    dest: "{{ ansible_env.HOME }}/.vim/src/install-latest-vim"
+  register: clone_install_latest_vim
   notify: Notify updates of Vim via Slack
 
 - name: Clone dein.vim
   git:
     repo: https://github.com/Shougo/dein.vim
     dest: "{{ ansible_env.HOME }}/.vim/bundles/repos/github.com/Shougo/dein.vim"
+  register: clone_dein_vim
   notify: Notify updates of Vim via Slack
 
-- name: Install dein.vim
-  when: not vim.stat.exists
+- name: Install vim
+  when: clone_vim is changed or clone_install_latest_vim is changed or clone_dein_vim is changed
   shell: |
-    ~/.vim/bundles/repos/github.com/Shougo/dein.vim/bin/installer.sh ~/.vim/bundles
-  ignore_errors: true
-  notify: Notify updates of Vim via Slack
-
-- name: Install Vim plugins
-  shell: |
-    ~/.vim/bin/vim -c 'try | call dein#update() | finally | qall! | endtry' \
-      -N -u ${HOME}/.vimrc -U NONE -i NONE -V1 -e -s
+    {{ ansible_env.HOME }}/.vim/src/install-latest-vim/install_latest_vim.sh --force --dein
   ignore_errors: true
   notify: Notify updates of Vim via Slack
