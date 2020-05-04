@@ -63,23 +63,6 @@
     state: latest
   notify: Notify updates of the system via Slack
 
-- name: Add the GPG key for R
-  when: ansible_distribution_release != 'bionic'
-  become: true
-  apt_key:
-    id: E084DAB9
-    keyserver: keyserver.ubuntu.com
-  notify: Notify updates of the system via Slack
-
-- name: Add R repo
-  when: ansible_distribution_release != 'bionic'
-  become: true
-  apt_repository:
-    repo: "deb https://cloud.r-project.org/bin/linux/ubuntu {{ ansible_distribution_release }}/"
-    state: present
-    filename: r
-  notify: Notify updates of the system via Slack
-
 - name: Upgrade all packages
   become: true
   apt:
