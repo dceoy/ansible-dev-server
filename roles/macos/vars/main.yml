@@ -9,6 +9,9 @@ brew_packages:
     - tap: staticfloat/julia
       name:
         - julia
+    - tap: weaveworks/tap
+      name:
+        - eksctl
   with_options:
     - name: cairo
       options:
@@ -48,7 +51,6 @@ brew_packages:
     - fribidi
     - gawk
     - gcc
-    - gcc5
     - gdal
     - gdbm
     - gflags
