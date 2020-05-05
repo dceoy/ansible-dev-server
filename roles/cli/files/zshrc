@@ -148,7 +148,7 @@ alias git-diff-csv='git diff --color-words="[^[:space:],]+"'
 [[ -n "${GID}" ]] || export GID="$(id -g)"
 export R_LIBS_USER="${HOME}/.clir/r/library"
 export GOPATH="${HOME}/.go"
-export PATH="${HOME}/.vim/bin:${GOPATH}/bin:${PATH}:${HOME}/.clir/bin"
+export PATH="${HOME}/.vim/bin:${GOPATH}/bin:${PATH}:${HOME}/.clir/bin:${HOME}/.local/bin"
 
 ### Git ###
 autoload -Uz vcs_info
