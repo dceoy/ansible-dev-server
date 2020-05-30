@@ -2,10 +2,13 @@
 apt_packages:
   - ant
   - apt-file
+  - apt-transport-https
+  - apt-utils
   - bats
   - bridge-utils
   - build-essential
   - bzip2
+  - ca-certificates
   - cabal-install
   - cifs-utils
   - cmake
@@ -79,6 +82,7 @@ apt_packages:
   - libxslt1-dev
   - libzmq3-dev
   - linux-libc-dev
+  - locales
   - luajit
   - make
   - mercurial
@@ -112,6 +116,11 @@ apt_packages:
   - supervisor
   - swig
   - systemd-timesyncd
+  - texlive
+  - texlive-fonts-recommended
+  - texlive-latex-extra
+  - texlive-plain-generic
+  - texlive-xetex
   - time
   - tk-dev
   - tmux
