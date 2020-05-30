@@ -73,6 +73,7 @@ brew_packages:
     - igv
     - imagemagick
     - jq
+    - jsonlint
     - julia
     - kompose
     - kubectl
@@ -107,6 +108,7 @@ brew_packages:
     - postgresql
     - protobuf
     - python3
+    - quicktype
     - readline
     - redis
     - rename
