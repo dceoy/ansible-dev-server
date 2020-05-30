@@ -77,6 +77,7 @@ pip_packages:
     - pymc
     - pynvim
     - pyopenssl
+    - pypandoc
     - pypdf2
     - pyper
     - pysam
