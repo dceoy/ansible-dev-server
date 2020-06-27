@@ -30,7 +30,7 @@ yum_packages:
   - elixir
   - epel-release
   - expect
-  - fabric
+  - fd-find
   - fftw-devel
   - flex
   - freetds-devel
@@ -90,6 +90,7 @@ yum_packages:
   - mesa-libGL-devel
   - mesa-libGLU-devel
   - mysql-devel
+  - ncdu
   - ncurses-devel
   - nginx
   - nkf
@@ -134,6 +135,7 @@ yum_packages:
   - systemtap
   - texmaker
   - time
+  - tldr
   - tmux
   - traceroute
   - transfig
