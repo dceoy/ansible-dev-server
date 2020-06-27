@@ -15,7 +15,6 @@ apt_packages:
   - dkms
   - ethtool
   - expect
-  - fabric
   - freetds-dev
   - g++
   - gcc
