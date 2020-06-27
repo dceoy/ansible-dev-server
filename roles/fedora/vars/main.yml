@@ -31,7 +31,7 @@ dnf_packages:
   - elfutils
   - elixir
   - expect
-  - fabric
+  - fd-find
   - fftw-devel
   - flex
   - freetds-devel
@@ -92,6 +92,7 @@ dnf_packages:
   - mesa-libGL-devel
   - mesa-libGLU-devel
   - mysql-devel
+  - ncdu
   - ncurses-compat-libs
   - ncurses-devel
   - nginx
@@ -141,6 +142,7 @@ dnf_packages:
   - systemtap
   - texmaker
   - time
+  - tldr
   - tmux
   - traceroute
   - transfig

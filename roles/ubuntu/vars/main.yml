@@ -21,8 +21,8 @@ apt_packages:
   - exfat-fuse
   - exfat-utils
   - expect
-  - fabric
   - fcrackzip
+  - fd-find
   - freetds-dev
   - g++
   - gcc
@@ -86,6 +86,7 @@ apt_packages:
   - luajit
   - make
   - mercurial
+  - ncdu
   - nginx
   - nkf
   - nmap
@@ -123,6 +124,7 @@ apt_packages:
   - texlive-xetex
   - time
   - tk-dev
+  - tldr
   - tmux
   - traceroute
   - tree

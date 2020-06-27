@@ -44,6 +44,7 @@ brew_packages:
     - ed
     - elixir
     - fcrackzip
+    - fd
     - ffmpeg
     - findutils
     - freetds
@@ -91,6 +92,7 @@ brew_packages:
     - luajit
     - md5sha1sum
     - mercurial
+    - ncdu
     - nkf
     - nmap
     - node
@@ -124,6 +126,7 @@ brew_packages:
     - sshfs
     - supervisor
     - szip
+    - tldr
     - tmux
     - tree
     - wakeonlan

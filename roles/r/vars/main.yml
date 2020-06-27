@@ -16,6 +16,7 @@ r_packages:
     - broom
     - brms
     - caret
+    - changepoint
     - coin
     - corrplot
     - data.table
