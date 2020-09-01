@@ -3,6 +3,7 @@
   homebrew:
     update_homebrew: yes
     upgrade_all: yes
+  ignore_errors: true
   notify: Notify updates of the system via Slack
 
 - name: Tap repositories

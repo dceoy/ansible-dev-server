@@ -125,6 +125,7 @@ yum_packages:
   - ruby-devel
   - samba
   - ShellCheck
+  - shunit2
   - snappy-devel
   - sqlite-devel
   - sshfs
