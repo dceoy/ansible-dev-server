@@ -1,14 +1,6 @@
 ---
 brew_packages:
   from_third_party_repos:
-    - tap: homebrew/science
-      name:
-        - hdf5
-        - opencv
-        - r
-    - tap: staticfloat/julia
-      name:
-        - julia
     - tap: weaveworks/tap
       name:
         - eksctl
@@ -69,13 +61,13 @@ brew_packages:
     - gzip
     - hadolint
     - harfbuzz
+    - hdf5
     - htop
     - hunspell
     - igv
     - imagemagick
     - jq
     - jsonlint
-    - julia
     - kompose
     - kubectl
     - leveldb
@@ -98,6 +90,8 @@ brew_packages:
     - node
     - npm
     - open-mpi
+    - opencv
+    - openjdk
     - openssl
     - p7zip
     - pandoc
@@ -121,6 +115,7 @@ brew_packages:
     - scala
     - screen
     - shellcheck
+    - shunit2
     - snappy
     - sqlite
     - sshfs
@@ -157,15 +152,15 @@ brew_cask_packages:
   - handbrake
   - igv
   - iterm2
-  - java
   - julia
   - kindle
   - mendeley-desktop
   - microsoft-office
   - opera
   - osxfuse
+  - r
   - rstudio
-  - skype
   - slack
   - visual-studio-code
   - xquartz
+  - zoom
