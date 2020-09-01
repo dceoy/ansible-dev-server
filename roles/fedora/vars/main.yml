@@ -131,6 +131,7 @@ dnf_packages:
   - sbt
   - scala
   - ShellCheck
+  - shunit2
   - snappy-devel
   - speedcrunch
   - sqlite-devel

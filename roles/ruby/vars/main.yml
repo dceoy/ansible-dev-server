@@ -11,5 +11,4 @@ gem_packages:
   - selenium-webdriver
   - sqlint
   - toml-rb
-  - tugboat
   - twitter

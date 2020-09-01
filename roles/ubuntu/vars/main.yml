@@ -109,6 +109,7 @@ apt_packages:
   - samba
   - scala
   - shellcheck
+  - shunit2
   - snapd
   - software-properties-common
   - sqlite3
