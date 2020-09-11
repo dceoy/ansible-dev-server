@@ -162,4 +162,3 @@ brew_cask_packages:
   - slack
   - visual-studio-code
   - xquartz
-  - zoom
