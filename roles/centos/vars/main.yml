@@ -4,7 +4,6 @@ yum_packages:
   - atlas-devel
   - autoconf
   - automake
-  - bats
   - binutils
   - bison
   - blas-devel

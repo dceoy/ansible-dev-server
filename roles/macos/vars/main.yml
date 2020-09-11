@@ -19,7 +19,6 @@ brew_packages:
   without_options:
     - atk
     - amazon-ecs-cli
-    - bats
     - bazel
     - bcftools
     - bedtools
