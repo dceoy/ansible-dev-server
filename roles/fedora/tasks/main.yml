@@ -42,6 +42,7 @@
   dnf:
     name: '*'
     state: latest
+    update_cache: yes
   notify: Notify updates of the system via Slack
 
 - name: Install packages
@@ -50,6 +51,7 @@
   dnf:
     name: "{{ dnf_packages }}"
     state: latest
+    update_cache: yes
   notify: Notify updates of the system via Slack
 
 - name: Set users
