@@ -19,6 +19,8 @@ brew_packages:
   without_options:
     - atk
     - amazon-ecs-cli
+    - autoconf
+    - automake
     - bazel
     - bcftools
     - bedtools
@@ -55,6 +57,7 @@ brew_packages:
     - gnu-which
     - gnutls
     - go
+    - goreleaser
     - gpg
     - grep
     - gzip
@@ -120,6 +123,7 @@ brew_packages:
     - sshfs
     - supervisor
     - szip
+    - tig
     - tldr
     - tmux
     - tree
