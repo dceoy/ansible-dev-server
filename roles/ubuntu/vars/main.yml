@@ -60,7 +60,6 @@ apt_packages:
   - liblua5.3-dev
   - libluajit-5.1-dev
   - libmagick++-dev
-  - libmariadb-client-lgpl-dev
   - libncurses5-dev
   - libopencv-dev
   - libopenmpi-dev
@@ -94,9 +93,11 @@ apt_packages:
   - pamtester
   - pandoc
   - patch
+  - pdf2svg
   - pbzip2
   - pigz
   - pkg-config
+  - poppler-utils
   - postgresql
   - protobuf-compiler
   - python3-dev

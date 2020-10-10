@@ -11,4 +11,7 @@
 if(interactive()) {
   sapply(c('dbplyr', 'doParallel', 'foreach', 'ggpubr', 'tidyverse'),
          require, character.only = TRUE, quietly = TRUE)
+  select <- dplyr::select
+  rename <- dplyr::rename
+  filter <- dplyr::filter
 }

@@ -233,7 +233,6 @@ endif
 
 " syntastic
 let g:syntastic_python_checkers = ['python', 'flake8']
-"let g:syntastic_python_flake8_args = ['--no-isort-config']
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_yaml_yamllint_args = '-d "{extends: default, rules: {line-length: disable, truthy: disable}}"'
 let g:syntastic_ansible_checkers = ['ansible_lint']
@@ -243,8 +242,8 @@ let g:syntastic_zsh_checkers = ['zsh']
 let g:syntastic_enable_r_lintr_checker = 1
 let g:syntastic_r_checkers = ['lintr']
 let g:syntastic_rmd_checkers = ['lintr']
-let g:syntastic_r_lintr_linters = 'with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL, object_camel_case_linter = NULL, absolute_path_linter = NULL)'
-let g:syntastic_rmd_lintr_linters = 'with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL, object_camel_case_linter = NULL, absolute_path_linter = NULL)'
+let g:syntastic_r_lintr_linters = 'with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL, object_camel_case_linter = NULL, absolute_path_linter = NULL, object_name_linter = NULL, line_length_linter = line_length_linter(99))'
+let g:syntastic_rmd_lintr_linters = 'with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL, object_camel_case_linter = NULL, absolute_path_linter = NULL, object_name_linter = NULL, line_length_linter = line_length_linter(99))'
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
 let g:syntastic_vim_checkers = ['vint']
