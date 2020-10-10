@@ -27,7 +27,6 @@ r_packages:
     - docopt
     - doParallel
     - doSNOW
-    - dplyr
     - dtplyr
     - fdrtool
     - feather
@@ -36,7 +35,6 @@ r_packages:
     - getopt
     - ggdendro
     - ggmcmc
-    - ggplot2
     - ggpubr
     - glasso
     - glmmML
@@ -44,7 +42,6 @@ r_packages:
     - GMD
     - gplots
     - greta
-    - gridExtra
     - HMM
     - kernlab
     - KernSmooth
@@ -62,11 +59,8 @@ r_packages:
     - phangorn
     - prophet
     - plotly
-    - plyr
     - prophet
-    - purrr
     - ranger
-    - readr
     - rBayesianOptimization
     - rbenchmark
     - RcppGSL
@@ -84,7 +78,6 @@ r_packages:
     - stringr
     - survminer
     - testthat
-    - tidyr
     - tidyverse
     - tm
     - uwot
@@ -98,7 +91,6 @@ r_packages:
     - thomasp85/patchwork
   drat:
     - xgboost
-    - mxnet
   bioconductor:
     - Biobase
     - BiocInstaller
