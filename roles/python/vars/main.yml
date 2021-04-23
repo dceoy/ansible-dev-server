@@ -5,12 +5,12 @@ pip_packages:
     - git+https://github.com/dceoy/pdbio.git
     - git+https://github.com/dceoy/oanda-cli.git
     - git+https://github.com/dceoy/fract.git
+    - alpha_vantage
     - ansible
     - ansible-lint
     - apache-airflow
     - apache-libcloud
     - autopep8
-    - awscli
     - bash_kernel
     - bcolz
     - biopython
@@ -122,3 +122,4 @@ pip_packages:
     - xgboost
     - xmltodict
     - yamllint
+    - yq
