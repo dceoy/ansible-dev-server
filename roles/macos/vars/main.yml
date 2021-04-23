@@ -21,6 +21,7 @@ brew_packages:
     - amazon-ecs-cli
     - autoconf
     - automake
+    - awscli
     - bazel
     - bcftools
     - bedtools
@@ -135,6 +136,7 @@ brew_packages:
     - wine
     - winetricks
     - xml2
+    - yarn
     - zlib
     - zsh
 brew_cask_packages:
@@ -144,6 +146,7 @@ brew_cask_packages:
   - chrome-remote-desktop-host
   - discord
   - docker
+  - drawio
   - dropbox
   - endnote
   - firefox
