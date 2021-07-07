@@ -4,6 +4,9 @@ brew_packages:
     - tap: weaveworks/tap
       name:
         - eksctl
+    - tap: aws/tap
+      name:
+        - aws-sam-cli
   with_options:
     - name: cairo
       options:
@@ -29,6 +32,7 @@ brew_packages:
     - boost
     - bwa
     - cabal-install
+    - circleci
     - colordiff
     - conjure-up
     - coreutils
@@ -162,8 +166,8 @@ brew_cask_packages:
   - kindle
   - mendeley-desktop
   - microsoft-office
-  - opera
-  - osxfuse
+  - opera-neon
+  - macfuse
   - r
   - rstudio
   - slack
