@@ -133,10 +133,11 @@ alias dc='docker-compose'
 alias drmc='docker container ps -aq | xargs docker container rm'
 alias drmi='docker image ls | awk "/<none>/ { print \$3 }" | xargs docker image rm'
 alias dnginx='docker container run --rm -p 80:80 -v ${PWD}:/var/lib/nginx/html:ro -d dceoy/nginx-autoindex'
-alias dcrmf='docker-compose stop && docker-compose rm -f'
 alias rv='R --quiet --no-save --no-restore'
 alias exec-ipynb='docker container run --rm --user $(id -u):$(id -g) -v ${PWD}:/wd --workdir /wd --entrypoint jupyter dceoy/pydata nbconvert --to notebook --ExecutePreprocessor.timeout=-1 --execute --inplace --ExecutePreprocessor.kernel_name=python'
 alias git-diff-csv='git diff --color-words="[^[:space:],]+"'
+alias yaml2json='ruby -rjson -ryaml -e "print YAML.load(STDIN.read).to_json" <'
+alias json2yaml='ruby -rjson -ryaml -e "print JSON.load(STDIN.read).to_yaml" <'
 
 [[ -d "${HOME}/.rbenv" ]] \
   && export PATH="${HOME}/.rbenv/bin:${PATH}" \
