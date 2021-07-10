@@ -140,10 +140,10 @@ alias yaml2json='ruby -rjson -ryaml -e "print YAML.load(STDIN.read).to_json" <'
 alias json2yaml='ruby -rjson -ryaml -e "print JSON.load(STDIN.read).to_yaml" <'
 
 [[ -d "${HOME}/.rbenv" ]] \
-  && export PATH="${HOME}/.rbenv/bin:${PATH}" \
+  && export PATH="${HOME}/.rbenv/shims:${HOME}/.rbenv/bin:${PATH}" \
   && eval "$(rbenv init -)"
 [[ -d "${HOME}/.pyenv" ]] \
-  && export PATH="${HOME}/.pyenv/bin:${PATH}" \
+  && export PATH="${HOME}/.pyenv/shims:${HOME}/.pyenv/bin:${PATH}" \
   && eval "$(pyenv init -)"
 [[ -n ${commands[kubectl]} ]] && source <(kubectl completion zsh)
 [[ -n "${UID}" ]] || export UID="$(id -u)"
