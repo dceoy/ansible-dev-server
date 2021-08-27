@@ -1,5 +1,6 @@
 ---
 yum_packages:
+  - '@Development tools'
   - ant
   - atlas-devel
   - autoconf
