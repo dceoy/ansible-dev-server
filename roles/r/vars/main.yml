@@ -66,6 +66,7 @@ r_packages:
     - RcppGSL
     - RcppSMC
     - RcppTOML
+    - renv
     - rmarkdown
     - RPMM
     - RSQLite
