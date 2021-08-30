@@ -25,8 +25,8 @@
     - priv_cpu
   vars:
     use_nvidia_docker: false
-    ignore_running_containers: true
-    docker_userns_remap: default
+    ignore_running_containers: false
+  # docker_userns_remap: default
   environment:
     http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
     https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
@@ -42,8 +42,8 @@
     - priv_gpu
   vars:
     use_nvidia_docker: true
-    ignore_running_containers: true
-    docker_userns_remap: default
+    ignore_running_containers: false
+  # docker_userns_remap: default
   environment:
     http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
     https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
