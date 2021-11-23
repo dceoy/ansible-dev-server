@@ -3,8 +3,6 @@ ansible-dev
 
 Ansible playbooks for servers
 
-[![wercker status](https://app.wercker.com/status/4f6cc02818eabf9b6b0903bfb6d021f9/m/master "wercker status")](https://app.wercker.com/project/byKey/4f6cc02818eabf9b6b0903bfb6d021f9)
-
 Setup
 -----
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eux
+set -euox pipefail
 
 case "${OSTYPE}" in
   darwin* )
@@ -68,3 +68,5 @@ curl -SL \
   -o ~/.vimrc
 
 vim -c 'try | call dein#update() | finally | qall! | endtry' -N -u ~/.vimrc -U NONE -i NONE -V1 -e -s
+
+
