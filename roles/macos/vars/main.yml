@@ -112,6 +112,7 @@ brew_packages:
     - protobuf
     - python3
     - quicktype
+    - rain
     - readline
     - redis
     - rename
@@ -125,7 +126,6 @@ brew_packages:
     - shunit2
     - snappy
     - sqlite
-  # - sshfs
     - supervisor
     - szip
     - tig
@@ -137,7 +137,7 @@ brew_packages:
     - wdiff
     - webp
     - wget
-    - wine
+    - wine-stable
     - winetricks
     - xml2
     - yarn
@@ -146,7 +146,6 @@ brew_packages:
 brew_cask_packages:
   - adobe-acrobat-reader
   - amazon-music
-  - atom
   - chrome-remote-desktop-host
   - discord
   - docker
@@ -162,12 +161,9 @@ brew_cask_packages:
   - handbrake
   - igv
   - iterm2
-  - julia
   - kindle
-  - mendeley-desktop
   - microsoft-office
   - opera-neon
-  - macfuse
   - r
   - rstudio
   - slack
