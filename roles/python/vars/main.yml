@@ -15,12 +15,13 @@ pip_packages:
     - bcolz
     - biopython
     - beautifulsoup4
+    - black
     - bokeh
+    - boto3
     - bottle
     - bayesian-optimization
     - catboost
-  # - cntk
-  # - cntk-gpu
+    - cfn-lint
     - colored-traceback
     - coloredlogs
     - cookiecutter
@@ -69,6 +70,7 @@ pip_packages:
     - pillow
     - pip
     - plotly
+    - pre-commit
     - psutil
     - pubnub
     - plyvel
