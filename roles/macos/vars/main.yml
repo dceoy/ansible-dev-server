@@ -137,8 +137,6 @@ brew_packages:
     - wdiff
     - webp
     - wget
-    - wine-stable
-    - winetricks
     - xml2
     - yarn
     - zlib
