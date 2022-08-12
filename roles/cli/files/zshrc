@@ -145,7 +145,7 @@ alias json2yaml='ruby -rjson -ryaml -e "print JSON.load(STDIN.read).to_yaml" <'
 [[ -d "${HOME}/.pyenv" ]] \
   && export PATH="${HOME}/.pyenv/shims:${HOME}/.pyenv/bin:${PATH}" \
   && eval "$(pyenv init -)"
-[[ -n ${commands[kubectl]} ]] && source <(kubectl completion zsh)
+# [[ -n ${commands[kubectl]} ]] && source <(kubectl completion zsh)
 [[ -n "${UID}" ]] || export UID="$(id -u)"
 [[ -n "${GID}" ]] || export GID="$(id -g)"
 export R_LIBS_USER="${HOME}/.clir/r/library"
