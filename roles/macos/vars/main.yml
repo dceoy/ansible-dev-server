@@ -139,6 +139,7 @@ brew_packages:
     - wget
     - xml2
     - yarn
+    - zip
     - zlib
     - zsh
 brew_cask_packages:
@@ -167,3 +168,4 @@ brew_cask_packages:
   - slack
   - visual-studio-code
   - xquartz
+  - zoom
