@@ -33,6 +33,7 @@ apt_packages:
   - golang
   - hostapd
   - htop
+  - hugo
   - ibus-mozc
   - igv
   - imagemagick
