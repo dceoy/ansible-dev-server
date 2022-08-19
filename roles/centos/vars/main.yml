@@ -54,6 +54,7 @@ yum_packages:
   - hdf5-devel
   - hostapd
   - htop
+  - hugo
   - hunspell-devel
   - ImageMagick-c++-devel
   - ImageMagick-devel
