@@ -28,7 +28,7 @@ Usage
 Set up the systems
 
 ```sh
-$ ansible-playbook provison.yml
+$ ansible-playbook provision.yml
 ```
 
 Set passwords for sudo

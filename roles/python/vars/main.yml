@@ -28,7 +28,6 @@ pip_packages:
     - csvkit
     - cutadapt
     - cython
-    - deltw
     - docker
     - docker-compose
     - fabric
@@ -118,7 +117,6 @@ pip_packages:
     - twitter
     - umap-learn
     - vim-vint
-    - virtualenv
     - vulture
     - webtest
   # - wemake-python-styleguide

@@ -10,5 +10,6 @@ gem_packages:
   - rake
   - selenium-webdriver
   - sqlint
+  - statelint
   - toml-rb
   - twitter
