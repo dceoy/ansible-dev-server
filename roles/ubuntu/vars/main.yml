@@ -114,7 +114,6 @@ apt_packages:
   - snapd
   - software-properties-common
   - sqlite3
-  - sshfs
   - sudo
   - supervisor
   - swig
