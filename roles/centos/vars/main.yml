@@ -129,7 +129,6 @@ yum_packages:
   - shunit2
   - snappy-devel
   - sqlite-devel
-  - sshfs
   - strace
   - sudo
   - supervisor
