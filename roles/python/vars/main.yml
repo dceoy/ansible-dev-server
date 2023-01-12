@@ -31,6 +31,7 @@ pip_packages:
     - docker
     - docker-compose
     - fabric
+    - fastapi
     - fbprophet
     - feather-format
     - flake8
@@ -38,6 +39,7 @@ pip_packages:
     - flake8-isort
     - floyd-cli
     - ggplot
+    - git-remote-codecommit
     - greenlet
     - grip
     - h5py
@@ -102,6 +104,7 @@ pip_packages:
     - sktime
     - sphinx
     - statsmodels
+    - streamlit
     - streamz
     - sympy
   # - tensorflow
