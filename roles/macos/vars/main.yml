@@ -64,6 +64,7 @@ brew_packages:
     - go
     - goreleaser
     - gpg
+    - groff
     - grep
     - gzip
     - hadolint
