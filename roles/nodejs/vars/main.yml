@@ -1,0 +1,10 @@
+---
+npm_packages:
+  - ajv-cli
+  - eslint
+  - eslint-config-airbnb
+  - eslint-plugin-import
+  - jsonlint
+  - npx
+  - typescript
+  - yarn

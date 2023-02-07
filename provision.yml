@@ -74,6 +74,7 @@
     - role: cli
     - role: vim
     - role: python
+    - role: nodejs
     - role: ruby
     - role: go
     - role: r
