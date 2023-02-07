@@ -1,0 +1,35 @@
+---
+- name: Set variables
+  set_fact:
+    path: "{{ ansible_env.PATH }}:/usr/local/bin"
+
+- name: Check npm command
+  environment:
+    PATH: "{{ path }}"
+  shell: |
+    npm --version
+  changed_when: false
+
+- name: Update packages
+  when:
+    - ansible_architecture == 'x86_64'
+  environment:
+    PATH: "{{ path }}"
+  npm:
+    global: yes
+    state: latest
+  ignore_errors: true
+  notify: Notify updates of Node.js via Slack
+
+- name: Install packages
+  when:
+    - ansible_architecture == 'x86_64'
+  environment:
+    PATH: "{{ path }}"
+  npm:
+    name: "{{ item }}"
+    global: yes
+    state: latest
+  with_items: "{{ npm_packages }}"
+  ignore_errors: true
+  notify: Notify updates of Node.js via Slack
