@@ -29,7 +29,6 @@ pip_packages:
     - cutadapt
     - cython
     - docker
-    - docker-compose
     - fabric
     - fastapi
     - fbprophet

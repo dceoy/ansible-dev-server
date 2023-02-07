@@ -61,7 +61,6 @@
       - ansible
       - ansible-lint
       - csvkit
-      - docker-compose
       - docopt
       - flake8
       - flake8-bugbear
