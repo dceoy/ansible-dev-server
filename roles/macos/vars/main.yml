@@ -163,6 +163,7 @@ brew_cask_packages:
   - igv
   - iterm2
   - kindle
+  - microsoft-edge
   - microsoft-office
   - opera-neon
   - r
