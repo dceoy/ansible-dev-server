@@ -80,6 +80,8 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('vim-scripts/lint.vim')                   " jshint integration with quickfix window
   call dein#add('kchmck/vim-coffee-script')               " coffeescript support for vim
   call dein#add('leafgarland/typescript-vim')             " typescript syntax files for vim
+  call dein#add('vim-scripts/vim-svelte')                 " syntax highlighting and indentation for Svelte components
+
   " Ruby
   call dein#add('vim-ruby/vim-ruby')                      " vim/ruby configuration files
   call dein#add('vim-scripts/rails.vim')                  " ruby on rails: easy file navigation, enhanced syntax highlighting, and more
