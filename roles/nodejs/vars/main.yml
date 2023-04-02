@@ -6,5 +6,6 @@ npm_packages:
   - eslint-plugin-import
   - jsonlint
   - npx
+  - serverless
   - typescript
   - yarn
