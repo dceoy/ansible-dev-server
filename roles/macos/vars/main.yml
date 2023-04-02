@@ -33,6 +33,7 @@ brew_packages:
     - bwa
     - cabal-install
     - circleci
+    - cloudformation-guard
     - colordiff
     - conjure-up
     - coreutils
@@ -134,6 +135,7 @@ brew_packages:
     - tldr
     - tmux
     - tree
+    - v8
     - wakeonlan
     - watch
     - wdiff
