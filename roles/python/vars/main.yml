@@ -11,6 +11,7 @@ pip_packages:
     - apache-airflow
     - apache-libcloud
     - autopep8
+    - aws-lambda-powertools
     - bash_kernel
     - bcolz
     - biopython
