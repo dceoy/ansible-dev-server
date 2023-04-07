@@ -1,10 +1,7 @@
 ---
 pip_packages:
   3:
-    - git+https://github.com/dceoy/deltw.git
-    - git+https://github.com/dceoy/pdbio.git
     - git+https://github.com/dceoy/oanda-cli.git
-    - git+https://github.com/dceoy/fract.git
     - alpha_vantage
     - ansible
     - ansible-lint
@@ -73,6 +70,7 @@ pip_packages:
     - plotly
     - pre-commit
     - psutil
+    - psycopg2-binary
     - pubnub
     - plyvel
     - pydot

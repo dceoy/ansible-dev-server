@@ -81,7 +81,6 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('kchmck/vim-coffee-script')               " coffeescript support for vim
   call dein#add('leafgarland/typescript-vim')             " typescript syntax files for vim
   call dein#add('evanleck/vim-svelte')                    " syntax highlighting and indentation for Svelte components
-
   " Ruby
   call dein#add('vim-ruby/vim-ruby')                      " vim/ruby configuration files
   call dein#add('vim-scripts/rails.vim')                  " ruby on rails: easy file navigation, enhanced syntax highlighting, and more
@@ -137,6 +136,8 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('vobornik/vim-mql4')                      " syntax highlighting for MQL4
   " WDL
   call dein#add('broadinstitute/vim-wdl')                 " syntax highlighting for wdl
+  " Copilot
+  call dein#add('github/copilot.vim')                     " plugin for GitHub Copilot
 
   call dein#end()
   call dein#save_state()

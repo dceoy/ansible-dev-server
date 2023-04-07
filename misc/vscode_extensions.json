@@ -1,7 +1,10 @@
 {
   "recommendations": [
+    "amazonwebservices.aws-toolkit-vscode",
     "bierner.markdown-mermaid",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "ms-azuretools.vscode-docker",
+    "MS-CEINTL.vscode-language-pack-ja"
   ]
 }
