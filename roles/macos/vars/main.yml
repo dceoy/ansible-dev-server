@@ -121,6 +121,7 @@ brew_packages:
     - rename
     - ruby
     - rust
+    - rustup
     - samtools
     - sbt
     - scala
@@ -167,9 +168,11 @@ brew_cask_packages:
   - kindle
   - microsoft-edge
   - microsoft-office
+  - microsoft-remote-desktop
   - opera-neon
   - r
   - rstudio
+  - session-manager-plugin
   - slack
   - visual-studio-code
   - xquartz
