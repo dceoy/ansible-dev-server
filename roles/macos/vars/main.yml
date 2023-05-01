@@ -63,6 +63,7 @@ brew_packages:
     - gnu-which
     - gnutls
     - go
+    - gopls
     - goreleaser
     - gpg
     - groff
@@ -132,6 +133,7 @@ brew_packages:
     - sqlite
     - supervisor
     - szip
+    - terraform
     - tig
     - tldr
     - tmux
@@ -151,6 +153,7 @@ brew_cask_packages:
   - adobe-acrobat-reader
   - amazon-music
   - chrome-remote-desktop-host
+  - deepl
   - discord
   - docker
   - drawio
