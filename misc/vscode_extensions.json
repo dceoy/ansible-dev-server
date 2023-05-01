@@ -5,6 +5,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "ms-azuretools.vscode-docker",
-    "MS-CEINTL.vscode-language-pack-ja"
+    "MS-CEINTL.vscode-language-pack-ja",
+    "streetsidesoftware.code-spell-checker"
   ]
 }
