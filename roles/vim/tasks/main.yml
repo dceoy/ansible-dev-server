@@ -19,30 +19,14 @@
     - bundles
   notify: Notify updates of Vim via Slack
 
-- name: Clone vim
-  git:
-    repo: https://github.com/vim/vim.git
-    dest: "{{ ansible_env.HOME }}/.vim/src/vim"
-  register: clone_vim
-  notify: Notify updates of Vim via Slack
-
 - name: Clone install-latest-vim
   git:
     repo: https://github.com/dceoy/install-latest-vim.git
     dest: "{{ ansible_env.HOME }}/.vim/src/install-latest-vim"
-  register: clone_install_latest_vim
-  notify: Notify updates of Vim via Slack
-
-- name: Clone dein.vim
-  git:
-    repo: https://github.com/Shougo/dein.vim
-    dest: "{{ ansible_env.HOME }}/.vim/bundles/repos/github.com/Shougo/dein.vim"
-  register: clone_dein_vim
   notify: Notify updates of Vim via Slack
 
 - name: Install or update Vim and Vim plugins
-  when: clone_vim is changed or clone_install_latest_vim is changed or clone_dein_vim is changed
   shell: |
-    {{ ansible_env.HOME }}/.vim/src/install-latest-vim/install_latest_vim.sh --force --dein
+    {{ ansible_env.HOME }}/.vim/src/install-latest-vim/install_latest_vim.sh --lua --dein
   ignore_errors: true
   notify: Notify updates of Vim via Slack
