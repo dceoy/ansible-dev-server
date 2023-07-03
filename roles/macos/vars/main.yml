@@ -26,6 +26,7 @@ brew_packages:
     - automake
     - awscli
     - bazel
+    - bats-core
     - bcftools
     - bedtools
     - binutils
@@ -40,6 +41,7 @@ brew_packages:
     - corkscrew
     - curl
     - diffutils
+    - dvc
     - ed
     - elixir
     - fcrackzip
