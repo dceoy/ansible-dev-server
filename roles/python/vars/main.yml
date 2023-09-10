@@ -8,6 +8,7 @@ pip_packages:
     - apache-airflow
     - apache-libcloud
     - autopep8
+    - aws-cdk-lib
     - aws-lambda-powertools
     - bash_kernel
     - bcolz
@@ -67,6 +68,7 @@ pip_packages:
     - pep8-naming
     - pillow
     - pip
+    - pipx
     - plotly
     - pre-commit
     - psutil
