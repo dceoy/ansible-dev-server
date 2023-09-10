@@ -1,6 +1,9 @@
 ---
 brew_packages:
   from_third_party_repos:
+    - tap: hashicorp/tap
+      name:
+        - terraform
     - tap: weaveworks/tap
       name:
         - eksctl
@@ -24,6 +27,7 @@ brew_packages:
     - amazon-ecs-cli
     - autoconf
     - automake
+    - aws-cdk
     - awscli
     - bazel
     - bats-core
@@ -34,6 +38,7 @@ brew_packages:
     - bwa
     - cabal-install
     - circleci
+    - cloudflared
     - cloudformation-guard
     - colordiff
     - conjure-up
