@@ -98,8 +98,10 @@ case "${OSTYPE}" in
   darwin* )
     PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:${PATH}"
     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/findutils/libexec/gnuman:/usr/local/opt/gnu-sed/libexec/gnuman:/usr/local/opt/gnu-tar/libexec/gnuman:/usr/local/opt/grep/libexec/gnuman:${MANPATH}"
+    export C_INCLUDE_PATH="/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/Current/Headers:${CPLUS_INCLUDE_PATH}"
+    export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/Current/Headers:${CPLUS_INCLUDE_PATH}"
     alias tree='tree -N'
-    alias brew-update-upgrade-cleanup='softwareupdate --all --install --force && brew update && brew upgrade && brew cleanup'
+    alias brew-update-upgrade-cleanup='bash -xc "softwareupdate --all --install --force && brew update && brew upgrade && brew cleanup"'
     function restart-app {
       for a (${*}) killall ${a} && open -a ${a}
     }
