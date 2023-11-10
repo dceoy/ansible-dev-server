@@ -18,10 +18,6 @@ brew_packages:
       options:
         - with-fontconfig
         - with-librsvg
-    - name: vim
-      options:
-        - with-lua
-        - with-python3
   without_options:
     - atk
     - amazon-ecs-cli
@@ -31,17 +27,17 @@ brew_packages:
     - awscli
     - bazel
     - bats-core
-    - bcftools
-    - bedtools
+    # - bcftools
+    # - bedtools
     - binutils
     - boost
-    - bwa
+    # - bwa
     - cabal-install
     - circleci
     - cloudflared
     - cloudformation-guard
     - colordiff
-    - conjure-up
+    # - conjure-up
     - coreutils
     - corkscrew
     - curl
@@ -82,7 +78,7 @@ brew_packages:
     - htop
     - hugo
     - hunspell
-    - igv
+    # - igv
     - imagemagick
     - jq
     - jsonlint
@@ -100,7 +96,7 @@ brew_packages:
     - lmdb
     - lua
     - luajit
-    - md5sha1sum
+    # - md5sha1sum
     - mercurial
     - ncdu
     - nkf
@@ -116,7 +112,7 @@ brew_packages:
     - parallel
     - pbzip2
     - pdf2svg
-    - picard-tools
+    # - picard-tools
     - pigz
     - pkg-config
     - postgresql
@@ -130,7 +126,7 @@ brew_packages:
     - ruby
     - rust
     - rustup
-    - samtools
+    # - samtools
     - sbt
     - scala
     - screen
@@ -139,13 +135,15 @@ brew_packages:
     - snappy
     - sqlite
     - supervisor
-    - szip
+    # - szip
+    - tailscale
     - terraform
     - tig
     - tldr
     - tmux
     - tree
     - v8
+    - vim
     - wakeonlan
     - watch
     - wdiff
@@ -158,7 +156,7 @@ brew_packages:
     - zsh
 brew_cask_packages:
   - adobe-acrobat-reader
-  - amazon-music
+  # - amazon-music
   - chrome-remote-desktop-host
   - deepl
   - discord

@@ -96,8 +96,13 @@ setopt nonomatch
 
 case "${OSTYPE}" in
   darwin* )
-    PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:${PATH}"
-    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/findutils/libexec/gnuman:/usr/local/opt/gnu-sed/libexec/gnuman:/usr/local/opt/gnu-tar/libexec/gnuman:/usr/local/opt/grep/libexec/gnuman:${MANPATH}"
+    if [[ -d '/opt/homebrew/bin' ]]; then
+      HB_PREFIX='/opt/homebrew'
+    else
+      HB_PREFIX='/usr/local'
+    fi
+    PATH="${HB_PREFIX}/bin:${HB_PREFIX}/opt/coreutils/libexec/gnubin:${HB_PREFIX}/opt/findutils/libexec/gnubin:${HB_PREFIX}/opt/gnu-sed/libexec/gnubin:${HB_PREFIX}/opt/gnu-tar/libexec/gnubin:${HB_PREFIX}/opt/grep/libexec/gnubin:${PATH}"
+    MANPATH="${HB_PREFIX}/opt/coreutils/libexec/gnuman:${HB_PREFIX}/opt/findutils/libexec/gnuman:${HB_PREFIX}/opt/gnu-sed/libexec/gnuman:${HB_PREFIX}/opt/gnu-tar/libexec/gnuman:${HB_PREFIX}/opt/grep/libexec/gnuman:${MANPATH}"
     export C_INCLUDE_PATH="/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/Current/Headers:${CPLUS_INCLUDE_PATH}"
     export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/Current/Headers:${CPLUS_INCLUDE_PATH}"
     alias tree='tree -N'
