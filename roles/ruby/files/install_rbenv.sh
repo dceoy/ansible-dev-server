@@ -7,7 +7,7 @@ set -eoux pipefail
 RBENV_DIR="${HOME}/.rbenv"
 RB_BUILD_DIR="${HOME}/.rbenv/plugins/ruby-build"
 RBENV="${RBENV_DIR}/bin/rbenv"
-[[ ${#} -ge 1 ]] && RB_MAJOR_VER="${1}" || RB_MAJOR_VER=2
+[[ ${#} -ge 1 ]] && RB_MAJOR_VER="${1}" || RB_MAJOR_VER='[0-9]+'
 
 if [[ -d "${RBENV_DIR}" ]]; then
   cd "${RBENV_DIR}" && git pull --prune && cd -
