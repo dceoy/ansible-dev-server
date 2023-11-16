@@ -20,7 +20,6 @@
 - name: Update packages
   when:
     - mkdir_go is changed
-    - ansible_architecture == 'x86_64'
   environment:
     PATH: "{{ path }}"
     GOPATH: "{{ gopath }}"
@@ -31,13 +30,12 @@
 
 - name: Install packages
   when:
-    - ansible_architecture == 'x86_64'
     - go_packages is defined
   environment:
     PATH: "{{ path }}"
     GOPATH: "{{ gopath }}"
   shell: |
-    go get -v {{ item }}
+    go install {{ item }}@latest
   with_items: "{{ go_packages }}"
   ignore_errors: true
   notify: Notify updates of Go via Slack

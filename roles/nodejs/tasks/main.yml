@@ -11,8 +11,6 @@
   changed_when: false
 
 - name: Update packages
-  when:
-    - ansible_architecture == 'x86_64'
   environment:
     PATH: "{{ path }}"
   npm:
@@ -22,8 +20,6 @@
   notify: Notify updates of Node.js via Slack
 
 - name: Install packages
-  when:
-    - ansible_architecture == 'x86_64'
   environment:
     PATH: "{{ path }}"
   npm:
