@@ -52,13 +52,11 @@
 
 - name: Install and update base packages
   when:
-    - ansible_architecture == 'x86_64'
     - pip_x.results[0].stat.exists
     - pip_packages is defined
     - pip_packages[3] is defined
   pip:
     name:
-      - ansible
       - ansible-lint
       - csvkit
       - docopt
@@ -70,6 +68,7 @@
       - pandas
       - pep8-naming
       - pip
+      - pipx
       - pynvim
       - vim-vint
       - vulture
@@ -81,7 +80,6 @@
 
 - name: Install and update Python packages
   when:
-    - ansible_architecture == 'x86_64'
     - pip_x.results[0].stat.exists
     - pip_packages is defined
     - pip_packages[3] is defined
