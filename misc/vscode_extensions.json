@@ -3,11 +3,15 @@
     "amazonwebservices.aws-toolkit-vscode",
     "bierner.markdown-mermaid",
     "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
     "esbenp.prettier-vscode",
     "github.copilot",
+    "github.copilot-chat",
     "ms-azuretools.vscode-docker",
-    "MS-CEINTL.vscode-language-pack-ja",
+    "ms-ceintl.vscode-language-pack-ja",
+    "ms-vscode-remote.remote-containers",
     "streetsidesoftware.code-spell-checker",
+    "vscodevim.vim",
     "vsls-contrib.gistfs"
   ]
 }

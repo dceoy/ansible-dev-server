@@ -69,6 +69,7 @@
       - pep8-naming
       - pip
       - pipx
+      - poetry
       - pynvim
       - vim-vint
       - vulture
