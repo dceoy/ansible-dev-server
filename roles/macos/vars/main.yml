@@ -21,6 +21,7 @@ brew_packages:
   without_options:
     - atk
     - amazon-ecs-cli
+    - ansible
     - autoconf
     - automake
     - aws-cdk
@@ -42,6 +43,7 @@ brew_packages:
     - corkscrew
     - curl
     - diffutils
+    - docker-compose
     - dvc
     - ed
     - elixir
