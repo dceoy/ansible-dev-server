@@ -146,18 +146,23 @@ alias git-diff-csv='git diff --color-words="[^[:space:],]+"'
 alias yaml2json='ruby -rjson -ryaml -e "print YAML.load(STDIN.read).to_json" <'
 alias json2yaml='ruby -rjson -ryaml -e "print JSON.load(STDIN.read).to_yaml" <'
 
-[[ -d "${HOME}/.rbenv" ]] \
-  && export PATH="${HOME}/.rbenv/shims:${HOME}/.rbenv/bin:${PATH}" \
-  && eval "$(rbenv init -)"
-[[ -d "${HOME}/.pyenv" ]] \
-  && export PATH="${HOME}/.pyenv/shims:${HOME}/.pyenv/bin:${PATH}" \
-  && eval "$(pyenv init -)"
-# [[ -n ${commands[kubectl]} ]] && source <(kubectl completion zsh)
+if [[ -d "${HOME}/.zfunc" ]]; then
+  fpath+=~/.zfunc
+  autoload -Uz compinit && compinit
+fi
+if [[ -d "${HOME}/.rbenv" ]]; then
+  export PATH="${HOME}/.rbenv/shims:${HOME}/.rbenv/bin:${PATH}"
+  eval "$(rbenv init -)"
+fi
+if [[ -d "${HOME}/.pyenv" ]]; then
+  export PATH="${HOME}/.pyenv/shims:${HOME}/.pyenv/bin:${PATH}"
+  eval "$(pyenv init -)"
+fi
 [[ -n "${UID}" ]] || export UID="$(id -u)"
 [[ -n "${GID}" ]] || export GID="$(id -g)"
 export R_LIBS_USER="${HOME}/.clir/r/library"
 export GOPATH="${HOME}/.go"
-export PATH="${HOME}/.vim/bin:${GOPATH}/bin:${PATH}:${HOME}/.clir/bin:${HOME}/.local/bin"
+export PATH="${HOME}/.vim/bin:${GOPATH}/bin:${HOME}/.clir/bin:${HOME}/.local/bin:${PATH}"
 
 ### Git ###
 autoload -Uz vcs_info
