@@ -6,7 +6,9 @@ npm_packages:
   - eslint-config-airbnb
   - eslint-plugin-import
   - jsonlint
+  - markdownlint
   - npx
+  - puppeteer
   - serverless
   - typescript
   - yarn
