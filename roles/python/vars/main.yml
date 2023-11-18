@@ -28,6 +28,7 @@ pip_packages:
     - cutadapt
     - cython
     - docker
+    - docopt
     - fabric
     - fastapi
     - fbprophet
@@ -47,17 +48,22 @@ pip_packages:
     - interpret
     - ipykernel
     - ipython
+    - jsonschema
     - jupyter
     - jupyter_contrib_nbextensions
     - jupyterthemes
     - keras
+    - langchain
     - lifelines
     - lightgbm
+    - llama-cpp-python
+    - llama-index
     - luigi
     - matplotlib
     - mkl
     - mock
   # - mxnet
+    - mypy
     - nose
     - notebook
     - notedown
@@ -76,6 +82,7 @@ pip_packages:
     - psycopg2-binary
     - pubnub
     - plyvel
+    - pydantic
     - pydot
     - pygam
     - pymc
@@ -119,6 +126,9 @@ pip_packages:
     - tqdm
     - twine
     - twitter
+    - types-docopt
+    - types-jsonschema
+    - types-setuptools
     - umap-learn
     - vim-vint
     - vulture

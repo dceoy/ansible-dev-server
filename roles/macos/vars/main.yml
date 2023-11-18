@@ -1,9 +1,6 @@
 ---
 brew_packages:
   from_third_party_repos:
-    - tap: hashicorp/tap
-      name:
-        - terraform
     - tap: weaveworks/tap
       name:
         - eksctl
@@ -139,7 +136,8 @@ brew_packages:
     - supervisor
     # - szip
     - tailscale
-    - terraform
+    - terragrunt
+    - tfenv
     - tig
     - tldr
     - tmux

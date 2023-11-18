@@ -2,6 +2,7 @@
   "recommendations": [
     "amazonwebservices.aws-toolkit-vscode",
     "bierner.markdown-mermaid",
+    "davidanson.vscode-markdownlint",
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
@@ -10,6 +11,12 @@
     "ms-azuretools.vscode-docker",
     "ms-ceintl.vscode-language-pack-ja",
     "ms-vscode-remote.remote-containers",
+    "ms-vscode-remote.remote-ssh",
+    "ms-vscode-remote.remote-ssh-edit",
+    "ms-vscode-remote.remote-wsl",
+    "ms-vscode-remote.vscode-remote-extensionpack",
+    "ms-vscode.remote-explorer",
+    "ms-vscode.remote-server",
     "streetsidesoftware.code-spell-checker",
     "vscodevim.vim",
     "vsls-contrib.gistfs"
