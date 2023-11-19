@@ -101,8 +101,11 @@ case "${OSTYPE}" in
     else
       HB_PREFIX='/usr/local'
     fi
-    PATH="${HB_PREFIX}/bin:${HB_PREFIX}/sbin:${HB_PREFIX}/opt/coreutils/libexec/gnubin:${HB_PREFIX}/opt/findutils/libexec/gnubin:${HB_PREFIX}/opt/gnu-sed/libexec/gnubin:${HB_PREFIX}/opt/gnu-tar/libexec/gnubin:${HB_PREFIX}/opt/grep/libexec/gnubin:${PATH}"
-    MANPATH="${HB_PREFIX}/opt/coreutils/libexec/gnuman:${HB_PREFIX}/opt/findutils/libexec/gnuman:${HB_PREFIX}/opt/gnu-sed/libexec/gnuman:${HB_PREFIX}/opt/gnu-tar/libexec/gnuman:${HB_PREFIX}/opt/grep/libexec/gnuman:${MANPATH}"
+    export PATH="${HB_PREFIX}/bin:${HB_PREFIX}/sbin:${HB_PREFIX}/opt/coreutils/libexec/gnubin:${HB_PREFIX}/opt/findutils/libexec/gnubin:${HB_PREFIX}/opt/gnu-sed/libexec/gnubin:${HB_PREFIX}/opt/gnu-tar/libexec/gnubin:${HB_PREFIX}/opt/grep/libexec/gnubin:${PATH}"
+    export MANPATH="${HB_PREFIX}/opt/coreutils/libexec/gnuman:${HB_PREFIX}/opt/findutils/libexec/gnuman:${HB_PREFIX}/opt/gnu-sed/libexec/gnuman:${HB_PREFIX}/opt/gnu-tar/libexec/gnuman:${HB_PREFIX}/opt/grep/libexec/gnuman:${MANPATH}"
+    export LDFLAGS="-L${HB_PREFIX}/opt/zlib/lib"
+    export CPPFLAGS="-I${HB_PREFIX}/opt/zlib/include"
+    export PKG_CONFIG_PATH="${HB_PREFIX}/opt/zlib/lib/pkgconfig"
     export C_INCLUDE_PATH="/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/Current/Headers:${CPLUS_INCLUDE_PATH}"
     export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/Current/Headers:${CPLUS_INCLUDE_PATH}"
     alias tree='tree -N'
