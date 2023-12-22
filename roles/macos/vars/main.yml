@@ -145,6 +145,7 @@ brew_packages:
     - tldr
     - tmux
     - tree
+    - trivy
     - v8
     - vim
     - wakeonlan
