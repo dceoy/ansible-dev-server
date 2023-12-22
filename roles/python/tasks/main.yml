@@ -16,7 +16,6 @@
     {{ pyenv }} install --list \
       | awk '$1 ~ /^{{ item }}[\.\-0-9]+$/ { v=$1 } END { print v }'
   with_items:
-  # - 2
     - 3
   changed_when: false
   register: py_v
@@ -58,6 +57,7 @@
   pip:
     name:
       - ansible-lint
+      - bandit
       - black
       - csvkit
       - docopt
