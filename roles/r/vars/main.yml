@@ -78,6 +78,7 @@ r_packages:
     - slackr
     - som
     - stringr
+    - styler
     - survminer
     - testthat
     - tidyverse
