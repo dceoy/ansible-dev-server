@@ -39,6 +39,7 @@ brew_packages:
     - coreutils
     - corkscrew
     - curl
+    - cyberduck
     - diffutils
     - docker-compose
     - dvc
@@ -123,6 +124,7 @@ brew_packages:
     - readline
     - redis
     - rename
+    - rsync
     - ruby
     - rust
     - rustup
@@ -141,6 +143,7 @@ brew_packages:
     - terragrunt
     - tfenv
     - tflint
+    - tfsec
     - tig
     - tldr
     - tmux
