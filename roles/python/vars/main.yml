@@ -85,6 +85,7 @@ pip_packages:
     - pydantic
     - pydot
     - pygam
+    - pyinstaller
     - pymc
     - pynvim
     - pyopenssl
