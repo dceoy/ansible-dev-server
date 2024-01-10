@@ -139,6 +139,8 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('broadinstitute/vim-wdl')                 " syntax highlighting for wdl
   " Copilot
   call dein#add('github/copilot.vim')                     " plugin for GitHub Copilot
+  " EditorConfig
+  call dein#add('editorconfig/editorconfig-vim')          " editorconfig plugin for vim
 
   call dein#end()
   call dein#save_state()
@@ -276,3 +278,6 @@ let g:vim_markdown_math = 1               " used as $x^2$, $$x^2$$, escapable as
 
 " rest
 let g:riv_disable_folding = 1             " disable folding in rest
+
+" copilot
+let g:copilot_filetypes = {'markdown': v:true}
