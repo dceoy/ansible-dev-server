@@ -59,6 +59,7 @@ pip_packages:
     - llama-cpp-python
     - llama-index
     - luigi
+    - magika
     - matplotlib
     - mkl
     - mock
@@ -72,11 +73,13 @@ pip_packages:
     - pandas
     - pandas-datareader
     - pep8-naming
+    - pandera
     - pillow
     - pip
     - pipx
     - plotly
     - poetry
+    - polars
     - pre-commit
     - psutil
     - psycopg2-binary
@@ -92,6 +95,7 @@ pip_packages:
     - pypandoc
     - pypdf2
     - pyper
+    - pyright
     - pysam
     - pystan
     - pytest
@@ -101,6 +105,7 @@ pip_packages:
     - requests
     - requests_oauthlib
     - rpy2
+    - ruff
     - sabr
     - scikit-learn
     - scipy
@@ -112,6 +117,7 @@ pip_packages:
     - sklearn-pandas
     - sktime
     - sphinx
+    - sqlmodel
     - statsmodels
     - streamlit
     - streamz
