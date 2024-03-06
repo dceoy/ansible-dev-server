@@ -185,11 +185,13 @@ brew_cask_packages:
   - microsoft-edge
   - microsoft-office
   - microsoft-remote-desktop
+  - miro
   - opera-neon
   - r
   - rstudio
   - session-manager-plugin
   - slack
   - visual-studio-code
+  - wine-stable
   - xquartz
   - zoom
