@@ -107,6 +107,7 @@ pip_packages:
     - rpy2
     - ruff
     - sabr
+    # - safety
     - scikit-learn
     - scipy
     - scss

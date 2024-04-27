@@ -19,6 +19,7 @@ brew_packages:
     - atk
     - amazon-ecs-cli
     - ansible
+    - aria2
     - autoconf
     - automake
     - aws-cdk
@@ -38,6 +39,7 @@ brew_packages:
     # - conjure-up
     - coreutils
     - corkscrew
+    - cosign
     - curl
     - cyberduck
     - diffutils
