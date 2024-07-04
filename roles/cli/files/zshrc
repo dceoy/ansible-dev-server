@@ -166,6 +166,11 @@ fi
 export R_LIBS_USER="${HOME}/.clir/r/library"
 export GOPATH="${HOME}/.go"
 export PATH="${HOME}/.vim/bin:${GOPATH}/bin:${HOME}/.clir/bin:${HOME}/.local/bin:${PATH}"
+export PYTHONDONTWRITEBYTECODE=true
+export PYTHONBUFFERED=true
+export PYTHONIOENCODING=utf-8
+export PIP_NO_CACHE_DIR=true
+export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 ### Git ###
 autoload -Uz vcs_info
