@@ -58,12 +58,10 @@
     name:
       - ansible-lint
       - bandit
-      - black
       - csvkit
       - docopt
       - flake8
       - flake8-bugbear
-      - flake8-isort
       - grip
       - jupyter
       - mypy
@@ -73,6 +71,7 @@
       - pipx
       - poetry
       - pynvim
+      - ruff
       - vim-vint
       - vulture
       - yamllint
