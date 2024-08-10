@@ -34,8 +34,18 @@ pip_packages:
     - fbprophet
     - feather-format
     - flake8
+    - flake8-bandit
+    - flake8-black
+    - flake8-builtins
     - flake8-bugbear
+    - flake8-commas
+    - flake8-comprehensions
+    - flake8-docstrings
+    - flake8-eradicate
     - flake8-isort
+    - flake8-quotes
+    - flake8-simplify
+    - Flake8-pyproject
     - floyd-cli
     - ggplot
     - git-remote-codecommit
@@ -133,6 +143,7 @@ pip_packages:
     - tornado
     - tox
     - tqdm
+    - tryceratops
     - twine
     - twitter
     - types-docopt

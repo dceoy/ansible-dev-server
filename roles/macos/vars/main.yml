@@ -1,12 +1,5 @@
 ---
 brew_packages:
-  from_third_party_repos:
-    - tap: weaveworks/tap
-      name:
-        - eksctl
-    - tap: aws/tap
-      name:
-        - aws-sam-cli
   with_options:
     - name: cairo
       options:
@@ -69,6 +62,7 @@ brew_packages:
     - gnu-which
     - gnutls
     - go
+    - goodwithtech/r/dockle
     - gopls
     - goreleaser
     - gpg
@@ -106,6 +100,7 @@ brew_packages:
     - nmap
     - node
     - npm
+    - ollama
     - open-mpi
     - opencv
     - openjdk
