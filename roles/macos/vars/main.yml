@@ -18,7 +18,7 @@ brew_packages:
     - aws-cdk
     - awscli
     - bazel
-    - bats-core
+    # - bats-core
     # - bcftools
     # - bedtools
     - binutils
