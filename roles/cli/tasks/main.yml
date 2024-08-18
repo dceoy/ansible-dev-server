@@ -9,7 +9,7 @@
     scope: global
   with_items:
     - name: color.ui
-      value: 'true'
+      value: auto
     - name: push.default
       value: matching
     - name: core.excludesfile

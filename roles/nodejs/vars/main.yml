@@ -1,6 +1,7 @@
 ---
 npm_packages:
   - ajv-cli
+  - bats
   - eslint
   - eslint-config-airbnb
   - eslint-plugin-import
