@@ -244,7 +244,7 @@ if !exists(':DiffOrig')
 endif
 
 " syntastic
-let g:syntastic_python_checkers = ['python', 'flake8', 'mypy']
+let g:syntastic_python_checkers = ['python', 'flake8', 'pyright', 'bandit', 'ruff']
 let g:syntastic_python_flake8_args = '--max-line-length=88'
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_yaml_checkers = ['yamllint']
