@@ -235,17 +235,10 @@ set smarttab                                " sw at the start of the line, sts e
 set textwidth=0                             " don't wrap lines by default
 set modeline                                " read modelines
 
-" search for visually selected text
-vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
-
-" enable :DiffOrig
-if !exists(':DiffOrig')
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-endif
-
 " syntastic
-let g:syntastic_python_checkers = ['python', 'flake8', 'pyright', 'bandit', 'ruff']
+let g:syntastic_python_checkers = ['python', 'flake8', 'ruff', 'pyright', 'mypy', 'bandit']
 let g:syntastic_python_flake8_args = '--max-line-length=88'
+let g:syntastic_python_bandit_args = '--skip B101'
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_yaml_yamllint_args = '-d "{extends: default, rules: {line-length: disable, truthy: disable}}"'
@@ -265,11 +258,6 @@ let g:syntastic_sql_checkers = ['sqlint']
 let g:syntastic_markdown_checkers = ['proselint']
 let g:syntastic_html_tidy_ignore_errors=[' proprietary attribute ', 'trimming empty ', ' is not recognized!', 'discarding unexpected ']
 let g:syntastic_svelte_checkers = ['javascript/eslint', 'html/htmlhint']
-
-" jupyter
-"autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
-"autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
-"autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 
 " markdown
 let g:vim_markdown_folding_disabled = 1   " disable folding in markdown
