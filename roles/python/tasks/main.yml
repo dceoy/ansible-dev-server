@@ -49,35 +49,23 @@
   with_items: "{{ py_v.results }}"
   register: pip_x
 
+- name: Set a list for Python packages to install
+  when:
+    - pip_x.results[0].stat.exists
+    - pip_packages is defined
+    - pip_packages[3] is defined
+  slurp:
+    src: "{{ role_path }}/files/requirements.txt"
+  register: requirements_content
+  delegate_to: localhost
+
 - name: Install and update base packages
   when:
     - pip_x.results[0].stat.exists
     - pip_packages is defined
     - pip_packages[3] is defined
   pip:
-    name:
-      - ansible-lint
-      - bandit
-      - csvkit
-      - docopt
-      - flake8
-      - flake8-bugbear
-      - flake8-isort
-      - flake8-pyproject
-      - grip
-      - jupyter
-      - mypy
-      - pandas
-      - pep8-naming
-      - pip
-      - pipx
-      - poetry
-      - pynvim
-      - pyright
-      - ruff
-      - vim-vint
-      - vulture
-      - yamllint
+    requirements: "{{ requirements_content['content'] | b64decode }}"
     executable: "{{ pip_x.results[0].stat.path }}"
     state: latest
   ignore_errors: true
