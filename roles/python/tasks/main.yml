@@ -10,6 +10,7 @@
   set_fact:
     pyenv: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv"
     pyenv_root: "{{ ansible_env.HOME }}/.pyenv"
+    base_requirements: "{{ lookup('file', 'requirements.txt').split('\n') }}"
 
 - name: Fetch the latest versions
   shell: |
@@ -49,23 +50,13 @@
   with_items: "{{ py_v.results }}"
   register: pip_x
 
-- name: Set a list for Python packages to install
-  when:
-    - pip_x.results[0].stat.exists
-    - pip_packages is defined
-    - pip_packages[3] is defined
-  slurp:
-    src: "{{ role_path }}/files/requirements.txt"
-  register: requirements_content
-  delegate_to: localhost
-
 - name: Install and update base packages
   when:
     - pip_x.results[0].stat.exists
     - pip_packages is defined
     - pip_packages[3] is defined
   pip:
-    requirements: "{{ requirements_content['content'] | b64decode }}"
+    name: "{{ base_requirements }}"
     executable: "{{ pip_x.results[0].stat.path }}"
     state: latest
   ignore_errors: true
