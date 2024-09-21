@@ -236,7 +236,7 @@ set textwidth=0                             " don't wrap lines by default
 set modeline                                " read modelines
 
 " syntastic
-let g:syntastic_python_checkers = ['python', 'flake8', 'ruff', 'pyright', 'mypy', 'bandit']
+let g:syntastic_python_checkers = ['python', 'flake8', 'ruff', 'pyright', 'bandit']
 let g:syntastic_python_flake8_args = '--max-line-length=88'
 let g:syntastic_python_bandit_args = '--skip B101'
 let g:syntastic_javascript_checkers=['eslint']
