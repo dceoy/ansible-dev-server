@@ -1,16 +1,10 @@
 ansible-lint
-bandit
 csvkit
 docopt
-flake8
-flake8-bugbear
-flake8-isort
-flake8-pyproject
 grip
 jupyter
 mypy
 pandas
-pep8-naming
 pip
 pipx
 poetry
