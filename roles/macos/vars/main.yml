@@ -135,7 +135,7 @@ brew_packages:
     - sqlite
     - supervisor
     # - szip
-    - tailscale
+    # - tailscale
     - tcl-tk
     - terragrunt
     - tfenv
@@ -160,35 +160,36 @@ brew_packages:
     - zsh
 brew_cask_packages:
   - adobe-acrobat-reader
-  - authy
+  # - authy
   # - amazon-music
-  - chrome-remote-desktop-host
-  - deepl
-  - discord
+  # - chrome-remote-desktop-host
+  # - deepl
+  # - discord
   - docker
   - drawio
-  - dropbox
-  - endnote
-  - figma
-  - firefox
-  - gimp
-  - google-drive
+  # - dropbox
+  # - endnote
+  # - figma
+  # - firefox
+  # - gimp
+  # - google-drive
   - google-chrome
-  - google-cloud-sdk
+  # - google-cloud-sdk
   - google-japanese-ime
-  - handbrake
+  # - handbrake
   - iterm2
-  - kindle
-  - microsoft-edge
+  # - kindle
+  # - microsoft-edge
   - microsoft-office
-  - microsoft-remote-desktop
+  # - microsoft-remote-desktop
   - miro
-  - opera-neon
+  # - opera
+  # - opera-neon
   - r
-  - rstudio
-  - session-manager-plugin
+  # - rstudio
+  # - session-manager-plugin
   - slack
   - visual-studio-code
-  - wine-stable
+  # - wine-stable
   - xquartz
-  - zoom
+  # - zoom

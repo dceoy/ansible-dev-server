@@ -36,8 +36,7 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('altercation/vim-colors-solarized')       " precision colorscheme for the vim text editor
   call dein#add('tyru/open-browser.vim')                  " open uri with your favorite browser from your favorite editor
   " syntax
-  call dein#add('scrooloose/syntastic')                   " syntax checking hacks for vim
-  "call dein#add('elzr/vim-json')                          " a better json for vim
+  call dein#add('dense-analysis/ale')                     " asynchronous linting/fixing for vim and neovim
   " edit
   "call dein#add('AndrewRadev/switch.vim')                 " switch segments of text with predefined replacements
   " surroundings
@@ -235,30 +234,34 @@ set smarttab                                " sw at the start of the line, sts e
 set textwidth=0                             " don't wrap lines by default
 set modeline                                " read modelines
 
-" syntastic
-let g:syntastic_python_checkers = ['python', 'flake8', 'ruff', 'pyright', 'bandit']
-let g:syntastic_python_flake8_args = '--max-line-length=88 --ignore=B008,W503'
-let g:syntastic_python_bandit_args = '--skip B101'
-let g:syntastic_python_pyright_args = '--threads=0'
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_yaml_checkers = ['yamllint']
-let g:syntastic_yaml_yamllint_args = '-d "{extends: default, rules: {line-length: disable, truthy: disable}}"'
-let g:syntastic_ansible_checkers = ['ansible_lint']
-let g:syntastic_dockerfile_checkers= ['hadolint']
-let g:syntastic_sh_checkers = ['shellcheck']
-let g:syntastic_zsh_checkers = ['zsh']
-let g:syntastic_enable_r_lintr_checker = 1
-let g:syntastic_r_checkers = ['lintr']
-let g:syntastic_rmd_checkers = ['lintr']
-let g:syntastic_r_lintr_linters = 'linters_with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL, object_camel_case_linter = NULL, absolute_path_linter = NULL, object_name_linter = NULL, line_length_linter = line_length_linter(99))'
-let g:syntastic_rmd_lintr_linters = 'linters_with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL, object_camel_case_linter = NULL, absolute_path_linter = NULL, object_name_linter = NULL, line_length_linter = line_length_linter(99))'
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_go_checkers = ['go', 'gofmt', 'golint']
-let g:syntastic_vim_checkers = ['vint']
-let g:syntastic_sql_checkers = ['sqlint']
-let g:syntastic_markdown_checkers = ['proselint']
-let g:syntastic_html_tidy_ignore_errors=[' proprietary attribute ', 'trimming empty ', ' is not recognized!', 'discarding unexpected ']
-let g:syntastic_svelte_checkers = ['javascript/eslint', 'html/htmlhint']
+" ALE
+let g:ale_linters = {
+\   'python': ['python', 'ruff', 'pyright'],
+\   'javascript': ['eslint'],
+\   'yaml': ['yamllint'],
+\   'ansible': ['ansible-lint'],
+\   'dockerfile': ['hadolint'],
+\   'sh': ['shellcheck'],
+\   'bash': ['shellcheck'],
+\   'zsh': ['zsh', 'shellcheck'],
+\   'r': ['lintr'],
+\   'rmd': ['lintr'],
+\   'ruby': ['rubocop'],
+\   'go': ['go', 'gofmt', 'golint'],
+\   'vim': ['vint'],
+\   'sql': ['sqlint'],
+\   'markdown': ['proselint'],
+\   'html': ['tidy'],
+\   'svelte': ['eslint', 'htmlhint'],
+\}
+let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_python_pyright_options = '--threads=0 --level error --reportPrivateUsage false'
+let g:ale_python_mypy_options = '--install-types --non-interactive --ignore-missing-imports --strict --strict-equality --strict-optional'
+let g:ale_python_ruff_options = '--extend-select=F,E,W,C90,I,N,D,UP,S,B,COM,C4,PT,Q,SIM,ARG,ERA,PD,PLC,PLR,PLE,PLW,TRY,FLY,NPY,PERF,FURB,RUF --ignore=D100,D103,S101,B008,A002,A004,COM812,PLC2701,TRY003'
+let g:ale_yaml_yamllint_options = '-d "{extends: default, rules: {line-length: disable, truthy: disable}}"'
+let g:ale_r_lintr_options = 'linters_with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL, object_camel_case_linter = NULL, absolute_path_linter = NULL, object_name_linter = NULL, line_length_linter = line_length_linter(99))'
+let g:ale_rmd_lintr_options = 'linters_with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL, object_camel_case_linter = NULL, absolute_path_linter = NULL, object_name_linter = NULL, line_length_linter = line_length_linter(99))'
+let g:ale_html_tidy_options = '-q -e -config <(echo "proprietary-attributes: false\ndrop-empty-elements: false\n")'
 
 " markdown
 let g:vim_markdown_folding_disabled = 1   " disable folding in markdown
