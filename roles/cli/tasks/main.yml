@@ -24,6 +24,8 @@
       value: 'false'
     - name: gui.encoding
       value: utf-8
+    - name: fetch.prune
+      value: 'true'
   notify: Notify updates of CLI via Slack
 
 - name: Set proxy for git
