@@ -3,11 +3,9 @@ pip_packages:
   3:
     - git+https://github.com/dceoy/oanda-cli.git
     - alpha_vantage
-    - ansible
     - ansible-lint
     - apache-airflow
     - apache-libcloud
-    - autopep8
     - aws-cdk-lib
     - aws-lambda-powertools
     - bash_kernel
@@ -33,19 +31,6 @@ pip_packages:
     - fastapi
     - fbprophet
     - feather-format
-    - flake8
-    - flake8-bandit
-    - flake8-black
-    - flake8-builtins
-    - flake8-bugbear
-    - flake8-commas
-    - flake8-comprehensions
-    - flake8-docstrings
-    - flake8-eradicate
-    - flake8-isort
-    - flake8-quotes
-    - flake8-simplify
-    - Flake8-pyproject
     - floyd-cli
     - ggplot
     - git-remote-codecommit
@@ -73,7 +58,6 @@ pip_packages:
     - matplotlib
     - mkl
     - mock
-  # - mxnet
     - mypy
     - nose
     - notebook
@@ -82,7 +66,6 @@ pip_packages:
     - numpy
     - pandas
     - pandas-datareader
-    - pep8-naming
     - pandera
     - pillow
     - pip
@@ -111,6 +94,7 @@ pip_packages:
     - pystan
     - pytest
     - pytoml
+    - pytorch
     - pyyaml
     - redis
     - requests
@@ -118,7 +102,6 @@ pip_packages:
     - rpy2
     - ruff
     - sabr
-    # - safety
     - scikit-learn
     - scipy
     - scss
@@ -134,8 +117,7 @@ pip_packages:
     - streamlit
     - streamz
     - sympy
-  # - tensorflow
-  # - tensorflow-gpu
+    - tensorflow
     - testfixtures
     - tflearn
     - torch
@@ -153,7 +135,6 @@ pip_packages:
     - vim-vint
     - vulture
     - webtest
-  # - wemake-python-styleguide
     - xgboost
     - xmltodict
     - yamllint

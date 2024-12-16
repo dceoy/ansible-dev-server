@@ -25,6 +25,7 @@ brew_packages:
     - boost
     # - bwa
     - cabal-install
+    - chatgpt
     - circleci
     - cloudflared
     - cloudformation-guard
@@ -112,10 +113,11 @@ brew_packages:
     - pdf2svg
     # - picard-tools
     - pigz
+    - pipx
     - pkg-config
     - postgresql
     - protobuf
-    - python3
+    - python
     - quicktype
     - rain
     - readline
@@ -148,13 +150,12 @@ brew_packages:
     - trivy
     - v8
     - vim
+    # - vnc-viewer
     - wakeonlan
     - watch
     - wdiff
     - webp
     - wget
-    - xml2
-    - yarn
     - zip
     - zlib
     - zsh
