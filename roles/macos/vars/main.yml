@@ -35,7 +35,7 @@ brew_packages:
     - corkscrew
     - cosign
     - curl
-    - cyberduck
+    # - cyberduck
     - diffutils
     - docker-compose
     - dvc
