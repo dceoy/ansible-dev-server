@@ -10,7 +10,6 @@ brew_packages:
         - with-librsvg
   without_options:
     - atk
-    - amazon-ecs-cli
     - ansible
     - aria2
     - autoconf
@@ -25,7 +24,6 @@ brew_packages:
     - boost
     # - bwa
     - cabal-install
-    - chatgpt
     - circleci
     - cloudflared
     - cloudformation-guard
@@ -37,7 +35,6 @@ brew_packages:
     - curl
     # - cyberduck
     - diffutils
-    - docker-compose
     - dvc
     - ed
     - elixir
@@ -80,7 +77,6 @@ brew_packages:
     - imagemagick
     - jq
     - jsonlint
-    - kompose
     - kubectl
     - leveldb
     - libgit2
@@ -137,7 +133,6 @@ brew_packages:
     - sqlite
     - supervisor
     # - szip
-    # - tailscale
     - tcl-tk
     - terragrunt
     - tfenv
@@ -150,7 +145,6 @@ brew_packages:
     - trivy
     - v8
     - vim
-    # - vnc-viewer
     - wakeonlan
     - watch
     - wdiff
@@ -163,8 +157,9 @@ brew_cask_packages:
   - adobe-acrobat-reader
   # - authy
   # - amazon-music
+  # - chatgpt
   # - chrome-remote-desktop-host
-  # - deepl
+  # - cursor
   # - discord
   - docker
   - drawio
@@ -179,18 +174,18 @@ brew_cask_packages:
   - google-japanese-ime
   # - handbrake
   - iterm2
-  # - kindle
   # - microsoft-edge
   - microsoft-office
   # - microsoft-remote-desktop
   - miro
   # - opera
-  # - opera-neon
   - r
   # - rstudio
   # - session-manager-plugin
   - slack
+  # - tailscale
   - visual-studio-code
+  # - vnc-viewer
   # - wine-stable
   - xquartz
   # - zoom
