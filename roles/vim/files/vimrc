@@ -277,3 +277,4 @@ let g:riv_disable_folding = 1             " disable folding in rest
 
 " copilot
 let g:copilot_filetypes = {'markdown': v:true, 'yaml': v:true, 'toml': v:true, 'json': v:true}
+let g:copilot_enabled = 1
