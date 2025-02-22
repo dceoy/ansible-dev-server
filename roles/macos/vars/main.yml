@@ -28,7 +28,6 @@ brew_packages:
     - cloudflared
     - cloudformation-guard
     - colordiff
-    # - conjure-up
     - coreutils
     - corkscrew
     - cosign
@@ -124,8 +123,6 @@ brew_packages:
     - rust
     - rustup
     # - samtools
-    - sbt
-    - scala
     - screen
     - shellcheck
     - shunit2
@@ -137,7 +134,6 @@ brew_packages:
     - terragrunt
     - tfenv
     - tflint
-    - tfsec
     - tig
     - tldr
     - tmux
@@ -154,6 +150,7 @@ brew_packages:
     - zlib
     - zsh
 brew_cask_packages:
+  - 1password
   - adobe-acrobat-reader
   # - authy
   # - amazon-music
