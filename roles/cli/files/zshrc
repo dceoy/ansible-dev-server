@@ -104,7 +104,7 @@ case "${OSTYPE}" in
     export PATH="${HB_PREFIX}/bin:${HB_PREFIX}/sbin:${HB_PREFIX}/opt/coreutils/libexec/gnubin:${HB_PREFIX}/opt/findutils/libexec/gnubin:${HB_PREFIX}/opt/gnu-sed/libexec/gnubin:${HB_PREFIX}/opt/gnu-tar/libexec/gnubin:${HB_PREFIX}/opt/grep/libexec/gnubin:${PATH}"
     export MANPATH="${HB_PREFIX}/opt/coreutils/libexec/gnuman:${HB_PREFIX}/opt/findutils/libexec/gnuman:${HB_PREFIX}/opt/gnu-sed/libexec/gnuman:${HB_PREFIX}/opt/gnu-tar/libexec/gnuman:${HB_PREFIX}/opt/grep/libexec/gnuman:${MANPATH}"
     alias tree='tree -N'
-    alias brew-update-upgrade-cleanup='bash -xc "softwareupdate --all --install --force && brew update && brew upgrade && brew cleanup"'
+    alias brew-update-upgrade-cleanup='bash -xc "softwareupdate --install --all --agree-to-license --force && brew update && brew upgrade && brew cleanup"'
     function restart-app {
       for a (${*}) killall ${a} && open -a ${a}
     }
