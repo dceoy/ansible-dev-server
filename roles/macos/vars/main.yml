@@ -9,7 +9,6 @@ brew_packages:
         - with-fontconfig
         - with-librsvg
   without_options:
-    - atk
     - ansible
     - aria2
     - autoconf
@@ -110,7 +109,7 @@ brew_packages:
     - pigz
     - pipx
     - pkg-config
-    - postgresql
+    # - postgresql
     - protobuf
     - python
     - quicktype
@@ -171,6 +170,7 @@ brew_cask_packages:
   - google-japanese-ime
   # - handbrake
   - iterm2
+  # - lm-studio
   # - microsoft-edge
   - microsoft-office
   # - microsoft-remote-desktop

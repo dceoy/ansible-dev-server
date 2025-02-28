@@ -1,59 +1,69 @@
 ---
+- name: Update macOS
+  ansible.builtin.shell:
+    cmd: >
+      softwareupdate --install --all --agree-to-license --force
+    executable: /bin/bash
+  notify: Notify updates of the system via Slack
+
+- name: Print the Xcode path
+  ansible.builtin.shell:
+    cmd: >
+      xcode-select --print-path
+    executable: /bin/bash
+  ignore_errors: yes
+  register: xcode_path
+  changed_when: false
+
+- name: Install Xcode Command Line Tools
+  when:
+    - xcode_path.rc != 0
+  ansible.builtin.shell:
+    cmd: >
+      set -euo pipefail
+      && touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+      && softwareupdate --list
+        | grep -e 'Label: Command Line Tools for Xcode'
+        | cut -d: -f2-
+        | sort
+        | tail -1
+        | xargs -t softwareupdate --install
+      && rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+    executable: /bin/bash
+  notify: Notify updates of the system via Slack
+
 - name: Update homebrew and upgrade all packages
-  homebrew:
+  community.general.homebrew:
     update_homebrew: yes
     upgrade_all: yes
-  ignore_errors: true
-  notify: Notify updates of the system via Slack
-
-- name: Tap repositories
-  when:
-    - brew_packages is defined
-    - brew_packages.from_third_party_repos is defined
-  homebrew_tap:
-    name: "{{ item.tap }}"
-    state: present
-  with_items: "{{ brew_packages.from_third_party_repos }}"
-  notify: Notify updates of the system via Slack
-
-- name: Install packages using casks
-  when: brew_cask_packages is defined
-  homebrew_cask:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ brew_cask_packages }}"
-  ignore_errors: true
   notify: Notify updates of the system via Slack
 
 - name: Install packages
   when:
     - brew_packages is defined
     - brew_packages.without_options is defined
-  homebrew:
-    name: "{{ brew_packages.without_options }}"
+  community.general.homebrew:
+    name: "{{ item }}"
     state: latest
-  ignore_errors: true
-  notify: Notify updates of the system via Slack
-
-- name: Install tap packages
-  when:
-    - brew_packages is defined
-    - brew_packages.from_third_party_repos is defined
-  homebrew:
-    name: "{{ item.name }}"
-    state: latest
-  with_items: "{{ brew_packages.from_third_party_repos }}"
-  ignore_errors: true
+  loop: "{{ brew_packages.without_options }}"
   notify: Notify updates of the system via Slack
 
 - name: Install packages with options
   when:
     - brew_packages is defined
     - brew_packages.with_options is defined
-  homebrew:
+  community.general.homebrew:
     name: "{{ item.name }}"
     install_options: "{{ item.options }}"
     state: latest
-  with_items: "{{ brew_packages.with_options }}"
-  ignore_errors: true
+  loop: "{{ brew_packages.with_options }}"
+  notify: Notify updates of the system via Slack
+
+- name: Install packages
+  when:
+    - brew_cask_packages is defined
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ brew_cask_packages }}"
   notify: Notify updates of the system via Slack
