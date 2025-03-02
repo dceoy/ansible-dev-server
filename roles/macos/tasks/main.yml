@@ -19,16 +19,16 @@
   when:
     - xcode_path.rc != 0
   ansible.builtin.shell:
-    cmd: >
+    cmd: |
       set -euo pipefail
-      && touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-      && softwareupdate --list
-        | grep -e 'Label: Command Line Tools for Xcode'
-        | cut -d: -f2-
-        | sort
-        | tail -1
+      touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+      softwareupdate --list \
+        | grep -e 'Label: Command Line Tools for Xcode' \
+        | cut -d: -f2- \
+        | sort \
+        | tail -1 \
         | xargs -t softwareupdate --install
-      && rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+      rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
     executable: /bin/bash
   notify: Notify updates of the system via Slack
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
-# https://github.com/dceoy/ansible-dev/blob/master/roles/python/files/install_pyenv.sh
+# Usage:
+#   ./install_pyenv.sh [<python_major_version>]
 
 set -eoux pipefail
 

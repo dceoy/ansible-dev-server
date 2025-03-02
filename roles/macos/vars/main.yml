@@ -130,8 +130,7 @@ brew_packages:
     - supervisor
     # - szip
     - tcl-tk
-    - terragrunt
-    - tfenv
+    - tenv
     - tflint
     - tig
     - tldr

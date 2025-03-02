@@ -1,75 +1,64 @@
 ---
 - name: Clone pyenv
-  git:
+  ansible.builtin.git:
     repo: https://github.com/yyuu/pyenv.git
     dest: "{{ ansible_env.HOME }}/.pyenv"
     force: yes
   notify: Notify updates of Python via Slack
 
 - name: Set variables
-  set_fact:
+  ansible.builtin.set_fact:
     pyenv: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv"
     pyenv_root: "{{ ansible_env.HOME }}/.pyenv"
     base_requirements: "{{ lookup('file', 'requirements.txt').split('\n') }}"
 
-- name: Fetch the latest versions
-  shell: |
-    {{ pyenv }} install --list \
-      | awk '$1 ~ /^{{ item }}[\.\-0-9]+$/ { v=$1 } END { print v }'
-  with_items:
-    - 3
+- name: Fetch the latest version of Python
+  ansible.builtin.shell:
+    cmd: |
+      set -euo pipefail
+      {{ pyenv }} install --list \
+        | awk '$1 ~ /^[0-9]+\.[0-9]+\.[0-9]+$/ { v=$1 } END { print v }'
+    executable: /bin/bash
   changed_when: false
   register: py_v
 
-- name: Check if the latest versions exist
-  stat:
-    path: "{{ pyenv_root }}/versions/{{ item.stdout }}/bin/python"
-  with_items: "{{ py_v.results }}"
+- name: Check if the latest version is installed
+  ansible.builtin.stat:
+    path: "{{ pyenv_root }}/versions/{{ py_v.stdout }}/bin/python"
   register: py_x
 
-- name: Set a list for new versions to install
-  set_fact:
-    new_v: |
-      {% set o = [] %}
-      {% for p in py_x.results if not p.stat.exists %}
-      {%   set _ = o.append(p.item.stdout) %}
-      {% endfor %}
-      {{ o }}
-
-- name: Install the latest versions
-  when: new_v|length > 0
-  script: |
-    install_pyenv.sh {{ item }}
-  with_items: "{{ new_v }}"
+- name: Install the latest version of Python
+  when: not py_x.stat.exists
+  ansible.builtin.shell:
+    cmd: >
+      install_pyenv.sh {{ py_v.stdout }}
+    executable: /bin/bash
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
 - name: Check if pip exists
-  stat:
-    path: "{{ pyenv_root }}/versions/{{ item.stdout }}/bin/pip"
-  with_items: "{{ py_v.results }}"
+  ansible.builtin.stat:
+    path: "{{ pyenv_root }}/versions/{{ py_v.stdout }}/bin/pip"
   register: pip_x
 
 - name: Install and update base packages
   when:
-    - pip_x.results[0].stat.exists
+    - pip_x.stat.exists
     - pip_packages is defined
-    - pip_packages[3] is defined
-  pip:
+  ansible.builtin.pip:
     name: "{{ base_requirements }}"
-    executable: "{{ pip_x.results[0].stat.path }}"
+    executable: "{{ pip_x.stat.path }}"
     state: latest
   ignore_errors: true
   notify: Notify updates of Python via Slack
 
 - name: Install and update Python packages
   when:
-    - pip_x.results[0].stat.exists
+    - pip_x.stat.exists
     - pip_packages is defined
-    - pip_packages[3] is defined
-  pip:
-    name: "{{ pip_packages[3] }}"
-    executable: "{{ pip_x.results[0].stat.path }}"
+  ansible.builtin.pip:
+    name: "{{ pip_packages }}"
+    executable: "{{ pip_x.stat.path }}"
     state: latest
   ignore_errors: true
   notify: Notify updates of Python via Slack
