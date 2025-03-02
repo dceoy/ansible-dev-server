@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
-# https://github.com/dceoy/ansible-dev/blob/master/roles/ruby/files/install_rbenv.sh
+# Usage:
+#   ./install_rbenv.sh [<ruby_major_version>]
 
 set -eoux pipefail
 
