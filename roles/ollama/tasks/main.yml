@@ -1,0 +1,44 @@
+---
+- name: Install Ollama
+  community.general.homebrew:
+    name:
+      - ollama
+    state: latest
+
+- name: Set variables
+  ansible.builtin.set_fact:
+    ollama_env:
+      OLLAMA_MODELS: "{{ ollama_models_dir|default(omit) }}"
+
+- name: Check ollama command
+  ansible.builtin.shell:
+    cmd: >
+      ollama --version
+    executable: /bin/bash
+  environment: "{{ ollama_env }}"
+  changed_when: false
+
+- name: Start Ollama
+  ansible.builtin.shell:
+    cmd: |
+      nohup ollama serve > /dev/null 2>&1 &
+      echo "${!}"
+    executable: /bin/bash
+  environment: "{{ ollama_env }}"
+  register: ollama_serve_process
+
+- name: Pull models from registries using Ollama
+  when:
+    - ollama_models is defined
+  ansible.builtin.shell:
+    cmd: >
+      ollama pull {{ item }}
+    executable: /bin/bash
+  environment: "{{ ollama_env }}"
+  loop: "{{ ollama_models }}"
+
+- name: Stop Ollama
+  ansible.builtin.shell:
+    cmd: >
+      kill -9 {{ ollama_serve_process.stdout }}
+    executable: /bin/bash
