@@ -1,6 +1,5 @@
 ---
 pip_packages:
-  - git+https://github.com/dceoy/oanda-cli.git
   - alpha_vantage
   - ansible-lint
   - apache-airflow

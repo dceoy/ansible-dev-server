@@ -5,3 +5,4 @@ group_vars/
 host_vars/
 tmp/
 .vault_password_file
+.ansible
