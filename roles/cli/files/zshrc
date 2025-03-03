@@ -4,95 +4,83 @@
 # General Settings
 # ------------------------------
 
+# Editor and Encoding
 export EDITOR=vim
-export KCODE=u
+export LC_ALL='en_US.UTF-8'
 export AUTOFEATURE=true
 
-bindkey -e
+# Keybindings
+bindkey -e  # Emacs-like keybindings
+# Uncomment for Vi-like keybindings
 # bindkey -v
 
-setopt no_beep
-setopt auto_cd
-setopt auto_pushd
-setopt correct
-setopt magic_equal_subst
-setopt prompt_subst
-setopt notify
-setopt equals
+# Zsh Options
+setopt no_beep auto_cd auto_pushd correct magic_equal_subst prompt_subst notify equals
 
-### Complement ###
-autoload -U compinit; compinit
-setopt auto_list
-setopt auto_menu
-setopt list_packed
-setopt list_types
-bindkey '^[[Z' reverse-menu-complete
+# Completion Settings
+autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+bindkey '^[[Z' reverse-menu-complete
 
-### Glob ###
+setopt auto_list auto_menu list_packed list_types
+
+# Glob Settings
 setopt extended_glob
 unsetopt caseglob
 
-### History ###
+# ------------------------------
+# History Settings
+# ------------------------------
+
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt bang_hist
-setopt extended_history
-setopt hist_ignore_dups
-setopt share_history
-setopt hist_reduce_blanks
 
-autoload history-search-end
+setopt bang_hist extended_history hist_ignore_dups share_history hist_reduce_blanks
+
+# History Search with End Positioning
+autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
+
 bindkey '^P' history-beginning-search-backward-end
 bindkey '^N' history-beginning-search-forward-end
 
+# Function to display all history entries
 function history-all { history -E 1 }
-
 
 # ------------------------------
 # Look And Feel Settings
 # ------------------------------
 
-### Ls Color ###
-export LSCOLORS=Exfxcxdxbxegedabagacad
+# LS Colors (for `ls` and completion)
+export LSCOLORS=Exfxcxdxbxegedabagacad  # macOS-specific format
 export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-export ZLS_COLORS="${LS_COLORS}"
 export CLICOLOR=true
-zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
-### Prompt ###
-autoload -U colors; colors
+# Prompt Colors and Styles
+autoload -Uz colors && colors
 
-tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
-tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
-tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
-tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
+PROMPT="%{$fg[cyan]%}%n%# %{$reset_color%}"
+PROMPT2="%{$fg[cyan]%}%_> %{$reset_color%}"
+RPROMPT="%{$fg[green]%}[%~]%{$reset_color%}"
+SPROMPT="%{$fg[yellow]%}%r is correct? [Yes, No, Abort, Edit]:%{$reset_color%}"
 
-if [[ ${UID} -eq 0 ]]; then
-  tmp_prompt="%B%U${tmp_prompt}%u%b"
-  tmp_prompt2="%B%U${tmp_prompt2}%u%b"
-  tmp_rprompt="%B%U${tmp_rprompt}%u%b"
-  tmp_sprompt="%B%U${tmp_sprompt}%u%b"
+if [[ ${UID} -eq 0 ]]; then  # Root user prompt styling
+  PROMPT="%B%U${PROMPT}%u%b"
+  PROMPT2="%B%U${PROMPT2}%u%b"
+  RPROMPT="%B%U${RPROMPT}%u%b"
+  SPROMPT="%B%U${SPROMPT}%u%b"
 fi
 
-PROMPT="${tmp_prompt}"
-PROMPT2="${tmp_prompt2}"
-RPROMPT="${tmp_rprompt}"
-SPROMPT="${tmp_sprompt}"
-
-[[ -n "${REMOTEHOST}${SSH_CONNECTION}" ]] && PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
-
+[[ -n "${REMOTEHOST}${SSH_CONNECTION}" ]] && PROMPT="%{$fg[white]%}${HOST%%.*} ${PROMPT}"
 
 # ------------------------------
-# Other Settings
+# Miscellaneous Settings
 # ------------------------------
 
-### Custom ###
-export LC_ALL='en_US.UTF-8'
-setopt nonomatch
+setopt nonomatch  # Prevent errors for unmatched globs
 
 case "${OSTYPE}" in
   darwin* )
@@ -106,12 +94,15 @@ case "${OSTYPE}" in
     alias tree='tree -N'
     alias brew-update-upgrade-cleanup='bash -xc "softwareupdate --install --all --agree-to-license --force && brew update && brew upgrade && brew cleanup"'
     function restart-app {
-      for a (${*}) killall ${a} && open -a ${a}
+      for a in "${@}"; do
+        killall "${a}" && open -a "${a}"
+      done
     }
-    GCSDK_DIR='/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk' \
-      && [[ -d "${GCSDK_DIR}" ]] \
-      && source "${GCSDK_DIR}/path.zsh.inc" \
-      && source "${GCSDK_DIR}/completion.zsh.inc"
+    GCSDK_DIR='/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk'
+    if [[ -d "${GCSDK_DIR}" ]]; then
+      source "${GCSDK_DIR}/path.zsh.inc"
+      source "${GCSDK_DIR}/completion.zsh.inc"
+    fi
     ;;
   linux* )
     :
@@ -130,18 +121,12 @@ alias l='ls -CF'
 alias ll='ls -lF'
 alias lla='ls -lA'
 alias llh='ls -lh'
-alias less='less -iMRW'
 alias diff='colordiff -u'
 alias d='docker'
-alias dbash='docker container run --rm -it --entrypoint=bash'
-alias dcbash='docker compose run --rm --entrypoint=bash'
 alias dc='docker compose'
 alias drmc='docker container ps -aq | xargs docker container rm'
 alias drmi='docker image ls | awk "/<none>/ { print \$3 }" | xargs docker image rm'
-alias dnginx='docker container run --rm -p 80:80 -v ${PWD}:/var/lib/nginx/html:ro -d dceoy/nginx-autoindex'
 alias rv='R --quiet --no-save --no-restore'
-alias exec-ipynb='docker container run --rm --user $(id -u):$(id -g) -v ${PWD}:/wd --workdir /wd --entrypoint jupyter dceoy/pydata nbconvert --to notebook --ExecutePreprocessor.timeout=-1 --execute --inplace --ExecutePreprocessor.kernel_name=python'
-alias git-diff-csv='git diff --color-words="[^[:space:],]+"'
 alias yaml2json='ruby -rjson -ryaml -e "print YAML.load(STDIN.read).to_json" <'
 alias json2yaml='ruby -rjson -ryaml -e "print JSON.load(STDIN.read).to_yaml" <'
 
@@ -175,6 +160,8 @@ zstyle ':vcs_info:*' actionformats '%b|%a '
 function precmd {
   psvar=()
   LANG=en_US.UTF-8 vcs_info
-  [[ -n "${vcs_info_msg_0_}" ]] && psvar[1]="${vcs_info_msg_0_}"
+  if [[ -n "${vcs_info_msg_0_}" ]]; then
+    psvar[1]="${vcs_info_msg_0_}"
+  fi
 }
 RPROMPT="%1(v|%F{green}%1v%f|)${RPROMPT}"

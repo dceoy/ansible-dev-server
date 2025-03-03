@@ -29,21 +29,25 @@
 
 - name: Set a list for new versions to install
   set_fact:
-    new_v: |
-      {% set o = [] %}
-      {% for p in py_x.results if not p.stat.exists %}
-      {%   set _ = o.append(p.item.stdout) %}
-      {% endfor %}
-      {{ o }}
+    new_v: "{{ py_x.results | selectattr('stat.exists', 'equalto', false) | map(attribute='item') | list }}"
 
 - name: Install the latest versions of Python
   when:
     - new_v|length > 0
   ansible.builtin.script:
     cmd: >
-      install_pyenv.sh {{ item }}
+      install_pyenv.sh --skip-global {{ item }}
     executable: /bin/bash
   loop: "{{ new_v }}"
+  notify: Notify updates of Python via Slack
+
+- name: Set the latest version as the global version
+  when:
+    - not py_x.results[0].stat.exists
+  ansible.builtin.shell:
+    cmd: >
+      {{ pyenv }} global {{ py_v.stdout_lines[0] }}
+    executable: /bin/bash
   notify: Notify updates of Python via Slack
 
 - name: Install and update base packages
