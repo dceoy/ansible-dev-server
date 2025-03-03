@@ -16,12 +16,12 @@ brew_packages:
     - aws-cdk
     - awscli
     - bazel
-    # - bats-core
-    # - bcftools
-    # - bedtools
+    - bats-core
+    - bcftools
+    - bedtools
     - binutils
     - boost
-    # - bwa
+    - bwa
     - cabal-install
     - circleci
     - cloudflared
@@ -88,7 +88,7 @@ brew_packages:
     - lmdb
     - lua
     - luajit
-    # - md5sha1sum
+    - md5sha1sum
     - mercurial
     - ncdu
     - nkf
@@ -105,7 +105,7 @@ brew_packages:
     - parallel
     - pbzip2
     - pdf2svg
-    # - picard-tools
+    - picard-tools
     - pigz
     - pipx
     - pkg-config
@@ -121,14 +121,13 @@ brew_packages:
     - ruby
     - rust
     - rustup
-    # - samtools
+    - samtools
     - screen
     - shellcheck
     - shunit2
     - snappy
     - sqlite
     - supervisor
-    # - szip
     - tcl-tk
     - tenv
     - tflint
@@ -155,6 +154,7 @@ brew_cask_packages:
   # - chatgpt
   # - chrome-remote-desktop-host
   # - cursor
+  # - dbeaver-community
   # - discord
   - docker
   - drawio
