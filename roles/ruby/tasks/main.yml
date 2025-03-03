@@ -31,30 +31,21 @@
   loop: "{{ rb_v.stdout_lines }}"
   register: rb_x
 
-- name: Set a list for new versions to install
-  set_fact:
-    new_v: |
-      {% set o = [] %}
-      {% for p in rb_x.results if not p.stat.exists %}
-      {%   set _ = o.append(p.item.stdout) %}
-      {% endfor %}
-      {{ o }}
-
 - name: Install the latest version of Ruby
   when:
-    - new_v|length > 0
+    - not rb_x.results[0].stat.exists
   ansible.builtin.script:
     cmd: >
-      install_rbenv.sh {{ new_v[0] }}
+      install_rbenv.sh {{ rb_v.stdout_lines[0] }}
     executable: /bin/bash
   notify: Notify updates of Ruby via Slack
 
 - name: Install and update Ruby packages
   when:
     - gem_packages is defined
-  ansible.builtin.gem:
+  community.general.gem:
     name: "{{ item }}"
-    executable: "{{ rbenv_root }}/versions/{{ new_v[0] }}/bin/gem"
+    executable: "{{ rbenv_root }}/versions/{{ rb_v.stdout_lines[0] }}/bin/gem"
     state: latest
   loop: "{{ gem_packages }}"
   ignore_errors: true
