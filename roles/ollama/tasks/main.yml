@@ -23,6 +23,7 @@
     cmd: |
       nohup ollama serve > /dev/null 2>&1 &
       echo "${!}"
+      sleep 5
     executable: /bin/bash
   environment: "{{ ollama_env }}"
   register: ollama_serve_process
