@@ -1,22 +1,20 @@
 ---
 - name: Clone pyenv
   ansible.builtin.git:
-    repo: https://github.com/yyuu/pyenv.git
+    repo: https://github.com/pyenv/pyenv.git
     dest: "{{ ansible_env.HOME }}/.pyenv"
     force: yes
   notify: Notify updates of Python via Slack
 
 - name: Set variables
   ansible.builtin.set_fact:
-    pyenv: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv"
     pyenv_root: "{{ ansible_env.HOME }}/.pyenv"
-    n_versions_to_install: 2
     base_requirements: "{{ lookup('file', 'requirements.txt').split('\n') }}"
 
 - name: Fetch the latest versions of Python
   ansible.builtin.script:
     cmd: >
-      install_pyenv.sh --print-stable-versions {{ n_versions_to_install }}
+      install_pyenv.sh --print-stable-versions 2
     executable: /bin/bash
   changed_when: false
   register: py_v
@@ -28,7 +26,7 @@
   register: py_x
 
 - name: Set a list for new versions to install
-  set_fact:
+  ansible.builtin.set_fact:
     new_v: "{{ py_x.results | selectattr('stat.exists', 'equalto', false) | map(attribute='item') | list }}"
 
 - name: Install the latest versions of Python
@@ -46,8 +44,9 @@
     - not py_x.results[0].stat.exists
   ansible.builtin.shell:
     cmd: >
-      {{ pyenv }} global {{ py_v.stdout_lines[0] }}
-    executable: /bin/bash
+      {{ ansible_env.HOME }}/.pyenv/bin/pyenv global {{ py_v.stdout_lines[0] }}
+    executable: /bin/zsh
+  changed_when: true
   notify: Notify updates of Python via Slack
 
 - name: Install and update base packages
@@ -56,15 +55,4 @@
     executable: "{{ pyenv_root }}/versions/{{ item }}/bin/pip"
     state: latest
   loop: "{{ py_v.stdout_lines }}"
-  notify: Notify updates of Python via Slack
-
-- name: Install and update Python packages
-  when:
-    - pip_packages is defined
-  ansible.builtin.pip:
-    name: "{{ pip_packages }}"
-    executable: "{{ pyenv_root }}/versions/{{ item }}/bin/pip"
-    state: latest
-  loop: "{{ py_v.stdout_lines }}"
-  ignore_errors: true
   notify: Notify updates of Python via Slack

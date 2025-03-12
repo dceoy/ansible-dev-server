@@ -8,7 +8,7 @@
 - name: Set variables
   ansible.builtin.set_fact:
     ollama_env:
-      OLLAMA_MODELS: "{{ ollama_models_dir|default(omit) }}"
+      OLLAMA_MODELS: "{{ ollama_models_dir | default(omit) }}"
 
 - name: Check ollama command
   ansible.builtin.shell:
@@ -23,9 +23,10 @@
     cmd: |
       nohup ollama serve > /dev/null 2>&1 &
       echo "${!}"
-      sleep 5
+      sleep 10
     executable: /bin/bash
   environment: "{{ ollama_env }}"
+  changed_when: false
   register: ollama_serve_process
 
 - name: Pull models from registries using Ollama
@@ -37,9 +38,11 @@
     executable: /bin/bash
   environment: "{{ ollama_env }}"
   loop: "{{ ollama_models }}"
+  changed_when: true
 
 - name: Stop Ollama
   ansible.builtin.shell:
     cmd: >
       kill -9 {{ ollama_serve_process.stdout }}
     executable: /bin/bash
+  changed_when: false

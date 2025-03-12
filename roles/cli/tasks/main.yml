@@ -3,7 +3,7 @@
   when:
     - git_user_name is defined
     - git_user_email is defined
-  git_config:
+  community.general.git_config:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
     scope: global
@@ -29,8 +29,9 @@
   notify: Notify updates of CLI via Slack
 
 - name: Set proxy for git
-  when: http_proxy is defined or https_proxy is defined
-  git_config:
+  when:
+    - http_proxy is defined or https_proxy is defined
+  community.general.git_config:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
     scope: global
@@ -41,15 +42,9 @@
       value: "{{ https_proxy }}"
   notify: Notify updates of CLI via Slack
 
-- name: Put ~/.zshrc
-  copy:
-    src: zshrc
-    dest: "{{ ansible_env.HOME }}/.zshrc"
-  notify: Notify updates of CLI via Slack
-
 - name: Set proxy at ~/.zprofile
   when: http_proxy is defined or https_proxy is defined
-  blockinfile:
+  ansible.builtin.blockinfile:
     create: yes
     dest: "{{ ansible_env.HOME }}/.zprofile"
     insertafter: '# proxy'
@@ -61,4 +56,54 @@
       export http_proxy="${HTTP_PROXY}"
       export https_proxy="${HTTP_PROXY}"
       export no_proxy="${NO_PROXY}"
+  notify: Notify updates of CLI via Slack
+
+- name: Check if oh-my-zsh is installed
+  ansible.builtin.stat:
+    path: "{{ ansible_env.HOME }}/.oh-my-zsh"
+  register: ohmyzsh
+
+- name: Download the installer for oh-my-zsh
+  when:
+    - not ohmyzsh.stat.exists
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/install_ohmyzsh.sh
+    mode: '0755'
+  notify: Notify updates of CLI via Slack
+
+- name: Install oh-my-zsh
+  when:
+    - not ohmyzsh.stat.exists
+  ansible.builtin.shell:
+    cmd: |
+      /tmp/install_ohmyzsh.sh
+    executable: /bin/bash
+  changed_when: true
+  notify: Notify updates of CLI via Slack
+
+- name: Put the custom theme in ~/.oh-my-zsh/custom/themes
+  ansible.builtin.copy:
+    src: dceoy.zsh-theme
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/dceoy.zsh-theme"
+  notify: Notify updates of CLI via Slack
+
+- name: Set ZSH_THEME in ~/.zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    regexp: '^ZSH_THEME='
+    line: ZSH_THEME='dceoy'
+    state: present
+  notify: Notify updates of CLI via Slack
+
+- name: Enable colors in ~/.zshrc
+  ansible.builtin.blockinfile:
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    state: present
+    block: |
+      alias ls='ls --color=auto'
+      alias grep='grep --color=auto'
+      alias fgrep='fgrep --color=auto'
+      alias egrep='egrep --color=auto'
+      alias zgrep='zgrep --color=auto'
   notify: Notify updates of CLI via Slack
