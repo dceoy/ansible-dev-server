@@ -15,3 +15,4 @@ npm_packages:
   - typescript
   - wscat
   # - yarn
+  - '@anthropic-ai/claude-code'
