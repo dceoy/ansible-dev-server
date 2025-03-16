@@ -1,155 +1,127 @@
+set encoding=utf-8
 scriptencoding utf-8
 
-"dein Scripts-----------------------------
-if &compatible
-  " vint: -ProhibitSetNoCompatible
-  set nocompatible
-endif
+" vim-plug
+" default plugin directory:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+call plug#begin()
 
-" Required:
-set runtimepath+=$HOME/.vim/bundles/repos/github.com/Shougo/dein.vim
+" vim-scripts repos
+Plug 'vim-scripts/L9'                         " some utility functions and commands for programming in vim
+Plug 'vim-scripts/FuzzyFinder'                " buffer/file/command/tag/etc explorer with fuzzy matching
+" screen
+Plug 'altercation/vim-colors-solarized'       " precision colorscheme for the vim text editor
+Plug 'tyru/open-browser.vim'                  " open uri with your favorite browser from your favorite editor
+" syntax
+Plug 'dense-analysis/ale'                     " asynchronous linting/fixing for vim and neovim
+" edit
+"Plug 'AndrewRadev/switch.vim'                 " switch segments of text with predefined replacements
+" surroundings
+Plug 'tpope/vim-surround'                     " quoting/parenthesizing made simple
+Plug 'vim-scripts/matchit.zip'                " extended % matching for html, latex, and many other languages
+" run
+Plug 'thinca/vim-quickrun'                    " run commands quickly
+" file
+Plug 'kien/ctrlp.vim'                         " fuzzy file, buffer, mru, tag, etc finder
+Plug 'scrooloose/nerdtree'                    " a tree explorer plugin for vim
+" Git
+Plug 'tpope/vim-fugitive'                     " a git wrapper so awesome, it should be illegal
+"Plug 'airblade/vim-gitgutter'                 " plugin which shows a git diff in the gutter (sign column)
+" YAML
+Plug 'ingydotnet/yaml-vim'                    " yaml highlight script for vim
+" TOML
+Plug 'cespare/vim-toml'                       " vim syntax for toml
+" Protocol Buffers
+Plug 'uarun/vim-protobuf'                     " vim syntax for google's protocol buffers
+" Crontab
+Plug 'vim-scripts/crontab.vim'                " syntax highlight for crontab files
+" LaTeX
+Plug 'vim-latex/vim-latex'                    " enhanced latex support
+" HTML
+Plug 'mattn/emmet-vim'                        " emmet for vim
+Plug 'othree/html5.vim'                       " html5 omnicomplete and syntax
+Plug 'slim-template/vim-slim'                 " a clone of the slim vim plugin from stonean
+Plug 'tpope/vim-haml'                         " vim runtime files for haml, sass, and scss
+Plug 'plasticboy/vim-markdown'                " syntax highlighting, matching rules and mappings for markdown
+Plug 'chazmcgarvey/vim-mermaid'               " vim syntax for Mermaid diagrams
+Plug 'Rykka/riv.vim'                          " plugin for rst
+" CSS
+Plug 'hail2u/vim-css3-syntax'                 " add css3 syntax support to vim's built-in `syntax/css.vim`
+Plug 'cakebaker/scss-syntax.vim'              " vim syntax file for scss
+Plug 'vim-scripts/csslint.vim'                " css code quality tool
+Plug 'groenewege/vim-less'                    " syntax for less (dynamic css)
+" JavaScript
+Plug 'pangloss/vim-javascript'                " vastly improved Javascript indentation and syntax support in vim
+Plug 'othree/javascript-libraries-syntax.vim' " syntax for javascript libraries
+Plug 'vim-scripts/lint.vim'                   " jshint integration with quickfix window
+Plug 'kchmck/vim-coffee-script'               " coffeescript support for vim
+Plug 'leafgarland/typescript-vim'             " typescript syntax files for vim
+Plug 'evanleck/vim-svelte'                    " syntax highlighting and indentation for Svelte components
+" Ruby
+Plug 'vim-ruby/vim-ruby'                      " vim/ruby configuration files
+Plug 'vim-scripts/rails.vim'                  " ruby on rails: easy file navigation, enhanced syntax highlighting, and more
+Plug 'tpope/vim-rails'                        " ruby on rails power tools
+Plug 'tpope/vim-endwise'                      " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
+" Python
+Plug 'vim-scripts/python.vim'                 " a set of menus/shortcuts to work with python files
+Plug 'vim-scripts/python.vim--Vasiliev'       " enhanced version of the python syntax highlighting script
+Plug 'nvie/vim-flake8'                        " a static syntax and style checker for python source code
+Plug 'tell-k/vim-autopep8'                    " an automatic python code formatter by pep8
+Plug 'hynek/vim-python-pep8-indent'           " a nicer python indentation style for vim
+Plug 'ivanov/vim-ipython'                     " integration between vim and ipython
+Plug 'psf/black'                              " the uncompromising python code formatter
+" R
+Plug 'vim-scripts/R-syntax-highlighting'      " r syntax highlighting
+" BUGS
+Plug 'vim-scripts/BUGS-language'              " bugs syntax highlighting
+" Stan
+Plug 'maverickg/stan.vim'                     " syntax highlighting for stan modeling lauguage
+" SAS
+Plug 'EricGebhart/SAS-Vim'                    " syntax and indention for sas
+" Haskell
+Plug 'vim-scripts/haskell.vim'                " syntax highlight for haskell
+" Scala
+Plug 'vim-scripts/scala.vim'                  " syntaxic coloration for scala code
+Plug 'vim-scripts/snipMate'                   " textmate-style snippets for vim
+" Go
+Plug 'fatih/vim-go'                           " go development plugin for vim
+" Rust
+Plug 'rust-lang/rust.vim'                     " vim configuration for rust
+" Elixir
+Plug 'elixir-lang/vim-elixir'                 " vim configuration files for elixir
+" Julia
+Plug 'JuliaLang/julia-vim'                    " vim support for julia
+" SQL
+Plug 'vim-scripts/sql.vim--Stinson'           " better sql syntax
+" Docker
+Plug 'ekalinin/Dockerfile.vim'                " syntax file and snippets for docker's dockerfile
+" Kubernetes
+Plug 'andrewstuart/vim-kubernetes'            " kubectl integration
+" Ansible
+Plug 'pearofducks/ansible-vim'                " syntax highlighting Ansible's common filetypes
+" Terraform
+Plug 'hashivim/vim-terraform'                 " basic vim/terraform integration
+" Jinja2
+Plug 'Glench/Vim-Jinja2-Syntax'               " jinja2 syntax
+" Nginx
+Plug 'chr4/nginx.vim'                         " nginx syntax highlighting
+" Bats
+Plug 'vim-scripts/bats.vim'                   " syntax highlighting for bats
+" Prisma
+Plug 'prisma/vim-prisma'                      " syntax highlighting for prisma schema files
+" MQL
+Plug 'rupurt/vim-mql5'                        " syntax highlighting for MQL5
+Plug 'vobornik/vim-mql4'                      " syntax highlighting for MQL4
+" WDL
+Plug 'broadinstitute/vim-wdl'                 " syntax highlighting for wdl
+" Copilot
+Plug 'github/copilot.vim'                     " plugin for GitHub Copilot
+" EditorConfig
+Plug 'editorconfig/editorconfig-vim'          " editorconfig plugin for vim
 
-" Required:
-if dein#load_state('~/.vim/bundles')
-  call dein#begin('~/.vim/bundles')
-  call dein#add('~/.vim/bundles')
-
-  " Required:
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-  let g:deoplete#enable_at_startup = 1
-
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-  call dein#add('Shougo/vimshell.vim')
-  call dein#add('Shougo/unite.vim')
-  call dein#add('Shougo/vimfiler.vim')
-
-  " vim-scripts repos
-  call dein#add('vim-scripts/L9')                         " some utility functions and commands for programming in vim
-  call dein#add('vim-scripts/FuzzyFinder')                " buffer/file/command/tag/etc explorer with fuzzy matching
-  " screen
-  call dein#add('altercation/vim-colors-solarized')       " precision colorscheme for the vim text editor
-  call dein#add('tyru/open-browser.vim')                  " open uri with your favorite browser from your favorite editor
-  " syntax
-  call dein#add('dense-analysis/ale')                     " asynchronous linting/fixing for vim and neovim
-  " edit
-  "call dein#add('AndrewRadev/switch.vim')                 " switch segments of text with predefined replacements
-  " surroundings
-  call dein#add('tpope/vim-surround')                     " quoting/parenthesizing made simple
-  call dein#add('vim-scripts/matchit.zip')                " extended % matching for html, latex, and many other languages
-  " run
-  call dein#add('thinca/vim-quickrun')                    " run commands quickly
-  " file
-  call dein#add('kien/ctrlp.vim')                         " fuzzy file, buffer, mru, tag, etc finder
-  call dein#add('scrooloose/nerdtree')                    " a tree explorer plugin for vim
-  " Git
-  call dein#add('tpope/vim-fugitive')                     " a git wrapper so awesome, it should be illegal
-  "call dein#add('airblade/vim-gitgutter')                 " plugin which shows a git diff in the gutter (sign column)
-  " YAML
-  call dein#add('ingydotnet/yaml-vim')                    " yaml highlight script for vim
-  " TOML
-  call dein#add('cespare/vim-toml')                       " vim syntax for toml
-  " Protocol Buffers
-  call dein#add('uarun/vim-protobuf')                     " vim syntax for google's protocol buffers
-  " Crontab
-  call dein#add('vim-scripts/crontab.vim')                " syntax highlight for crontab files
-  " LaTeX
-  call dein#add('vim-latex/vim-latex')                    " enhanced latex support
-  " HTML
-  call dein#add('mattn/emmet-vim')                        " emmet for vim
-  call dein#add('othree/html5.vim')                       " html5 omnicomplete and syntax
-  call dein#add('slim-template/vim-slim')                 " a clone of the slim vim plugin from stonean
-  call dein#add('tpope/vim-haml')                         " vim runtime files for haml, sass, and scss
-  call dein#add('plasticboy/vim-markdown')                " syntax highlighting, matching rules and mappings for markdown
-  call dein#add('chazmcgarvey/vim-mermaid')               " vim syntax for Mermaid diagrams
-  call dein#add('Rykka/riv.vim')                          " plugin for rst
-  " CSS
-  call dein#add('hail2u/vim-css3-syntax')                 " add css3 syntax support to vim's built-in `syntax/css.vim`
-  call dein#add('cakebaker/scss-syntax.vim')              " vim syntax file for scss
-  call dein#add('vim-scripts/csslint.vim')                " css code quality tool
-  call dein#add('groenewege/vim-less')                    " syntax for less (dynamic css)
-  " JavaScript
-  call dein#add('pangloss/vim-javascript')                " vastly improved Javascript indentation and syntax support in vim
-  call dein#add('othree/javascript-libraries-syntax.vim') " syntax for javascript libraries
-  call dein#add('vim-scripts/lint.vim')                   " jshint integration with quickfix window
-  call dein#add('kchmck/vim-coffee-script')               " coffeescript support for vim
-  call dein#add('leafgarland/typescript-vim')             " typescript syntax files for vim
-  call dein#add('evanleck/vim-svelte')                    " syntax highlighting and indentation for Svelte components
-  " Ruby
-  call dein#add('vim-ruby/vim-ruby')                      " vim/ruby configuration files
-  call dein#add('vim-scripts/rails.vim')                  " ruby on rails: easy file navigation, enhanced syntax highlighting, and more
-  call dein#add('tpope/vim-rails')                        " ruby on rails power tools
-  call dein#add('tpope/vim-endwise')                      " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
-  " Python
-  call dein#add('vim-scripts/python.vim')                 " a set of menus/shortcuts to work with python files
-  call dein#add('vim-scripts/python.vim--Vasiliev')       " enhanced version of the python syntax highlighting script
-  call dein#add('nvie/vim-flake8')                        " a static syntax and style checker for python source code
-  call dein#add('tell-k/vim-autopep8')                    " an automatic python code formatter by pep8
-  call dein#add('hynek/vim-python-pep8-indent')           " a nicer python indentation style for vim
-  call dein#add('ivanov/vim-ipython')                     " integration between vim and ipython
-  call dein#add('psf/black')                              " the uncompromising python code formatter
-  "call dein#add('vyzyv/vimpyter')                         " edit jupyter notebooks in vim
-  " R
-  call dein#add('vim-scripts/R-syntax-highlighting')      " r syntax highlighting
-  " BUGS
-  call dein#add('vim-scripts/BUGS-language')              " bugs syntax highlighting
-  " Stan
-  call dein#add('maverickg/stan.vim')                     " syntax highlighting for stan modeling lauguage
-  " SAS
-  call dein#add('EricGebhart/SAS-Vim')                    " syntax and indention for sas
-  " Haskell
-  call dein#add('vim-scripts/haskell.vim')                " syntax highlight for haskell
-  " Scala
-  call dein#add('vim-scripts/scala.vim')                  " syntaxic coloration for scala code
-  call dein#add('vim-scripts/snipMate')                   " textmate-style snippets for vim
-  " Go
-  call dein#add('fatih/vim-go')                           " go development plugin for vim
-  " Rust
-  call dein#add('rust-lang/rust.vim')                     " vim configuration for rust
-  " Elixir
-  call dein#add('elixir-lang/vim-elixir')                 " vim configuration files for elixir
-  " Julia
-  call dein#add('JuliaLang/julia-vim')                    " vim support for julia
-  " SQL
-  call dein#add('vim-scripts/sql.vim--Stinson')           " better sql syntax
-  " Docker
-  call dein#add('ekalinin/Dockerfile.vim')                " syntax file and snippets for docker's dockerfile
-  " Kubernetes
-  call dein#add('andrewstuart/vim-kubernetes')            " kubectl integration
-  " Ansible
-  call dein#add('pearofducks/ansible-vim')                " syntax highlighting Ansible's common filetypes
-  " Terraform
-  call dein#add('hashivim/vim-terraform')                 " basic vim/terraform integration
-  " Jinja2
-  call dein#add('Glench/Vim-Jinja2-Syntax')               " jinja2 syntax
-  " Nginx
-  call dein#add('chr4/nginx.vim')                         " nginx syntax highlighting
-  " Bats
-  call dein#add('vim-scripts/bats.vim')                   " syntax highlighting for bats
-  " Prisma
-  call dein#add('prisma/vim-prisma')                      " syntax highlighting for prisma schema files
-  " MQL
-  call dein#add('rupurt/vim-mql5')                        " syntax highlighting for MQL5
-  call dein#add('vobornik/vim-mql4')                      " syntax highlighting for MQL4
-  " WDL
-  call dein#add('broadinstitute/vim-wdl')                 " syntax highlighting for wdl
-  " Copilot
-  call dein#add('github/copilot.vim')                     " plugin for GitHub Copilot
-  " EditorConfig
-  call dein#add('editorconfig/editorconfig-vim')          " editorconfig plugin for vim
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-filetype plugin indent on
-syntax enable
-"End dein Scripts-------------------------
+call plug#end()
 
 
 " general
@@ -167,7 +139,7 @@ set background=dark
 let g:solarized_termcolors=256
 let g:solarized_contrast='high'
 let g:solarized_visibility='high'
-colorscheme solarized
+silent! colorscheme solarized
 
 " files/backups
 set browsedir=buffer                        " put up a directory requester
