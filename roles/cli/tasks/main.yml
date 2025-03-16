@@ -18,6 +18,8 @@
       value: "{{ git_user_name }}"
     - name: user.email
       value: "{{ git_user_email }}"
+    - name: core.pager
+      value: 'less -FRX'
     - name: core.quotepath
       value: 'false'
     - name: core.precomposeunicode

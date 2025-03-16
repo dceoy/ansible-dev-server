@@ -14,11 +14,6 @@
       when: ansible_distribution == 'CentOS'
     - role: ubuntu
       when: ansible_distribution == 'Ubuntu'
-    - role: arm-debian
-      when:
-        - ansible_architecture in ['armv6l', 'armv7l']
-        - ansible_distribution == 'Debian'
-    - role: edevice
 
 - name: Set up container environments
   hosts:
