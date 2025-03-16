@@ -1,14 +1,14 @@
-ansible-dev
-===========
+ansible-dev-server
+==================
 
-Ansible playbooks for servers
+Ansible playbooks for development servers
 
 Setup
 -----
 
 ```sh
-$ git clone --recurse-submodules https://github.com/dceoy/ansible-dev.git
-$ cd ansible-dev
+$ git clone --recurse-submodules https://github.com/dceoy/ansible-dev-server.git
+$ cd ansible-dev-server
 $ echo -n 'your_vault_pass' > .vault_password_file
 $ cp misc/example_hosts hosts
 $ vim hosts   # => edit
