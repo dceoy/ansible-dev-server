@@ -27,6 +27,6 @@
 
 - name: Install or update Vim and Vim plugins
   shell: |
-    {{ ansible_env.HOME }}/.vim/src/install-latest-vim/install_latest_vim.sh --lua --dein
+    {{ ansible_env.HOME }}/.vim/src/install-latest-vim/install_latest_vim.sh --lua --vim-plug
   ignore_errors: true
   notify: Notify updates of Vim via Slack
