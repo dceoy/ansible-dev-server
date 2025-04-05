@@ -107,6 +107,7 @@ brew_packages:
     - pdf2svg
     - picard-tools
     - pigz
+    - pinact
     - pipx
     - pkg-config
     # - postgresql
@@ -147,12 +148,13 @@ brew_packages:
     - zlib
     - zsh
 brew_cask_packages:
-  - 1password
+  # - 1password
   - adobe-acrobat-reader
   # - authy
   # - amazon-music
   # - chatgpt
   # - chrome-remote-desktop-host
+  # - claude
   # - cursor
   # - dbeaver-community
   # - discord
