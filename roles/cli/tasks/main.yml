@@ -10,14 +10,8 @@
   with_items:
     - name: color.ui
       value: auto
-    - name: push.default
-      value: matching
     - name: core.excludesfile
       value: "{{ ansible_env.HOME }}/.gitignore"
-    - name: user.name
-      value: "{{ git_user_name }}"
-    - name: user.email
-      value: "{{ git_user_email }}"
     - name: core.pager
       value: 'less -FRX'
     - name: core.quotepath
@@ -28,6 +22,14 @@
       value: utf-8
     - name: fetch.prune
       value: 'true'
+    - name: push.default
+      value: matching
+    - name: core.editor
+      value: vim
+    - name: user.name
+      value: "{{ git_user_name }}"
+    - name: user.email
+      value: "{{ git_user_email }}"
   notify: Notify updates of CLI via Slack
 
 - name: Set proxy for git
