@@ -8,7 +8,7 @@ npm_packages:
   - eslint-plugin-toml
   - jsonlint
   - markdownlint
-  # - npx
+  - npx
   - prettier
   - puppeteer
   - serverless
