@@ -56,3 +56,14 @@
     state: latest
   loop: "{{ py_v.stdout_lines }}"
   notify: Notify updates of Python via Slack
+
+- name: Install and update packages
+  when:
+    - pip_packages is defined
+  ansible.builtin.pip:
+    name: "{{ pip_packages }}"
+    executable: "{{ pyenv_root }}/versions/{{ item }}/bin/pip"
+    state: latest
+  loop: "{{ py_v.stdout_lines }}"
+  ignore_errors: true
+  notify: Notify updates of Python via Slack
