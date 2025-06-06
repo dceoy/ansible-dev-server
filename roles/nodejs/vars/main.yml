@@ -8,6 +8,7 @@ npm_packages:
   - eslint-plugin-toml
   - jsonlint
   - markdownlint
+  - markdownlint-cli
   - npx
   - prettier
   - puppeteer
