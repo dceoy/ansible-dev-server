@@ -132,6 +132,7 @@ pip_packages:
   - types-jsonschema
   - types-setuptools
   - umap-learn
+  - uv
   - vim-vint
   - vulture
   - webtest

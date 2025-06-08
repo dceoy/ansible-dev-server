@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "amazonwebservices.aws-toolkit-vscode",
+    "anthropic.claude-code",
     "bierner.markdown-mermaid",
     "davidanson.vscode-markdownlint",
     "dbaeumer.vscode-eslint",
