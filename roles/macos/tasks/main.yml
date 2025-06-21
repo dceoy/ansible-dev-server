@@ -4,6 +4,8 @@
     cmd: >
       softwareupdate --install --all --agree-to-license --force
     executable: /bin/bash
+  changed_when: true
+  failed_when: false
   notify: Notify updates of the system via Slack
 
 - name: Update homebrew and upgrade all packages
@@ -39,6 +41,6 @@
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: latest
-  ignore_errors: yes
+  failed_when: false
   loop: "{{ brew_cask_packages }}"
   notify: Notify updates of the system via Slack

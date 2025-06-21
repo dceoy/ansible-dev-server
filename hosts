@@ -1,0 +1,14 @@
+[priv_cpu]
+localhost   ansible_connection=local
+
+[priv_gpu]
+[no_priv_cpu]
+[no_priv_gpu]
+
+[other]
+#mini2018    ansible_connection=ssh
+#book2017    ansible_connection=ssh
+
+[all:vars]
+# Variables moved to group_vars/all.yml for better organization
+# Sensitive variables should be stored in group_vars/vault.yml (encrypted)

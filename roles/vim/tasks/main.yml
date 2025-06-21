@@ -1,32 +1,34 @@
 ---
 - name: Put ~/.vimrc
-  copy:
+  ansible.builtin.copy:
     src: vimrc
     dest: "{{ ansible_env.HOME }}/.vimrc"
   notify: Notify updates of Vim via Slack
 
 - name: Check vim
-  stat:
+  ansible.builtin.stat:
     path: "{{ ansible_env.HOME }}/.vim/bin/vim"
+  register: vim_installed
   notify: Notify updates of Vim via Slack
 
 - name: Create directories in ~/.vim/
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.vim/{{ item }}"
     state: directory
-  with_items:
+  loop:
     - src
     - bundles
   notify: Notify updates of Vim via Slack
 
 - name: Clone install-latest-vim
-  git:
+  ansible.builtin.git:
     repo: https://github.com/dceoy/install-latest-vim.git
     dest: "{{ ansible_env.HOME }}/.vim/src/install-latest-vim"
   notify: Notify updates of Vim via Slack
 
 - name: Install or update Vim and Vim plugins
-  shell: |
+  ansible.builtin.shell: |
     {{ ansible_env.HOME }}/.vim/src/install-latest-vim/install_latest_vim.sh --lua --vim-plug
-  ignore_errors: true
+  changed_when: true
+  failed_when: false
   notify: Notify updates of Vim via Slack

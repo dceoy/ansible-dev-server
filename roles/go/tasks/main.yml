@@ -1,41 +1,42 @@
 ---
 - name: Set variables
-  set_fact:
+  ansible.builtin.set_fact:
     path: "{{ ansible_env.PATH }}:/usr/local/bin"
     gopath: "{{ ansible_env.HOME }}/.go"
 
 - name: Check go command
   environment:
     PATH: "{{ path }}"
-  shell: |
+  ansible.builtin.shell: |
     go version
   changed_when: false
+  failed_when: false
 
 - name: Create .go
-  file:
+  ansible.builtin.file:
     path: "{{ gopath }}"
     state: directory
   register: mkdir_go
 
 - name: Update packages
-  when:
-    - mkdir_go is changed
+  when: mkdir_go is changed
   environment:
     PATH: "{{ path }}"
     GOPATH: "{{ gopath }}"
-  shell: |
+  ansible.builtin.shell: |
     go get -u all
-  ignore_errors: true
+  changed_when: true
+  failed_when: false
   notify: Notify updates of Go via Slack
 
 - name: Install packages
-  when:
-    - go_packages is defined
+  when: go_packages is defined
   environment:
     PATH: "{{ path }}"
     GOPATH: "{{ gopath }}"
-  shell: |
+  ansible.builtin.shell: |
     go install {{ item }}@latest
-  with_items: "{{ go_packages }}"
-  ignore_errors: true
+  loop: "{{ go_packages }}"
+  changed_when: true
+  failed_when: false
   notify: Notify updates of Go via Slack

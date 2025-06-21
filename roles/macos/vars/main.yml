@@ -58,7 +58,6 @@ brew_packages:
     - gnu-which
     - gnutls
     - go
-    - goodwithtech/r/dockle
     - gopls
     - goreleaser
     - gpg

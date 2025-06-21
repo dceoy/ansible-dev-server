@@ -2,7 +2,7 @@
 - name: Set proxy at /etc/environment
   when: http_proxy is defined or https_proxy is defined
   become: true
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: /etc/environment
     state: present
     block: |
@@ -17,7 +17,7 @@
 - name: Set proxy at /etc/dnf/dnf.conf
   when: http_proxy is defined or https_proxy is defined
   become: true
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: /etc/dnf/dnf.conf
     state: present
     block: |
@@ -29,7 +29,7 @@
     - enable_nopass_sudo is defined
     - enable_nopass_sudo
   become: true
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: /etc/sudoers
     state: present
     block: |
@@ -39,7 +39,7 @@
 
 - name: Upgrade all packages
   become: true
-  dnf:
+  ansible.builtin.dnf:
     name: '*'
     state: latest
     update_cache: yes
@@ -48,7 +48,7 @@
 - name: Install packages
   when: dnf_packages is defined
   become: true
-  dnf:
+  ansible.builtin.dnf:
     name: "{{ dnf_packages }}"
     state: latest
     update_cache: yes
@@ -57,10 +57,10 @@
 - name: Set users
   when: users is defined
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
     append: yes
-  with_items: "{{ users }}"
+  loop: "{{ users }}"
   notify: Notify updates of the system via Slack

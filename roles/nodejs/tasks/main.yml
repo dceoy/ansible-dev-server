@@ -1,31 +1,33 @@
 ---
 - name: Set variables
-  set_fact:
+  ansible.builtin.set_fact:
     path: "{{ ansible_env.PATH }}:/usr/local/bin"
 
 - name: Check npm command
   environment:
     PATH: "{{ path }}"
-  shell: |
+  ansible.builtin.shell: |
     npm --version
   changed_when: false
+  failed_when: false
 
 - name: Update packages
   environment:
     PATH: "{{ path }}"
-  npm:
+  community.general.npm:
     global: yes
     state: latest
-  ignore_errors: true
+  failed_when: false
   notify: Notify updates of Node.js via Slack
 
 - name: Install packages
   environment:
     PATH: "{{ path }}"
-  npm:
+  community.general.npm:
     name: "{{ item }}"
     global: yes
     state: latest
-  with_items: "{{ npm_packages }}"
-  ignore_errors: true
+  loop: "{{ npm_packages }}"
+  failed_when: false
+  when: npm_packages is defined
   notify: Notify updates of Node.js via Slack

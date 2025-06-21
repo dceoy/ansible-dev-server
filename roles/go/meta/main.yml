@@ -1,0 +1,28 @@
+---
+galaxy_info:
+  author: dceoy
+  description: go role for development environment setup
+  license: MIT
+  min_ansible_version: "2.12"
+  platforms:
+    - name: Fedora
+      versions:
+        - all
+    - name: EL
+      versions:
+        - "8"
+        - "9"
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+    - name: MacOSX
+      versions:
+        - all
+  galaxy_tags:
+    - go
+    - development
+
+dependencies: []
+
+allow_duplicates: false
