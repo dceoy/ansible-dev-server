@@ -27,9 +27,7 @@ enable_list:
   - no-same-owner
 
 kinds:
-  - yaml: "**/meta/main.yml"
+  - yaml: ["**/meta/main.yml", "**/*.yaml", "**/*.yml"]
   - tasks: "**/tasks/*.yml"
   - vars: "**/vars/*.yml"
   - meta: "**/meta/main.yml"
-  - yaml: "**/*.yaml"
-  - yaml: "**/*.yml"
