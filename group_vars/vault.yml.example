@@ -1,0 +1,11 @@
+---
+# This is an example vault file. Copy to vault.yml and encrypt with:
+# ansible-vault encrypt group_vars/vault.yml
+#
+# To edit:
+# ansible-vault edit group_vars/vault.yml
+
+# Slack integration
+slack_token: "YOUR_SLACK_TOKEN_HERE"
+
+# Add other sensitive variables below

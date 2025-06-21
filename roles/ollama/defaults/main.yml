@@ -1,0 +1,3 @@
+---
+# Default variables for ollama role
+# Override these in your inventory or playbook

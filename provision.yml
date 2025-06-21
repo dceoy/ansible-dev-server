@@ -3,55 +3,78 @@
   hosts:
     - priv_cpu
     - priv_gpu
+  gather_facts: true
+  become: true
   environment:
-    http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
-    https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
-    no_proxy: "{{ no_proxy if no_proxy is defined else '' }}"
+    http_proxy: "{{ http_proxy | default('') }}"
+    https_proxy: "{{ https_proxy | default('') }}"
+    no_proxy: "{{ no_proxy | default('') }}"
+  vars:
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+  pre_tasks:
+    - name: Validate Ansible version
+      ansible.builtin.assert:
+        that:
+          - ansible_version.full is version('2.12', '>=')
+        fail_msg: "This playbook requires Ansible 2.12 or newer"
+        success_msg: "Ansible version {{ ansible_version.full }} is supported"
+      run_once: true
+      delegate_to: localhost
   roles:
     - role: fedora
       when: ansible_distribution == 'Fedora'
+      tags: [os, fedora]
     - role: centos
       when: ansible_distribution == 'CentOS'
+      tags: [os, centos]
     - role: ubuntu
       when: ansible_distribution == 'Ubuntu'
+      tags: [os, ubuntu]
 
 - name: Set up container environments
   hosts:
     - priv_cpu
+  gather_facts: true
+  become: true
   vars:
     use_nvidia_docker: false
     ignore_running_containers: false
-  # docker_userns_remap: default
+    docker_users: ["{{ ansible_user_id }}"]
   environment:
-    http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
-    https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
-    no_proxy: "{{ no_proxy if no_proxy is defined else '' }}"
+    http_proxy: "{{ http_proxy | default('') }}"
+    https_proxy: "{{ https_proxy | default('') }}"
+    no_proxy: "{{ no_proxy | default('') }}"
   roles:
     - role: submodules/ansible-container-engine/roles/docker
       when:
         - ansible_os_family in ['RedHat', 'Debian']
         - ansible_architecture == 'x86_64'
+      tags: [containers, docker]
 
 - name: Set up GPU environments
   hosts:
     - priv_gpu
+  gather_facts: true
+  become: true
   vars:
     use_nvidia_docker: true
     ignore_running_containers: false
-  # docker_userns_remap: default
+    docker_users: ["{{ ansible_user_id }}"]
   environment:
-    http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
-    https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
-    no_proxy: "{{ no_proxy if no_proxy is defined else '' }}"
+    http_proxy: "{{ http_proxy | default('') }}"
+    https_proxy: "{{ https_proxy | default('') }}"
+    no_proxy: "{{ no_proxy | default('') }}"
   roles:
     - role: nvidia
       when:
         - ansible_os_family in ['RedHat', 'Debian']
         - ansible_architecture == 'x86_64'
+      tags: [gpu, nvidia]
     - role: submodules/ansible-container-engine/roles/docker
       when:
         - ansible_os_family in ['RedHat', 'Debian']
         - ansible_architecture == 'x86_64'
+      tags: [containers, docker, gpu]
 
 - name: Set up development servers
   hosts:
@@ -59,17 +82,32 @@
     - priv_gpu
     - no_priv_cpu
     - no_priv_gpu
+  gather_facts: true
+  become: "{{ ansible_distribution != 'MacOSX' }}"
   environment:
-    http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
-    https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
-    no_proxy: "{{ no_proxy if no_proxy is defined else '' }}"
+    http_proxy: "{{ http_proxy | default('') }}"
+    https_proxy: "{{ https_proxy | default('') }}"
+    no_proxy: "{{ no_proxy | default('') }}"
   roles:
     - role: macos
       when: ansible_distribution == 'MacOSX'
+      tags: [os, macos]
     - role: cli
+      tags: [tools, cli]
     - role: vim
+      tags: [tools, vim, editor]
     - role: python
+      tags: [languages, python]
     - role: nodejs
+      tags: [languages, nodejs, javascript]
     - role: ruby
+      tags: [languages, ruby]
     - role: go
+      tags: [languages, go, golang]
     - role: r
+      tags: [languages, r, statistics]
+  post_tasks:
+    - name: Display completion message
+      ansible.builtin.debug:
+        msg: "Development server setup completed successfully!"
+      run_once: true

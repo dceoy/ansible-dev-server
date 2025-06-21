@@ -4,12 +4,12 @@
     - external_storages is defined
     - inventory_hostname == item.host
   become: true
-  mount:
+  ansible.posix.mount:
     path: "{{ item.path }}"
     src: "{{ item.src }}"
     fstype: "{{ item.fstype }}"
     state: "{{ item.state }}"
-  with_items: "{{ external_storages }}"
-  ignore_errors: true
+  loop: "{{ external_storages }}"
+  failed_when: false
   notify:
     - Notify updates of the external devices via Slack
