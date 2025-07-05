@@ -24,6 +24,7 @@
     executable: /bin/bash
   changed_when: false
   register: rb_v
+  failed_when: rb_v.rc != 0
 
 - name: Check if the latest version is installed
   ansible.builtin.stat:
@@ -32,8 +33,7 @@
   register: rb_x
 
 - name: Install the latest version of Ruby
-  when:
-    - not rb_x.results[0].stat.exists
+  when: not rb_x.results[0].stat.exists
   ansible.builtin.script:
     cmd: >
       install_rbenv.sh {{ rb_v.stdout_lines[0] }}
@@ -41,12 +41,11 @@
   notify: Notify updates of Ruby via Slack
 
 - name: Install and update Ruby packages
-  when:
-    - gem_packages is defined
+  when: gem_packages is defined
   community.general.gem:
     name: "{{ item }}"
     executable: "{{ rbenv_root }}/versions/{{ rb_v.stdout_lines[0] }}/bin/gem"
     state: latest
   loop: "{{ gem_packages }}"
-  ignore_errors: true
+  failed_when: false
   notify: Notify updates of Ruby via Slack

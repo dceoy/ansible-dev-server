@@ -1,6 +1,6 @@
 ---
 - name: Set variables
-  set_fact:
+  ansible.builtin.set_fact:
     path: "{{ ansible_env.PATH }}:/usr/local/bin"
     r_libs: "{{ ansible_env.HOME }}/.clir/r/library"
     clir: "{{ ansible_env.HOME }}/.clir/bin/clir"
@@ -9,12 +9,13 @@
 - name: Check R command
   environment:
     PATH: "{{ path }}"
-  shell: |
+  ansible.builtin.shell: |
     R --version
   changed_when: false
+  failed_when: false
 
 - name: Download the installer of clir
-  get_url:
+  ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/dceoy/clir/master/install_clir.sh
     dest: "{{ install_clir_sh }}"
 
@@ -22,12 +23,13 @@
   environment:
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
-  shell: |
+  ansible.builtin.shell: |
     bash {{ install_clir_sh }}
+  changed_when: true
   notify: Notify updates of R via Slack
 
 - name: Remove the installer
-  file:
+  ansible.builtin.file:
     path: "{{ install_clir_sh }}"
     state: absent
 
@@ -38,9 +40,10 @@
   environment:
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
-  shell: |
+  ansible.builtin.shell: |
     {{ clir }} cran {{ item }}
-  with_items: "{{ r_repos.cran }}"
+  loop: "{{ r_repos.cran }}"
+  changed_when: true
   notify: Notify updates of R via Slack
 
 - name: Set drat repositories
@@ -50,9 +53,10 @@
   environment:
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
-  shell: |
+  ansible.builtin.shell: |
     {{ clir }} drat {{ item }}
-  with_items: "{{ r_repos.drat }}"
+  loop: "{{ r_repos.drat }}"
+  changed_when: true
   notify: Notify updates of R via Slack
 
 - name: Install and update cran packages
@@ -64,11 +68,11 @@
   environment:
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
-  shell: |
+  ansible.builtin.shell: |
     {{ clir }} install --devt=cran --quiet {{ item }}
-  with_items:
-    - "{{ r_packages.cran }}"
-  ignore_errors: true
+  loop: "{{ r_packages.cran }}"
+  changed_when: true
+  failed_when: false
   notify: Notify updates of R via Slack
 
 - name: Install and update drat packages
@@ -80,10 +84,11 @@
   environment:
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
-  shell: |
+  ansible.builtin.shell: |
     {{ clir }} install --devt=cran --quiet {{ item }}
-  with_items: "{{ r_packages.drat }}"
-  ignore_errors: true
+  loop: "{{ r_packages.drat }}"
+  changed_when: true
+  failed_when: false
   notify: Notify updates of R via Slack
 
 - name: Install and update github packages
@@ -93,10 +98,11 @@
   environment:
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
-  shell: |
+  ansible.builtin.shell: |
     {{ clir }} install --devt=github --quiet {{ item }}
-  with_items: "{{ r_packages.github }}"
-  ignore_errors: true
+  loop: "{{ r_packages.github }}"
+  changed_when: true
+  failed_when: false
   notify: Notify updates of R via Slack
 
 - name: Install and update bioconductor packages
@@ -106,8 +112,9 @@
   environment:
     PATH: "{{ path }}"
     R_LIBS_USER: "{{ r_libs }}"
-  shell: |
+  ansible.builtin.shell: |
     {{ clir }} install --devt=bioc --quiet {{ item }}
-  with_items: "{{ r_packages.bioconductor }}"
-  ignore_errors: true
+  loop: "{{ r_packages.bioconductor }}"
+  changed_when: true
+  failed_when: false
   notify: Notify updates of R via Slack

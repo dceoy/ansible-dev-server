@@ -1,7 +1,7 @@
 ---
 - name: Check NVIDIA drivers
   when: nvidia_installer is defined
-  stat:
+  ansible.builtin.stat:
     path: /usr/bin/nvidia-smi
   register: nvidia_smi
 
@@ -10,6 +10,7 @@
     - nvidia_installer is defined
     - not nvidia_smi.stat.exists
   become: true
-  shell: |
+  ansible.builtin.shell: |
     bash {{ nvidia_installer }} --dkms --silent
+  changed_when: true
   notify: Notify updates of NVIDIA via Slack

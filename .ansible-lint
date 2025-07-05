@@ -1,0 +1,33 @@
+---
+profile: production
+strict: true
+offline: false
+parseable: true
+quiet: false
+verbosity: 1
+
+exclude_paths:
+  - .cache/
+  - .github/
+  - submodules/
+  - tests/
+
+skip_list:
+  - yaml[line-length]
+  - name[casing]
+
+warn_list:
+  - experimental
+  - role-name
+  - risky-file-permissions
+
+enable_list:
+  - fqcn-builtins
+  - no-log-password
+  - no-same-owner
+
+kinds:
+  - yaml: ["**/meta/main.yml", "**/*.yaml", "**/*.yml"]
+  - tasks: "**/tasks/*.yml"
+  - vars: "**/vars/*.yml"
+  - meta: "**/meta/main.yml"
