@@ -2,7 +2,7 @@
 - name: Set proxy at /etc/environment
   when: http_proxy is defined or https_proxy is defined
   become: true
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: /etc/environment
     state: present
     block: |
@@ -17,7 +17,7 @@
 - name: Set proxy at /etc/yum.conf
   when: http_proxy is defined or https_proxy is defined
   become: true
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: /etc/yum.conf
     state: present
     block: |
@@ -29,7 +29,7 @@
     - enable_nopass_sudo is defined
     - enable_nopass_sudo
   become: true
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: /etc/sudoers
     state: present
     block: |
@@ -39,7 +39,7 @@
 
 - name: Upgrade all packages
   become: true
-  yum:
+  ansible.builtin.yum:
     update_cache: yes
     name: '*'
     state: latest
@@ -48,19 +48,19 @@
 - name: Install packages
   when: yum_packages is defined
   become: true
-  yum:
+  ansible.builtin.yum:
     name: "{{ yum_packages }}"
     state: latest
-  ignore_errors: true
+  failed_when: false
   notify: Notify updates of the system via Slack
 
 - name: Set users
   when: users is defined
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
     append: yes
-  with_items: "{{ users }}"
+  loop: "{{ users }}"
   notify: Notify updates of the system via Slack

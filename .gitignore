@@ -1,8 +1,59 @@
+# Ansible runtime and temporary files
 *.retry
-.python-version
-hosts
-group_vars/
-host_vars/
-tmp/
+*.log
+.ansible/
+ansible.log
+
+# Vault password files
 .vault_password_file
-.ansible
+vault_password_file
+.vault_pass
+
+# Sensitive group_vars and host_vars (but keep the example files)
+group_vars/vault.yml
+host_vars/*/vault.yml
+!group_vars/vault.yml.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+venv/
+env/
+.env
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-*
+
+# Testing
+.molecule/
+.cache/
+.pytest_cache/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Fact cache
+/tmp/ansible_facts_cache/
+
+# Keep the hosts file
+!hosts
+group_vars/*.yml
+host_vars/*.yml

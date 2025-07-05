@@ -1,0 +1,3 @@
+---
+# Default variables for ubuntu role
+# Override these in your inventory or playbook

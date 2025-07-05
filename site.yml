@@ -1,0 +1,49 @@
+---
+# Main site playbook - orchestrates all deployment activities
+# Usage: ansible-playbook site.yml
+
+- name: Gather facts from all hosts
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Display Ansible version
+      ansible.builtin.debug:
+        msg: "Running Ansible {{ ansible_version.full }}"
+      run_once: true
+      delegate_to: localhost
+
+- name: Import provisioning playbook
+  ansible.builtin.import_playbook: provision.yml
+
+- name: Post-deployment validation
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Validate Python installation
+      ansible.builtin.command: python3 --version
+      register: python_version
+      changed_when: false
+      failed_when: false
+      tags: [validation, python]
+
+    - name: Display Python version
+      ansible.builtin.debug:
+        msg: "Python {{ python_version.stdout }} installed"
+      when: python_version.rc == 0
+      tags: [validation, python]
+
+    - name: Validate Docker installation (privileged hosts only)
+      ansible.builtin.command: docker --version
+      register: docker_version
+      changed_when: false
+      failed_when: false
+      when: inventory_hostname in groups['priv_cpu'] + groups['priv_gpu']
+      tags: [validation, docker]
+
+    - name: Display Docker version
+      ansible.builtin.debug:
+        msg: "Docker {{ docker_version.stdout }} installed"
+      when: 
+        - docker_version is defined
+        - docker_version.rc == 0
+      tags: [validation, docker]
