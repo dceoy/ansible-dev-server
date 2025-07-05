@@ -58,7 +58,6 @@ brew_packages:
     - gnu-which
     - gnutls
     - go
-    - goodwithtech/r/dockle
     - gopls
     - goreleaser
     - gpg
@@ -84,6 +83,7 @@ brew_packages:
     - libtiff
     - libxml2
     - little-cms2
+    - llm
     - llvm
     - lmdb
     - lua

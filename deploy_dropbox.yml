@@ -1,13 +1,21 @@
 ---
-- name: Set up container environments
+- name: Deploy Dropbox
   hosts:
     - dbox
+  gather_facts: true
+  become: true
   environment:
-    http_proxy: "{{ http_proxy if http_proxy is defined else '' }}"
-    https_proxy: "{{ https_proxy if https_proxy is defined else '' }}"
-    no_proxy: "{{ no_proxy if no_proxy is defined else '' }}"
+    http_proxy: "{{ http_proxy | default('') }}"
+    https_proxy: "{{ https_proxy | default('') }}"
+    no_proxy: "{{ no_proxy | default('') }}"
+  pre_tasks:
+    - name: Validate supported platform
+      ansible.builtin.assert:
+        that:
+          - ansible_architecture == 'x86_64'
+          - ansible_distribution in ['Fedora', 'CentOS', 'Ubuntu']
+        fail_msg: "Dropbox is only supported on x86_64 architecture for Fedora, CentOS, and Ubuntu"
+        success_msg: "Platform {{ ansible_distribution }} {{ ansible_architecture }} is supported"
   roles:
     - role: submodules/ansible-dropbox/roles/dropbox
-      when:
-        - ansible_architecture == 'x86_64'
-        - ansible_distribution in ['Fedora', 'CentOS', 'Ubuntu']
+      tags: [dropbox, storage]

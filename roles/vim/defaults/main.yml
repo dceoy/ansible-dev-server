@@ -1,0 +1,3 @@
+---
+# Default variables for vim role
+# Override these in your inventory or playbook

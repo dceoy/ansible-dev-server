@@ -17,6 +17,7 @@
     executable: /bin/bash
   environment: "{{ ollama_env }}"
   changed_when: false
+  failed_when: false
 
 - name: Start Ollama
   ansible.builtin.shell:
@@ -30,8 +31,7 @@
   register: ollama_serve_process
 
 - name: Pull models from registries using Ollama
-  when:
-    - ollama_models is defined
+  when: ollama_models is defined
   ansible.builtin.shell:
     cmd: >
       ollama pull {{ item }}
@@ -46,3 +46,4 @@
       kill -9 {{ ollama_serve_process.stdout }}
     executable: /bin/bash
   changed_when: false
+  failed_when: false

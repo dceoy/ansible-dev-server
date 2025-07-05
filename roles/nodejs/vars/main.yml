@@ -15,5 +15,6 @@ npm_packages:
   - serverless
   - typescript
   - wscat
-  # - yarn
   - '@anthropic-ai/claude-code'
+  - '@google/gemini-cli'
+  - '@openai/codex'

@@ -1,0 +1,12 @@
+---
+# Git configuration
+git_user_name: dceoy
+git_user_email: dceoy@users.noreply.github.com
+
+# Slack configuration
+slack_channel: ansible
+slack_icon_url: https://pbs.twimg.com/profile_images/428287509047435264/ElOjna20.png
+
+# Sensitive variables are stored in vault.yml
+# slack_token: !vault |
+#   (encrypted value stored in vault.yml)

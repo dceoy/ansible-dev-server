@@ -2,7 +2,7 @@
 - name: Set proxy at /etc/environment
   when: http_proxy is defined or https_proxy is defined
   become: true
-  blockinfile:
+  ansible.builtin.blockinfile:
     create: yes
     dest: /etc/environment
     state: present
@@ -18,7 +18,7 @@
 - name: Set proxy at /etc/apt/apt.conf
   when: http_proxy is defined or https_proxy is defined
   become: true
-  blockinfile:
+  ansible.builtin.blockinfile:
     create: yes
     dest: /etc/apt/apt.conf
     state: present
@@ -32,7 +32,7 @@
     - enable_nopass_sudo is defined
     - enable_nopass_sudo
   become: true
-  group:
+  ansible.builtin.group:
     name: wheel
     state: present
   notify: Notify updates of the system via Slack
@@ -42,7 +42,7 @@
     - enable_nopass_sudo is defined
     - enable_nopass_sudo
   become: true
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: /etc/sudoers
     state: present
     block: |
@@ -52,7 +52,7 @@
 
 - name: Install required packages
   become: true
-  apt:
+  ansible.builtin.apt:
     autoclean: yes
     autoremove: yes
     update_cache: yes
@@ -65,7 +65,7 @@
 
 - name: Upgrade all packages
   become: true
-  apt:
+  ansible.builtin.apt:
     autoclean: yes
     autoremove: yes
     upgrade: dist
@@ -75,21 +75,21 @@
 - name: Install packages
   when: apt_packages is defined
   become: true
-  apt:
+  ansible.builtin.apt:
     autoclean: yes
     autoremove: yes
     name: "{{ apt_packages }}"
     state: latest
-  ignore_errors: true
+  failed_when: false
   notify: Notify updates of the system via Slack
 
 - name: Set users
   when: users is defined
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
     append: yes
-  with_items: "{{ users }}"
+  loop: "{{ users }}"
   notify: Notify updates of the system via Slack
