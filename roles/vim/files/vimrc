@@ -221,7 +221,7 @@ let g:ale_linters = {
 \   'r': ['lintr'],
 \   'rmd': ['lintr'],
 \   'ruby': ['rubocop'],
-\   'go': ['go', 'gofmt', 'golint'],
+\   'go': ['go', 'golangci-lint'],
 \   'vim': ['vint'],
 \   'sql': ['sqlint'],
 \   'markdown': ['proselint'],
