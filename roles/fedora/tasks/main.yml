@@ -42,7 +42,7 @@
   ansible.builtin.dnf:
     name: '*'
     state: latest
-    update_cache: yes
+    update_cache: true
   notify: Notify updates of the system via Slack
 
 - name: Install packages
@@ -51,7 +51,7 @@
   ansible.builtin.dnf:
     name: "{{ dnf_packages }}"
     state: latest
-    update_cache: yes
+    update_cache: true
   notify: Notify updates of the system via Slack
 
 - name: Set users
@@ -61,6 +61,6 @@
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
-    append: yes
+    append: true
   loop: "{{ users }}"
   notify: Notify updates of the system via Slack

@@ -14,7 +14,7 @@ This document outlines the modernization changes applied to this Ansible reposit
 
 #### requirements.yml
 - Created to declare collection dependencies
-- Includes: ansible.builtin, ansible.posix, community.general, community.docker
+- Includes: ansible.posix, community.general, community.docker
 
 #### .ansible-lint
 - Added production-profile linting configuration

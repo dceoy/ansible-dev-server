@@ -11,7 +11,7 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  - name: fedora-instance  
+  - name: fedora-instance
     image: fedora:39
     pre_build_image: true
     command: /usr/sbin/init

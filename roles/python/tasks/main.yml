@@ -3,7 +3,7 @@
   ansible.builtin.git:
     repo: https://github.com/pyenv/pyenv.git
     dest: "{{ ansible_env.HOME }}/.pyenv"
-    force: yes
+    force: true
   notify: Notify updates of Python via Slack
 
 - name: Set variables
@@ -63,5 +63,5 @@
     executable: "{{ pyenv_root }}/versions/{{ item }}/bin/pip"
     state: latest
   loop: "{{ py_v.stdout_lines }}"
-  ignore_errors: true
+  failed_when: false
   notify: Notify updates of Python via Slack

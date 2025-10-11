@@ -4,8 +4,8 @@
     - slack_token is defined
     - slack_channel is defined
     - slack_icon_url is defined
-  local_action:
-    module: slack
+  delegate_to: localhost
+  community.general.slack:
     msg: 'The configuration of Ruby was updated.'
     token: "{{ slack_token }}"
     channel: "#{{ slack_channel }}"

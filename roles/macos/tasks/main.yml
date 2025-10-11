@@ -10,8 +10,8 @@
 
 - name: Update homebrew and upgrade all packages
   community.general.homebrew:
-    update_homebrew: yes
-    upgrade_all: yes
+    update_homebrew: true
+    upgrade_all: true
   notify: Notify updates of the system via Slack
 
 - name: Install packages
