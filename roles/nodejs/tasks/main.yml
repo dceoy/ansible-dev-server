@@ -15,7 +15,7 @@
   environment:
     PATH: "{{ path }}"
   community.general.npm:
-    global: yes
+    global: true
     state: latest
   failed_when: false
   notify: Notify updates of Node.js via Slack
@@ -25,7 +25,7 @@
     PATH: "{{ path }}"
   community.general.npm:
     name: "{{ item }}"
-    global: yes
+    global: true
     state: latest
   loop: "{{ npm_packages }}"
   failed_when: false

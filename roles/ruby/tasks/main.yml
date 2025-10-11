@@ -3,7 +3,7 @@
   ansible.builtin.git:
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
-    force: yes
+    force: true
   loop:
     - repo: https://github.com/rbenv/rbenv.git
       dest: "{{ ansible_env.HOME }}/.rbenv"

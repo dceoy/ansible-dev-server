@@ -4,6 +4,6 @@
   gather_facts: true
   become: true
   tasks:
-    - name: Include python role
-      ansible.builtin.include_role:
+    - name: Apply python role
+      ansible.builtin.import_role:
         name: python
