@@ -1,6 +1,0 @@
-[submodule "submodules/ansible-container-engine"]
-	path = submodules/ansible-container-engine
-	url = https://github.com/dceoy/ansible-container-engine.git
-[submodule "submodules/ansible-dropbox"]
-	path = submodules/ansible-dropbox
-	url = https://github.com/dceoy/ansible-dropbox.git

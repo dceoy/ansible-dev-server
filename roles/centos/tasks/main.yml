@@ -40,7 +40,7 @@
 - name: Upgrade all packages
   become: true
   ansible.builtin.yum:
-    update_cache: yes
+    update_cache: true
     name: '*'
     state: latest
   notify: Notify updates of the system via Slack
@@ -61,6 +61,6 @@
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
-    append: yes
+    append: true
   loop: "{{ users }}"
   notify: Notify updates of the system via Slack

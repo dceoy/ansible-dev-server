@@ -48,7 +48,7 @@
 - name: Set proxy at ~/.zprofile
   when: http_proxy is defined or https_proxy is defined
   ansible.builtin.blockinfile:
-    create: yes
+    create: true
     dest: "{{ ansible_env.HOME }}/.zprofile"
     insertafter: '# proxy'
     state: present

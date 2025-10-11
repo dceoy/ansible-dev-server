@@ -3,7 +3,7 @@
   when: http_proxy is defined or https_proxy is defined
   become: true
   ansible.builtin.blockinfile:
-    create: yes
+    create: true
     dest: /etc/environment
     state: present
     block: |
@@ -19,7 +19,7 @@
   when: http_proxy is defined or https_proxy is defined
   become: true
   ansible.builtin.blockinfile:
-    create: yes
+    create: true
     dest: /etc/apt/apt.conf
     state: present
     block: |
@@ -53,9 +53,9 @@
 - name: Install required packages
   become: true
   ansible.builtin.apt:
-    autoclean: yes
-    autoremove: yes
-    update_cache: yes
+    autoclean: true
+    autoremove: true
+    update_cache: true
     name:
       - apt-transport-https
       - aptitude
@@ -66,18 +66,18 @@
 - name: Upgrade all packages
   become: true
   ansible.builtin.apt:
-    autoclean: yes
-    autoremove: yes
+    autoclean: true
+    autoremove: true
     upgrade: dist
-    update_cache: yes
+    update_cache: true
   notify: Notify updates of the system via Slack
 
 - name: Install packages
   when: apt_packages is defined
   become: true
   ansible.builtin.apt:
-    autoclean: yes
-    autoremove: yes
+    autoclean: true
+    autoremove: true
     name: "{{ apt_packages }}"
     state: latest
   failed_when: false
@@ -90,6 +90,6 @@
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
-    append: yes
+    append: true
   loop: "{{ users }}"
   notify: Notify updates of the system via Slack
