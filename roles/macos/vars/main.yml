@@ -145,6 +145,7 @@ brew_packages:
     - webp
     - wget
     - zip
+    - zizmor
     - zlib
     - zsh
 brew_cask_packages:

@@ -16,6 +16,7 @@ npm_packages:
   - typescript
   - wscat
   - '@anthropic-ai/claude-code'
+  - '@github/copilot'
   - '@google/gemini-cli'
   - '@openai/codex'
   - '@github/copilot'
