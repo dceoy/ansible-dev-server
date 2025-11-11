@@ -11,19 +11,18 @@ brew_packages:
   without_options:
     - ansible
     - aria2
-    - autoconf
-    - automake
+    # - autoconf
+    # - automake
     - aws-cdk
     - awscli
-    - bazel
+    # - bazel
     - bats-core
-    - bcftools
-    - bedtools
+    # - bcftools
+    # - bedtools
     - binutils
-    - boost
-    - bwa
-    - cabal-install
-    - circleci
+    # - boost
+    # - cabal-install
+    # - circleci
     - cloudflared
     - cloudformation-guard
     - colordiff
@@ -34,38 +33,38 @@ brew_packages:
     # - cyberduck
     - diffutils
     - dvc
-    - ed
-    - elixir
+    # - ed
+    # - elixir
     - fcrackzip
     - fd
     - ffmpeg
     - findutils
-    - freetds
-    - freetype
-    - fribidi
+    # - freetds
+    # - freetype
+    # - fribidi
     - gawk
     - gcc
-    - gdal
-    - gdbm
-    - gflags
+    # - gdal
+    # - gdbm
+    # - gflags
     - gh
-    - ghc
+    # - ghc
     - git
-    - glog
-    - gnu-indent
+    # - glog
+    # - gnu-indent
     - gnu-sed
     - gnu-tar
     - gnu-which
-    - gnutls
+    # - gnutls
     - go
-    - gopls
-    - goreleaser
-    - gpg
+    # - gopls
+    # - goreleaser
+    # - gpg
     - groff
     - grep
     - gzip
     - hadolint
-    - harfbuzz
+    # - harfbuzz
     - hdf5
     - htop
     - hugo
@@ -74,18 +73,18 @@ brew_packages:
     - imagemagick
     - jq
     - jsonlint
-    - kubectl
-    - leveldb
-    - libgit2
-    - libjpeg
-    - librsvg
-    - libssh2
-    - libtiff
-    - libxml2
-    - little-cms2
+    # - kubectl
+    # - leveldb
+    # - libgit2
+    # - libjpeg
+    # - librsvg
+    # - libssh2
+    # - libtiff
+    # - libxml2
+    # - little-cms2
     - llm
-    - llvm
-    - lmdb
+    # - llvm
+    # - lmdb
     - lua
     - luajit
     - md5sha1sum
@@ -96,64 +95,63 @@ brew_packages:
     - node
     - npm
     - ollama
-    - open-mpi
-    - opencv
-    - openjdk
-    - openssl
+    # - openjdk
+    # - openssl
     - p7zip
     - pandoc
-    - parallel
+    # - parallel
     - pbzip2
     - pdf2svg
-    - picard-tools
+    # - picard-tools
     - pigz
     - pinact
-    - pipx
-    - pkg-config
+    # - pipx
+    # - pkg-config
     # - postgresql
-    - protobuf
+    # - protobuf
     - python
     - quicktype
+    - r
     - rain
-    - readline
-    - redis
+    # - readline
+    # - redis
     - rename
     - rsync
     - ruby
-    - rust
-    - rustup
-    - samtools
-    - screen
+    # - rust
+    # - rustup
+    # - samtools
+    # - screen
     - shellcheck
     - shunit2
-    - snappy
+    # - snappy
     - sqlite
-    - supervisor
-    - tcl-tk
+    # - supervisor
+    # - tailscale
+    # - tcl-tk
     - tenv
     - tflint
     - tig
-    - tldr
     - tmux
     - tree
     - trivy
-    - v8
+    - uv
+    # - v8
     - vim
     - wakeonlan
     - watch
     - wdiff
-    - webp
+    # - webp
     - wget
     - zip
     - zizmor
-    - zlib
+    # - zlib
     - zsh
 brew_cask_packages:
-  # - 1password
   - adobe-acrobat-reader
-  # - authy
   # - amazon-music
   # - chatgpt
+  # - chatgpt-atlas
   # - chrome-remote-desktop-host
   # - claude
   # - cursor
@@ -168,21 +166,17 @@ brew_cask_packages:
   # - gimp
   # - google-drive
   - google-chrome
-  # - google-cloud-sdk
+  - google-cloud-sdk
   - google-japanese-ime
   # - handbrake
   - iterm2
   # - lm-studio
-  # - microsoft-edge
   - microsoft-office
-  # - microsoft-remote-desktop
   - miro
+  # - notion
   # - opera
-  - r
   # - rstudio
-  # - session-manager-plugin
   - slack
-  # - tailscale
   - visual-studio-code
   # - vnc-viewer
   # - wine-stable
