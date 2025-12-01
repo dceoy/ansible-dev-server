@@ -1,7 +1,7 @@
 ---
 # Git configuration
 git_user_name: dceoy
-git_user_email: dceoy@users.noreply.github.com
+git_user_email: 1938249+dceoy@users.noreply.github.com
 
 # Slack configuration
 slack_channel: ansible
