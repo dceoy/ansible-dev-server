@@ -21,3 +21,5 @@ uv
 vim-vint
 vulture
 yamllint
+filelock>=3.20.1 # not directly required, pinned by Snyk to avoid a vulnerability
+tornado>=6.5.3 # not directly required, pinned by Snyk to avoid a vulnerability
