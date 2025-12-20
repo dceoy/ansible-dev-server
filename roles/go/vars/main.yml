@@ -5,6 +5,6 @@ go_packages:
   - github.com/kahing/goofys
   - github.com/naoina/toml
   - github.com/pelletier/go-toml/v2/cmd/tomll@latest
-  - github.com/rhysd/actionlint/cmd/actionlint@latest
+  # - github.com/rhysd/actionlint/cmd/actionlint@latest
   - github.com/securego/gosec/v2/cmd/gosec@latest
   - golang.org/x/vuln/cmd/govulncheck@latest
