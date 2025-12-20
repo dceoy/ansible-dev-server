@@ -9,6 +9,7 @@ brew_packages:
         - with-fontconfig
         - with-librsvg
   without_options:
+    - act
     - ansible
     - aria2
     # - autoconf
@@ -26,6 +27,7 @@ brew_packages:
     - cloudflared
     - cloudformation-guard
     - colordiff
+    - copilot-cli
     - coreutils
     - corkscrew
     - cosign
@@ -43,6 +45,7 @@ brew_packages:
     # - freetype
     # - fribidi
     - gawk
+    - gemini-cli
     - gcc
     # - gdal
     # - gdbm
@@ -154,6 +157,8 @@ brew_cask_packages:
   # - chatgpt-atlas
   # - chrome-remote-desktop-host
   # - claude
+  - claude-code
+  - codex
   # - cursor
   # - dbeaver-community
   # - discord
