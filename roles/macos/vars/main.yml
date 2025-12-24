@@ -11,6 +11,7 @@ brew_packages:
   without_options:
     - act
     - ansible
+    - ansible-lint
     - aria2
     # - autoconf
     # - automake
@@ -31,6 +32,7 @@ brew_packages:
     - coreutils
     - corkscrew
     - cosign
+    - csvkit
     - curl
     # - cyberduck
     - diffutils
@@ -66,6 +68,7 @@ brew_packages:
     # - gpg
     - groff
     - grep
+    - grip
     - gzip
     - hadolint
     # - harfbuzz
@@ -116,6 +119,7 @@ brew_packages:
     # - postgresql
     - prettier
     # - protobuf
+    - pyright
     - python
     - quicktype
     - r
@@ -125,6 +129,7 @@ brew_packages:
     - rename
     - rsync
     - ruby
+    - ruff
     # - rust
     # - rustup
     # - samtools
@@ -146,11 +151,14 @@ brew_packages:
     - uv
     # - v8
     - vim
+    - vulture
     - wakeonlan
     - watch
     - wdiff
     # - webp
     - wget
+    - yamllint
+    - yq
     - zip
     - zizmor
     # - zlib

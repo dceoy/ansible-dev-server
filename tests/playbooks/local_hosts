@@ -1,6 +1,0 @@
-[local]
-localhost   ansible_connection=ssh
-
-[all:vars]
-git_user_name = test
-git_user_email = test@example.com

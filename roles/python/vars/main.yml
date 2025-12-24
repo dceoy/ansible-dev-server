@@ -55,6 +55,7 @@ pip_packages:
   - luigi
   - magika
   - matplotlib
+  - marimo
   - mkl
   - mock
   - MonkeyType
@@ -68,10 +69,8 @@ pip_packages:
   - pandas-datareader
   - pandera
   - pillow
-  - pip
   - pipx
   - plotly
-  - poetry
   - polars
   - pr-agent
   - pre-commit
@@ -128,6 +127,7 @@ pip_packages:
   - tryceratops
   - twine
   - twitter
+  - ty
   - types-docopt
   - types-jsonschema
   - types-setuptools
