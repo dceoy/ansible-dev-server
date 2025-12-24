@@ -94,14 +94,14 @@ r_packages:
     - thomasp85/patchwork
   drat:
     - xgboost
-# bioconductor:
-#   - Biobase
-#   - BiocInstaller
-#   - Biostrings
-#   - DNAcopy
-#   - GEOquery
-#   - GenomicRanges
-#   - org.Hs.eg.db
-#   - PhViD
-#   - qvalue
-#   - RDRToolbox
+  bioconductor:
+    - Biobase
+    - BiocInstaller
+    - Biostrings
+    - DNAcopy
+    - GEOquery
+    - GenomicRanges
+    - org.Hs.eg.db
+    - PhViD
+    - qvalue
+    - RDRToolbox

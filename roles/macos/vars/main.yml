@@ -138,6 +138,7 @@ brew_packages:
     - shunit2
     # - snappy
     - sqlite
+    - stylelint
     # - supervisor
     # - tailscale
     # - tcl-tk
