@@ -1,8 +1,8 @@
 ---
 - name: Set variables
   ansible.builtin.set_fact:
-    path: "{{ ansible_env.PATH }}:/usr/local/bin"
-    gopath: "{{ ansible_env.HOME }}/.go"
+    path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
+    gopath: "{{ ansible_facts['env']['HOME'] }}/.go"
 
 - name: Check go command
   environment:

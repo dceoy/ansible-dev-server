@@ -12,10 +12,10 @@
     - name: Validate supported platform
       ansible.builtin.assert:
         that:
-          - ansible_architecture == 'x86_64'
-          - ansible_distribution in ['Fedora', 'CentOS', 'Ubuntu']
+          - ansible_facts['architecture'] == 'x86_64'
+          - ansible_facts['distribution'] in ['Fedora', 'CentOS', 'Ubuntu']
         fail_msg: "Dropbox is only supported on x86_64 architecture for Fedora, CentOS, and Ubuntu"
-        success_msg: "Platform {{ ansible_distribution }} {{ ansible_architecture }} is supported"
+        success_msg: "Platform {{ ansible_facts['distribution'] }} {{ ansible_facts['architecture'] }} is supported"
   roles:
     - role: submodules/ansible-dropbox/roles/dropbox
       tags: [dropbox, storage]

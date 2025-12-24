@@ -2,13 +2,13 @@
 - name: Clone pyenv
   ansible.builtin.git:
     repo: https://github.com/pyenv/pyenv.git
-    dest: "{{ ansible_env.HOME }}/.pyenv"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.pyenv"
     force: true
   notify: Notify updates of Python via Slack
 
 - name: Set variables
   ansible.builtin.set_fact:
-    pyenv_root: "{{ ansible_env.HOME }}/.pyenv"
+    pyenv_root: "{{ ansible_facts['env']['HOME'] }}/.pyenv"
     base_requirements: "{{ lookup('file', 'requirements.txt').split('\n') }}"
 
 - name: Fetch the latest versions of Python
@@ -43,10 +43,15 @@
   when: not py_x.results[0].stat.exists
   ansible.builtin.shell:
     cmd: >
-      {{ ansible_env.HOME }}/.pyenv/bin/pyenv global {{ py_v.stdout_lines[0] }}
+      {{ ansible_facts['env']['HOME'] }}/.pyenv/bin/pyenv global {{ py_v.stdout_lines[0] }}
     executable: /bin/zsh
   changed_when: true
   notify: Notify updates of Python via Slack
+
+- name: Ensure packaging is available for Ansible interpreter
+  ansible.builtin.command:
+    cmd: "{{ ansible_facts['python']['executable'] }} -m pip install --upgrade packaging"
+  changed_when: false
 
 - name: Install and update base packages
   ansible.builtin.pip:

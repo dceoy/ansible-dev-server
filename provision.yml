@@ -22,13 +22,13 @@
       delegate_to: localhost
   roles:
     - role: fedora
-      when: ansible_distribution == 'Fedora'
+      when: ansible_facts['distribution'] == 'Fedora'
       tags: [os, fedora]
     - role: centos
-      when: ansible_distribution == 'CentOS'
+      when: ansible_facts['distribution'] == 'CentOS'
       tags: [os, centos]
     - role: ubuntu
-      when: ansible_distribution == 'Ubuntu'
+      when: ansible_facts['distribution'] == 'Ubuntu'
       tags: [os, ubuntu]
 
 # - name: Set up container environments
@@ -48,7 +48,7 @@
 #     - role: submodules/ansible-container-engine/roles/docker
 #       when:
 #         - ansible_os_family in ['RedHat', 'Debian']
-#         - ansible_architecture == 'x86_64'
+#         - ansible_facts['architecture'] == 'x86_64'
 #       tags: [containers, docker]
 # 
 # - name: Set up GPU environments
@@ -68,12 +68,12 @@
 #     - role: nvidia
 #       when:
 #         - ansible_os_family in ['RedHat', 'Debian']
-#         - ansible_architecture == 'x86_64'
+#         - ansible_facts['architecture'] == 'x86_64'
 #       tags: [gpu, nvidia]
 #     - role: submodules/ansible-container-engine/roles/docker
 #       when:
 #         - ansible_os_family in ['RedHat', 'Debian']
-#         - ansible_architecture == 'x86_64'
+#         - ansible_facts['architecture'] == 'x86_64'
 #       tags: [containers, docker, gpu]
 
 - name: Set up development servers
@@ -83,14 +83,14 @@
     - no_priv_cpu
     - no_priv_gpu
   gather_facts: true
-  become: "{{ ansible_distribution != 'MacOSX' }}"
+  become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
   environment:
     http_proxy: "{{ http_proxy | default('') }}"
     https_proxy: "{{ https_proxy | default('') }}"
     no_proxy: "{{ no_proxy | default('') }}"
   roles:
     - role: macos
-      when: ansible_distribution == 'MacOSX'
+      when: ansible_facts['distribution'] == 'MacOSX'
       tags: [os, macos]
     - role: cli
       tags: [tools, cli]

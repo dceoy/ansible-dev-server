@@ -1,7 +1,7 @@
 ---
 - name: Set variables
   ansible.builtin.set_fact:
-    path: "{{ ansible_env.PATH }}:/usr/local/bin"
+    path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
 
 - name: Check npm command
   environment:
