@@ -20,7 +20,7 @@
   failed_when: false
   notify: Notify updates of Node.js via Slack
 
-- name: Install packages
+- name: Install and update packages
   environment:
     PATH: "{{ path }}"
   community.general.npm:
