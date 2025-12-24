@@ -7,16 +7,19 @@ This document outlines the modernization changes applied to this Ansible reposit
 ### 1. Core Configuration Updates
 
 #### ansible.cfg
+
 - Added performance optimizations (pipelining, fact caching, forking)
 - Configured modern callback plugins (YAML output)
 - Set up SSH connection optimizations
 - Added privilege escalation defaults
 
 #### requirements.yml
+
 - Created to declare collection dependencies
 - Includes: ansible.posix, community.general, community.docker
 
 #### .ansible-lint
+
 - Added production-profile linting configuration
 - Configured FQCN enforcement
 - Set up proper exclusions for submodules and tests
@@ -24,6 +27,7 @@ This document outlines the modernization changes applied to this Ansible reposit
 ### 2. Playbook Modernization
 
 #### provision.yml
+
 - Added gather_facts and become directives explicitly
 - Replaced `var if var is defined else ''` with `var | default('')`
 - Added pre_tasks for Ansible version validation
@@ -32,11 +36,13 @@ This document outlines the modernization changes applied to this Ansible reposit
 - Set conditional become for macOS compatibility
 
 #### deploy_dropbox.yml
+
 - Added platform validation pre_task
 - Modernized variable defaults
 - Added proper tags
 
 #### site.yml (new)
+
 - Created orchestration playbook
 - Includes validation tasks
 - Provides single entry point for deployments
@@ -51,11 +57,13 @@ This document outlines the modernization changes applied to this Ansible reposit
 ### 4. Role Structure Updates
 
 #### All Roles
+
 - Added meta/main.yml with galaxy_info for all roles
 - Created defaults/main.yml directories
 - Standardized role metadata
 
 #### Task Modernization (all roles)
+
 - Replaced `with_items` with `loop`
 - Added FQCN to all module calls:
   - `ansible.builtin.*` for built-in modules
@@ -68,6 +76,7 @@ This document outlines the modernization changes applied to this Ansible reposit
 ### 5. Testing Infrastructure
 
 #### Molecule Tests
+
 - Created example molecule test for python role
 - Includes multi-platform testing (Ubuntu, Fedora)
 - Added converge and verify playbooks
@@ -76,6 +85,7 @@ This document outlines the modernization changes applied to this Ansible reposit
 ### 6. Module Updates
 
 Key module replacements with FQCN:
+
 - `apt` → `ansible.builtin.apt`
 - `yum` → `ansible.builtin.yum`
 - `dnf` → `ansible.builtin.dnf`
@@ -105,11 +115,13 @@ Key module replacements with FQCN:
 To use the modernized playbooks:
 
 1. Install required collections:
+
    ```bash
    ansible-galaxy collection install -r requirements.yml
    ```
 
 2. Set up vault for sensitive data:
+
    ```bash
    cp group_vars/vault.yml.example group_vars/vault.yml
    # Edit with your values
@@ -117,11 +129,13 @@ To use the modernized playbooks:
    ```
 
 3. Run playbooks as before:
+
    ```bash
    ansible-playbook provision.yml
    ```
 
 4. Use tags for selective execution:
+
    ```bash
    ansible-playbook provision.yml --tags "python,nodejs"
    ```

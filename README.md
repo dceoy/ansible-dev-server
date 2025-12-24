@@ -1,10 +1,8 @@
-ansible-dev-server
-==================
+# ansible-dev-server
 
 Ansible playbooks for development servers
 
-Setup
------
+## Setup
 
 ```sh
 $ git clone --recurse-submodules https://github.com/dceoy/ansible-dev-server.git
@@ -13,16 +11,14 @@ $ cp misc/example_hosts hosts
 $ vim hosts   # => edit
 ```
 
-Update
-------
+## Update
 
 ```sh
 $ git pull origin master
 $ git submodule update --recursive --remote
 ```
 
-Usage
------
+## Usage
 
 Set up the systems
 

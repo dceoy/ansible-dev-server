@@ -2,7 +2,7 @@
 
 set -uex
 
-cd $(dirname ${0})
+cd "$(dirname "${0}")"
 [[ -d tmp ]] || mkdir tmp
 cp -a playbooks/* ../roles tmp
 for r in 'arm-debian' 'centos' 'fedora' 'go' 'macos' 'python' 'r' 'ruby' 'ubuntu'; do

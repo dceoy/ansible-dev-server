@@ -18,29 +18,29 @@ case "${OSTYPE}" in
     if sudo -v; then
       if [[ -f '/etc/lsb-release' ]]; then
         sudo apt --version && APT='apt' || APT='apt-get'
-        sudo ${APT} -y update
-        sudo ${APT} -y dist-upgrade
-        sudo ${APT} -y install \
+        sudo "${APT}" -y update
+        sudo "${APT}" -y dist-upgrade
+        sudo "${APT}" -y install \
           apt-file build-essential colordiff corkscrew curl git golang \
           jq libffi-dev libssl-dev luajit nkf nmap nodejs p7zip-full pandoc \
           pbzip2 pigz python3.7-dev r-base rename ruby-dev shellcheck \
           software-properties-common sqlite3 ssh sshfs time tmux traceroute \
           tree unzip vim-gnome wakeonlan wget zip zsh \
-        sudo ${APT} -y autoremove
-        sudo ${APT} clean
+        sudo "${APT}" -y autoremove
+        sudo "${APT}" clean
         sudo ln -s /usr/bin/python3.7 /usr/bin/python3
       elif [[ -f '/etc/redhat-release' ]];then
         sudo dnf --version && DNF='dnf' || DNF='yum'
-        ${DNF} -y upgrade
-        ${DNF} -y groupinstall \
+        "${DNF}" -y upgrade
+        "${DNF}" -y groupinstall \
           'Development Tools' 'C Development Tools and Libraries'
-        ${DNF} -y install \
+        "${DNF}" -y install \
           colordiff corkscrew curl dnf-plugins-core git go jq kernel-devel \
           ernel-headers luajit-devel nkf nmap nodejs openssh openssl-devel \
           p7zip pandoc pbzip2 pigz python3-devel R-devel ruby-devel \
           ShellCheck sqlite-devel sshfs time tmux traceroute tree \
           vim-enhanced wol wget zsh \
-        ${DNF} -y clean all
+        "${DNF}" -y clean all
       fi
     fi
     ;;
@@ -68,5 +68,4 @@ curl -SL \
   -o ~/.vimrc
 
 vim -c 'try | call dein#update() | finally | qall! | endtry' -N -u ~/.vimrc -U NONE -i NONE -V1 -e -s
-
 
