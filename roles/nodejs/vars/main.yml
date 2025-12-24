@@ -1,19 +1,18 @@
 ---
 npm_packages:
   - ajv-cli
-  - bats
-  - eslint
-  - eslint-config-airbnb
-  - eslint-plugin-import
-  - eslint-plugin-toml
-  - jsonlint
-  - markdownlint
-  - markdownlint-cli
-  - npx
-  - prettier
+  # - bats
+  # - eslint
+  # - eslint-config-airbnb
+  # - eslint-plugin-import
+  # - eslint-plugin-toml
+  # - htmlhint
+  # - jsonlint
+  # - markdownlint-cli2
+  # - prettier
   - puppeteer
   - serverless
-  - typescript
+  # - typescript
   - wscat
   # - @anthropic-ai/claude-code
   # - @github/copilot
