@@ -127,7 +127,7 @@ Roles are split into three categories:
 
 - `cli`: Git config, oh-my-zsh, custom theme, shell configuration
 - `vim`: Vim with Vundle plugin manager and custom config
-- `python`: pyenv-based Python version management, pip packages
+- `python`: Python toolchain management, pip packages
 - `nodejs`: npm global packages
 - `ruby`: Ruby development environment
 - `go`: Go language toolchain
@@ -143,11 +143,9 @@ Roles are split into three categories:
 
 **Python Role** (`roles/python`):
 
-- Uses custom `install_pyenv.sh` script to fetch and install latest stable Python versions
-- Installs multiple Python versions via pyenv
+- Installs Python and pip tooling via OS-appropriate methods
 - Base requirements from `roles/python/files/requirements.txt`
 - Optional pip_packages from inventory variables
-- Sets global Python version to latest installed
 
 **CLI Role** (`roles/cli`):
 

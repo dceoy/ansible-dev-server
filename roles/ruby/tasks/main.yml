@@ -11,14 +11,6 @@
   changed_when: false
   failed_when: false
 
-- name: Update packages
-  environment:
-    PATH: "{{ path }}"
-  ansible.builtin.shell: |
-    gem update --no-document
-  failed_when: false
-  notify: Notify updates of Ruby via Slack
-
 - name: Install and update Ruby packages
   when: gem_packages is defined
   environment:
