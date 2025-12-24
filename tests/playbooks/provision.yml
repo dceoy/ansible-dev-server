@@ -6,13 +6,13 @@
   roles:
     - role: fedora
       when:
-        - ansible_distribution == 'Fedora'
+        - ansible_facts['distribution'] == 'Fedora'
     - role: centos
       when:
-        - ansible_distribution == 'CentOS'
+        - ansible_facts['distribution'] == 'CentOS'
     - role: ubuntu
       when:
-        - ansible_distribution == 'Ubuntu'
+        - ansible_facts['distribution'] == 'Ubuntu'
     - role: cli
     - role: python
     - role: ruby

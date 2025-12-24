@@ -6,15 +6,15 @@
     force: true
   loop:
     - repo: https://github.com/rbenv/rbenv.git
-      dest: "{{ ansible_env.HOME }}/.rbenv"
+      dest: "{{ ansible_facts['env']['HOME'] }}/.rbenv"
     - repo: https://github.com/rbenv/ruby-build.git
-      dest: "{{ ansible_env.HOME }}/.rbenv/plugins/ruby-build"
+      dest: "{{ ansible_facts['env']['HOME'] }}/.rbenv/plugins/ruby-build"
   notify: Notify updates of Ruby via Slack
 
 - name: Set variables
   ansible.builtin.set_fact:
-    rbenv: "{{ ansible_env.HOME }}/.rbenv/bin/rbenv"
-    rbenv_root: "{{ ansible_env.HOME }}/.rbenv"
+    rbenv: "{{ ansible_facts['env']['HOME'] }}/.rbenv/bin/rbenv"
+    rbenv_root: "{{ ansible_facts['env']['HOME'] }}/.rbenv"
     n_versions_to_install: 1
 
 - name: Fetch the latest version of Ruby

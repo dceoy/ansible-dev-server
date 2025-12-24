@@ -11,7 +11,7 @@
     - name: color.ui
       value: auto
     - name: core.excludesfile
-      value: "{{ ansible_env.HOME }}/.gitignore"
+      value: "{{ ansible_facts['env']['HOME'] }}/.gitignore"
     - name: core.pager
       value: 'less -FRX'
     - name: core.quotepath
@@ -49,7 +49,7 @@
   when: http_proxy is defined or https_proxy is defined
   ansible.builtin.blockinfile:
     create: true
-    dest: "{{ ansible_env.HOME }}/.zprofile"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.zprofile"
     insertafter: '# proxy'
     state: present
     block: |
@@ -63,7 +63,7 @@
 
 - name: Check if oh-my-zsh is installed
   ansible.builtin.stat:
-    path: "{{ ansible_env.HOME }}/.oh-my-zsh"
+    path: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh"
   register: ohmyzsh
 
 - name: Download the installer for oh-my-zsh
@@ -86,12 +86,12 @@
 - name: Put the custom theme in ~/.oh-my-zsh/custom/themes
   ansible.builtin.copy:
     src: dceoy.zsh-theme
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/dceoy.zsh-theme"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/dceoy.zsh-theme"
   notify: Notify updates of CLI via Slack
 
 - name: Set ZSH_THEME in ~/.zshrc
   ansible.builtin.lineinfile:
-    path: "{{ ansible_env.HOME }}/.zshrc"
+    path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
     regexp: '^ZSH_THEME='
     line: ZSH_THEME='dceoy'
     state: present
@@ -99,7 +99,7 @@
 
 - name: Enable colors in ~/.zshrc
   ansible.builtin.blockinfile:
-    dest: "{{ ansible_env.HOME }}/.zshrc"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
     state: present
     block: |
       alias ls='ls --color=always'
