@@ -9,6 +9,7 @@ This is an Ansible playbook repository for provisioning development servers with
 ## Key Commands
 
 ### Initial Setup
+
 ```bash
 # Clone with submodules (required)
 git clone --recurse-submodules https://github.com/dceoy/ansible-dev-server.git
@@ -26,6 +27,7 @@ vim hosts  # Edit to configure your target hosts
 ```
 
 ### Running Playbooks
+
 ```bash
 # Full provisioning (recommended entry point)
 ansible-playbook -K provision.yml
@@ -43,6 +45,7 @@ ansible-playbook provision.yml --tags "tools,cli"
 ```
 
 ### Testing and Linting
+
 ```bash
 # Lint all playbooks and roles
 ansible-lint
@@ -55,6 +58,7 @@ molecule verify    # Run verification only
 ```
 
 ### Vault Management
+
 ```bash
 # Create encrypted vault file
 cp group_vars/vault.yml.example group_vars/vault.yml
@@ -80,6 +84,7 @@ The repository uses a group-based inventory system with four primary host groups
 - **no_priv_gpu**: Hosts without root privileges, GPU workloads
 
 Configuration hierarchy:
+
 - `hosts`: Main inventory file defining host groups
 - `group_vars/all.yml`: Variables applied to all hosts
 - `group_vars/vault.yml`: Encrypted sensitive variables (slack_token, etc.)
@@ -88,6 +93,7 @@ Configuration hierarchy:
 ### Playbook Execution Flow
 
 **provision.yml** (main playbook):
+
 1. **Play 1** (priv_cpu, priv_gpu): OS-specific base configuration
    - Validates Ansible version >= 2.12
    - Applies OS-specific roles (fedora/centos/ubuntu) based on distribution
@@ -112,11 +118,13 @@ Configuration hierarchy:
 Roles are split into three categories:
 
 **OS Base Roles** (require root):
+
 - `fedora`, `centos`, `ubuntu`: System package management and base configuration
 - `macos`: macOS-specific setup (Homebrew, system preferences)
 - `nvidia`: NVIDIA drivers and CUDA toolkit for GPU workloads
 
 **Development Tool Roles**:
+
 - `cli`: Git config, oh-my-zsh, custom theme, shell configuration
 - `vim`: Vim with Vundle plugin manager and custom config
 - `python`: pyenv-based Python version management, pip packages
@@ -127,12 +135,14 @@ Roles are split into three categories:
 - `ollama`: Local LLM runtime (optional)
 
 **Infrastructure Roles** (in submodules):
+
 - `submodules/ansible-container-engine/roles/docker`: Docker CE installation
 - `submodules/ansible-dropbox/roles/dropbox`: Dropbox client deployment
 
 ### Key Role Patterns
 
 **Python Role** (`roles/python`):
+
 - Uses custom `install_pyenv.sh` script to fetch and install latest stable Python versions
 - Installs multiple Python versions via pyenv
 - Base requirements from `roles/python/files/requirements.txt`
@@ -140,6 +150,7 @@ Roles are split into three categories:
 - Sets global Python version to latest installed
 
 **CLI Role** (`roles/cli`):
+
 - Configures git with user info from `group_vars/all.yml`
 - Installs oh-my-zsh with custom theme (`files/dceoy.zsh-theme`)
 - Manages proxy settings in ~/.zprofile and git config
@@ -148,6 +159,7 @@ Roles are split into three categories:
 ### Variable Precedence
 
 Environment variables are consistently applied via playbook-level `environment:` blocks:
+
 ```yaml
 environment:
   http_proxy: "{{ http_proxy | default('') }}"
@@ -160,6 +172,7 @@ Sensitive variables (slack_token) should be stored in encrypted `group_vars/vaul
 ### Submodules
 
 Two Git submodules provide reusable roles:
+
 - `submodules/ansible-container-engine`: Docker installation
 - `submodules/ansible-dropbox`: Dropbox client deployment
 
@@ -169,7 +182,7 @@ Always update submodules before running: `git submodule update --recursive --rem
 
 This playbook has been modernized (see MODERNIZATION.md for details):
 
-- **FQCN Usage**: All modules use fully qualified names (ansible.builtin.*, community.general.*, etc.)
+- **FQCN Usage**: All modules use fully qualified names (ansible.builtin._, community.general._, etc.)
 - **Modern Syntax**: Uses `loop` instead of `with_items`, proper `changed_when`/`failed_when` conditions
 - **Performance**: Enabled pipelining, fact caching, and parallel execution (20 forks, strategy=free)
 - **Linting**: Production-profile ansible-lint configuration with FQCN enforcement
@@ -186,6 +199,7 @@ This playbook has been modernized (see MODERNIZATION.md for details):
 ## Tags
 
 All roles are tagged for selective execution:
+
 - OS tags: `os`, `fedora`, `centos`, `ubuntu`, `macos`
 - Tool tags: `tools`, `cli`, `vim`, `editor`
 - Language tags: `languages`, `python`, `nodejs`, `ruby`, `go`, `r`
@@ -207,6 +221,7 @@ Example: `ansible-playbook provision.yml --tags "python,nodejs"` installs only P
 ## File Locations Reference
 
 When working with roles:
+
 - Role tasks: `roles/{role_name}/tasks/main.yml`
 - Role handlers: `roles/{role_name}/handlers/main.yml`
 - Role defaults: `roles/{role_name}/defaults/main.yml`
