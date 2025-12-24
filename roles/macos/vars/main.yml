@@ -37,6 +37,7 @@ brew_packages:
     - dvc
     # - ed
     # - elixir
+    - eslint
     - fcrackzip
     - fd
     - ffmpeg
@@ -60,7 +61,7 @@ brew_packages:
     - gnu-which
     # - gnutls
     - go
-    # - gopls
+    - gopls
     # - goreleaser
     # - gpg
     - groff
@@ -69,6 +70,7 @@ brew_packages:
     - hadolint
     # - harfbuzz
     - hdf5
+    - htmlhint
     - htop
     - hugo
     - hunspell
@@ -90,6 +92,7 @@ brew_packages:
     # - lmdb
     - lua
     - luajit
+    - markdownlint-cli2
     - md5sha1sum
     - mercurial
     - ncdu
@@ -111,6 +114,7 @@ brew_packages:
     # - pipx
     # - pkg-config
     # - postgresql
+    - prettier
     # - protobuf
     - python
     - quicktype
@@ -138,6 +142,7 @@ brew_packages:
     - tmux
     - tree
     - trivy
+    - typescript
     - uv
     # - v8
     - vim
