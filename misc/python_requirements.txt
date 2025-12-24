@@ -3,7 +3,6 @@ csvkit
 docopt
 grip
 jsonschema
-jupyter
 pandas
 pip
 pipx
@@ -20,4 +19,3 @@ typer
 uv
 vim-vint
 vulture
-yamllint
