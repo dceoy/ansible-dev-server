@@ -1,13 +1,10 @@
 [priv_cpu]
-localhost   ansible_connection=local
+localhost       ansible_connection=local
+bookpro2022_lan ansible_connection=ssh
 
 [priv_gpu]
 [no_priv_cpu]
 [no_priv_gpu]
-
-[other]
-#mini2018    ansible_connection=ssh
-#book2017    ansible_connection=ssh
 
 [all:vars]
 # Variables moved to group_vars/all.yml for better organization
