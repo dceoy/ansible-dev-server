@@ -63,8 +63,11 @@ brew_packages:
     - gnu-which
     # - gnutls
     - go
+    - golangci-lint
     - gopls
     # - goreleaser
+    - gosec
+    - govulncheck
     # - gpg
     - groff
     - grep
