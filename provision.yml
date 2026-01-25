@@ -24,7 +24,6 @@
     - linux
     - macos
   gather_facts: true
-  become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
   environment:
     http_proxy: "{{ http_proxy | default('') }}"
     https_proxy: "{{ https_proxy | default('') }}"

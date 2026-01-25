@@ -80,6 +80,8 @@
     cmd: |
       /tmp/install_ohmyzsh.sh
     executable: /bin/bash
+  environment:
+    RUNZSH: no
   changed_when: true
   notify: Notify updates of CLI via Slack
 

@@ -23,7 +23,7 @@ $ git pull origin master
 Set up the systems
 
 ```sh
-$ ansible-playbook -K -i hosts provision.yml
+$ ansible-playbook -K provision.yml
 ```
 
 ## Host vars (Ansible Vault)
