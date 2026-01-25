@@ -1,8 +1,7 @@
 ---
 - name: Set up development servers with root
   hosts:
-    - priv_cpu
-    - priv_gpu
+    - linux
   gather_facts: true
   become: true
   environment:
@@ -22,10 +21,8 @@
 
 - name: Set up development servers
   hosts:
-    - priv_cpu
-    - priv_gpu
-    - no_priv_cpu
-    - no_priv_gpu
+    - linux
+    - macos
   gather_facts: true
   become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
   environment:
