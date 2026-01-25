@@ -53,10 +53,10 @@ temp/
 # Fact cache
 /tmp/ansible_facts_cache/
 
-# Keep the hosts file
-!hosts
-group_vars/*.yml
-host_vars/*.yml
+# Ansible inventory
+hosts
+group_vars/
+host_vars/
 
 # Serena MCP
 .serena/
