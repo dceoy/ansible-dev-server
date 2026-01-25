@@ -78,8 +78,9 @@
   ansible.builtin.apt:
     autoclean: true
     autoremove: true
-    name: "{{ apt_packages }}"
+    name: "{{ item }}"
     state: latest
+  loop: "{{ apt_packages }}"
   failed_when: false
   notify: Notify updates of the system via Slack
 
