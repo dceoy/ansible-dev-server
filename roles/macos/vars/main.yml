@@ -178,6 +178,7 @@ brew_cask_packages:
   # - claude
   - claude-code
   - codex
+  - codex-app
   # - cursor
   # - dbeaver-community
   # - discord
