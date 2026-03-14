@@ -57,6 +57,3 @@ temp/
 hosts
 group_vars/
 host_vars/
-
-# Serena MCP
-.serena/

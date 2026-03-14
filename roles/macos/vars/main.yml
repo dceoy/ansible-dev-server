@@ -67,6 +67,7 @@ brew_packages:
     - go
     - golangci-lint
     - gopls
+    - googleworkspace-cli
     # - goreleaser
     - gosec
     - govulncheck
