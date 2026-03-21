@@ -23,11 +23,16 @@
   hosts:
     - linux
     - macos
-  gather_facts: true
+  gather_facts: false
+  become: false
   environment:
     http_proxy: "{{ http_proxy | default('') }}"
     https_proxy: "{{ https_proxy | default('') }}"
     no_proxy: "{{ no_proxy | default('') }}"
+  pre_tasks:
+    - name: Gather facts for user-scoped roles
+      ansible.builtin.setup:
+      tags: [always]
   roles:
     - role: macos
       when: ansible_facts['distribution'] == 'MacOSX'
