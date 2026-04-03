@@ -85,11 +85,19 @@
   changed_when: true
   notify: Notify updates of CLI via Slack
 
-- name: Put the custom theme in ~/.oh-my-zsh/custom/themes
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/dceoy/litmus-zsh-theme/refs/heads/main/litmus.zsh-theme
-    dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/litmus.zsh-theme"
-    mode: '0644'
+- name: Clone litmus-zsh-theme into ~/.oh-my-zsh/custom/themes
+  ansible.builtin.git:
+    repo: https://github.com/dceoy/litmus-zsh-theme.git
+    dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/litmus-zsh-theme"
+    version: main
+  notify: Notify updates of CLI via Slack
+
+- name: Symlink litmus.zsh-theme in ~/.oh-my-zsh/custom/themes
+  ansible.builtin.file:
+    src: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/litmus-zsh-theme/litmus.zsh-theme"
+    path: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/litmus.zsh-theme"
+    state: link
+    force: true
   notify: Notify updates of CLI via Slack
 
 - name: Set ZSH_THEME in ~/.zshrc
