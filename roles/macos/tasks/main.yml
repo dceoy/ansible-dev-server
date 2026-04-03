@@ -9,12 +9,14 @@
   notify: Notify updates of the system via Slack
 
 - name: Update homebrew and upgrade all packages
+  become: false
   community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
   notify: Notify updates of the system via Slack
 
 - name: Install packages
+  become: false
   when:
     - brew_packages is defined
     - brew_packages.without_options is defined
@@ -25,6 +27,7 @@
   notify: Notify updates of the system via Slack
 
 - name: Install packages with options
+  become: false
   when:
     - brew_packages is defined
     - brew_packages.with_options is defined
@@ -36,6 +39,7 @@
   notify: Notify updates of the system via Slack
 
 - name: Install packages
+  become: false
   when:
     - brew_cask_packages is defined
   community.general.homebrew_cask:
