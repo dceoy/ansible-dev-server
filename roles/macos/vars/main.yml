@@ -171,16 +171,13 @@ brew_packages:
     # - zlib
     - zsh
 brew_cask_packages:
-  - adobe-acrobat-reader
+  # - adobe-acrobat-reader
   # - amazon-music
-  # - chatgpt
-  # - chatgpt-atlas
   # - chrome-remote-desktop-host
-  # - claude
+  - claude
   - claude-code
   - codex
   - codex-app
-  # - cursor
   # - dbeaver-community
   # - discord
   - docker
@@ -198,7 +195,7 @@ brew_cask_packages:
   - iterm2
   # - lm-studio
   - microsoft-office
-  - miro
+  # - miro
   # - notion
   # - opera
   # - rstudio

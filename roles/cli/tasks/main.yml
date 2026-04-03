@@ -69,8 +69,8 @@
 - name: Download the installer for oh-my-zsh
   when: not ohmyzsh.stat.exists
   ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-    dest: /tmp/install_ohmyzsh.sh
+    url: https://install.ohmyz.sh
+    dest: /tmp/install.ohmyz.sh
     mode: '0755'
   notify: Notify updates of CLI via Slack
 
@@ -78,7 +78,7 @@
   when: not ohmyzsh.stat.exists
   ansible.builtin.shell:
     cmd: |
-      /tmp/install_ohmyzsh.sh
+      /tmp/install.ohmyz.sh
     executable: /bin/bash
   environment:
     RUNZSH: no
@@ -86,16 +86,17 @@
   notify: Notify updates of CLI via Slack
 
 - name: Put the custom theme in ~/.oh-my-zsh/custom/themes
-  ansible.builtin.copy:
-    src: dceoy.zsh-theme
-    dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/dceoy.zsh-theme"
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/dceoy/litmus-zsh-theme/refs/heads/main/litmus.zsh-theme
+    dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/litmus.zsh-theme"
+    mode: '0644'
   notify: Notify updates of CLI via Slack
 
 - name: Set ZSH_THEME in ~/.zshrc
   ansible.builtin.lineinfile:
     path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
     regexp: '^ZSH_THEME='
-    line: ZSH_THEME='dceoy'
+    line: ZSH_THEME='litmus'
     state: present
   notify: Notify updates of CLI via Slack
 
