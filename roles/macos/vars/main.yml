@@ -133,6 +133,7 @@ brew_packages:
     # - readline
     # - redis
     - rename
+    - ripgrep
     - rsync
     - ruby
     - ruff
