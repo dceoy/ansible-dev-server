@@ -17,8 +17,9 @@ brew_packages:
     # - automake
     - aws-cdk
     - awscli
-    # - bazel
+    - bash
     - bats-core
+    # - bazel
     # - bcftools
     # - bedtools
     - binutils
@@ -77,6 +78,7 @@ brew_packages:
     - hadolint
     # - harfbuzz
     - hdf5
+    - hermes-agent
     - htmlhint
     - htop
     - hugo
