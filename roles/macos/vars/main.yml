@@ -30,6 +30,7 @@ brew_packages:
     - cloudflared
     - cloudformation-guard
     - colordiff
+    - container
     - copilot-cli
     - coreutils
     - corkscrew
@@ -38,6 +39,7 @@ brew_packages:
     - curl
     # - cyberduck
     - diffutils
+    - direnv
     - dvc
     # - ed
     # - elixir
