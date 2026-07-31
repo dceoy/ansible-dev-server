@@ -145,6 +145,7 @@ brew_packages:
     # - samtools
     # - screen
     - shellcheck
+    - shfmt
     - shunit2
     # - snappy
     - sqlite
@@ -205,10 +206,8 @@ brew_cask_packages:
   # - miro
   # - notion
   # - opera
-  # - rstudio
   - slack
   - visual-studio-code
-  # - vnc-viewer
   # - wine-stable
   - xquartz
   # - zoom
