@@ -80,6 +80,7 @@ brew_packages:
     - hadolint
     # - harfbuzz
     - hdf5
+    - herdr
     - hermes-agent
     - htmlhint
     - htop
@@ -177,7 +178,6 @@ brew_packages:
     - zsh
 brew_cask_packages:
   # - adobe-acrobat-reader
-  # - amazon-music
   - antigravity
   - antigravity-cli
   # - chrome-remote-desktop-host
@@ -193,7 +193,7 @@ brew_cask_packages:
   # - endnote
   # - figma
   # - firefox
-  # - gimp
+  - ghostty
   # - google-drive
   - google-chrome
   - google-cloud-sdk

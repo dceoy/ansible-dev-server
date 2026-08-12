@@ -1,0 +1,22 @@
+# Appearance
+background = 000000
+background-opacity = 0.8
+background-blur-radius = 20
+
+# Shell
+shell-integration = detect
+shell-integration-features = ssh-env,ssh-terminfo
+
+# Clipboard
+copy-on-select = clipboard
+right-click-action = paste
+clipboard-paste-bracketed-safe = false
+mouse-shift-capture = never
+
+# macOS
+macos-option-as-alt = true
+macos-titlebar-style = transparent
+
+# Workspace
+working-directory = home
+split-inherit-working-directory = false
