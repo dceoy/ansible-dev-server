@@ -69,7 +69,7 @@ Plug 'vim-scripts/python.vim'                 " a set of menus/shortcuts to work
 Plug 'vim-scripts/python.vim--Vasiliev'       " enhanced version of the python syntax highlighting script
 Plug 'nvie/vim-flake8'                        " a static syntax and style checker for python source code
 Plug 'tell-k/vim-autopep8'                    " an automatic python code formatter by pep8
-Plug 'hynek/vim-python-pep8-indent'           " a nicer python indentation style for vim
+Plug 'hynek/vim-python-pep8-indent'           " a nicer python indentation style for python
 Plug 'ivanov/vim-ipython'                     " integration between vim and ipython
 Plug 'psf/black'                              " the uncompromising python code formatter
 " R
@@ -84,7 +84,7 @@ Plug 'EricGebhart/SAS-Vim'                    " syntax and indention for sas
 Plug 'vim-scripts/haskell.vim'                " syntax highlight for haskell
 " Scala
 Plug 'vim-scripts/scala.vim'                  " syntaxic coloration for scala code
-Plug 'vim-scripts/snipMate'                   " textmate-style snippets for vim
+Plug 'vim-scripts/snipMate'                   " textmate-style snippets
 " Go
 Plug 'fatih/vim-go'                           " go development plugin for vim
 " Rust
@@ -190,7 +190,7 @@ set spelllang+=cjk                          " exclude jp from spell check
 augroup CustomAutocmd
   au BufNewFile,BufRead *.md,*.Rmd,*.txt set spell  " check spelling
 augroup END
-hi ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
+hi ZenkakuSpace cterm=underline ctermfg=lightblue guibg=lightblue
 augroup CustomAutocmd
   au BufNewFile,BufRead * match ZenkakuSpace /　/
 augroup END
