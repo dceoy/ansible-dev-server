@@ -190,7 +190,7 @@ set spelllang+=cjk                          " exclude jp from spell check
 augroup CustomAutocmd
   au BufNewFile,BufRead *.md,*.Rmd,*.txt set spell  " check spelling
 augroup END
-hi ZenkakuSpace cterm=underline ctermfg=lightblue guibg=lightblue
+hi ZenkakuSpace ctermbg=lightblue guibg=lightblue
 augroup CustomAutocmd
   au BufNewFile,BufRead * match ZenkakuSpace /　/
 augroup END
