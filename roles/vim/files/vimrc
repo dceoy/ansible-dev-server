@@ -30,7 +30,7 @@ Plug 'scrooloose/nerdtree'                    " a tree explorer plugin for vim
 Plug 'tpope/vim-fugitive'                     " a git wrapper so awesome, it should be illegal
 "Plug 'airblade/vim-gitgutter'                 " plugin which shows a git diff in the gutter (sign column)
 " YAML
-Plug 'ingydotnet/yaml-vim'                    " yaml highlight script for yaml
+Plug 'ingydotnet/yaml-vim'                    " yaml highlight script for vim
 " TOML
 Plug 'cespare/vim-toml'                       " vim syntax for toml
 " Protocol Buffers
@@ -50,10 +50,10 @@ Plug 'Rykka/riv.vim'                          " plugin for rst
 " CSS
 Plug 'hail2u/vim-css3-syntax'                 " add css3 syntax support to vim's built-in `syntax/css.vim`
 Plug 'cakebaker/scss-syntax.vim'              " vim syntax file for scss
-Plug 'vim-scripts/csslint.vim'                 " css code quality tool
+Plug 'vim-scripts/csslint.vim'                " css code quality tool
 Plug 'groenewege/vim-less'                    " syntax for less (dynamic css)
 " JavaScript
-Plug 'pangloss/vim-javascript'                 " vastly improved Javascript indentation and syntax support in vim
+Plug 'pangloss/vim-javascript'                " vastly improved Javascript indentation and syntax support in vim
 Plug 'othree/javascript-libraries-syntax.vim' " syntax for javascript libraries
 Plug 'vim-scripts/lint.vim'                   " jshint integration with quickfix window
 Plug 'kchmck/vim-coffee-script'               " coffeescript support for vim
@@ -88,7 +88,7 @@ Plug 'vim-scripts/snipMate'                   " textmate-style snippets for vim
 " Go
 Plug 'fatih/vim-go'                           " go development plugin for vim
 " Rust
-Plug 'rust-lang/rust.vim'                     " vim configuration files for rust
+Plug 'rust-lang/rust.vim'                     " vim configuration for rust
 " Elixir
 Plug 'elixir-lang/vim-elixir'                 " vim configuration files for elixir
 " Julia
