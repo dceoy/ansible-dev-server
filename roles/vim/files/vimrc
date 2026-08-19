@@ -178,7 +178,7 @@ set ignorecase                              " ignore case sensitivity on search 
 set smartcase                               " case insensitive searches become sensitive with capitals
 set list listchars=eol:\ ,tab:>-,trail:_,extends:>,precedes:<       " show invisible chars
 hi NonText    ctermbg=NONE ctermfg=002 guibg=NONE guifg=NONE
-hi SpecialKey ctermbg=NONE ctermfg=009 guibg=NONE guifg=#dc322f
+hi SpecialKey ctermbg=NONE ctermfg=033 guibg=NONE guifg=#268bd2
 set display=lastline                                                " display as much as possible of the last line in a window
 set display+=uhex                                                   " show unprintable characters hexadecimal
 set laststatus=2                                                    " always show the status line
