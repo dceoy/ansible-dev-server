@@ -42,7 +42,7 @@ Plug 'vim-latex/vim-latex'                    " enhanced latex support
 " HTML
 Plug 'mattn/emmet-vim'                        " emmet for vim
 Plug 'othree/html5.vim'                       " html5 omnicomplete and syntax
-Plug 'slim-template/vim-slim'                 " a clone of the slim vim plugin from stonean
+Plug 'slim-template/vim-slim'                 " a clone of the slim vim plugin
 Plug 'tpope/vim-haml'                         " vim runtime files for haml, sass, and scss
 Plug 'plasticboy/vim-markdown'                " syntax highlighting, matching rules and mappings for markdown
 Plug 'chazmcgarvey/vim-mermaid'               " vim syntax for Mermaid diagrams
@@ -190,7 +190,7 @@ set spelllang+=cjk                          " exclude jp from spell check
 augroup CustomAutocmd
   au BufNewFile,BufRead *.md,*.Rmd,*.txt set spell  " check spelling
 augroup END
-hi ZenkakuSpace ctermbg=lightblue guibg=lightblue
+hi ZenkakuSpace ctermbg=117 guibg=#87d7ff
 augroup CustomAutocmd
   au BufNewFile,BufRead * match ZenkakuSpace /　/
 augroup END
