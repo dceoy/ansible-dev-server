@@ -82,7 +82,7 @@ function! TerragruntHclHandle(buffer, lines) abort
 endfunction
 
 function! DockerBakeHandle(buffer, lines) abort
-  let l:lines = filter(copy(a:lines), {_, l:line -> !empty(l:line)})
+  let l:lines = filter(copy(a:lines), 'v:val !=# ""')
   return empty(l:lines) ? [] : [{
   \   'lnum': 1,
   \   'col': 1,
