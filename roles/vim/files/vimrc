@@ -67,6 +67,7 @@ let g:ale_linters = {
 \   'json': ['jq'],
 \   'yaml': ['yamllint'],
 \   'ansible': ['ansible-lint'],
+\   'dockerfile': ['hadolint'],
 \   'sh': ['shellcheck'],
 \   'bash': ['shellcheck'],
 \   'zsh': ['zsh'],
