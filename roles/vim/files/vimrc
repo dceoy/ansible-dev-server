@@ -11,10 +11,7 @@ call plug#begin()
 " lint/fix
 Plug 'dense-analysis/ale'                     " asynchronous linting/fixing for vim and neovim
 " syntax not provided by Vim runtime
-Plug 'slim-template/vim-slim'                 " Slim syntax and indentation
 Plug 'chazmcgarvey/vim-mermaid'               " Mermaid syntax
-Plug 'kchmck/vim-coffee-script'               " CoffeeScript syntax and indentation
-Plug 'evanleck/vim-svelte'                    " Svelte syntax and indentation
 Plug 'elixir-lang/vim-elixir'                 " Elixir syntax and indentation
 Plug 'pearofducks/ansible-vim'                " Ansible syntax support
 Plug 'vim-scripts/bats.vim'                   " Bats syntax
@@ -118,7 +115,6 @@ let g:ale_linters = {
 \   'sql': ['sqlfluff'],
 \   'markdown': ['markdownlint'],
 \   'html': ['htmlhint'],
-\   'svelte': ['eslint'],
 \   'terraform': ['tflint'],
 \}
 let g:ale_fixers = {
