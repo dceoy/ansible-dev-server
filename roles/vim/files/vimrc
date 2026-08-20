@@ -1,6 +1,3 @@
-set encoding=utf-8
-scriptencoding utf-8
-
 " vim-plug
 " default plugin directory:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -14,92 +11,37 @@ Plug 'altercation/vim-colors-solarized'       " precision colorscheme for the vi
 Plug 'dense-analysis/ale'                     " asynchronous linting/fixing for vim and neovim
 " syntax not provided by Vim runtime
 Plug 'chazmcgarvey/vim-mermaid'               " Mermaid syntax
-Plug 'elixir-lang/vim-elixir'                 " Elixir syntax and indentation
+Plug 'elixir-editors/vim-elixir'              " Elixir syntax and indentation
 Plug 'pearofducks/ansible-vim'                " Ansible syntax support
-Plug 'vim-scripts/bats.vim'                   " Bats syntax
+Plug 'aliou/bats.vim'                         " Bats syntax
 Plug 'prisma/vim-prisma'                      " Prisma schema syntax
 " Copilot
 Plug 'github/copilot.vim'                     " GitHub Copilot
 
 call plug#end()
-packadd! matchit                              " extended % matching bundled with Vim
 packadd! editorconfig                        " EditorConfig support bundled with Vim
 
-
-" general
-set history=256                             " number of lines of history to remember
-set scrolloff=16                            " minimal number of screen lines to keep above and below the cursor
-augroup CustomAutocmd
-  autocmd!
-augroup END
-
-" theme/colors
+" Solarized
 set background=dark
 let g:solarized_termcolors=256
 let g:solarized_contrast='high'
 let g:solarized_visibility='high'
-silent! colorscheme solarized
+colorscheme solarized
 
-" files/backups
-set autoread                                " read changes automatically
-set autowrite                               " save automatically before commands like :next and :make
-set nobackup                                " make no backup file
-set noswapfile                              " make no swap file
-
-" ui
-set wildmenu wildmode=longest:full,full     " command-line completion operates in an enhanced mode
-set cmdheight=2                             " number of screen lines to use for the command-line
-set number                                  " show the line number in front of each line
-set cursorline                              " highlight the screen line of the cursor
-set whichwrap=b,s,h,l,<,>,[,],~             " allow backspace and cursor keys to cross line boundaries
-set shortmess+=atI                          " shorten messages to avoid 'press a key' prompt
-set report=0                                " tell us when any line is changed via : commands
-set belloff=all                             " disable bells
-
-" visual cues
-set showmatch                               " show matching brackets for a moment
-set matchtime=2                             " blink brackets
-set hlsearch                                " highlight searched phrases
-set incsearch                               " highlight as you type you search phrase
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
-set wrapscan                                " search wrap around the end of the file
-set ignorecase                              " ignore case sensitivity on search patterns
-set smartcase                               " case insensitive searches become sensitive with capitals
-set list listchars=eol:\ ,tab:>-,trail:_,extends:>,precedes:<       " show invisible chars
-hi NonText    ctermbg=NONE ctermfg=002 guibg=NONE guifg=NONE
+" whitespace visibility
+set list listchars=trail:_
 hi SpecialKey ctermbg=NONE ctermfg=009 guibg=NONE guifg=#dc322f
-set display=lastline                                                " display as much as possible of the last line in a window
-set display+=uhex                                                   " show unprintable characters hexadecimal
-set laststatus=2                                                    " always show the status line
-set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F    " determines the content of the status line
-set statusline+=%=%1l/%L,%c%V\ %P
-set ambiwidth=double                        " understand double-byte chars
-set formatoptions-=tc
-set formatoptions+=lmoq                    " preserve long/multibyte lines and comment formatting
-set spelllang+=cjk                          " exclude jp from spell check
-augroup CustomAutocmd
-  au FileType markdown,rmd,text setlocal spell
-augroup END
 hi ZenkakuSpace ctermbg=117 guibg=#87d7ff
 function! s:HighlightZenkakuSpace() abort
   if exists('w:zenkaku_space_match')
     silent! call matchdelete(w:zenkaku_space_match)
   endif
-  let w:zenkaku_space_match = matchadd('ZenkakuSpace', '　')
+  let w:zenkaku_space_match = matchadd('ZenkakuSpace', '\%u3000')
 endfunction
-augroup CustomAutocmd
-  au VimEnter,BufWinEnter,WinEnter * call <SID>HighlightZenkakuSpace()
+augroup HighlightWhitespace
+  autocmd!
+  autocmd VimEnter,BufWinEnter,WinEnter * call <SID>HighlightZenkakuSpace()
 augroup END
-
-" text formatting/layout
-set autoindent                              " take indent for new line from previous line
-set expandtab                               " replace tabs with ${tabstop} spaces
-set tabstop=8 shiftwidth=2 softtabstop=0    " keep tab display width standard and use two-space indentation
-augroup CustomAutocmd
-  au FileType python setlocal shiftwidth=4
-  au FileType go setlocal noexpandtab tabstop=8 shiftwidth=0 softtabstop=0
-augroup END
-set smarttab                                " sw at the start of the line, sts everywhere else
 
 " ALE
 let g:ale_linters_explicit = 1
@@ -110,7 +52,7 @@ let g:ale_linters = {
 \   'css': ['stylelint'],
 \   'scss': ['stylelint'],
 \   'less': ['stylelint'],
-\   'json': ['jsonlint'],
+\   'json': ['jq'],
 \   'yaml': ['yamllint'],
 \   'ansible': ['ansible-lint'],
 \   'dockerfile': ['hadolint'],
@@ -145,7 +87,5 @@ let g:ale_fixers = {
 \   'go': ['gofmt'],
 \   'sql': ['sqlfluff'],
 \   'terraform': ['terraform'],
-\   'hcl': ['terraform'],
 \}
-let g:ale_virtualtext_cursor = 'disabled'
 let g:ale_markdown_markdownlint_executable = 'markdownlint-cli2'
