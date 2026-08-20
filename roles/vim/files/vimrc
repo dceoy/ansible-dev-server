@@ -8,6 +8,8 @@ scriptencoding utf-8
 "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
 call plug#begin()
 
+" colorscheme
+Plug 'altercation/vim-colors-solarized'       " precision colorscheme for the vim text editor
 " lint/fix
 Plug 'dense-analysis/ale'                     " asynchronous linting/fixing for vim and neovim
 " syntax not provided by Vim runtime
@@ -30,6 +32,13 @@ set scrolloff=16                            " minimal number of screen lines to 
 augroup CustomAutocmd
   autocmd!
 augroup END
+
+" theme/colors
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_contrast='high'
+let g:solarized_visibility='high'
+silent! colorscheme solarized
 
 " files/backups
 set autoread                                " read changes automatically
