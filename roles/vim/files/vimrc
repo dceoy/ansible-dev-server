@@ -6,7 +6,7 @@
 call plug#begin()
 
 " colorscheme
-Plug 'altercation/vim-colors-solarized'       " precision colorscheme for the vim text editor
+Plug 'lanx-x/NeoSolarized'                    " Solarized colorscheme with true-color terminal support
 " lint/fix
 Plug 'dense-analysis/ale'                     " asynchronous linting/fixing for vim and neovim
 " syntax not provided by Vim runtime
@@ -22,11 +22,11 @@ call plug#end()
 packadd! editorconfig                        " EditorConfig support bundled with Vim
 
 " Solarized
+set termguicolors
 set background=dark
-let g:solarized_termcolors=256
-let g:solarized_contrast='high'
-let g:solarized_visibility='high'
-colorscheme solarized
+let g:neosolarized_contrast='high'
+let g:neosolarized_visibility='high'
+colorscheme NeoSolarized
 
 " whitespace visibility
 set list listchars=trail:_
