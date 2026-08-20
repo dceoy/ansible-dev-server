@@ -2,7 +2,6 @@
 gem_packages:
   - bundler
   - clockwork
-  - compass
   - github-pages
   - mechanize
   - middleman

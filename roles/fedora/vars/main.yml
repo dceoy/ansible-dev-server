@@ -18,7 +18,6 @@ dnf_packages:
   - ccache
   - cmake
   - colordiff
-  - corkscrew
   - cscope
   - ctags
   - curl
@@ -53,13 +52,11 @@ dnf_packages:
   - go
   - gsl-devel
   - hdf5-devel
-  - hostapd
   - hunspell-devel
   - htop
   - hugo
   - ImageMagick-c++-devel
   - ImageMagick-devel
-  - incron
   - indent
   - inotify-tools
   - jq
@@ -96,7 +93,6 @@ dnf_packages:
   - ncdu
   - ncurses-compat-libs
   - ncurses-devel
-  - nginx
   - nkf
   - nmap
   - nodejs
@@ -124,10 +120,8 @@ dnf_packages:
   - rcs
   - readline-devel
   - redhat-rpm-config
-  - redis
   - ruby-devel
   - rust
-  - samba
   - sbt
   - scala
   - ShellCheck
@@ -137,7 +131,6 @@ dnf_packages:
   - sqlite-devel
   - strace
   - sudo
-  - supervisor
   - swig
   - systemtap
   - texmaker

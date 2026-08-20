@@ -15,7 +15,3 @@ npm_packages:
   - stylelint-config-standard
   - typescript
   - wscat
-  # - @anthropic-ai/claude-code
-  # - @github/copilot
-  # - @google/gemini-cli
-  # - @openai/codex
