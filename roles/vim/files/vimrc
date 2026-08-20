@@ -20,8 +20,6 @@ Plug 'thinca/vim-quickrun'                    " run commands quickly
 " file
 Plug 'ctrlpvim/ctrlp.vim'                     " fuzzy file, buffer, mru, tag, etc finder
 Plug 'preservim/nerdtree'                     " a tree explorer plugin for vim
-" Git
-Plug 'tpope/vim-fugitive'                     " a git wrapper so awesome, it should be illegal
 " LaTeX
 Plug 'lervag/vimtex'                          " modern LaTeX support for vim and neovim
 " HTML
@@ -141,7 +139,7 @@ set display=lastline                                                " display as
 set display+=uhex                                                   " show unprintable characters hexadecimal
 set laststatus=2                                                    " always show the status line
 set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F    " determines the content of the status line
-set statusline+=%=%{fugitive#statusline()}\ %1l/%L,%c%V\ %P
+set statusline+=%=%1l/%L,%c%V\ %P
 set ambiwidth=double                        " understand double-byte chars
 set formatoptions=lmoq                      " add multi-byte chars to options
 set spelllang+=cjk                          " exclude jp from spell check
@@ -173,6 +171,7 @@ set textwidth=0                             " don't wrap lines by default
 set modeline                                " read modelines
 
 " ALE
+let g:go_fmt_autosave = 0
 let g:ale_linters = {
 \   'python': ['python', 'ruff', 'pyright'],
 \   'javascript': ['eslint'],
@@ -194,7 +193,11 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \   'python': ['ruff_format'],
+\   'go': ['gofmt'],
+\   'terraform': ['terraform'],
+\   'hcl': ['terraform'],
 \}
+let g:ale_fix_on_save = 1
 let g:ale_virtualtext_cursor = 'disabled'
 let g:ale_python_pyright_options = '--threads=0 --level error --reportPrivateUsage false'
 let g:ale_python_mypy_options = '--install-types --non-interactive --ignore-missing-imports --strict --strict-equality --strict-optional'
