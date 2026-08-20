@@ -39,7 +39,7 @@
 
 - name: Upgrade all packages
   become: true
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     update_cache: true
     name: '*'
     state: latest
@@ -48,7 +48,7 @@
 - name: Install packages
   when: yum_packages is defined
   become: true
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: "{{ yum_packages }}"
     state: latest
   failed_when: false
