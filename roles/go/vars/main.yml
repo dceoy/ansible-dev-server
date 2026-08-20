@@ -7,4 +7,6 @@ go_packages:
   - github.com/pelletier/go-toml/v2/cmd/tomll@latest
   - github.com/rhysd/actionlint/cmd/actionlint@latest
   - github.com/securego/gosec/v2/cmd/gosec@latest
+  - github.com/terraform-linters/tflint
   - golang.org/x/vuln/cmd/govulncheck@latest
+  - mvdan.cc/sh/v3/cmd/shfmt
