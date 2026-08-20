@@ -2,10 +2,6 @@
 r_repos:
   cran:
     - https://cran.rstudio.com/
-  drat:
-    - dmlc
-    - eddelbuettel
-    - RcppCore
 r_packages:
   cran:
     - abc
@@ -44,6 +40,8 @@ r_packages:
     - gplots
     - greta
     - HMM
+    - httpuv
+    - IRkernel
     - kernlab
     - KernSmooth
     - knitr
@@ -57,6 +55,7 @@ r_packages:
     - mlr
     - naturalsort
     - optparse
+    - patchwork
     - phangorn
     - prophet
     - plotly
@@ -68,6 +67,7 @@ r_packages:
     - RcppTOML
     - renv
     - rmarkdown
+    - roxygen2
     - RPMM
     - RSQLite
     - rstan
@@ -79,20 +79,14 @@ r_packages:
     - stringr
     - styler
     - survminer
+    - tensorflow
     - testthat
     - tidyverse
     - tm
     - uwot
     - VGAM
-    - yaml
-  github:
-    - IRkernel/IRkernel
-    - klutometis/roxygen
-    - rstudio/httpuv
-    - rstudio/tensorflow
-    - thomasp85/patchwork
-  drat:
     - xgboost
+    - yaml
   bioconductor:
     - Biobase
     - Biostrings

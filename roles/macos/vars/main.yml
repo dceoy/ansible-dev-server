@@ -17,7 +17,6 @@ brew_packages:
   - container
   - copilot-cli
   - coreutils
-  - corkscrew
   - cosign
   - csvkit
   - curl

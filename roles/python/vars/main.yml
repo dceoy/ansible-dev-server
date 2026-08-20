@@ -7,7 +7,6 @@ pip_packages:
   - aws-cdk-lib
   - aws-lambda-powertools
   - bash_kernel
-  - bcolz
   - biopython
   - beautifulsoup4
   - black
@@ -27,9 +26,6 @@ pip_packages:
   - docopt
   - fabric
   - fastapi
-  - feather-format
-  - floyd-cli
-  - ggplot
   - git-remote-codecommit
   - greenlet
   - grip
@@ -58,7 +54,6 @@ pip_packages:
   - MonkeyType
   - mypy
   - notebook
-  - notedown
   - numexpr
   - numpy
   - pandas
@@ -84,12 +79,10 @@ pip_packages:
   - pyopenssl
   - pypandoc
   - pypdf
-  - pyper
   - pyright
   - pysam
   - pystan
   - pytest
-  - pytoml
   - pyyaml
   - redis
   - requests
@@ -99,7 +92,6 @@ pip_packages:
   - sabr
   - scikit-learn
   - scipy
-  - scss
   - seaborn
   - selenium
   - setuptools
@@ -114,7 +106,6 @@ pip_packages:
   - sympy
   - tensorflow
   - testfixtures
-  - tflearn
   - torch
   - torchvision
   - tornado
@@ -122,7 +113,6 @@ pip_packages:
   - tqdm
   - tryceratops
   - twine
-  - twitter
   - ty
   - types-docopt
   - types-jsonschema

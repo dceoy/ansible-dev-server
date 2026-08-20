@@ -1,9 +1,7 @@
 ---
 go_packages:
-  - github.com/docopt/docopt-go
   - github.com/golangci/golangci-lint/cmd/golangci-lint
   - github.com/kahing/goofys
-  - github.com/naoina/toml
   - github.com/pelletier/go-toml/v2/cmd/tomll
   - github.com/rhysd/actionlint/cmd/actionlint
   - github.com/securego/gosec/v2/cmd/gosec
