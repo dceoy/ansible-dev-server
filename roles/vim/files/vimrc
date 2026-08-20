@@ -121,7 +121,7 @@ call ale#fix#registry#Add(
 
 function! s:ConfigureHclAle() abort
   let l:filename = expand('%:t')
-  if l:filename ==# 'terragrunt.hcl'
+  if index(['terragrunt.hcl', 'root.hcl', 'env.hcl'], l:filename) >= 0
     let b:ale_linters = ['terragrunt']
     let b:ale_fixers = ['terragrunt_hcl_fmt']
   elseif l:filename =~# '^docker-bake\%\(\..*\)\?\.hcl$'
