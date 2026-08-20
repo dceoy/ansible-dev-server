@@ -8,6 +8,7 @@ brew_packages:
   - awscli
   - bash
   - bats-core
+  - biome
   - binutils
   - cairo
   - checkov
@@ -23,7 +24,6 @@ brew_packages:
   - diffutils
   - direnv
   - dvc
-  - eslint
   - fcrackzip
   - fd
   - ffmpeg

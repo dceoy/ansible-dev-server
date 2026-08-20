@@ -1,11 +1,8 @@
 ---
 npm_packages:
+  - "@biomejs/biome"
   - ajv-cli
   - bats
-  - eslint
-  - eslint-config-airbnb
-  - eslint-plugin-import
-  - eslint-plugin-toml
   - htmlhint
   - markdownlint-cli2
   - prettier
