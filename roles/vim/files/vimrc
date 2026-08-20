@@ -33,10 +33,12 @@ set background=dark
 colorscheme iceberg
 
 " whitespace visibility
-set list listchars=tab:>-,lead:.,trail:_
-hi SpecialKey ctermbg=NONE ctermfg=110 guibg=NONE guifg=#84a0c6
-hi TrailingWhitespace ctermbg=NONE ctermfg=009 guibg=NONE guifg=#dc322f
-hi ZenkakuSpace cterm=underline ctermul=117 gui=underline guisp=#87d7ff
+" Tabs are unusual but valid, trailing spaces should be removed, and U+3000
+" spaces should normally be replaced with ASCII spaces. Leading spaces are
+" ordinary indentation and intentionally left unmarked.
+set list listchars=tab:>-,trail:_
+hi TrailingWhitespace ctermbg=NONE ctermfg=203 guibg=NONE guifg=#e27878
+hi ZenkakuSpace cterm=underline ctermul=216 gui=underline guisp=#e2a478
 function! s:HighlightWhitespace() abort
   if exists('w:trailing_whitespace_match')
     silent! call matchdelete(w:trailing_whitespace_match)
