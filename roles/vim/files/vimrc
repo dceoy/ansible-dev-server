@@ -102,14 +102,7 @@ let g:ale_fixers = {
 \   'sql': ['sqlfluff'],
 \   'terraform': ['terraform'],
 \}
-let g:ale_python_pyright_config = {
-\   'python': {
-\     'analysis': {
-\       'exclude': ['build', '.venv'],
-\       'typeCheckingMode': 'strict',
-\     },
-\   },
-\}
+let g:ale_python_pyright_config = {'python': {'analysis': {'exclude': ['build', '.venv'], 'typeCheckingMode': 'strict'}}}
 let g:ale_python_ruff_options = '--line-length=88 --preview --select=F,E,W,C90,I,N,D,UP,S,B,C4,SIM,ARG,PD,PLC,PLE,PLR,PLW,FLY,NPY,PERF,FURB,RUF,YTT,ANN,ASYNC,BLE,FBT,A,COM,DTZ,T10,DJ,EM,EXE,FA,ISC,ICN,LOG,G,INP,PIE,T20,PYI,PT,Q,RSE,SLF,SLOT,TID,TCH,INT,PTH,TD,FIX,ERA,PGH,TRY,FAST,AIR,DOC --ignore=COM812,FBT001,FBT002'
 let g:ale_yaml_yamllint_options = '-d "{extends: default, rules: {line-length: disable, truthy: disable}}"'
 let g:ale_r_lintr_options = 'linters_with_defaults(object_usage_linter = NULL, quotes_linter = NULL, absolute_path_linter = NULL, object_name_linter = NULL, line_length_linter = line_length_linter(99))'
