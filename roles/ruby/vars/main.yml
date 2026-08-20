@@ -7,8 +7,8 @@ gem_packages:
   - mechanize
   - middleman
   - rake
+  - rubocop
   - selenium-webdriver
-  - sqlint
   - statelint
   - toml-rb
   - twitter
