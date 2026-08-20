@@ -37,6 +37,7 @@ colorscheme iceberg
 " spaces should normally be replaced with ASCII spaces. Leading spaces are
 " ordinary indentation and intentionally left unmarked.
 set list listchars=tab:>-,trail:_
+hi SpecialKey ctermbg=NONE ctermfg=110 guibg=NONE guifg=#84a0c6
 hi TrailingWhitespace ctermbg=NONE ctermfg=203 guibg=NONE guifg=#e27878
 hi ZenkakuSpace cterm=underline ctermul=216 gui=underline guisp=#e2a478
 function! s:HighlightWhitespace() abort
