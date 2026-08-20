@@ -1,19 +1,9 @@
 ---
-- name: Set variables
-  ansible.builtin.set_fact:
-    python_executable: "{{ ansible_facts['python']['executable'] | default('python3') }}"
-
-- name: Check pip command
-  ansible.builtin.shell: |
-    "{{ python_executable }} -m pip --version"
-  changed_when: false
-  failed_when: false
-
 - name: Install and update packages
   when: pip_packages is defined
   ansible.builtin.pip:
     name: "{{ pip_packages }}"
-    executable: "{{ python_executable }} -m pip"
     state: latest
+    break_system_packages: true
   failed_when: false
   notify: Notify updates of Python via Slack

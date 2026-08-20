@@ -2,7 +2,6 @@
 profile: production
 strict: true
 offline: false
-parseable: true
 quiet: false
 verbosity: 1
 
@@ -22,7 +21,6 @@ warn_list:
   - risky-file-permissions
 
 enable_list:
-  - fqcn-builtins
   - no-log-password
   - no-same-owner
 

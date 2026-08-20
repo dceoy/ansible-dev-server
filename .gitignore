@@ -1,5 +1,4 @@
 # Ansible runtime and temporary files
-*.retry
 *.log
 .ansible/
 ansible.log
@@ -49,9 +48,6 @@ Thumbs.db
 tmp/
 temp/
 *.tmp
-
-# Fact cache
-/tmp/ansible_facts_cache/
 
 # Ansible inventory
 hosts
