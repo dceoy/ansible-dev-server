@@ -191,8 +191,14 @@ augroup CustomAutocmd
   au BufNewFile,BufRead *.md,*.Rmd,*.txt set spell  " check spelling
 augroup END
 hi ZenkakuSpace ctermbg=117 guibg=#87d7ff
+function! s:HighlightZenkakuSpace() abort
+  if exists('w:zenkaku_space_match')
+    silent! call matchdelete(w:zenkaku_space_match)
+  endif
+  let w:zenkaku_space_match = matchadd('ZenkakuSpace', '　')
+endfunction
 augroup CustomAutocmd
-  au BufNewFile,BufRead * match ZenkakuSpace /　/
+  au VimEnter,BufWinEnter,WinEnter * call <SID>HighlightZenkakuSpace()
 augroup END
 
 " text formatting/layout
