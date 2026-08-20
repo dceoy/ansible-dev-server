@@ -21,6 +21,12 @@ Plug 'github/copilot.vim'                     " GitHub Copilot
 call plug#end()
 packadd! editorconfig                        " EditorConfig support bundled with Vim
 
+" indentation fallback; filetype plugins and EditorConfig can override per buffer
+set autoindent
+set expandtab
+set shiftwidth=2
+set softtabstop=-1
+
 " Solarized
 set termguicolors
 set background=dark
@@ -29,7 +35,7 @@ let g:neosolarized_visibility='high'
 colorscheme NeoSolarized
 
 " whitespace visibility
-set list listchars=trail:_
+set list listchars=tab:>-,lead:.,trail:_
 hi SpecialKey ctermbg=NONE ctermfg=009 guibg=NONE guifg=#dc322f
 hi ZenkakuSpace ctermbg=117 guibg=#87d7ff
 function! s:HighlightZenkakuSpace() abort
