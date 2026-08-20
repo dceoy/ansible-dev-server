@@ -16,18 +16,6 @@
   ansible.builtin.file:
     path: "{{ gopath }}"
     state: directory
-  register: mkdir_go
-
-- name: Update packages
-  when: mkdir_go is changed
-  environment:
-    PATH: "{{ path }}"
-    GOPATH: "{{ gopath }}"
-  ansible.builtin.shell: |
-    go get -u all
-  changed_when: true
-  failed_when: false
-  notify: Notify updates of Go via Slack
 
 - name: Install packages
   when: go_packages is defined

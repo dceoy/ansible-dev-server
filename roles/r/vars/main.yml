@@ -60,7 +60,6 @@ r_packages:
     - phangorn
     - prophet
     - plotly
-    - prophet
     - ranger
     - rBayesianOptimization
     - rbenchmark
@@ -96,7 +95,6 @@ r_packages:
     - xgboost
   bioconductor:
     - Biobase
-    - BiocInstaller
     - Biostrings
     - DNAcopy
     - GEOquery

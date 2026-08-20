@@ -17,31 +17,15 @@
 
 - name: Install packages
   become: false
-  when:
-    - brew_packages is defined
-    - brew_packages.without_options is defined
+  when: brew_packages is defined
   community.general.homebrew:
-    name: "{{ item }}"
+    name: "{{ brew_packages }}"
     state: latest
-  loop: "{{ brew_packages.without_options }}"
   notify: Notify updates of the system via Slack
 
-- name: Install packages with options
+- name: Install cask packages
   become: false
-  when:
-    - brew_packages is defined
-    - brew_packages.with_options is defined
-  community.general.homebrew:
-    name: "{{ item.name }}"
-    install_options: "{{ item.options }}"
-    state: latest
-  loop: "{{ brew_packages.with_options }}"
-  notify: Notify updates of the system via Slack
-
-- name: Install packages
-  become: false
-  when:
-    - brew_cask_packages is defined
+  when: brew_cask_packages is defined
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: latest
