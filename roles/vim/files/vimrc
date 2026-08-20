@@ -190,7 +190,7 @@ set spelllang+=cjk                          " exclude jp from spell check
 augroup CustomAutocmd
   au BufNewFile,BufRead *.md,*.Rmd,*.txt set spell  " check spelling
 augroup END
-hi ZenkakuSpace ctermbg=117 guibg=#87d7ff
+hi ZenkakuSpace cterm=reverse ctermbg=117 gui=reverse guibg=#87d7ff
 function! s:HighlightZenkakuSpace() abort
   if exists('w:zenkaku_space_match')
     silent! call matchdelete(w:zenkaku_space_match)
