@@ -207,7 +207,7 @@ let g:ale_html_tidy_options = '-q -e -config <(echo "proprietary-attributes: fal
 
 " markdown
 let g:vim_markdown_folding_disabled = 1   " disable folding in markdown
-let g:vim_markdown_frontmatter = 1   " highlight yaml front matter
+let g:vim_markdown_frontmatter = 1        " highlight yaml front matter
 let g:vim_markdown_toml_frontmatter = 1   " highlight toml front matter
 let g:vim_markdown_math = 1               " used as $x^2$, $$x^2$$, escapable as \$x\$ and \$\$x\$\$
 
