@@ -27,6 +27,7 @@ set expandtab
 set shiftwidth=2
 set softtabstop=-1
 set number
+set cmdheight=2
 
 " colorscheme
 set termguicolors
