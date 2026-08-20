@@ -22,23 +22,24 @@ call plug#end()
 packadd! editorconfig                        " EditorConfig support bundled with Vim
 
 " indentation fallback; filetype plugins and EditorConfig can override per buffer
-set autoindent
-set expandtab
-set shiftwidth=2
-set softtabstop=-1
-set number
-set cmdheight=2
+set autoindent                              " take indent for new line from previous line
+set expandtab                               " replace tabs with spaces
+set shiftwidth=2                            " number of spaces to use for each indentation step
+set softtabstop=-1                          " use shiftwidth for editing tabs
+set number                                  " show the line number in front of each line
+set cmdheight=2                             " number of screen lines to use for the command-line
+set laststatus=2                            " always show the status line
 
 " colorscheme
-set termguicolors
-set background=dark
+set termguicolors                           " enable true-color terminal rendering
+set background=dark                         " use a dark background
 colorscheme iceberg
 
 " whitespace visibility
 " Tabs are unusual but valid, trailing spaces should be removed, and U+3000
 " spaces should normally be replaced with ASCII spaces. Leading spaces are
 " ordinary indentation and intentionally left unmarked.
-set list listchars=tab:>-,trail:_
+set list listchars=tab:>-,trail:_           " show tabs and trailing spaces
 hi SpecialKey ctermbg=NONE ctermfg=110 guibg=NONE guifg=#84a0c6
 hi TrailingWhitespace ctermbg=NONE ctermfg=203 guibg=NONE guifg=#e27878
 hi ZenkakuSpace cterm=underline ctermul=216 gui=underline guisp=#e2a478
@@ -58,7 +59,7 @@ augroup HighlightWhitespace
 augroup END
 
 " ALE
-let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_virtualtext_cursor = 'disabled'   " show cursor diagnostics in the command-line instead of inline
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
 \   'python': ['ruff', 'pyright'],
