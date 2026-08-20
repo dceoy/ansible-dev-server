@@ -13,8 +13,6 @@ Plug 'altercation/vim-colors-solarized'       " precision colorscheme for the vi
 Plug 'tyru/open-browser.vim'                  " open uri with your favorite browser from your favorite editor
 " syntax
 Plug 'dense-analysis/ale'                     " asynchronous linting/fixing for vim and neovim
-" edit
-"Plug 'AndrewRadev/switch.vim'                 " switch segments of text with predefined replacements
 " surroundings
 Plug 'tpope/vim-surround'                     " quoting/parenthesizing made simple
 " run
@@ -24,68 +22,40 @@ Plug 'ctrlpvim/ctrlp.vim'                     " fuzzy file, buffer, mru, tag, et
 Plug 'preservim/nerdtree'                     " a tree explorer plugin for vim
 " Git
 Plug 'tpope/vim-fugitive'                     " a git wrapper so awesome, it should be illegal
-"Plug 'airblade/vim-gitgutter'                 " plugin which shows a git diff in the gutter (sign column)
-" YAML
-Plug 'ingydotnet/yaml-vim'                    " yaml highlight script for vim
-" TOML
-Plug 'cespare/vim-toml'                       " vim syntax for toml
-" Protocol Buffers
-Plug 'uarun/vim-protobuf'                     " vim syntax for google's protocol buffers
-" Crontab
-Plug 'vim-scripts/crontab.vim'                " syntax highlight for crontab files
 " LaTeX
 Plug 'lervag/vimtex'                          " modern LaTeX support for vim and neovim
 " HTML
 Plug 'mattn/emmet-vim'                        " emmet for vim
 Plug 'othree/html5.vim'                       " html5 omnicomplete and syntax
 Plug 'slim-template/vim-slim'                 " a clone of the slim vim plugin from stonean
-Plug 'tpope/vim-haml'                         " vim runtime files for haml, sass, and scss
 Plug 'plasticboy/vim-markdown'                " syntax highlighting, matching rules and mappings for markdown
 Plug 'chazmcgarvey/vim-mermaid'               " vim syntax for Mermaid diagrams
 Plug 'Rykka/riv.vim'                          " plugin for rst
 " CSS
-Plug 'hail2u/vim-css3-syntax'                 " add css3 syntax support to vim's built-in `syntax/css.vim`
-Plug 'cakebaker/scss-syntax.vim'              " vim syntax file for scss
 Plug 'vim-scripts/csslint.vim'                " css code quality tool
-Plug 'groenewege/vim-less'                    " syntax for less (dynamic css)
 " JavaScript
-Plug 'pangloss/vim-javascript'                " vastly improved Javascript indentation and syntax support in vim
 Plug 'othree/javascript-libraries-syntax.vim' " syntax for javascript libraries
 Plug 'kchmck/vim-coffee-script'               " coffeescript support for vim
-Plug 'leafgarland/typescript-vim'             " typescript syntax files for vim
 Plug 'evanleck/vim-svelte'                    " syntax highlighting and indentation for Svelte components
 " Ruby
-Plug 'vim-ruby/vim-ruby'                      " vim/ruby configuration files
-Plug 'tpope/vim-rails'                        " ruby on rails power tools
 Plug 'tpope/vim-endwise'                      " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
 " Python
 Plug 'hynek/vim-python-pep8-indent'           " a nicer python indentation style for vim
 Plug 'ivanov/vim-ipython'                     " integration between vim and ipython
-" R
-Plug 'vim-scripts/R-syntax-highlighting'      " r syntax highlighting
 " BUGS
 Plug 'vim-scripts/BUGS-language'              " bugs syntax highlighting
 " Stan
 Plug 'maverickg/stan.vim'                     " syntax highlighting for stan modeling lauguage
 " SAS
 Plug 'EricGebhart/SAS-Vim'                    " syntax and indention for sas
-" Haskell
-Plug 'vim-scripts/haskell.vim'                " syntax highlight for haskell
-" Scala
-Plug 'vim-scripts/scala.vim'                  " syntaxic coloration for scala code
+" snippets
 Plug 'vim-scripts/snipMate'                   " textmate-style snippets for vim
 " Go
 Plug 'fatih/vim-go'                           " go development plugin for vim
-" Rust
-Plug 'rust-lang/rust.vim'                     " vim configuration for rust
 " Elixir
 Plug 'elixir-lang/vim-elixir'                 " vim configuration files for elixir
 " Julia
 Plug 'JuliaLang/julia-vim'                    " vim support for julia
-" SQL
-Plug 'vim-scripts/sql.vim--Stinson'           " better sql syntax
-" Docker
-Plug 'ekalinin/Dockerfile.vim'                " syntax file and snippets for docker's dockerfile
 " Kubernetes
 Plug 'andrewstuart/vim-kubernetes'            " kubectl integration
 " Ansible
@@ -94,8 +64,6 @@ Plug 'pearofducks/ansible-vim'                " syntax highlighting Ansible's co
 Plug 'hashivim/vim-terraform'                 " basic vim/terraform integration
 " Jinja2
 Plug 'Glench/Vim-Jinja2-Syntax'               " jinja2 syntax
-" Nginx
-Plug 'chr4/nginx.vim'                         " nginx syntax highlighting
 " Bats
 Plug 'vim-scripts/bats.vim'                   " syntax highlighting for bats
 " Prisma
@@ -239,7 +207,7 @@ let g:ale_html_tidy_options = '-q -e -config <(echo "proprietary-attributes: fal
 
 " markdown
 let g:vim_markdown_folding_disabled = 1   " disable folding in markdown
-let g:vim_markdown_frontmatter = 1        " highlight yaml front matter
+let g:vim_markdown_frontmatter = 1   " highlight yaml front matter
 let g:vim_markdown_toml_frontmatter = 1   " highlight toml front matter
 let g:vim_markdown_math = 1               " used as $x^2$, $$x^2$$, escapable as \$x\$ and \$\$x\$\$
 
