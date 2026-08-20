@@ -6,7 +6,7 @@
 call plug#begin()
 
 " colorscheme
-Plug 'lanx-x/NeoSolarized'                    " Solarized colorscheme with true-color terminal support
+Plug 'cocopon/iceberg.vim'                    " bluish colorscheme for Vim and Neovim
 " lint/fix
 Plug 'dense-analysis/ale'                     " asynchronous linting/fixing for vim and neovim
 " syntax not provided by Vim runtime
@@ -27,17 +27,15 @@ set expandtab
 set shiftwidth=2
 set softtabstop=-1
 
-" Solarized
+" colorscheme
 set termguicolors
 set background=dark
-let g:neosolarized_contrast='high'
-let g:neosolarized_visibility='high'
-colorscheme NeoSolarized
+colorscheme iceberg
 
 " whitespace visibility
 set list listchars=tab:>-,lead:.,trail:_
 hi SpecialKey ctermbg=NONE ctermfg=009 guibg=NONE guifg=#dc322f
-hi ZenkakuSpace ctermbg=117 guibg=#87d7ff
+hi ZenkakuSpace cterm=underline ctermul=117 gui=underline guisp=#87d7ff
 function! s:HighlightZenkakuSpace() abort
   if exists('w:zenkaku_space_match')
     silent! call matchdelete(w:zenkaku_space_match)
