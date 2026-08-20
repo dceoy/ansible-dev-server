@@ -34,17 +34,22 @@ colorscheme iceberg
 
 " whitespace visibility
 set list listchars=tab:>-,lead:.,trail:_
-hi SpecialKey ctermbg=NONE ctermfg=009 guibg=NONE guifg=#dc322f
+hi SpecialKey ctermbg=NONE ctermfg=110 guibg=NONE guifg=#84a0c6
+hi TrailingWhitespace ctermbg=NONE ctermfg=009 guibg=NONE guifg=#dc322f
 hi ZenkakuSpace cterm=underline ctermul=117 gui=underline guisp=#87d7ff
-function! s:HighlightZenkakuSpace() abort
+function! s:HighlightWhitespace() abort
+  if exists('w:trailing_whitespace_match')
+    silent! call matchdelete(w:trailing_whitespace_match)
+  endif
   if exists('w:zenkaku_space_match')
     silent! call matchdelete(w:zenkaku_space_match)
   endif
-  let w:zenkaku_space_match = matchadd('ZenkakuSpace', '\%u3000')
+  let w:trailing_whitespace_match = matchadd('TrailingWhitespace', ' \+$', 20)
+  let w:zenkaku_space_match = matchadd('ZenkakuSpace', '\%u3000', 20)
 endfunction
 augroup HighlightWhitespace
   autocmd!
-  autocmd VimEnter,BufWinEnter,WinEnter * call <SID>HighlightZenkakuSpace()
+  autocmd VimEnter,BufWinEnter,WinEnter * call <SID>HighlightWhitespace()
 augroup END
 
 " ALE
