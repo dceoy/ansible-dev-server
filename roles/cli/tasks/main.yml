@@ -22,8 +22,6 @@
       value: utf-8
     - name: fetch.prune
       value: 'true'
-    - name: push.default
-      value: matching
     - name: core.editor
       value: vim
     - name: user.name
@@ -115,7 +113,5 @@
     block: |
       alias ls='ls --color=always'
       alias grep='grep --color=always'
-      alias fgrep='fgrep --color=always'
-      alias egrep='egrep --color=always'
       alias zgrep='zgrep --color=always'
   notify: Notify updates of CLI via Slack

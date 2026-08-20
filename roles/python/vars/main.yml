@@ -27,7 +27,6 @@ pip_packages:
   - docopt
   - fabric
   - fastapi
-  - fbprophet
   - feather-format
   - floyd-cli
   - ggplot
@@ -44,8 +43,6 @@ pip_packages:
   - ipython
   - jsonschema
   - jupyter
-  - jupyter_contrib_nbextensions
-  - jupyterthemes
   - keras
   - langchain
   - lifelines
@@ -60,7 +57,6 @@ pip_packages:
   - mock
   - MonkeyType
   - mypy
-  - nose
   - notebook
   - notedown
   - numexpr
@@ -74,6 +70,7 @@ pip_packages:
   - polars
   - pr-agent
   - pre-commit
+  - prophet
   - psutil
   - psycopg2-binary
   - pubnub
@@ -86,14 +83,13 @@ pip_packages:
   - pynvim
   - pyopenssl
   - pypandoc
-  - pypdf2
+  - pypdf
   - pyper
   - pyright
   - pysam
   - pystan
   - pytest
   - pytoml
-  - pytorch
   - pyyaml
   - redis
   - requests
@@ -133,7 +129,6 @@ pip_packages:
   - types-setuptools
   - umap-learn
   - uv
-  - vim-vint
   - vulture
   - webtest
   - xgboost

@@ -24,7 +24,6 @@ yum_packages:
   - device-mapper-persistent-data
   - diffstat
   - dkms
-  - docker-python
   - doxygen
   - elfutils
   - elixir
@@ -98,7 +97,6 @@ yum_packages:
   - nmap
   - nodejs
   - npm
-  - ntp
   - octave
   - opencv-devel
   - openmpi-devel
@@ -116,9 +114,8 @@ yum_packages:
   - pkgconfig
   - postgresql-devel
   - proj-devel
-  - proj-epsg
   - protobuf-devel
-  - python36-devel
+  - python3-devel
   - R-devel
   - rcs
   - readline-devel
@@ -152,5 +149,5 @@ yum_packages:
   - zsh
 users:
   - name: dceoy
-    groups: sudo
+    groups: wheel
     shell: /usr/bin/zsh

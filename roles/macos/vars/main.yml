@@ -1,213 +1,131 @@
 ---
 brew_packages:
-  with_options:
-    - name: cairo
-      options:
-        - with-x11
-    - name: imagemagick
-      options:
-        - with-fontconfig
-        - with-librsvg
-  without_options:
-    - act
-    - ansible
-    - ansible-lint
-    - aria2
-    # - autoconf
-    # - automake
-    - aws-cdk
-    - awscli
-    - bash
-    - bats-core
-    # - bazel
-    # - bcftools
-    # - bedtools
-    - binutils
-    # - boost
-    # - cabal-install
-    - checkov
-    # - circleci
-    - cloudflared
-    - cloudformation-guard
-    - colordiff
-    - container
-    - copilot-cli
-    - coreutils
-    - corkscrew
-    - cosign
-    - csvkit
-    - curl
-    # - cyberduck
-    - diffutils
-    - direnv
-    - dvc
-    # - ed
-    # - elixir
-    - eslint
-    - fcrackzip
-    - fd
-    - ffmpeg
-    - findutils
-    # - freetds
-    # - freetype
-    # - fribidi
-    - gawk
-    - gcc
-    # - gdal
-    # - gdbm
-    # - gflags
-    - gh
-    # - ghc
-    - git
-    # - glog
-    # - gnu-indent
-    - gnu-sed
-    - gnu-tar
-    - gnu-which
-    # - gnutls
-    - go
-    - golangci-lint
-    - gopls
-    - googleworkspace-cli
-    # - goreleaser
-    - gosec
-    - govulncheck
-    # - gpg
-    - groff
-    - grep
-    - grip
-    - gzip
-    - hadolint
-    # - harfbuzz
-    - hdf5
-    - herdr
-    - hermes-agent
-    - htmlhint
-    - htop
-    - hugo
-    - hunspell
-    # - igv
-    - imagemagick
-    - jq
-    - jsonlint
-    # - kubectl
-    # - leveldb
-    # - libgit2
-    # - libjpeg
-    # - librsvg
-    # - libssh2
-    # - libtiff
-    # - libxml2
-    # - little-cms2
-    - llm
-    # - llvm
-    # - lmdb
-    - lua
-    - luajit
-    - markdownlint-cli2
-    - md5sha1sum
-    - mercurial
-    - ncdu
-    - nkf
-    - nmap
-    - node
-    - npm
-    - ollama
-    - opencode
-    # - openjdk
-    # - openssl
-    - p7zip
-    - pandoc
-    # - parallel
-    - pbzip2
-    - pdf2svg
-    # - picard-tools
-    - pigz
-    - pinact
-    # - pipx
-    # - pkg-config
-    # - postgresql
-    - prettier
-    # - protobuf
-    - pyright
-    - python
-    - quicktype
-    - r
-    - rain
-    # - readline
-    # - redis
-    - rename
-    - ripgrep
-    - rsync
-    - ruby
-    - ruff
-    # - rust
-    # - rustup
-    # - samtools
-    # - screen
-    - shellcheck
-    - shfmt
-    - shunit2
-    # - snappy
-    - sqlite
-    - stylelint
-    # - supervisor
-    # - tailscale
-    # - tcl-tk
-    - tenv
-    - tflint
-    - tig
-    - tmux
-    - tree
-    - trivy
-    - typescript
-    - uv
-    # - v8
-    - vim
-    - vulture
-    - wakeonlan
-    - watch
-    - wdiff
-    # - webp
-    - wget
-    - yamllint
-    - yq
-    - zip
-    - zizmor
-    # - zlib
-    - zsh
+  - act
+  - ansible
+  - ansible-lint
+  - aria2
+  - aws-cdk
+  - awscli
+  - bash
+  - bats-core
+  - binutils
+  - cairo
+  - checkov
+  - cloudflared
+  - cloudformation-guard
+  - colordiff
+  - container
+  - copilot-cli
+  - coreutils
+  - corkscrew
+  - cosign
+  - csvkit
+  - curl
+  - diffutils
+  - direnv
+  - dvc
+  - eslint
+  - fcrackzip
+  - fd
+  - ffmpeg
+  - findutils
+  - gawk
+  - gcc
+  - gh
+  - git
+  - gnu-sed
+  - gnu-tar
+  - gnu-which
+  - go
+  - golangci-lint
+  - gopls
+  - googleworkspace-cli
+  - gosec
+  - govulncheck
+  - groff
+  - grep
+  - grip
+  - gzip
+  - hadolint
+  - hdf5
+  - herdr
+  - hermes-agent
+  - htmlhint
+  - htop
+  - hugo
+  - hunspell
+  - imagemagick
+  - jq
+  - jsonlint
+  - llm
+  - lua
+  - luajit
+  - markdownlint-cli2
+  - md5sha1sum
+  - mercurial
+  - ncdu
+  - nkf
+  - nmap
+  - node
+  - ollama
+  - opencode
+  - p7zip
+  - pandoc
+  - pbzip2
+  - pdf2svg
+  - pigz
+  - pinact
+  - prettier
+  - pyright
+  - python
+  - quicktype
+  - r
+  - rain
+  - rename
+  - ripgrep
+  - rsync
+  - ruby
+  - ruff
+  - shellcheck
+  - shfmt
+  - shunit2
+  - sqlite
+  - stylelint
+  - tenv
+  - tflint
+  - tig
+  - tmux
+  - tree
+  - trivy
+  - typescript
+  - uv
+  - vim
+  - vulture
+  - wakeonlan
+  - watch
+  - wdiff
+  - wget
+  - yamllint
+  - yq
+  - zip
+  - zizmor
+  - zsh
 brew_cask_packages:
-  # - adobe-acrobat-reader
   - antigravity
   - antigravity-cli
-  # - chrome-remote-desktop-host
   - claude
   - claude-code
   - codex
   - codex-app
-  # - dbeaver-community
-  # - discord
   - docker
   - drawio
-  # - dropbox
-  # - endnote
-  # - figma
-  # - firefox
   - ghostty
-  # - google-drive
   - google-chrome
   - google-cloud-sdk
   - google-gemini
   - google-japanese-ime
-  # - handbrake
   - iterm2
-  # - lm-studio
   - microsoft-office
-  # - miro
-  # - notion
-  # - opera
   - slack
   - visual-studio-code
-  # - wine-stable
   - xquartz
-  # - zoom

@@ -74,7 +74,7 @@ dnf_packages:
   - libgit2-devel
   - libpcap-devel
   - libpng-devel
-  - libselinux-python   # requied to be preinstalled
+  - python3-libselinux
   - libsqlite3x-devel
   - librsvg2-devel
   - libssh2-devel
@@ -118,7 +118,6 @@ dnf_packages:
   - pkgconfig
   - postgresql-devel
   - proj-devel
-  - proj-epsg
   - protobuf-devel
   - python3-devel
   - R-devel
