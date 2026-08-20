@@ -8,164 +8,44 @@ scriptencoding utf-8
 "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
 call plug#begin()
 
-" vim-scripts repos
-Plug 'vim-scripts/L9'                         " some utility functions and commands for programming in vim
-Plug 'vim-scripts/FuzzyFinder'                " buffer/file/command/tag/etc explorer with fuzzy matching
-" screen
-Plug 'altercation/vim-colors-solarized'       " precision colorscheme for the vim text editor
-Plug 'tyru/open-browser.vim'                  " open uri with your favorite browser from your favorite editor
-" syntax
+" lint/fix
 Plug 'dense-analysis/ale'                     " asynchronous linting/fixing for vim and neovim
-" edit
-"Plug 'AndrewRadev/switch.vim'                 " switch segments of text with predefined replacements
-" surroundings
-Plug 'tpope/vim-surround'                     " quoting/parenthesizing made simple
-Plug 'vim-scripts/matchit.zip'                " extended % matching for html, latex, and many other languages
-" run
-Plug 'thinca/vim-quickrun'                    " run commands quickly
-" file
-Plug 'kien/ctrlp.vim'                         " fuzzy file, buffer, mru, tag, etc finder
-Plug 'scrooloose/nerdtree'                    " a tree explorer plugin for vim
-" Git
-Plug 'tpope/vim-fugitive'                     " a git wrapper so awesome, it should be illegal
-"Plug 'airblade/vim-gitgutter'                 " plugin which shows a git diff in the gutter (sign column)
-" YAML
-Plug 'ingydotnet/yaml-vim'                    " yaml highlight script for vim
-" TOML
-Plug 'cespare/vim-toml'                       " vim syntax for toml
-" Protocol Buffers
-Plug 'uarun/vim-protobuf'                     " vim syntax for google's protocol buffers
-" Crontab
-Plug 'vim-scripts/crontab.vim'                " syntax highlight for crontab files
-" LaTeX
-Plug 'vim-latex/vim-latex'                    " enhanced latex support
-" HTML
-Plug 'mattn/emmet-vim'                        " emmet for vim
-Plug 'othree/html5.vim'                       " html5 omnicomplete and syntax
-Plug 'slim-template/vim-slim'                 " a clone of the slim vim plugin from stonean
-Plug 'tpope/vim-haml'                         " vim runtime files for haml, sass, and scss
-Plug 'plasticboy/vim-markdown'                " syntax highlighting, matching rules and mappings for markdown
-Plug 'chazmcgarvey/vim-mermaid'               " vim syntax for Mermaid diagrams
-Plug 'Rykka/riv.vim'                          " plugin for rst
-" CSS
-Plug 'hail2u/vim-css3-syntax'                 " add css3 syntax support to vim's built-in `syntax/css.vim`
-Plug 'cakebaker/scss-syntax.vim'              " vim syntax file for scss
-Plug 'vim-scripts/csslint.vim'                " css code quality tool
-Plug 'groenewege/vim-less'                    " syntax for less (dynamic css)
-" JavaScript
-Plug 'pangloss/vim-javascript'                " vastly improved Javascript indentation and syntax support in vim
-Plug 'othree/javascript-libraries-syntax.vim' " syntax for javascript libraries
-Plug 'vim-scripts/lint.vim'                   " jshint integration with quickfix window
-Plug 'kchmck/vim-coffee-script'               " coffeescript support for vim
-Plug 'leafgarland/typescript-vim'             " typescript syntax files for vim
-Plug 'evanleck/vim-svelte'                    " syntax highlighting and indentation for Svelte components
-" Ruby
-Plug 'vim-ruby/vim-ruby'                      " vim/ruby configuration files
-Plug 'vim-scripts/rails.vim'                  " ruby on rails: easy file navigation, enhanced syntax highlighting, and more
-Plug 'tpope/vim-rails'                        " ruby on rails power tools
-Plug 'tpope/vim-endwise'                      " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
-" Python
-Plug 'vim-scripts/python.vim'                 " a set of menus/shortcuts to work with python files
-Plug 'vim-scripts/python.vim--Vasiliev'       " enhanced version of the python syntax highlighting script
-Plug 'nvie/vim-flake8'                        " a static syntax and style checker for python source code
-Plug 'tell-k/vim-autopep8'                    " an automatic python code formatter by pep8
-Plug 'hynek/vim-python-pep8-indent'           " a nicer python indentation style for vim
-Plug 'ivanov/vim-ipython'                     " integration between vim and ipython
-Plug 'psf/black'                              " the uncompromising python code formatter
-" R
-Plug 'vim-scripts/R-syntax-highlighting'      " r syntax highlighting
-" BUGS
-Plug 'vim-scripts/BUGS-language'              " bugs syntax highlighting
-" Stan
-Plug 'maverickg/stan.vim'                     " syntax highlighting for stan modeling lauguage
-" SAS
-Plug 'EricGebhart/SAS-Vim'                    " syntax and indention for sas
-" Haskell
-Plug 'vim-scripts/haskell.vim'                " syntax highlight for haskell
-" Scala
-Plug 'vim-scripts/scala.vim'                  " syntaxic coloration for scala code
-Plug 'vim-scripts/snipMate'                   " textmate-style snippets for vim
-" Go
-Plug 'fatih/vim-go'                           " go development plugin for vim
-" Rust
-Plug 'rust-lang/rust.vim'                     " vim configuration for rust
-" Elixir
-Plug 'elixir-lang/vim-elixir'                 " vim configuration files for elixir
-" Julia
-Plug 'JuliaLang/julia-vim'                    " vim support for julia
-" SQL
-Plug 'vim-scripts/sql.vim--Stinson'           " better sql syntax
-" Docker
-Plug 'ekalinin/Dockerfile.vim'                " syntax file and snippets for docker's dockerfile
-" Kubernetes
-Plug 'andrewstuart/vim-kubernetes'            " kubectl integration
-" Ansible
-Plug 'pearofducks/ansible-vim'                " syntax highlighting Ansible's common filetypes
-" Terraform
-Plug 'hashivim/vim-terraform'                 " basic vim/terraform integration
-" Jinja2
-Plug 'Glench/Vim-Jinja2-Syntax'               " jinja2 syntax
-" Nginx
-Plug 'chr4/nginx.vim'                         " nginx syntax highlighting
-" Bats
-Plug 'vim-scripts/bats.vim'                   " syntax highlighting for bats
-" Prisma
-Plug 'prisma/vim-prisma'                      " syntax highlighting for prisma schema files
-" MQL
-Plug 'rupurt/vim-mql5'                        " syntax highlighting for MQL5
-Plug 'vobornik/vim-mql4'                      " syntax highlighting for MQL4
-" WDL
-Plug 'broadinstitute/vim-wdl'                 " syntax highlighting for wdl
+" syntax not provided by Vim runtime
+Plug 'chazmcgarvey/vim-mermaid'               " Mermaid syntax
+Plug 'elixir-lang/vim-elixir'                 " Elixir syntax and indentation
+Plug 'pearofducks/ansible-vim'                " Ansible syntax support
+Plug 'vim-scripts/bats.vim'                   " Bats syntax
+Plug 'prisma/vim-prisma'                      " Prisma schema syntax
 " Copilot
-Plug 'github/copilot.vim'                     " plugin for GitHub Copilot
-" EditorConfig
-Plug 'editorconfig/editorconfig-vim'          " editorconfig plugin for vim
+Plug 'github/copilot.vim'                     " GitHub Copilot
 
 call plug#end()
+packadd! matchit                              " extended % matching bundled with Vim
+packadd! editorconfig                        " EditorConfig support bundled with Vim
 
 
 " general
 set history=256                             " number of lines of history to remember
 set scrolloff=16                            " minimal number of screen lines to keep above and below the cursor
-"set clipboard=unnamed,autoselect            " share clipboard
-set ttyfast                                 " fast terminal connection
-set t_Co=256                                " enable 256 colors
 augroup CustomAutocmd
   autocmd!
 augroup END
 
-" theme/colors
-set background=dark
-let g:solarized_termcolors=256
-let g:solarized_contrast='high'
-let g:solarized_visibility='high'
-silent! colorscheme solarized
-
 " files/backups
-set browsedir=buffer                        " put up a directory requester
 set autoread                                " read changes automatically
 set autowrite                               " save automatically before commands like :next and :make
-set fileformats=unix,mac,dos                " give the eol formats
 set nobackup                                " make no backup file
 set noswapfile                              " make no swap file
 
 " ui
-set linespace=0                             " number of pixel lines inserted between characters
 set wildmenu wildmode=longest:full,full     " command-line completion operates in an enhanced mode
-set showcmd                                 " display an incomplete command in statusline
-set ruler                                   " show the line and column number of the cursor position
 set cmdheight=2                             " number of screen lines to use for the command-line
 set number                                  " show the line number in front of each line
 set cursorline                              " highlight the screen line of the cursor
-set lazyredraw                              " don't redraw while running macros (much faster) (LazyRedraw)
-set backspace=start,eol,indent              " make backspace work normal
 set whichwrap=b,s,h,l,<,>,[,],~             " allow backspace and cursor keys to cross line boundaries
-"set mouse=a                                 " use mouse everywhere
-"set ttymouse=xterm2                         " terminal type for which mouse codes are to be recognized
-set shortmess=atI                           " shorten messages to avoid 'press a key' prompt
+set shortmess+=atI                          " shorten messages to avoid 'press a key' prompt
 set report=0                                " tell us when any line is changed via : commands
-set noerrorbells                            " don't make noise on error messages
-set novisualbell                            " don't blink
+set belloff=all                             " disable bells
 
 " visual cues
 set showmatch                               " show matching brackets for a moment
@@ -178,75 +58,85 @@ set ignorecase                              " ignore case sensitivity on search 
 set smartcase                               " case insensitive searches become sensitive with capitals
 set list listchars=eol:\ ,tab:>-,trail:_,extends:>,precedes:<       " show invisible chars
 hi NonText    ctermbg=NONE ctermfg=002 guibg=NONE guifg=NONE
-hi SpecialKey ctermbg=NONE ctermfg=000 guibg=NONE guifg=NONE
+hi SpecialKey ctermbg=NONE ctermfg=009 guibg=NONE guifg=#dc322f
 set display=lastline                                                " display as much as possible of the last line in a window
 set display+=uhex                                                   " show unprintable characters hexadecimal
 set laststatus=2                                                    " always show the status line
 set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F    " determines the content of the status line
-set statusline+=%=%{fugitive#statusline()}\ %1l/%L,%c%V\ %P
+set statusline+=%=%1l/%L,%c%V\ %P
 set ambiwidth=double                        " understand double-byte chars
-set formatoptions=lmoq                      " add multi-byte chars to options
+set formatoptions-=tc
+set formatoptions+=lmoq                    " preserve long/multibyte lines and comment formatting
 set spelllang+=cjk                          " exclude jp from spell check
 augroup CustomAutocmd
-  au BufNewFile,BufRead *.md,*.Rmd,*.txt set spell  " check spelling
+  au FileType markdown,rmd,text setlocal spell
 augroup END
-hi ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
+hi ZenkakuSpace ctermbg=117 guibg=#87d7ff
+function! s:HighlightZenkakuSpace() abort
+  if exists('w:zenkaku_space_match')
+    silent! call matchdelete(w:zenkaku_space_match)
+  endif
+  let w:zenkaku_space_match = matchadd('ZenkakuSpace', '　')
+endfunction
 augroup CustomAutocmd
-  au BufNewFile,BufRead * match ZenkakuSpace /　/
+  au VimEnter,BufWinEnter,WinEnter * call <SID>HighlightZenkakuSpace()
 augroup END
 
 " text formatting/layout
 set autoindent                              " take indent for new line from previous line
-set cindent                                 " do c-style indenting
 set expandtab                               " replace tabs with ${tabstop} spaces
-set tabstop=2 shiftwidth=2 softtabstop=0    " set tabstop, shiftwidth, softtabstop
+set tabstop=8 shiftwidth=2 softtabstop=0    " keep tab display width standard and use two-space indentation
 augroup CustomAutocmd
-  au BufNewFile,BufRead *.py,*.go set ts=4 sw=4 sts=0
-  au BufNewFile,BufRead *.go setlocal noexpandtab
+  au FileType python setlocal shiftwidth=4
+  au FileType go setlocal noexpandtab tabstop=8 shiftwidth=0 softtabstop=0
 augroup END
 set smarttab                                " sw at the start of the line, sts everywhere else
-set textwidth=0                             " don't wrap lines by default
-set modeline                                " read modelines
 
 " ALE
+let g:ale_linters_explicit = 1
 let g:ale_linters = {
-\   'python': ['python', 'ruff', 'pyright'],
+\   'python': ['ruff', 'pyright'],
 \   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\   'css': ['stylelint'],
+\   'scss': ['stylelint'],
+\   'less': ['stylelint'],
+\   'json': ['jsonlint'],
 \   'yaml': ['yamllint'],
 \   'ansible': ['ansible-lint'],
 \   'dockerfile': ['hadolint'],
 \   'sh': ['shellcheck'],
 \   'bash': ['shellcheck'],
-\   'zsh': ['zsh', 'shellcheck'],
+\   'zsh': ['zsh'],
 \   'r': ['lintr'],
 \   'rmd': ['lintr'],
 \   'ruby': ['rubocop'],
-\   'go': ['go', 'golangci-lint'],
-\   'vim': ['vint'],
-\   'sql': ['sqlint'],
-\   'markdown': ['proselint'],
-\   'html': ['tidy'],
-\   'svelte': ['eslint', 'htmlhint'],
+\   'go': ['golangci-lint'],
+\   'sql': ['sqlfluff'],
+\   'markdown': ['markdownlint'],
+\   'html': ['htmlhint'],
+\   'terraform': ['tflint'],
+\}
+let g:ale_fixers = {
+\   'python': ['ruff_format'],
+\   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
+\   'css': ['prettier'],
+\   'scss': ['prettier'],
+\   'less': ['prettier'],
+\   'json': ['prettier'],
+\   'yaml': ['prettier'],
+\   'markdown': ['prettier'],
+\   'html': ['prettier'],
+\   'sh': ['shfmt'],
+\   'bash': ['shfmt'],
+\   'r': ['styler'],
+\   'rmd': ['styler'],
+\   'ruby': ['rubocop'],
+\   'go': ['gofmt'],
+\   'sql': ['sqlfluff'],
+\   'terraform': ['terraform'],
+\   'hcl': ['terraform'],
 \}
 let g:ale_virtualtext_cursor = 'disabled'
-let g:ale_python_pyright_options = '--threads=0 --level error --reportPrivateUsage false'
-let g:ale_python_mypy_options = '--install-types --non-interactive --ignore-missing-imports --strict --strict-equality --strict-optional'
-let g:ale_python_ruff_options = '--extend-select=F,E,W,C90,I,N,UP,S,B,COM,C4,PT,Q,SIM,ARG,ERA,PD,PLC,PLR,PLE,PLW,TRY,FLY,NPY,PERF,FURB,RUF --ignore=S101,B008,A002,A004,COM812,PLC2701,TRY003'
-let g:ale_yaml_yamllint_options = '-d "{extends: default, rules: {line-length: disable, truthy: disable}}"'
-let g:ale_dockerfile_hadolint_options = '--ignore DL3008'
-let g:ale_r_lintr_options = 'linters_with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL, object_camel_case_linter = NULL, absolute_path_linter = NULL, object_name_linter = NULL, line_length_linter = line_length_linter(99))'
-let g:ale_rmd_lintr_options = 'linters_with_defaults(object_usage_linter = NULL, single_quotes_linter = NULL, object_camel_case_linter = NULL, absolute_path_linter = NULL, object_name_linter = NULL, line_length_linter = line_length_linter(99))'
-let g:ale_html_tidy_options = '-q -e -config <(echo "proprietary-attributes: false\ndrop-empty-elements: false\n")'
-
-" markdown
-let g:vim_markdown_folding_disabled = 1   " disable folding in markdown
-let g:vim_markdown_frontmatter = 1        " highlight yaml front matter
-let g:vim_markdown_toml_frontmatter = 1   " highlight toml front matter
-let g:vim_markdown_math = 1               " used as $x^2$, $$x^2$$, escapable as \$x\$ and \$\$x\$\$
-
-" rest
-let g:riv_disable_folding = 1             " disable folding in rest
-
-" copilot
-let g:copilot_filetypes = {'markdown': v:true, 'yaml': v:true, 'toml': v:true, 'json': v:true}
-let g:copilot_enabled = 1
+let g:ale_markdown_markdownlint_executable = 'markdownlint-cli2'
