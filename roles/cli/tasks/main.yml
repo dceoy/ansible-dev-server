@@ -67,7 +67,7 @@
 - name: Download the installer for oh-my-zsh
   when: not ohmyzsh.stat.exists
   ansible.builtin.get_url:
-    url: https://install.ohmyz.sh
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/d42209f2afa8ec3e6971e5b4695ff27f9d5670d2/tools/install.sh  # yamllint disable-line rule:line-length
     dest: /tmp/install.ohmyz.sh
     mode: '0755'
   notify: Notify updates of CLI via Slack
