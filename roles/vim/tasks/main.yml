@@ -15,17 +15,23 @@
     - "{{ ansible_facts['env']['HOME'] }}/.vim/src/install_latest_vim.sh"
   notify: Notify updates of Vim via Slack
 
+- name: Create a temporary file for the install-latest-vim installer
+  ansible.builtin.tempfile:
+    state: file
+    suffix: .sh
+  register: vim_installer
+
 - name: Download install-latest-vim installer
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/dceoy/install-latest-vim/aae0875c9a5a9c34fabb36e303535a9fd07514f8/install_latest_vim.sh
-    dest: /tmp/install_latest_vim.sh
+    dest: "{{ vim_installer.path }}"
     mode: "0755"
     force: true
 
 - name: Install or update Vim and Vim plugins
   ansible.builtin.command:
     argv:
-      - /tmp/install_latest_vim.sh
+      - "{{ vim_installer.path }}"
       - --lua
       - --vim-plug
   changed_when: true
@@ -34,5 +40,5 @@
 
 - name: Remove install-latest-vim installer
   ansible.builtin.file:
-    path: /tmp/install_latest_vim.sh
+    path: "{{ vim_installer.path }}"
     state: absent
