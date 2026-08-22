@@ -22,7 +22,7 @@
 
 - name: Download install-latest-vim installer
   ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/dceoy/install-latest-vim/master/install_latest_vim.sh
+    url: https://raw.githubusercontent.com/dceoy/install-latest-vim/b010582d9fa61202ddeea7f0a5fa2d7e81bf0ebe/install_latest_vim.sh
     dest: "{{ ansible_facts['env']['HOME'] }}/.vim/src/install_latest_vim.sh"
     mode: "0755"
     force: true
