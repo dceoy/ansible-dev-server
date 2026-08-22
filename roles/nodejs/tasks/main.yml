@@ -3,15 +3,8 @@
   ansible.builtin.set_fact:
     path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
 
-- name: Check npm command
-  environment:
-    PATH: "{{ path }}"
-  ansible.builtin.shell: |
-    npm --version
-  changed_when: false
-  failed_when: false
-
 - name: Install and update packages
+  when: npm_packages is defined
   environment:
     PATH: "{{ path }}"
   community.general.npm:
@@ -20,5 +13,4 @@
     state: latest
   loop: "{{ npm_packages }}"
   failed_when: false
-  when: npm_packages is defined
   notify: Notify updates of Node.js via Slack

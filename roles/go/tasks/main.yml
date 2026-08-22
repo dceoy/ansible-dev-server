@@ -4,26 +4,22 @@
     path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
     gopath: "{{ ansible_facts['env']['HOME'] }}/.go"
 
-- name: Check go command
-  environment:
-    PATH: "{{ path }}"
-  ansible.builtin.shell: |
-    go version
-  changed_when: false
-  failed_when: false
-
 - name: Create .go
   ansible.builtin.file:
     path: "{{ gopath }}"
     state: directory
+    mode: "0755"
 
 - name: Install packages
   when: go_packages is defined
   environment:
     PATH: "{{ path }}"
     GOPATH: "{{ gopath }}"
-  ansible.builtin.shell: |
-    go install {{ item }}@latest
+  ansible.builtin.command:
+    argv:
+      - go
+      - install
+      - "{{ item }}@latest"
   loop: "{{ go_packages }}"
   changed_when: true
   failed_when: false

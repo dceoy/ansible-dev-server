@@ -1,9 +1,20 @@
 ---
-- name: Install and update packages
+- name: Install and update packages in a virtual environment
   when: pip_packages is defined
   ansible.builtin.pip:
     name: "{{ pip_packages }}"
     state: latest
-    break_system_packages: true
-  failed_when: false
+    virtualenv: "{{ ansible_facts['env']['HOME'] }}/.venv"
+    virtualenv_command: "{{ ansible_facts['python']['executable'] }} -m venv"
+  notify: Notify updates of Python via Slack
+
+- name: Add the Python virtual environment to PATH
+  ansible.builtin.blockinfile:
+    create: true
+    dest: "{{ ansible_facts['env']['HOME'] }}/.zprofile"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: Python virtual environment"
+    mode: "0644"
+    state: present
+    block: |
+      export PATH="${HOME}/.venv/bin:${PATH}"
   notify: Notify updates of Python via Slack

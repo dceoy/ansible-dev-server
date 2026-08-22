@@ -3,14 +3,6 @@
   ansible.builtin.set_fact:
     path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
 
-- name: Check gem command
-  environment:
-    PATH: "{{ path }}"
-  ansible.builtin.shell: |
-    gem --version
-  changed_when: false
-  failed_when: false
-
 - name: Install and update Ruby packages
   when: gem_packages is defined
   environment:

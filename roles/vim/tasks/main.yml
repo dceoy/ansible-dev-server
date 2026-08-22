@@ -3,18 +3,14 @@
   ansible.builtin.copy:
     src: vimrc
     dest: "{{ ansible_facts['env']['HOME'] }}/.vimrc"
-  notify: Notify updates of Vim via Slack
-
-- name: Check vim
-  ansible.builtin.stat:
-    path: "{{ ansible_facts['env']['HOME'] }}/.vim/bin/vim"
-  register: vim_installed
+    mode: "0644"
   notify: Notify updates of Vim via Slack
 
 - name: Create directories in ~/.vim/
   ansible.builtin.file:
     path: "{{ ansible_facts['env']['HOME'] }}/.vim/{{ item }}"
     state: directory
+    mode: "0755"
   loop:
     - src
   notify: Notify updates of Vim via Slack

@@ -7,12 +7,12 @@
     dest: /etc/environment
     state: present
     block: |
-      HTTP_PROXY={{ http_proxy }}
-      HTTPS_PROXY={{ https_proxy }}
-      NO_PROXY={{ no_proxy }}
-      http_proxy={{ http_proxy }}
-      https_proxy={{ https_proxy }}
-      no_proxy={{ no_proxy }}
+      HTTP_PROXY={{ http_proxy | default('') }}
+      HTTPS_PROXY={{ https_proxy | default('') }}
+      NO_PROXY={{ no_proxy | default('') }}
+      http_proxy={{ http_proxy | default('') }}
+      https_proxy={{ https_proxy | default('') }}
+      no_proxy={{ no_proxy | default('') }}
   notify: Notify updates of the system via Slack
 
 - name: Set proxy at /etc/apt/apt.conf
@@ -23,30 +23,22 @@
     dest: /etc/apt/apt.conf
     state: present
     block: |
-      Acquire::http::proxy "{{ http_proxy }}";
-      Acquire::https::proxy "{{ https_proxy }}";
+      Acquire::http::proxy "{{ http_proxy | default('') }}";
+      Acquire::https::proxy "{{ https_proxy | default('') }}";
   notify: Notify updates of the system via Slack
 
-- name: Add %wheel
-  when:
-    - enable_nopass_sudo is defined
-    - enable_nopass_sudo
-  become: true
-  ansible.builtin.group:
-    name: wheel
-    state: present
-  notify: Notify updates of the system via Slack
-
-- name: Write %wheel in /etc/sudoers
+- name: Write %sudo in /etc/sudoers.d/ansible-nopasswd
   when:
     - enable_nopass_sudo is defined
     - enable_nopass_sudo
   become: true
   ansible.builtin.blockinfile:
-    dest: /etc/sudoers
+    create: true
+    dest: /etc/sudoers.d/ansible-nopasswd
+    mode: "0440"
     state: present
     block: |
-      %wheel  ALL=(ALL)       NOPASSWD: ALL
+      %sudo ALL=(ALL:ALL) NOPASSWD: ALL
     validate: 'visudo -cf %s'
   notify: Notify updates of the system via Slack
 
@@ -59,6 +51,7 @@
     name:
       - aptitude
       - ca-certificates
+      - python3-venv
     state: latest
   notify: Notify updates of the system via Slack
 

@@ -55,4 +55,4 @@
     - name: Display completion message
       ansible.builtin.debug:
         msg: "Development server setup completed successfully!"
-      run_once: true
+      run_once: true  # noqa: run-once[task]

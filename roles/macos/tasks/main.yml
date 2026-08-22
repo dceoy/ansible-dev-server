@@ -1,9 +1,12 @@
 ---
 - name: Update macOS
-  ansible.builtin.shell:
-    cmd: >
-      softwareupdate --install --all --agree-to-license --force
-    executable: /bin/bash
+  ansible.builtin.command:
+    argv:
+      - softwareupdate
+      - --install
+      - --all
+      - --agree-to-license
+      - --force
   changed_when: true
   failed_when: false
   notify: Notify updates of the system via Slack
