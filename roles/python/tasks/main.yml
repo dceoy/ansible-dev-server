@@ -1,20 +1,22 @@
 ---
-- name: Install Python packaging support on Linux
+- name: Install Python packaging support on Fedora and CentOS
   when:
     - python_pip_packages is defined
-    - ansible_facts['distribution'] in ['Ubuntu', 'Fedora', 'CentOS']
+    - ansible_facts['distribution'] in ['Fedora', 'CentOS']
   become: true
   ansible.builtin.package:
     name: python3-packaging
     state: present
 
-- name: Install Python virtual environment support on Ubuntu
+- name: Install Python prerequisites on Ubuntu
   when:
     - python_pip_packages is defined
     - ansible_facts['distribution'] == 'Ubuntu'
   become: true
   ansible.builtin.apt:
-    name: python3-venv
+    name:
+      - python3-packaging
+      - python3-venv
     state: present
     update_cache: true
 
