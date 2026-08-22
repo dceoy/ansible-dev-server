@@ -6,35 +6,33 @@
     mode: "0644"
   notify: Notify updates of Vim via Slack
 
-- name: Create directories in ~/.vim/
+- name: Remove legacy install-latest-vim artifacts
   ansible.builtin.file:
-    path: "{{ ansible_facts['env']['HOME'] }}/.vim/{{ item }}"
-    state: directory
-    mode: "0755"
-  loop:
-    - src
-  notify: Notify updates of Vim via Slack
-
-- name: Remove legacy install-latest-vim clone
-  ansible.builtin.file:
-    path: "{{ ansible_facts['env']['HOME'] }}/.vim/src/install-latest-vim"
+    path: "{{ item }}"
     state: absent
+  loop:
+    - "{{ ansible_facts['env']['HOME'] }}/.vim/src/install-latest-vim"
+    - "{{ ansible_facts['env']['HOME'] }}/.vim/src/install_latest_vim.sh"
   notify: Notify updates of Vim via Slack
 
 - name: Download install-latest-vim installer
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/dceoy/install-latest-vim/aae0875c9a5a9c34fabb36e303535a9fd07514f8/install_latest_vim.sh
-    dest: "{{ ansible_facts['env']['HOME'] }}/.vim/src/install_latest_vim.sh"
+    dest: /tmp/install_latest_vim.sh
     mode: "0755"
     force: true
-  notify: Notify updates of Vim via Slack
 
 - name: Install or update Vim and Vim plugins
   ansible.builtin.command:
     argv:
-      - "{{ ansible_facts['env']['HOME'] }}/.vim/src/install_latest_vim.sh"
+      - /tmp/install_latest_vim.sh
       - --lua
       - --vim-plug
   changed_when: true
   failed_when: false
   notify: Notify updates of Vim via Slack
+
+- name: Remove install-latest-vim installer
+  ansible.builtin.file:
+    path: /tmp/install_latest_vim.sh
+    state: absent
