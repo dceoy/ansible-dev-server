@@ -1,4 +1,13 @@
 ---
+- name: Install Python packaging support on Linux
+  when:
+    - python_pip_packages is defined
+    - ansible_facts['distribution'] in ['Ubuntu', 'Fedora', 'CentOS']
+  become: true
+  ansible.builtin.package:
+    name: python3-packaging
+    state: present
+
 - name: Install Python virtual environment support on Ubuntu
   when:
     - python_pip_packages is defined
@@ -8,6 +17,14 @@
     name: python3-venv
     state: present
     update_cache: true
+
+- name: Install Python packaging support on macOS
+  when:
+    - python_pip_packages is defined
+    - ansible_facts['distribution'] == 'MacOSX'
+  community.general.homebrew:
+    name: python-packaging
+    state: present
 
 - name: Install and update packages in a virtual environment
   when: python_pip_packages is defined
