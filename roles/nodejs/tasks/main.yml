@@ -3,14 +3,14 @@
   ansible.builtin.set_fact:
     nodejs_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
 
-- name: Install and update packages
-  when: nodejs_npm_packages is defined
+- name: Install and update Node.js command-line tools
+  when: nodejs_cli_tools is defined
   environment:
     PATH: "{{ nodejs_path }}"
   community.general.npm:
     name: "{{ item }}"
     global: true
     state: latest  # noqa: package-latest
-  loop: "{{ nodejs_npm_packages }}"
+  loop: "{{ nodejs_cli_tools }}"
   failed_when: false
   notify: Notify updates of Node.js via Slack
