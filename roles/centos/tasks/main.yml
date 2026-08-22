@@ -21,7 +21,7 @@
     dest: /etc/yum.conf
     state: present
     block: |
-      proxy={{ http_proxy | default('') }}
+      proxy={{ http_proxy | default(https_proxy) }}
   notify: Notify updates of the system via Slack
 
 - name: Write %wheel in /etc/sudoers
