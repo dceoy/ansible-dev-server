@@ -83,8 +83,10 @@
 
 - name: Remove the legacy Python virtual environment PATH block
   ansible.builtin.blockinfile:
+    create: true
     path: "{{ ansible_facts['env']['HOME'] }}/.zprofile"
     marker: "# {mark} ANSIBLE MANAGED BLOCK: Python virtual environment"
+    mode: "0644"
     state: absent
   notify: Notify updates of Python via Slack
 
