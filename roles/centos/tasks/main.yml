@@ -6,12 +6,12 @@
     dest: /etc/environment
     state: present
     block: |
-      HTTP_PROXY={{ http_proxy }}
-      HTTPS_PROXY={{ https_proxy }}
-      NO_PROXY={{ no_proxy }}
-      http_proxy={{ http_proxy }}
-      https_proxy={{ https_proxy }}
-      no_proxy={{ no_proxy }}
+      HTTP_PROXY={{ http_proxy | default('') }}
+      HTTPS_PROXY={{ https_proxy | default('') }}
+      NO_PROXY={{ no_proxy | default('') }}
+      http_proxy={{ http_proxy | default('') }}
+      https_proxy={{ https_proxy | default('') }}
+      no_proxy={{ no_proxy | default('') }}
   notify: Notify updates of the system via Slack
 
 - name: Set proxy at /etc/yum.conf
@@ -21,7 +21,7 @@
     dest: /etc/yum.conf
     state: present
     block: |
-      proxy={{ http_proxy }}
+      proxy={{ http_proxy | default(https_proxy) }}
   notify: Notify updates of the system via Slack
 
 - name: Write %wheel in /etc/sudoers
@@ -42,25 +42,25 @@
   ansible.builtin.dnf:
     update_cache: true
     name: '*'
-    state: latest
+    state: latest  # noqa: package-latest
   notify: Notify updates of the system via Slack
 
 - name: Install packages
-  when: yum_packages is defined
+  when: centos_yum_packages is defined
   become: true
   ansible.builtin.dnf:
-    name: "{{ yum_packages }}"
-    state: latest
+    name: "{{ centos_yum_packages }}"
+    state: latest  # noqa: package-latest
   failed_when: false
   notify: Notify updates of the system via Slack
 
 - name: Set users
-  when: users is defined
+  when: centos_users is defined
   become: true
   ansible.builtin.user:
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
     append: true
-  loop: "{{ users }}"
+  loop: "{{ centos_users }}"
   notify: Notify updates of the system via Slack

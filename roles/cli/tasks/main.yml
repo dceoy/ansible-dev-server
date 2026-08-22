@@ -38,9 +38,9 @@
     scope: global
   loop:
     - name: http.proxy
-      value: "{{ http_proxy }}"
+      value: "{{ http_proxy | default('') }}"
     - name: https.proxy
-      value: "{{ https_proxy }}"
+      value: "{{ https_proxy | default('') }}"
   notify: Notify updates of CLI via Slack
 
 - name: Set proxy at ~/.zprofile
@@ -48,24 +48,25 @@
   ansible.builtin.blockinfile:
     create: true
     dest: "{{ ansible_facts['env']['HOME'] }}/.zprofile"
+    mode: "0644"
     insertafter: '# proxy'
     state: present
     block: |
-      export HTTP_PROXY='{{ http_proxy }}'
-      export HTTPS_PROXY='{{ https_proxy }}'
-      export NO_PROXY='{{ no_proxy }}'
+      export HTTP_PROXY='{{ http_proxy | default('') }}'
+      export HTTPS_PROXY='{{ https_proxy | default('') }}'
+      export NO_PROXY='{{ no_proxy | default('') }}'
       export http_proxy="${HTTP_PROXY}"
-      export https_proxy="${HTTP_PROXY}"
+      export https_proxy="${HTTPS_PROXY}"
       export no_proxy="${NO_PROXY}"
   notify: Notify updates of CLI via Slack
 
 - name: Check if oh-my-zsh is installed
   ansible.builtin.stat:
     path: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh"
-  register: ohmyzsh
+  register: cli_ohmyzsh
 
 - name: Download the installer for oh-my-zsh
-  when: not ohmyzsh.stat.exists
+  when: not cli_ohmyzsh.stat.exists
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/d42209f2afa8ec3e6971e5b4695ff27f9d5670d2/tools/install.sh
     dest: /tmp/install.ohmyz.sh
@@ -73,11 +74,8 @@
   notify: Notify updates of CLI via Slack
 
 - name: Install oh-my-zsh
-  when: not ohmyzsh.stat.exists
-  ansible.builtin.shell:
-    cmd: |
-      /tmp/install.ohmyz.sh
-    executable: /bin/bash
+  when: not cli_ohmyzsh.stat.exists
+  ansible.builtin.command: /tmp/install.ohmyz.sh
   environment:
     RUNZSH: 'no'
   changed_when: true
@@ -87,7 +85,7 @@
   ansible.builtin.git:
     repo: https://github.com/dceoy/litmus-zsh-theme.git
     dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/litmus-zsh-theme"
-    version: main
+    version: main  # noqa: latest
   notify: Notify updates of CLI via Slack
 
 - name: Symlink litmus.zsh-theme in ~/.oh-my-zsh/custom/themes

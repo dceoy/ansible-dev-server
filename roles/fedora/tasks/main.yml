@@ -6,12 +6,12 @@
     dest: /etc/environment
     state: present
     block: |
-      HTTP_PROXY={{ http_proxy }}
-      HTTPS_PROXY={{ https_proxy }}
-      NO_PROXY={{ no_proxy }}
-      http_proxy={{ http_proxy }}
-      https_proxy={{ https_proxy }}
-      no_proxy={{ no_proxy }}
+      HTTP_PROXY={{ http_proxy | default('') }}
+      HTTPS_PROXY={{ https_proxy | default('') }}
+      NO_PROXY={{ no_proxy | default('') }}
+      http_proxy={{ http_proxy | default('') }}
+      https_proxy={{ https_proxy | default('') }}
+      no_proxy={{ no_proxy | default('') }}
   notify: Notify updates of the system via Slack
 
 - name: Set proxy at /etc/dnf/dnf.conf
@@ -21,7 +21,7 @@
     dest: /etc/dnf/dnf.conf
     state: present
     block: |
-      proxy={{ http_proxy }}
+      proxy={{ http_proxy | default(https_proxy) }}
   notify: Notify updates of the system via Slack
 
 - name: Write %wheel in /etc/sudoers
@@ -41,26 +41,26 @@
   become: true
   ansible.builtin.dnf:
     name: '*'
-    state: latest
+    state: latest  # noqa: package-latest
     update_cache: true
   notify: Notify updates of the system via Slack
 
 - name: Install packages
-  when: dnf_packages is defined
+  when: fedora_dnf_packages is defined
   become: true
   ansible.builtin.dnf:
-    name: "{{ dnf_packages }}"
-    state: latest
+    name: "{{ fedora_dnf_packages }}"
+    state: latest  # noqa: package-latest
     update_cache: true
   notify: Notify updates of the system via Slack
 
 - name: Set users
-  when: users is defined
+  when: fedora_users is defined
   become: true
   ansible.builtin.user:
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
     append: true
-  loop: "{{ users }}"
+  loop: "{{ fedora_users }}"
   notify: Notify updates of the system via Slack

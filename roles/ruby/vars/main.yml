@@ -1,5 +1,5 @@
 ---
-gem_packages:
+ruby_gem_packages:
   - bundler
   - clockwork
   - github-pages

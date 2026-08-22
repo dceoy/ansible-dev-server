@@ -1,9 +1,12 @@
 ---
 - name: Update macOS
-  ansible.builtin.shell:
-    cmd: >
-      softwareupdate --install --all --agree-to-license --force
-    executable: /bin/bash
+  ansible.builtin.command:
+    argv:
+      - softwareupdate
+      - --install
+      - --all
+      - --agree-to-license
+      - --force
   changed_when: true
   failed_when: false
   notify: Notify updates of the system via Slack
@@ -17,18 +20,18 @@
 
 - name: Install packages
   become: false
-  when: brew_packages is defined
+  when: macos_brew_packages is defined
   community.general.homebrew:
-    name: "{{ brew_packages }}"
-    state: latest
+    name: "{{ macos_brew_packages }}"
+    state: latest  # noqa: package-latest
   notify: Notify updates of the system via Slack
 
 - name: Install cask packages
   become: false
-  when: brew_cask_packages is defined
+  when: macos_brew_cask_packages is defined
   community.general.homebrew_cask:
     name: "{{ item }}"
-    state: latest
+    state: latest  # noqa: package-latest
   failed_when: false
-  loop: "{{ brew_cask_packages }}"
+  loop: "{{ macos_brew_cask_packages }}"
   notify: Notify updates of the system via Slack

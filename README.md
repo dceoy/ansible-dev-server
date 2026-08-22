@@ -23,7 +23,7 @@ $ git pull origin master
 Set up the systems
 
 ```sh
-$ ansible-playbook -K provision.yml
+$ ansible-playbook --vault-password-file ./.vault_password_file -K provision.yml
 ```
 
 ## Host vars (Ansible Vault)
@@ -31,4 +31,4 @@ $ ansible-playbook -K provision.yml
 - Files in `host_vars/` are encrypted with Ansible Vault.
 - Use `ansible-vault view host_vars/<host>.yml` to read and `ansible-vault edit host_vars/<host>.yml` to update.
 - For new hosts, run `ansible-vault create host_vars/<host>.yml` (or `ansible-vault encrypt` on an existing file).
-- `ansible.cfg` points at `./.vault_password_file`; keep it local and untracked.
+- Pass the local `.vault_password_file` explicitly when running against encrypted host vars; keep it untracked.

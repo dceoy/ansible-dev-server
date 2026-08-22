@@ -1,5 +1,5 @@
 ---
-dnf_packages:
+fedora_dnf_packages:
   - '@Development tools'
   - ant
   - atlas-devel
@@ -150,7 +150,7 @@ dnf_packages:
   - wxMaxima
   - xfig
   - zsh
-users:
+fedora_users:
   - name: dceoy
     groups: wheel
     shell: /usr/bin/zsh

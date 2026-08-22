@@ -1,29 +1,25 @@
 ---
 - name: Set variables
   ansible.builtin.set_fact:
-    path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
-    gopath: "{{ ansible_facts['env']['HOME'] }}/.go"
-
-- name: Check go command
-  environment:
-    PATH: "{{ path }}"
-  ansible.builtin.shell: |
-    go version
-  changed_when: false
-  failed_when: false
+    go_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
+    go_gopath: "{{ ansible_facts['env']['HOME'] }}/.go"
 
 - name: Create .go
   ansible.builtin.file:
-    path: "{{ gopath }}"
+    path: "{{ go_gopath }}"
     state: directory
+    mode: "0755"
 
 - name: Install packages
   when: go_packages is defined
   environment:
-    PATH: "{{ path }}"
-    GOPATH: "{{ gopath }}"
-  ansible.builtin.shell: |
-    go install {{ item }}@latest
+    PATH: "{{ go_path }}"
+    GOPATH: "{{ go_gopath }}"
+  ansible.builtin.command:
+    argv:
+      - go
+      - install
+      - "{{ item }}@latest"
   loop: "{{ go_packages }}"
   changed_when: true
   failed_when: false

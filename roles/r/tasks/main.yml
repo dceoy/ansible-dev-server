@@ -1,36 +1,31 @@
 ---
 - name: Set variables
   ansible.builtin.set_fact:
-    path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
+    r_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
     r_libs: "{{ ansible_facts['env']['HOME'] }}/.clir/r/library"
-    clir: "{{ ansible_facts['env']['HOME'] }}/.clir/bin/clir"
-    install_clir_sh: /tmp/install_clir.sh
-
-- name: Check R command
-  environment:
-    PATH: "{{ path }}"
-  ansible.builtin.shell: |
-    R --version
-  changed_when: false
-  failed_when: false
+    r_clir: "{{ ansible_facts['env']['HOME'] }}/.clir/bin/clir"
+    r_install_clir_sh: /tmp/install_clir.sh
 
 - name: Download the installer of clir
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/dceoy/clir/bf6c2cf7fbdea0b026e7ad4a0262e33bbf87ca01/install_clir.sh
-    dest: "{{ install_clir_sh }}"
+    dest: "{{ r_install_clir_sh }}"
+    mode: "0755"
 
 - name: Install or update clir
   environment:
-    PATH: "{{ path }}"
+    PATH: "{{ r_path }}"
     R_LIBS_USER: "{{ r_libs }}"
-  ansible.builtin.shell: |
-    bash {{ install_clir_sh }}
+  ansible.builtin.command:
+    argv:
+      - bash
+      - "{{ r_install_clir_sh }}"
   changed_when: true
   notify: Notify updates of R via Slack
 
 - name: Remove the installer
   ansible.builtin.file:
-    path: "{{ install_clir_sh }}"
+    path: "{{ r_install_clir_sh }}"
     state: absent
 
 - name: Set cran repositories
@@ -38,10 +33,13 @@
     - r_repos is defined
     - r_repos.cran is defined
   environment:
-    PATH: "{{ path }}"
+    PATH: "{{ r_path }}"
     R_LIBS_USER: "{{ r_libs }}"
-  ansible.builtin.shell: |
-    {{ clir }} cran {{ item }}
+  ansible.builtin.command:
+    argv:
+      - "{{ r_clir }}"
+      - cran
+      - "{{ item }}"
   loop: "{{ r_repos.cran }}"
   changed_when: true
   notify: Notify updates of R via Slack
@@ -53,10 +51,15 @@
     - r_packages is defined
     - r_packages.cran is defined
   environment:
-    PATH: "{{ path }}"
+    PATH: "{{ r_path }}"
     R_LIBS_USER: "{{ r_libs }}"
-  ansible.builtin.shell: |
-    {{ clir }} install --devt=cran --quiet {{ item }}
+  ansible.builtin.command:
+    argv:
+      - "{{ r_clir }}"
+      - install
+      - --devt=cran
+      - --quiet
+      - "{{ item }}"
   loop: "{{ r_packages.cran }}"
   changed_when: true
   failed_when: false
@@ -67,10 +70,15 @@
     - r_packages is defined
     - r_packages.bioconductor is defined
   environment:
-    PATH: "{{ path }}"
+    PATH: "{{ r_path }}"
     R_LIBS_USER: "{{ r_libs }}"
-  ansible.builtin.shell: |
-    {{ clir }} install --devt=bioc --quiet {{ item }}
+  ansible.builtin.command:
+    argv:
+      - "{{ r_clir }}"
+      - install
+      - --devt=bioc
+      - --quiet
+      - "{{ item }}"
   loop: "{{ r_packages.bioconductor }}"
   changed_when: true
   failed_when: false
