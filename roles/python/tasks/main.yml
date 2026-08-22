@@ -1,9 +1,19 @@
 ---
+- name: Install Python virtual environment support on Ubuntu
+  when:
+    - python_pip_packages is defined
+    - ansible_facts['distribution'] == 'Ubuntu'
+  become: true
+  ansible.builtin.apt:
+    name: python3-venv
+    state: present
+    update_cache: true
+
 - name: Install and update packages in a virtual environment
-  when: pip_packages is defined
+  when: python_pip_packages is defined
   ansible.builtin.pip:
-    name: "{{ pip_packages }}"
-    state: latest
+    name: "{{ python_pip_packages }}"
+    state: latest  # noqa: package-latest
     virtualenv: "{{ ansible_facts['env']['HOME'] }}/.venv"
     virtualenv_command: "{{ ansible_facts['python']['executable'] }} -m venv"
   notify: Notify updates of Python via Slack

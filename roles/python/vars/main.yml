@@ -1,5 +1,5 @@
 ---
-pip_packages:
+python_pip_packages:
   - alpha_vantage
   - ansible-lint
   - apache-airflow

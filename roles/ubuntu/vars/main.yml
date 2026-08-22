@@ -1,5 +1,5 @@
 ---
-apt_packages:
+ubuntu_apt_packages:
   - ant
   - apt-file
   - apt-utils
@@ -132,7 +132,7 @@ apt_packages:
   - zip
   - zlib1g-dev
   - zsh
-users:
+ubuntu_users:
   - name: dceoy
     groups: sudo
     shell: /usr/bin/zsh

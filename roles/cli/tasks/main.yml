@@ -63,10 +63,10 @@
 - name: Check if oh-my-zsh is installed
   ansible.builtin.stat:
     path: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh"
-  register: ohmyzsh
+  register: cli_ohmyzsh
 
 - name: Download the installer for oh-my-zsh
-  when: not ohmyzsh.stat.exists
+  when: not cli_ohmyzsh.stat.exists
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/d42209f2afa8ec3e6971e5b4695ff27f9d5670d2/tools/install.sh
     dest: /tmp/install.ohmyz.sh
@@ -74,7 +74,7 @@
   notify: Notify updates of CLI via Slack
 
 - name: Install oh-my-zsh
-  when: not ohmyzsh.stat.exists
+  when: not cli_ohmyzsh.stat.exists
   ansible.builtin.command: /tmp/install.ohmyz.sh
   environment:
     RUNZSH: 'no'

@@ -1,5 +1,5 @@
 ---
-yum_packages:
+centos_yum_packages:
   - '@Development tools'
   - ant
   - atlas-devel
@@ -141,7 +141,7 @@ yum_packages:
   - xfig
   - yum-utils
   - zsh
-users:
+centos_users:
   - name: dceoy
     groups: wheel
     shell: /usr/bin/zsh

@@ -5,6 +5,7 @@
   ansible.builtin.blockinfile:
     create: true
     dest: /etc/environment
+    mode: "0644"
     state: present
     block: |
       HTTP_PROXY={{ http_proxy | default('') }}
@@ -21,6 +22,7 @@
   ansible.builtin.blockinfile:
     create: true
     dest: /etc/apt/apt.conf
+    mode: "0644"
     state: present
     block: |
       Acquire::http::proxy "{{ http_proxy | default('') }}";
@@ -52,7 +54,7 @@
       - aptitude
       - ca-certificates
       - python3-venv
-    state: latest
+    state: latest  # noqa: package-latest
   notify: Notify updates of the system via Slack
 
 - name: Upgrade all packages
@@ -65,24 +67,24 @@
   notify: Notify updates of the system via Slack
 
 - name: Install packages
-  when: apt_packages is defined
+  when: ubuntu_apt_packages is defined
   become: true
   ansible.builtin.apt:
     autoclean: true
     autoremove: true
     name: "{{ item }}"
-    state: latest
-  loop: "{{ apt_packages }}"
+    state: latest  # noqa: package-latest
+  loop: "{{ ubuntu_apt_packages }}"
   failed_when: false
   notify: Notify updates of the system via Slack
 
 - name: Set users
-  when: users is defined
+  when: ubuntu_users is defined
   become: true
   ansible.builtin.user:
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
     append: true
-  loop: "{{ users }}"
+  loop: "{{ ubuntu_users }}"
   notify: Notify updates of the system via Slack

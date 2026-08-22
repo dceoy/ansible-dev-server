@@ -1,5 +1,5 @@
 ---
-npm_packages:
+nodejs_npm_packages:
   - "@biomejs/biome"
   - ajv-cli
   - bats

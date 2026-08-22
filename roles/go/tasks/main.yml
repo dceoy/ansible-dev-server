@@ -1,20 +1,20 @@
 ---
 - name: Set variables
   ansible.builtin.set_fact:
-    path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
-    gopath: "{{ ansible_facts['env']['HOME'] }}/.go"
+    go_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
+    go_gopath: "{{ ansible_facts['env']['HOME'] }}/.go"
 
 - name: Create .go
   ansible.builtin.file:
-    path: "{{ gopath }}"
+    path: "{{ go_gopath }}"
     state: directory
     mode: "0755"
 
 - name: Install packages
   when: go_packages is defined
   environment:
-    PATH: "{{ path }}"
-    GOPATH: "{{ gopath }}"
+    PATH: "{{ go_path }}"
+    GOPATH: "{{ go_gopath }}"
   ansible.builtin.command:
     argv:
       - go

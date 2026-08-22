@@ -1,5 +1,5 @@
 ---
-brew_packages:
+macos_brew_packages:
   - act
   - ansible
   - ansible-lint
@@ -109,7 +109,7 @@ brew_packages:
   - zip
   - zizmor
   - zsh
-brew_cask_packages:
+macos_brew_cask_packages:
   - antigravity
   - antigravity-cli
   - claude

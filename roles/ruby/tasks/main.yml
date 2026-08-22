@@ -1,16 +1,16 @@
 ---
 - name: Set variables
   ansible.builtin.set_fact:
-    path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
+    ruby_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
 
 - name: Install and update Ruby packages
-  when: gem_packages is defined
+  when: ruby_gem_packages is defined
   environment:
-    PATH: "{{ path }}"
+    PATH: "{{ ruby_path }}"
   community.general.gem:
     name: "{{ item }}"
     executable: gem
-    state: latest
-  loop: "{{ gem_packages }}"
+    state: latest  # noqa: package-latest
+  loop: "{{ ruby_gem_packages }}"
   failed_when: false
   notify: Notify updates of Ruby via Slack

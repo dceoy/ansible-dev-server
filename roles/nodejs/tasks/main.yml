@@ -1,16 +1,16 @@
 ---
 - name: Set variables
   ansible.builtin.set_fact:
-    path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
+    nodejs_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
 
 - name: Install and update packages
-  when: npm_packages is defined
+  when: nodejs_npm_packages is defined
   environment:
-    PATH: "{{ path }}"
+    PATH: "{{ nodejs_path }}"
   community.general.npm:
     name: "{{ item }}"
     global: true
-    state: latest
-  loop: "{{ npm_packages }}"
+    state: latest  # noqa: package-latest
+  loop: "{{ nodejs_npm_packages }}"
   failed_when: false
   notify: Notify updates of Node.js via Slack

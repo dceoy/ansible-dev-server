@@ -42,25 +42,25 @@
   ansible.builtin.dnf:
     update_cache: true
     name: '*'
-    state: latest
+    state: latest  # noqa: package-latest
   notify: Notify updates of the system via Slack
 
 - name: Install packages
-  when: yum_packages is defined
+  when: centos_yum_packages is defined
   become: true
   ansible.builtin.dnf:
-    name: "{{ yum_packages }}"
-    state: latest
+    name: "{{ centos_yum_packages }}"
+    state: latest  # noqa: package-latest
   failed_when: false
   notify: Notify updates of the system via Slack
 
 - name: Set users
-  when: users is defined
+  when: centos_users is defined
   become: true
   ansible.builtin.user:
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
     append: true
-  loop: "{{ users }}"
+  loop: "{{ centos_users }}"
   notify: Notify updates of the system via Slack

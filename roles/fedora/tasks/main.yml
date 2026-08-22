@@ -41,26 +41,26 @@
   become: true
   ansible.builtin.dnf:
     name: '*'
-    state: latest
+    state: latest  # noqa: package-latest
     update_cache: true
   notify: Notify updates of the system via Slack
 
 - name: Install packages
-  when: dnf_packages is defined
+  when: fedora_dnf_packages is defined
   become: true
   ansible.builtin.dnf:
-    name: "{{ dnf_packages }}"
-    state: latest
+    name: "{{ fedora_dnf_packages }}"
+    state: latest  # noqa: package-latest
     update_cache: true
   notify: Notify updates of the system via Slack
 
 - name: Set users
-  when: users is defined
+  when: fedora_users is defined
   become: true
   ansible.builtin.user:
     name: "{{ item.name }}"
     shell: "{{ item.shell }}"
     groups: "{{ item.groups }}"
     append: true
-  loop: "{{ users }}"
+  loop: "{{ fedora_users }}"
   notify: Notify updates of the system via Slack
