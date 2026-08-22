@@ -67,6 +67,7 @@
       - install
       - "{{ item }}"
   loop: "{{ python_uv_tools }}"
+  changed_when: true
   notify: Notify updates of Python via Slack
 
 - name: Upgrade Python command-line tools with uv
