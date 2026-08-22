@@ -1,13 +1,8 @@
 ---
-ruby_gem_packages:
+ruby_cli_tools:
   - bundler
   - clockwork
-  - github-pages
-  - mechanize
   - middleman
   - rake
   - rubocop
-  - selenium-webdriver
   - statelint
-  - toml-rb
-  - twitter

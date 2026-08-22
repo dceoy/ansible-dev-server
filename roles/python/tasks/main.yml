@@ -1,30 +1,145 @@
 ---
-- name: Install Python virtual environment support on Ubuntu
+- name: Check if uv is installed
+  when: python_uv_tools is defined
+  ansible.builtin.stat:
+    path: "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+  register: python_uv
+
+- name: Check installed uv version
   when:
-    - python_pip_packages is defined
+    - python_uv_tools is defined
+    - python_uv.stat.exists
+  ansible.builtin.command:
+    argv:
+      - "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+      - --version
+  register: python_uv_version_result
+  changed_when: false
+
+- name: Determine whether uv installation is required
+  when: python_uv_tools is defined
+  ansible.builtin.set_fact:
+    python_uv_install_required: >-
+      {{
+        not python_uv.stat.exists
+        or (
+          python_uv_version_result.stdout
+          | default('')
+          | regex_findall('^uv ([^ ]+)')
+          | first
+          | default('')
+        ) != python_uv_version
+      }}
+
+- name: Install uv installer prerequisite on Fedora and CentOS
+  when:
+    - python_uv_tools is defined
+    - python_uv_install_required
+    - ansible_facts['distribution'] in ['Fedora', 'CentOS']
+  become: true
+  ansible.builtin.package:
+    name: curl
+    state: present
+
+- name: Install uv installer prerequisite on Ubuntu
+  when:
+    - python_uv_tools is defined
+    - python_uv_install_required
     - ansible_facts['distribution'] == 'Ubuntu'
   become: true
   ansible.builtin.apt:
-    name: python3-venv
+    name: curl
     state: present
     update_cache: true
 
-- name: Install and update packages in a virtual environment
-  when: python_pip_packages is defined
-  ansible.builtin.pip:
-    name: "{{ python_pip_packages }}"
-    state: latest  # noqa: package-latest
-    virtualenv: "{{ ansible_facts['env']['HOME'] }}/.venv"
-    virtualenv_command: "{{ ansible_facts['python']['executable'] }} -m venv"
+- name: Download the uv installer
+  when:
+    - python_uv_tools is defined
+    - python_uv_install_required
+  ansible.builtin.get_url:
+    url: "https://releases.astral.sh/github/uv/releases/download/{{ python_uv_version }}/uv-installer.sh"
+    dest: /tmp/install.uv.sh
+    mode: "0755"
+
+- name: Install uv
+  when:
+    - python_uv_tools is defined
+    - python_uv_install_required
+  ansible.builtin.command: /tmp/install.uv.sh
+  environment:
+    UV_INSTALL_DIR: "{{ ansible_facts['env']['HOME'] }}/.local/bin"
+    UV_NO_MODIFY_PATH: "1"
+  changed_when: true
   notify: Notify updates of Python via Slack
 
-- name: Add the Python virtual environment to PATH
+- name: Verify installed uv version
+  when: python_uv_tools is defined
+  ansible.builtin.command:
+    argv:
+      - "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+      - --version
+  register: python_uv_version_verify
+  changed_when: false
+  failed_when: >-
+    (
+      python_uv_version_verify.stdout
+      | regex_findall('^uv ([^ ]+)')
+      | first
+      | default('')
+    ) != python_uv_version
+
+- name: List installed uv tools
+  when: python_uv_tools is defined
+  ansible.builtin.command:
+    argv:
+      - "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+      - tool
+      - list
+  register: python_uv_tool_list
+  changed_when: false
+
+- name: Install Python command-line tools with uv
+  when:
+    - python_uv_tools is defined
+    - (python_uv_tool_list.stdout_lines | select('match', '^' ~ item ~ ' ') | list | length) == 0
+  ansible.builtin.command:
+    argv:
+      - "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+      - tool
+      - install
+      - "{{ item }}"
+  loop: "{{ python_uv_tools }}"
+  changed_when: true
+  notify: Notify updates of Python via Slack
+
+- name: Upgrade Python command-line tools with uv
+  when: python_uv_tools is defined
+  ansible.builtin.command:
+    argv:
+      - "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+      - tool
+      - upgrade
+      - --all
+  register: python_uv_tool_upgrade
+  changed_when: "'Nothing to upgrade' not in (python_uv_tool_upgrade.stdout + python_uv_tool_upgrade.stderr)"
+  notify: Notify updates of Python via Slack
+
+- name: Remove the legacy Python virtual environment PATH block
+  ansible.builtin.blockinfile:
+    create: true
+    path: "{{ ansible_facts['env']['HOME'] }}/.zprofile"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: Python virtual environment"
+    mode: "0644"
+    state: absent
+  notify: Notify updates of Python via Slack
+
+- name: Add uv tools to PATH
   ansible.builtin.blockinfile:
     create: true
     dest: "{{ ansible_facts['env']['HOME'] }}/.zprofile"
-    marker: "# {mark} ANSIBLE MANAGED BLOCK: Python virtual environment"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: Python tools"
     mode: "0644"
     state: present
     block: |
-      export PATH="${HOME}/.venv/bin:${PATH}"
+      export PATH="${HOME}/.local/bin:${PATH}"
   notify: Notify updates of Python via Slack

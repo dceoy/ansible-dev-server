@@ -1,5 +1,5 @@
 ---
-nodejs_npm_packages:
+nodejs_cli_tools:
   - "@biomejs/biome"
   - ajv-cli
   - bats
@@ -9,6 +9,5 @@ nodejs_npm_packages:
   - pnpm
   - puppeteer
   - stylelint
-  - stylelint-config-standard
   - typescript
   - wscat

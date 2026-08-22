@@ -3,14 +3,14 @@
   ansible.builtin.set_fact:
     ruby_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
 
-- name: Install and update Ruby packages
-  when: ruby_gem_packages is defined
+- name: Install and update Ruby command-line tools
+  when: ruby_cli_tools is defined
   environment:
     PATH: "{{ ruby_path }}"
   community.general.gem:
     name: "{{ item }}"
     executable: gem
     state: latest  # noqa: package-latest
-  loop: "{{ ruby_gem_packages }}"
+  loop: "{{ ruby_cli_tools }}"
   failed_when: false
   notify: Notify updates of Ruby via Slack

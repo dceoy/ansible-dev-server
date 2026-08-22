@@ -10,8 +10,8 @@
     state: directory
     mode: "0755"
 
-- name: Install packages
-  when: go_packages is defined
+- name: Install Go command-line tools
+  when: go_cli_tools is defined
   environment:
     PATH: "{{ go_path }}"
     GOPATH: "{{ go_gopath }}"
@@ -20,7 +20,7 @@
       - go
       - install
       - "{{ item }}@latest"
-  loop: "{{ go_packages }}"
+  loop: "{{ go_cli_tools }}"
   changed_when: true
   failed_when: false
   notify: Notify updates of Go via Slack
