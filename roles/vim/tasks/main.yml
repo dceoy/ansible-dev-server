@@ -20,15 +20,26 @@
     - bundles
   notify: Notify updates of Vim via Slack
 
-- name: Clone install-latest-vim
-  ansible.builtin.git:
-    repo: https://github.com/dceoy/install-latest-vim.git
-    dest: "{{ ansible_facts['env']['HOME'] }}/.vim/src/install-latest-vim"
+- name: Remove legacy install-latest-vim clone
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.vim/src/install-latest-vim"
+    state: absent
+  notify: Notify updates of Vim via Slack
+
+- name: Download install-latest-vim installer
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/dceoy/install-latest-vim/aae0875c9a5a9c34fabb36e303535a9fd07514f8/install_latest_vim.sh
+    dest: "{{ ansible_facts['env']['HOME'] }}/.vim/src/install_latest_vim.sh"
+    mode: "0755"
+    force: true
   notify: Notify updates of Vim via Slack
 
 - name: Install or update Vim and Vim plugins
-  ansible.builtin.shell: |
-    {{ ansible_facts['env']['HOME'] }}/.vim/src/install-latest-vim/install_latest_vim.sh --lua --vim-plug
+  ansible.builtin.command:
+    argv:
+      - "{{ ansible_facts['env']['HOME'] }}/.vim/src/install_latest_vim.sh"
+      - --lua
+      - --vim-plug
   changed_when: true
   failed_when: false
   notify: Notify updates of Vim via Slack

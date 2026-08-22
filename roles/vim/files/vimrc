@@ -26,9 +26,20 @@ set autoindent                              " take indent for new line from prev
 set expandtab                               " replace tabs with spaces
 set shiftwidth=2                            " number of spaces to use for each indentation step
 set softtabstop=-1                          " use shiftwidth for editing tabs
+set whichwrap=b,s,h,l,<,>,[,],~             " allow backspace and cursor keys to cross line boundaries
+set scrolloff=16                            " keep context above and below the cursor
+set autoread                                " automatically reload files changed externally
 set number                                  " show the line number in front of each line
+set cursorline                              " highlight the screen line of the cursor
 set cmdheight=2                             " number of screen lines to use for the command-line
 set laststatus=2                            " always show the status line
+
+" search
+set incsearch                               " show matches while typing a search
+set hlsearch                                " highlight search matches
+set ignorecase                              " ignore case in searches
+set smartcase                               " make searches case-sensitive when uppercase is used
+nnoremap <Esc><Esc> <Cmd>nohlsearch<CR>     " clear search highlighting
 
 " colorscheme
 set termguicolors                           " enable true-color terminal rendering
