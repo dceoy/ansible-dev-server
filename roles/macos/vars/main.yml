@@ -1,6 +1,7 @@
 ---
 macos_brew_packages:
   - act
+  - agent-browser
   - ansible
   - ansible-lint
   - aria2
@@ -89,6 +90,7 @@ macos_brew_packages:
   - shfmt
   - shunit2
   - sqlite
+  - steipete/tap/oracle
   - stylelint
   - tenv
   - tflint
