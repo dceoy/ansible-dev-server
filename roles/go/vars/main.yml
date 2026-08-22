@@ -1,5 +1,5 @@
 ---
-go_packages:
+go_cli_tools:
   - github.com/golangci/golangci-lint/cmd/golangci-lint
   - github.com/kahing/goofys
   - github.com/pelletier/go-toml/v2/cmd/tomll
