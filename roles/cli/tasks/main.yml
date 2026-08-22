@@ -65,21 +65,34 @@
     path: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh"
   register: cli_ohmyzsh
 
+- name: Create a temporary file for the oh-my-zsh installer
+  when: not cli_ohmyzsh.stat.exists
+  ansible.builtin.tempfile:
+    state: file
+    suffix: .sh
+  register: cli_ohmyzsh_installer
+
 - name: Download the installer for oh-my-zsh
   when: not cli_ohmyzsh.stat.exists
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/d42209f2afa8ec3e6971e5b4695ff27f9d5670d2/tools/install.sh
-    dest: /tmp/install.ohmyz.sh
+    dest: "{{ cli_ohmyzsh_installer.path }}"
     mode: '0755'
   notify: Notify updates of CLI via Slack
 
 - name: Install oh-my-zsh
   when: not cli_ohmyzsh.stat.exists
-  ansible.builtin.command: /tmp/install.ohmyz.sh
+  ansible.builtin.command: "{{ cli_ohmyzsh_installer.path }}"
   environment:
     RUNZSH: 'no'
   changed_when: true
   notify: Notify updates of CLI via Slack
+
+- name: Remove the oh-my-zsh installer
+  when: not cli_ohmyzsh.stat.exists
+  ansible.builtin.file:
+    path: "{{ cli_ohmyzsh_installer.path }}"
+    state: absent
 
 - name: Clone litmus-zsh-theme into ~/.oh-my-zsh/custom/themes
   ansible.builtin.git:
