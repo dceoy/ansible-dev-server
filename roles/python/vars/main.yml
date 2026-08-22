@@ -14,7 +14,7 @@ python_uv_tools:
   - luigi
   - magika
   - marimo
-  - MonkeyType
+  - monkeytype
   - mypy
   - notebook
   - pre-commit
