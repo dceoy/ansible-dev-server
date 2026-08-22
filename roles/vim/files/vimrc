@@ -26,6 +26,7 @@ set autoindent                              " take indent for new line from prev
 set expandtab                               " replace tabs with spaces
 set shiftwidth=2                            " number of spaces to use for each indentation step
 set softtabstop=-1                          " use shiftwidth for editing tabs
+set whichwrap=b,s,h,l,<,>,[,],~             " allow backspace and cursor keys to cross line boundaries
 set number                                  " show the line number in front of each line
 set cmdheight=2                             " number of screen lines to use for the command-line
 set laststatus=2                            " always show the status line
