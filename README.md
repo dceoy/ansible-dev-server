@@ -2,10 +2,6 @@
 
 Ansible playbooks for development servers
 
-## Requirements
-
-- Ansible Core 2.18 or later
-
 ## Setup
 
 ```sh

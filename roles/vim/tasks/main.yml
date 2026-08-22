@@ -17,7 +17,6 @@
     state: directory
   loop:
     - src
-    - bundles
   notify: Notify updates of Vim via Slack
 
 - name: Remove legacy install-latest-vim clone
