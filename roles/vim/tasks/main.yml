@@ -25,6 +25,7 @@
     url: https://raw.githubusercontent.com/dceoy/install-latest-vim/master/install_latest_vim.sh
     dest: "{{ ansible_facts['env']['HOME'] }}/.vim/src/install_latest_vim.sh"
     mode: "0755"
+    force: true
   notify: Notify updates of Vim via Slack
 
 - name: Install or update Vim and Vim plugins
