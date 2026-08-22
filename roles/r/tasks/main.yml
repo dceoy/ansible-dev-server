@@ -4,12 +4,17 @@
     r_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
     r_libs: "{{ ansible_facts['env']['HOME'] }}/.clir/r/library"
     r_clir: "{{ ansible_facts['env']['HOME'] }}/.clir/bin/clir"
-    r_install_clir_sh: /tmp/install_clir.sh
+
+- name: Create a temporary file for the clir installer
+  ansible.builtin.tempfile:
+    state: file
+    suffix: .sh
+  register: r_clir_installer
 
 - name: Download the installer of clir
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/dceoy/clir/bf6c2cf7fbdea0b026e7ad4a0262e33bbf87ca01/install_clir.sh
-    dest: "{{ r_install_clir_sh }}"
+    dest: "{{ r_clir_installer.path }}"
     mode: "0755"
 
 - name: Install or update clir
@@ -19,13 +24,13 @@
   ansible.builtin.command:
     argv:
       - bash
-      - "{{ r_install_clir_sh }}"
+      - "{{ r_clir_installer.path }}"
   changed_when: true
   notify: Notify updates of R via Slack
 
 - name: Remove the installer
   ansible.builtin.file:
-    path: "{{ r_install_clir_sh }}"
+    path: "{{ r_clir_installer.path }}"
     state: absent
 
 - name: Set cran repositories
