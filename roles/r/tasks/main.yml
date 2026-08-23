@@ -26,6 +26,36 @@
       R_LIBS_USER=~/.clir/r/%v/library
   notify: Notify updates of R via Slack
 
+- name: Get current R library version
+  environment:
+    PATH: "{{ r_path }}"
+  ansible.builtin.command:
+    argv:
+      - R
+      - --quiet
+      - --slave
+      - -e
+      - 'cat(paste(R.version$major, strsplit(R.version$minor, "\\.")[[1]][1], sep="."))'
+  register: r_library_version
+  changed_when: false
+
+- name: Find R library directories
+  ansible.builtin.find:
+    paths: "{{ ansible_facts['env']['HOME'] }}/.clir/r"
+    file_type: directory
+    recurse: false
+  register: r_library_directories
+
+- name: Remove old R library directories
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: absent
+  loop: "{{ r_library_directories.files }}"
+  when:
+    - (item.path | basename) is match('^[0-9]+\\.[0-9]+$')
+    - (item.path | basename) != r_library_version.stdout
+  notify: Notify updates of R via Slack
+
 - name: Create a temporary file for the clir installer
   ansible.builtin.tempfile:
     state: file
