@@ -10,6 +10,18 @@
     state: directory
     mode: "0755"
 
+- name: Set GOPATH and add its bin directory to PATH in zprofile
+  ansible.builtin.blockinfile:
+    create: true
+    dest: "{{ ansible_facts['env']['HOME'] }}/.zprofile"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: Go"
+    mode: "0644"
+    state: present
+    block: |
+      export GOPATH="{{ go_gopath }}"
+      export PATH="${GOPATH}/bin:${PATH}"
+  notify: Notify updates of Go via Slack
+
 - name: Install Go command-line tools
   when: go_cli_tools is defined
   environment:
