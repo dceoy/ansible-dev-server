@@ -2,7 +2,7 @@
 - name: Set variables
   ansible.builtin.set_fact:
     r_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
-    r_libs: "{{ ansible_facts['env']['HOME'] }}/.clir/r/library"
+    r_libs: "{{ ansible_facts['env']['HOME'] }}/.clir/r/%v/library"
     r_clir: "{{ ansible_facts['env']['HOME'] }}/.clir/bin/clir"
 
 - name: Set R_LIBS_USER and add clir bin directory to PATH in zprofile
@@ -25,7 +25,7 @@
 
 - name: Download the installer of clir
   ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/dceoy/clir/bf6c2cf7fbdea0b026e7ad4a0262e33bbf87ca01/install_clir.sh
+    url: https://raw.githubusercontent.com/dceoy/clir/67579209ec0fd338445b70010addc8aa7309ede4/install_clir.sh
     dest: "{{ r_clir_installer.path }}"
     mode: "0755"
 
@@ -74,7 +74,6 @@
     argv:
       - "{{ r_clir }}"
       - install
-      - --devt=cran
       - --quiet
       - "{{ item }}"
   loop: "{{ r_packages.cran }}"
@@ -93,9 +92,8 @@
     argv:
       - "{{ r_clir }}"
       - install
-      - --devt=bioc
       - --quiet
-      - "{{ item }}"
+      - "bioc::{{ item }}"
   loop: "{{ r_packages.bioconductor }}"
   changed_when: true
   failed_when: false
