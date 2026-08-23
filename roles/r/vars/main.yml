@@ -52,6 +52,7 @@ r_packages:
     - loo
     - MCMCpack
     - miniCRAN
+    - mlr3
     - naturalsort
     - optparse
     - patchwork
