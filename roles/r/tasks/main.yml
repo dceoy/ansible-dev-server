@@ -2,10 +2,9 @@
 - name: Set variables
   ansible.builtin.set_fact:
     r_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
-    r_libs: "{{ ansible_facts['env']['HOME'] }}/.clir/r/%v/library"
     r_clir: "{{ ansible_facts['env']['HOME'] }}/.clir/bin/clir"
 
-- name: Set R_LIBS_USER and add clir bin directory to PATH in zprofile
+- name: Add clir bin directory to PATH in zprofile
   ansible.builtin.blockinfile:
     create: true
     dest: "{{ ansible_facts['env']['HOME'] }}/.zprofile"
@@ -13,7 +12,6 @@
     mode: "0644"
     state: present
     block: |
-      export R_LIBS_USER="{{ r_libs }}"
       export PATH="{{ ansible_facts['env']['HOME'] }}/.clir/bin:${PATH}"
   notify: Notify updates of R via Slack
 
@@ -25,14 +23,13 @@
 
 - name: Download the installer of clir
   ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/dceoy/clir/67579209ec0fd338445b70010addc8aa7309ede4/install_clir.sh
+    url: https://raw.githubusercontent.com/dceoy/clir/3dce6768b52e1d61f5b18031a216d651f054faf0/install_clir.sh
     dest: "{{ r_clir_installer.path }}"
     mode: "0755"
 
 - name: Install or update clir
   environment:
     PATH: "{{ r_path }}"
-    R_LIBS_USER: "{{ r_libs }}"
   ansible.builtin.command:
     argv:
       - bash
@@ -51,7 +48,6 @@
     - r_repos.cran is defined
   environment:
     PATH: "{{ r_path }}"
-    R_LIBS_USER: "{{ r_libs }}"
   ansible.builtin.command:
     argv:
       - "{{ r_clir }}"
@@ -69,7 +65,6 @@
     - r_packages.cran is defined
   environment:
     PATH: "{{ r_path }}"
-    R_LIBS_USER: "{{ r_libs }}"
   ansible.builtin.command:
     argv:
       - "{{ r_clir }}"
@@ -87,7 +82,6 @@
     - r_packages.bioconductor is defined
   environment:
     PATH: "{{ r_path }}"
-    R_LIBS_USER: "{{ r_libs }}"
   ansible.builtin.command:
     argv:
       - "{{ r_clir }}"
