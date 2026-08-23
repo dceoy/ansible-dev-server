@@ -2,20 +2,22 @@
 
 Ansible playbooks for development servers
 
+[![CI/CD](https://github.com/dceoy/ansible-dev-server/actions/workflows/ci.yml/badge.svg)](https://github.com/dceoy/ansible-dev-server/actions/workflows/ci.yml)
+
 ## Setup
 
 ```sh
-$ git clone https://github.com/dceoy/ansible-dev-server.git
-$ cd ansible-dev-server
-$ ansible-galaxy collection install -r requirements.yml
-$ cp misc/example_hosts hosts
-$ vim hosts   # => edit
+git clone https://github.com/dceoy/ansible-dev-server.git
+cd ansible-dev-server
+ansible-galaxy collection install -r requirements.yml
+cp misc/example_hosts hosts
+vim hosts   # => edit
 ```
 
 ## Update
 
 ```sh
-$ git pull origin master
+git pull origin master
 ```
 
 ## Usage
@@ -23,7 +25,7 @@ $ git pull origin master
 Set up the systems
 
 ```sh
-$ ansible-playbook --vault-password-file ./.vault_password_file -K provision.yml
+ansible-playbook --vault-password-file ./.vault_password_file -K provision.yml
 ```
 
 ## Host vars (Ansible Vault)
