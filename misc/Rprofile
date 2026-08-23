@@ -6,8 +6,6 @@
           deparse.max.lines = 2)
 }
 
-.libPaths(c(paste0(Sys.getenv('HOME'), '/.clir/r/library')))
-
 if(interactive()) {
   sapply(c('dbplyr', 'doParallel', 'foreach', 'ggpubr', 'tidyverse'),
          require, character.only = TRUE, quietly = TRUE)
