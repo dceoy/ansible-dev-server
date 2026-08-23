@@ -5,6 +5,17 @@
     r_libs: "{{ ansible_facts['env']['HOME'] }}/.clir/r/library"
     r_clir: "{{ ansible_facts['env']['HOME'] }}/.clir/bin/clir"
 
+- name: Set R_LIBS_USER in zprofile
+  ansible.builtin.blockinfile:
+    create: true
+    dest: "{{ ansible_facts['env']['HOME'] }}/.zprofile"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: R library"
+    mode: "0644"
+    state: present
+    block: |
+      export R_LIBS_USER="{{ r_libs }}"
+  notify: Notify updates of R via Slack
+
 - name: Create a temporary file for the clir installer
   ansible.builtin.tempfile:
     state: file
