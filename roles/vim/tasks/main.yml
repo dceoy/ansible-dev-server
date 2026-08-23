@@ -6,15 +6,6 @@
     mode: "0644"
   notify: Notify updates of Vim via Slack
 
-- name: Remove legacy install-latest-vim artifacts
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: absent
-  loop:
-    - "{{ ansible_facts['env']['HOME'] }}/.vim/src/install-latest-vim"
-    - "{{ ansible_facts['env']['HOME'] }}/.vim/src/install_latest_vim.sh"
-  notify: Notify updates of Vim via Slack
-
 - name: Create a temporary file for the install-latest-vim installer
   ansible.builtin.tempfile:
     state: file
@@ -42,3 +33,14 @@
   ansible.builtin.file:
     path: "{{ vim_installer.path }}"
     state: absent
+
+- name: Add ~/.vim/bin to PATH
+  ansible.builtin.blockinfile:
+    create: true
+    dest: "{{ ansible_facts['env']['HOME'] }}/.zprofile"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: Vim tools"
+    mode: "0644"
+    state: present
+    block: |
+      export PATH="${HOME}/.vim/bin:${PATH}"
+  notify: Notify updates of Vim via Slack

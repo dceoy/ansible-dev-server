@@ -124,15 +124,6 @@
   changed_when: "'Nothing to upgrade' not in (python_uv_tool_upgrade.stdout + python_uv_tool_upgrade.stderr)"
   notify: Notify updates of Python via Slack
 
-- name: Remove the legacy Python virtual environment PATH block
-  ansible.builtin.blockinfile:
-    create: true
-    path: "{{ ansible_facts['env']['HOME'] }}/.zprofile"
-    marker: "# {mark} ANSIBLE MANAGED BLOCK: Python virtual environment"
-    mode: "0644"
-    state: absent
-  notify: Notify updates of Python via Slack
-
 - name: Add uv tools to PATH
   ansible.builtin.blockinfile:
     create: true
