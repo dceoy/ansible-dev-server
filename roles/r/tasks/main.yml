@@ -15,6 +15,17 @@
       export PATH="{{ ansible_facts['env']['HOME'] }}/.clir/bin:${PATH}"
   notify: Notify updates of R via Slack
 
+- name: Set R library in Renviron
+  ansible.builtin.blockinfile:
+    create: true
+    dest: "{{ ansible_facts['env']['HOME'] }}/.Renviron"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: R library"
+    mode: "0644"
+    state: present
+    block: |
+      R_LIBS_USER=~/.clir/r/%v/library
+  notify: Notify updates of R via Slack
+
 - name: Create a temporary file for the clir installer
   ansible.builtin.tempfile:
     state: file
