@@ -35,7 +35,7 @@
       - --quiet
       - --slave
       - -e
-      - 'cat(paste(R.version$major, strsplit(R.version$minor, "\\.")[[1]][1], sep="."))'
+      - 'cat(R.version$major, strsplit(R.version$minor, ".", fixed = TRUE)[[1]][1], sep = ".")'
   register: r_library_version
   changed_when: false
 
@@ -52,7 +52,7 @@
     state: absent
   loop: "{{ r_library_directories.files }}"
   when:
-    - (item.path | basename) is match('^[0-9]+\\.[0-9]+$')
+    - (item.path | basename) is match('^[0-9]+[.][0-9]+$')
     - (item.path | basename) != r_library_version.stdout
   notify: Notify updates of R via Slack
 
