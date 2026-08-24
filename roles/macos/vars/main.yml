@@ -63,6 +63,7 @@ macos_brew_packages:
   - markdownlint-cli2
   - md5sha1sum
   - mercurial
+  - mise
   - ncdu
   - nkf
   - nmap
