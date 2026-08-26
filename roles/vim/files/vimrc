@@ -45,6 +45,8 @@ nnoremap <Esc><Esc> <Cmd>nohlsearch<CR>     " clear search highlighting
 set termguicolors                           " enable true-color terminal rendering
 set background=dark                         " use a dark background
 colorscheme iceberg
+hi Visual cterm=NONE ctermbg=60 ctermfg=NONE gui=NONE guibg=#3b4261 guifg=NONE
+hi VisualNOS cterm=NONE ctermbg=60 ctermfg=NONE gui=NONE guibg=#3b4261 guifg=NONE
 
 " whitespace visibility
 " Tabs are unusual but valid, trailing spaces should be removed, and U+3000
