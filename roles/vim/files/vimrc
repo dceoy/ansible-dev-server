@@ -15,6 +15,7 @@ Plug 'elixir-editors/vim-elixir'              " Elixir syntax and indentation
 Plug 'pearofducks/ansible-vim'                " Ansible syntax support
 Plug 'aliou/bats.vim'                         " Bats syntax
 Plug 'prisma/vim-prisma'                      " Prisma schema syntax
+Plug 'wuelnerdotexe/vim-astro'                 " Astro syntax and indentation
 " Copilot
 Plug 'github/copilot.vim'                     " GitHub Copilot
 
