@@ -16,11 +16,36 @@ permissions:
   contents: read
 jobs:
   ansible-lint:
+    runs-on: ubuntu-slim
     permissions:
       contents: read
-    uses: dceoy/gha-for-devops/.github/workflows/ansible-lint.yml@main  # zizmor: ignore[unpinned-uses]
-    with:
-      python-version: '3.14'
+    env:
+      UV_EXCLUDE_NEWER: 7 days
+      ANSIBLE_LINT_VERSION: 26.6.0
+      YAMLLINT_VERSION: 1.38.0
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup latest Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0
+        with:
+          python-version: 3.x
+      - name: Setup uv
+        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7  # v10.2.0
+        with:
+          enable-cache: true
+      - name: Execute yamllint
+        run: |
+          git ls-files -z -- '*.yml' '*.yaml' |
+            xargs -0 -r uvx --from "yamllint==${YAMLLINT_VERSION}" yamllint \
+              --config-data='{"extends": "relaxed", "rules": {"line-length": "disable"}}'
+      - name: Execute ansible-lint
+        run: |
+          uvx --from "ansible-lint==${ANSIBLE_LINT_VERSION}" \
+            --with 'ansible-core>=2.22.0b2,<2.23' \
+            --prerelease allow ansible-lint .
   dependabot-auto-merge:
     if: >
       github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dependabot[bot]'
