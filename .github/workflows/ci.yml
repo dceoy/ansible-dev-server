@@ -19,6 +19,8 @@ jobs:
     permissions:
       contents: read
     uses: dceoy/gha-for-devops/.github/workflows/ansible-lint.yml@main  # zizmor: ignore[unpinned-uses]
+    with:
+      python-version: '3.14'
   dependabot-auto-merge:
     if: >
       github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dependabot[bot]'
