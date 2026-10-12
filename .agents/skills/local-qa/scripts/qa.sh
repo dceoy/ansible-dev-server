@@ -13,7 +13,7 @@ uvx ansible-lint .
 git ls-files -z -- '*.yml' | xargs -0 -t uvx yamllint -d '{"extends": "relaxed", "rules": {"line-length": "disable"}}'
 
 # Markdown
-npx -y prettier --write './**/*.md'
+pnpm dlx prettier --write './**/*.md'
 
 # GitHub Actions
 uvx zizmor --fix=safe .github/workflows
