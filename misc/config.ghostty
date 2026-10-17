@@ -1,5 +1,6 @@
 # Font
-font-feature = -calt  # Disable programming ligatures (e.g., != -> ≠)
+# Display operators such as != without programming ligatures
+font-feature = -calt
 
 # Appearance
 background = 000000
