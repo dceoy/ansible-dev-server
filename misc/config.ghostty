@@ -1,8 +1,5 @@
-# Font
-# Display operators such as != without programming ligatures
-font-feature = -calt
-
 # Appearance
+font-feature = -calt
 background = 000000
 background-opacity = 0.8
 background-blur-radius = 20
