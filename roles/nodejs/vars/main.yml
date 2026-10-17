@@ -1,9 +1,10 @@
 ---
 nodejs_cli_tools:
-  - "@biomejs/biome"
+  - '@biomejs/biome'
   - ajv-cli
   - bats
   - htmlhint
+  - oxlint
   - markdownlint-cli2
   - prettier
   - pnpm

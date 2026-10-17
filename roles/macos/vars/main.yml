@@ -2,6 +2,7 @@
 macos_brew_packages:
   - act
   - agent-browser
+  - anomalyco/tap/opencode-v2
   - ansible
   - ansible-lint
   - aria2
@@ -69,7 +70,6 @@ macos_brew_packages:
   - nmap
   - node
   - ollama
-  - opencode
   - p7zip
   - pandoc
   - pbzip2
@@ -86,7 +86,7 @@ macos_brew_packages:
   - ripgrep
   - rsync
   - ruby
-  - ruff
+  - semgrep
   - shellcheck
   - shfmt
   - shunit2

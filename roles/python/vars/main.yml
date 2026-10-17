@@ -2,35 +2,20 @@
 python_uv_version: "0.12.5"
 python_uv_tools:
   - ansible-lint
-  - black
   - cfn-lint
-  - cookiecutter
+  - checkov
   - csvkit
   - cutadapt
-  - cython
-  - fabric
-  - git-remote-codecommit
   - grip
   - ipython
   - luigi
-  - magika
   - marimo
-  - monkeytype
-  - mypy
-  - notebook
-  - pre-commit
-  - pr-agent
   - pyinstaller
   - pyright
-  - pytest
   - ruff
-  - sphinx
-  - streamlit
-  - tox
-  - tqdm
-  - tryceratops
-  - twine
+  - semgrep
   - ty
   - vulture
   - yamllint
   - yq
+  - zizmor
