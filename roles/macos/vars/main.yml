@@ -108,7 +108,6 @@ macos_brew_packages:
   - wdiff
   - wget
   - yamllint
-  - yq
   - zip
   - zizmor
   - zsh

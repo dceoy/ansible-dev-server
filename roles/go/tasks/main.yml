@@ -36,3 +36,15 @@
   changed_when: true
   failed_when: false
   notify: Notify updates of Go via Slack
+
+- name: Verify Go-based yq installation
+  when:
+    - go_cli_tools is defined
+    - "'github.com/mikefarah/yq/v4' in go_cli_tools"
+  ansible.builtin.command:
+    argv:
+      - "{{ go_gopath }}/bin/yq"
+      - --version
+  register: go_yq_version
+  changed_when: false
+  failed_when: "'github.com/mikefarah/yq' not in go_yq_version.stdout"

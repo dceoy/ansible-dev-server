@@ -78,6 +78,13 @@
   failed_when: false
   notify: Notify updates of the system via Slack
 
+- name: Remove legacy Python-based yq package
+  become: true
+  ansible.builtin.apt:
+    name: yq
+    state: absent
+  notify: Notify updates of the system via Slack
+
 - name: Set users
   when: ubuntu_users is defined
   become: true

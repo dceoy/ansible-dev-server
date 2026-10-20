@@ -47,6 +47,7 @@ centos_yum_packages:
   - glog-devel
   - gmp-devel
   - gnome-terminal
+  - golang
   - gnuplot
   - go
   - gsl-devel

@@ -98,6 +98,19 @@
   register: python_uv_tool_list
   changed_when: false
 
+- name: Remove legacy Python yq installed with uv
+  when:
+    - python_uv_tools is defined
+    - (python_uv_tool_list.stdout_lines | select('match', '^yq ') | list | length) > 0
+  ansible.builtin.command:
+    argv:
+      - "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+      - tool
+      - uninstall
+      - yq
+  changed_when: true
+  notify: Notify updates of Python via Slack
+
 - name: Install Python command-line tools with uv
   when:
     - python_uv_tools is defined
