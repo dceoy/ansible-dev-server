@@ -149,6 +149,7 @@ fedora_dnf_packages:
   - whois
   - wxMaxima
   - xfig
+  - yq
   - zsh
 fedora_users:
   - name: dceoy
