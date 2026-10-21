@@ -17,5 +17,4 @@ python_uv_tools:
   - ty
   - vulture
   - yamllint
-  - yq
   - zizmor

@@ -140,6 +140,7 @@ centos_yum_packages:
   - whois
   - xfig
   - yum-utils
+  - yq
   - zsh
 centos_users:
   - name: dceoy
