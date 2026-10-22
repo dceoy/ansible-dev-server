@@ -36,7 +36,6 @@ r_packages:
     - glasso
     - glmmML
     - glmnet
-    - GMD
     - gplots
     - greta
     - HMM
@@ -48,7 +47,6 @@ r_packages:
     - latex2exp
     - leaflet
     - lintr
-    - lle
     - loo
     - MCMCpack
     - miniCRAN
@@ -94,6 +92,5 @@ r_packages:
     - GEOquery
     - GenomicRanges
     - org.Hs.eg.db
-    - PhViD
     - qvalue
     - RDRToolbox
