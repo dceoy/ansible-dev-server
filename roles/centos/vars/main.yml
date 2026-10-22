@@ -1,6 +1,7 @@
 ---
 centos_yum_packages:
   - '@Development tools'
+  - 7zip
   - ant
   - atlas-devel
   - autoconf
@@ -24,6 +25,7 @@ centos_yum_packages:
   - device-mapper-persistent-data
   - diffstat
   - dkms
+  - dnf-plugins-core
   - doxygen
   - elfutils
   - elixir
@@ -64,7 +66,6 @@ centos_yum_packages:
   - lapack-devel
   - leveldb-devel
   - libcurl-devel
-  - libdb4-devel
   - libffi-devel
   - libgit2-devel
   - libpcap-devel
@@ -99,7 +100,6 @@ centos_yum_packages:
   - openmpi-devel
   - openssl-devel
   - oprofile
-  - p7zip
   - pamtester
   - pandoc
   - parallel
@@ -139,7 +139,6 @@ centos_yum_packages:
   - wget
   - whois
   - xfig
-  - yum-utils
   - yq
   - zsh
 centos_users:

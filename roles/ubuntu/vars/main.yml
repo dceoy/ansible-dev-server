@@ -1,5 +1,6 @@
 ---
 ubuntu_apt_packages:
+  - 7zip
   - ant
   - apt-file
   - apt-utils
@@ -58,7 +59,8 @@ ubuntu_apt_packages:
   - liblua5.3-dev
   - libluajit-5.1-dev
   - libmagick++-dev
-  - libncurses5-dev
+  - libncurses-dev
+  - libnode-dev
   - libopencv-dev
   - libopenmpi-dev
   - libpcap-dev
@@ -73,7 +75,6 @@ ubuntu_apt_packages:
   - libssl-dev
   - librsvg2-bin
   - librsvg2-dev
-  - libv8-dev
   - libxml2-dev
   - libxslt1-dev
   - libzmq3-dev
@@ -87,7 +88,6 @@ ubuntu_apt_packages:
   - nmap
   - nodejs
   - npm
-  - p7zip-full
   - pamtester
   - pandoc
   - patch
@@ -124,7 +124,7 @@ ubuntu_apt_packages:
   - traceroute
   - tree
   - unzip
-  - vim-gnome
+  - vim-gtk3
   - wakeonlan
   - wget
   - whois

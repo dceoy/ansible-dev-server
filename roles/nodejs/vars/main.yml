@@ -1,6 +1,7 @@
 ---
 nodejs_cli_tools:
   - '@biomejs/biome'
+  - '@puppeteer/browsers'
   - ajv-cli
   - bats
   - htmlhint
@@ -8,7 +9,6 @@ nodejs_cli_tools:
   - markdownlint-cli2
   - prettier
   - pnpm
-  - puppeteer
   - stylelint
   - typescript
   - wscat

@@ -8,7 +8,6 @@ python_uv_tools:
   - cutadapt
   - grip
   - ipython
-  - luigi
   - marimo
   - pyinstaller
   - pyright

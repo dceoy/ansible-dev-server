@@ -1,6 +1,7 @@
 ---
 fedora_dnf_packages:
   - '@Development tools'
+  - 7zip
   - ant
   - atlas-devel
   - autoconf
@@ -66,7 +67,6 @@ fedora_dnf_packages:
   - lapack-devel
   - leveldb-devel
   - libcurl-devel
-  - libdb4-devel
   - libffi-devel
   - libgit2-devel
   - libpcap-devel
@@ -102,7 +102,6 @@ fedora_dnf_packages:
   - openmpi-devel
   - openssl-devel
   - oprofile
-  - p7zip
   - pamtester
   - pandoc
   - parallel
