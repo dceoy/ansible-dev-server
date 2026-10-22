@@ -46,6 +46,7 @@ macos_brew_packages:
   - groff
   - grep
   - grip
+  - grype
   - gzip
   - hadolint
   - hdf5
@@ -70,6 +71,7 @@ macos_brew_packages:
   - nmap
   - node
   - ollama
+  - osv-scanner
   - p7zip
   - pandoc
   - pbzip2
@@ -93,6 +95,7 @@ macos_brew_packages:
   - sqlite
   - steipete/tap/oracle
   - stylelint
+  - syft
   - tenv
   - tflint
   - tig
