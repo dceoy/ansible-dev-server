@@ -7,5 +7,6 @@ go_cli_tools_non_macos:
   - github.com/mikefarah/yq/v4
   - github.com/securego/gosec/v2/cmd/gosec
   - github.com/terraform-linters/tflint
+go_cli_tools_ubuntu_apt:
   - golang.org/x/vuln/cmd/govulncheck
   - mvdan.cc/sh/v3/cmd/shfmt

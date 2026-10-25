@@ -16,6 +16,10 @@
       nodejs_cli_tools
       + (nodejs_cli_tools_non_macos | default([])
          if ansible_facts['distribution'] != 'MacOSX' else [])
+      + (nodejs_cli_tools_ubuntu_apt | default([])
+         if ansible_facts['distribution'] != 'MacOSX'
+         and (ansible_facts['distribution'] != 'Ubuntu'
+           or ansible_facts['distribution_version'] is version('26.04', '<')) else [])
     }}
   failed_when: false
   notify: Notify updates of Node.js via Slack

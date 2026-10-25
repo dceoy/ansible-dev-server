@@ -43,3 +43,11 @@ Oxfmt is installed through npm so that its Prettier-backed HTML formatter works.
 The Vim role uses Homebrew Vim on macOS and builds Vim only on Linux.
 Previously installed duplicates are not automatically removed: review
 `npm ls -g --depth=0`, `uv tool list`, and `~/.go/bin` before cleaning up.
+
+
+On Ubuntu 26.04 LTS and later, nine supported CLI tools are installed from
+APT instead of Go, npm, or uv: `ansible-lint`, `bats`, `csvkit`,
+`govulncheck`, `grip`, `node-typescript` (the `tsc` CLI), `shfmt`,
+`vulture`, and `yamllint`. On older Ubuntu releases, the original
+language-specific installers remain in use. Ubuntu's `yq` package is a
+Python-based jq wrapper and cannot replace the Go-based `mikefarah/yq`.

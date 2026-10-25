@@ -132,6 +132,17 @@ ubuntu_apt_packages:
   - zip
   - zlib1g-dev
   - zsh
+# Available from Ubuntu 26.04 LTS onward; retain language-manager fallbacks on older releases.
+ubuntu_apt_cli_tools:
+  - ansible-lint
+  - bats
+  - csvkit
+  - govulncheck
+  - grip
+  - node-typescript
+  - shfmt
+  - vulture
+  - yamllint
 ubuntu_users:
   - name: dceoy
     groups: sudo

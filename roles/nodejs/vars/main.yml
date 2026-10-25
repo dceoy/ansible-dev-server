@@ -8,8 +8,9 @@ nodejs_cli_tools:
   - wscat
 nodejs_cli_tools_non_macos:
   - '@biomejs/biome'
-  - bats
   - htmlhint
   - markdownlint-cli2
   - stylelint
+nodejs_cli_tools_ubuntu_apt:
+  - bats
   - typescript

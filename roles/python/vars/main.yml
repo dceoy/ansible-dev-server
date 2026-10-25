@@ -9,12 +9,13 @@ python_uv_tools:
   - ruff
   - ty
 python_uv_tools_non_macos:
-  - ansible-lint
   - checkov
-  - csvkit
-  - grip
   - pyright
   - semgrep
+  - zizmor
+python_uv_tools_ubuntu_apt:
+  - ansible-lint
+  - csvkit
+  - grip
   - vulture
   - yamllint
-  - zizmor
