@@ -134,6 +134,7 @@ centos_yum_packages:
   - transfig
   - tree
   - units
+  - uv
   - v8-devel
   - valgrind
   - vim-enhanced
