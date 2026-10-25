@@ -1,15 +1,17 @@
 ---
+- name: Find Homebrew prefix for Python tools
+  when:
+    - python_uv_tools is defined
+    - ansible_facts['distribution'] == 'MacOSX'
+  ansible.builtin.command: brew --prefix
+  register: python_homebrew_prefix
+  changed_when: false
+
 - name: Select uv executable and tool packages
   when: python_uv_tools is defined
   ansible.builtin.set_fact:
-    python_uv_executable: "{{ macos_homebrew_bin ~ '/uv' if ansible_facts['distribution'] == 'MacOSX' else ansible_facts['env']['HOME'] ~ '/.local/bin/uv' }}"
-    python_uv_selected_tools: >-
-      {{
-        python_uv_tools
-        + (python_uv_tools_non_macos if ansible_facts['distribution'] != 'MacOSX' else [])
-        + (python_uv_tools_fedora if ansible_facts['distribution'] == 'Fedora' else [])
-        + (python_uv_tools_centos if ansible_facts['distribution'] == 'CentOS' else [])
-      }}
+    python_uv_executable: "{{ python_homebrew_prefix.stdout ~ '/bin/uv' if ansible_facts['distribution'] == 'MacOSX' else ansible_facts['env']['HOME'] ~ '/.local/bin/uv' }}"
+    python_uv_selected_tools: "{{ python_uv_tools + python_uv_tools_by_os[ansible_facts['distribution']] }}"
 
 - name: Check if uv is installed
   when:

@@ -32,13 +32,7 @@
       - go
       - install
       - "{{ item }}@latest"
-  loop: >-
-    {{
-      go_cli_tools
-      + (go_cli_tools_non_macos if ansible_facts['distribution'] != 'MacOSX' else [])
-      + (go_cli_tools_ubuntu if ansible_facts['distribution'] == 'Ubuntu' else [])
-      + (go_cli_tools_centos if ansible_facts['distribution'] == 'CentOS' else [])
-    }}
+  loop: "{{ go_cli_tools + go_cli_tools_by_os[ansible_facts['distribution']] }}"
   changed_when: true
   failed_when: false
   notify: Notify updates of Go via Slack

@@ -8,18 +8,28 @@ python_uv_tools:
   - pyinstaller
   - ruff
   - ty
-python_uv_tools_non_macos:
-  - checkov
-  - pyright
-  - semgrep
-  - zizmor
-python_uv_tools_fedora:
-  - csvkit
-  - grip
-  - sqlfluff
-python_uv_tools_centos:
-  - ansible-lint
-  - csvkit
-  - grip
-  - sqlfluff
-  - vulture
+python_uv_tools_by_os:
+  MacOSX: []
+  Ubuntu:
+    - checkov
+    - pyright
+    - semgrep
+    - zizmor
+  Fedora:
+    - checkov
+    - pyright
+    - semgrep
+    - zizmor
+    - csvkit
+    - grip
+    - sqlfluff
+  CentOS:
+    - checkov
+    - pyright
+    - semgrep
+    - zizmor
+    - ansible-lint
+    - csvkit
+    - grip
+    - sqlfluff
+    - vulture

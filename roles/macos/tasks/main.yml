@@ -1,13 +1,4 @@
 ---
-- name: Get Homebrew prefix
-  ansible.builtin.command: brew --prefix
-  register: macos_homebrew_prefix
-  changed_when: false
-
-- name: Set Homebrew bin directory
-  ansible.builtin.set_fact:
-    macos_homebrew_bin: "{{ macos_homebrew_prefix.stdout }}/bin"
-
 - name: Update macOS
   ansible.builtin.command:
     argv:

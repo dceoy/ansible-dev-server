@@ -6,12 +6,20 @@ nodejs_cli_tools:
   - oxfmt
   - pnpm
   - wscat
-nodejs_cli_tools_non_macos:
-  - '@biomejs/biome'
-  - htmlhint
-  - stylelint
-nodejs_cli_tools_ubuntu:
-  - markdownlint-cli2
-nodejs_cli_tools_centos:
-  - markdownlint-cli2
-  - typescript
+nodejs_cli_tools_by_os:
+  MacOSX: []
+  Ubuntu:
+    - '@biomejs/biome'
+    - htmlhint
+    - markdownlint-cli2
+    - stylelint
+  Fedora:
+    - '@biomejs/biome'
+    - htmlhint
+    - stylelint
+  CentOS:
+    - '@biomejs/biome'
+    - htmlhint
+    - markdownlint-cli2
+    - stylelint
+    - typescript
