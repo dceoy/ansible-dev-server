@@ -13,6 +13,7 @@
     state: latest  # noqa: package-latest
   loop: >-
     {{
+      (
       nodejs_cli_tools
       + (nodejs_cli_tools_non_macos | default([])
          if ansible_facts['distribution'] != 'MacOSX' else [])
@@ -20,6 +21,7 @@
          if ansible_facts['distribution'] != 'MacOSX'
          and (ansible_facts['distribution'] != 'Ubuntu'
            or ansible_facts['distribution_version'] is version('26.04', '<')) else [])
+      )
       | reject('in', system_managed_nodejs_tools | default([])) | list
     }}
   failed_when: false

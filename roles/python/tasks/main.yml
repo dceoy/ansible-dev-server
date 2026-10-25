@@ -5,6 +5,7 @@
     python_uv_executable: "{{ macos_homebrew_bin ~ '/uv' if ansible_facts['distribution'] == 'MacOSX' else ansible_facts['env']['HOME'] ~ '/.local/bin/uv' }}"
     python_uv_selected_tools: >-
       {{
+        (
         python_uv_tools
         + (python_uv_tools_non_macos | default([])
            if ansible_facts['distribution'] != 'MacOSX' else [])
@@ -12,6 +13,7 @@
            if ansible_facts['distribution'] != 'MacOSX'
            and (ansible_facts['distribution'] != 'Ubuntu'
            or ansible_facts['distribution_version'] is version('26.04', '<')) else [])
+        )
         | reject('in', system_managed_python_tools | default([])) | list
       }}
 
