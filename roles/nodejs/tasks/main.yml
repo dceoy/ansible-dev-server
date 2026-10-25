@@ -11,6 +11,11 @@
     name: "{{ item }}"
     global: true
     state: latest  # noqa: package-latest
-  loop: "{{ nodejs_cli_tools }}"
+  loop: >-
+    {{
+      nodejs_cli_tools
+      + (nodejs_cli_tools_non_macos | default([])
+         if ansible_facts['distribution'] != 'MacOSX' else [])
+    }}
   failed_when: false
   notify: Notify updates of Node.js via Slack

@@ -19,7 +19,11 @@
     state: present
     block: |
       export GOPATH="{{ go_gopath }}"
+      {% if ansible_facts['distribution'] == 'MacOSX' %}
+      export PATH="${PATH}:${GOPATH}/bin"
+      {% else %}
       export PATH="${GOPATH}/bin:${PATH}"
+      {% endif %}
   notify: Notify updates of Go via Slack
 
 - name: Install Go command-line tools
@@ -32,7 +36,12 @@
       - go
       - install
       - "{{ item }}@latest"
-  loop: "{{ go_cli_tools }}"
+  loop: >-
+    {{
+      go_cli_tools
+      + (go_cli_tools_non_macos | default([])
+         if ansible_facts['distribution'] != 'MacOSX' else [])
+    }}
   changed_when: true
   failed_when: false
   notify: Notify updates of Go via Slack

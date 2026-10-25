@@ -1,19 +1,20 @@
 ---
 python_uv_version: "0.12.5"
 python_uv_tools:
-  - ansible-lint
   - cfn-lint
-  - checkov
-  - csvkit
   - cutadapt
-  - grip
   - ipython
   - marimo
   - pyinstaller
-  - pyright
   - ruff
-  - semgrep
   - ty
+python_uv_tools_non_macos:
+  - ansible-lint
+  - checkov
+  - csvkit
+  - grip
+  - pyright
+  - semgrep
   - vulture
   - yamllint
   - zizmor

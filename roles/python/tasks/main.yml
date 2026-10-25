@@ -1,23 +1,39 @@
 ---
-- name: Check if uv is installed
+- name: Select uv executable and tool packages
   when: python_uv_tools is defined
+  ansible.builtin.set_fact:
+    python_uv_executable: "{{ macos_homebrew_bin ~ '/uv' if ansible_facts['distribution'] == 'MacOSX' else ansible_facts['env']['HOME'] ~ '/.local/bin/uv' }}"
+    python_uv_selected_tools: >-
+      {{
+        python_uv_tools
+        + (python_uv_tools_non_macos | default([])
+           if ansible_facts['distribution'] != 'MacOSX' else [])
+      }}
+
+- name: Check if uv is installed
+  when:
+    - python_uv_tools is defined
+    - ansible_facts['distribution'] != 'MacOSX'
   ansible.builtin.stat:
-    path: "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+    path: "{{ python_uv_executable }}"
   register: python_uv
 
 - name: Check installed uv version
   when:
     - python_uv_tools is defined
+    - ansible_facts['distribution'] != 'MacOSX'
     - python_uv.stat.exists
   ansible.builtin.command:
     argv:
-      - "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+      - "{{ python_uv_executable }}"
       - --version
   register: python_uv_version_result
   changed_when: false
 
 - name: Determine whether uv installation is required
-  when: python_uv_tools is defined
+  when:
+    - python_uv_tools is defined
+    - ansible_facts['distribution'] != 'MacOSX'
   ansible.builtin.set_fact:
     python_uv_install_required: >-
       {{
@@ -34,7 +50,7 @@
 - name: Install uv installer prerequisite on Fedora and CentOS
   when:
     - python_uv_tools is defined
-    - python_uv_install_required
+    - python_uv_install_required | default(false)
     - ansible_facts['distribution'] in ['Fedora', 'CentOS']
   become: true
   ansible.builtin.package:
@@ -44,7 +60,7 @@
 - name: Install uv installer prerequisite on Ubuntu
   when:
     - python_uv_tools is defined
-    - python_uv_install_required
+    - python_uv_install_required | default(false)
     - ansible_facts['distribution'] == 'Ubuntu'
   become: true
   ansible.builtin.apt:
@@ -55,7 +71,7 @@
 - name: Download the uv installer
   when:
     - python_uv_tools is defined
-    - python_uv_install_required
+    - python_uv_install_required | default(false)
   ansible.builtin.get_url:
     url: "https://releases.astral.sh/github/uv/releases/download/{{ python_uv_version }}/uv-installer.sh"
     dest: /tmp/install.uv.sh
@@ -64,7 +80,7 @@
 - name: Install uv
   when:
     - python_uv_tools is defined
-    - python_uv_install_required
+    - python_uv_install_required | default(false)
   ansible.builtin.command: /tmp/install.uv.sh
   environment:
     UV_INSTALL_DIR: "{{ ansible_facts['env']['HOME'] }}/.local/bin"
@@ -73,10 +89,12 @@
   notify: Notify updates of Python via Slack
 
 - name: Verify installed uv version
-  when: python_uv_tools is defined
+  when:
+    - python_uv_tools is defined
+    - ansible_facts['distribution'] != 'MacOSX'
   ansible.builtin.command:
     argv:
-      - "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+      - "{{ python_uv_executable }}"
       - --version
   register: python_uv_version_verify
   changed_when: false
@@ -88,11 +106,21 @@
       | default('')
     ) != python_uv_version
 
+- name: Verify Homebrew uv on macOS
+  when:
+    - python_uv_tools is defined
+    - ansible_facts['distribution'] == 'MacOSX'
+  ansible.builtin.command:
+    argv:
+      - "{{ python_uv_executable }}"
+      - --version
+  changed_when: false
+
 - name: List installed uv tools
   when: python_uv_tools is defined
   ansible.builtin.command:
     argv:
-      - "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+      - "{{ python_uv_executable }}"
       - tool
       - list
   register: python_uv_tool_list
@@ -104,11 +132,11 @@
     - (python_uv_tool_list.stdout_lines | select('match', '^' ~ item ~ ' ') | list | length) == 0
   ansible.builtin.command:
     argv:
-      - "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+      - "{{ python_uv_executable }}"
       - tool
       - install
       - "{{ item }}"
-  loop: "{{ python_uv_tools }}"
+  loop: "{{ python_uv_selected_tools }}"
   changed_when: true
   notify: Notify updates of Python via Slack
 
@@ -116,7 +144,7 @@
   when: python_uv_tools is defined
   ansible.builtin.command:
     argv:
-      - "{{ ansible_facts['env']['HOME'] }}/.local/bin/uv"
+      - "{{ python_uv_executable }}"
       - tool
       - upgrade
       - --all
@@ -132,5 +160,9 @@
     mode: "0644"
     state: present
     block: |
+      {% if ansible_facts['distribution'] == 'MacOSX' %}
+      export PATH="${PATH}:${HOME}/.local/bin"
+      {% else %}
       export PATH="${HOME}/.local/bin:${PATH}"
+      {% endif %}
   notify: Notify updates of Python via Slack

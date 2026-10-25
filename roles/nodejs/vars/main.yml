@@ -1,14 +1,15 @@
 ---
 nodejs_cli_tools:
-  - '@biomejs/biome'
   - '@puppeteer/browsers'
   - ajv-cli
+  - oxlint
+  - oxfmt
+  - pnpm
+  - wscat
+nodejs_cli_tools_non_macos:
+  - '@biomejs/biome'
   - bats
   - htmlhint
-  - oxlint
   - markdownlint-cli2
-  - prettier
-  - pnpm
   - stylelint
   - typescript
-  - wscat

@@ -1,9 +1,10 @@
 ---
 go_cli_tools:
-  - github.com/golangci/golangci-lint/cmd/golangci-lint
-  - github.com/mikefarah/yq/v4
   - github.com/pelletier/go-toml/v2/cmd/tomll
   - github.com/rhysd/actionlint/cmd/actionlint
+go_cli_tools_non_macos:
+  - github.com/golangci/golangci-lint/cmd/golangci-lint
+  - github.com/mikefarah/yq/v4
   - github.com/securego/gosec/v2/cmd/gosec
   - github.com/terraform-linters/tflint
   - golang.org/x/vuln/cmd/govulncheck
