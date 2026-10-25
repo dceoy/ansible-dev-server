@@ -93,7 +93,6 @@ ubuntu_apt_packages:
   - nmap
   - nodejs
   - node-typescript
-  - npm
   - pamtester
   - pandoc
   - patch
