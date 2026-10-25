@@ -47,7 +47,9 @@
          and (ansible_facts['distribution'] != 'Ubuntu'
            or ansible_facts['distribution_version'] is version('26.04', '<')) else [])
       )
-      | reject('in', system_managed_go_tools | default([])) | list
+      | reject('in',
+        (fedora_system_managed_go_tools | default([]))
+        + (centos_system_managed_go_tools | default([]))) | list
     }}
   changed_when: true
   failed_when: false

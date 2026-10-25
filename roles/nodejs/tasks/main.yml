@@ -22,7 +22,9 @@
          and (ansible_facts['distribution'] != 'Ubuntu'
            or ansible_facts['distribution_version'] is version('26.04', '<')) else [])
       )
-      | reject('in', system_managed_nodejs_tools | default([])) | list
+      | reject('in',
+        (fedora_system_managed_nodejs_tools | default([]))
+        + (centos_system_managed_nodejs_tools | default([]))) | list
     }}
   failed_when: false
   notify: Notify updates of Node.js via Slack

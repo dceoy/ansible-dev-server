@@ -82,21 +82,21 @@
 
 - name: Prefer installed RPM tools over language-managed duplicates
   ansible.builtin.set_fact:
-    system_managed_nodejs_tools: >-
+    fedora_system_managed_nodejs_tools: >-
       {{
         fedora_system_cli_packages
         | selectattr('package', 'in', ansible_facts['packages'].keys())
         | selectattr('manager', 'equalto', 'nodejs')
         | map(attribute='tool') | list
       }}
-    system_managed_go_tools: >-
+    fedora_system_managed_go_tools: >-
       {{
         fedora_system_cli_packages
         | selectattr('package', 'in', ansible_facts['packages'].keys())
         | selectattr('manager', 'equalto', 'go')
         | map(attribute='tool') | list
       }}
-    system_managed_python_tools: >-
+    fedora_system_managed_python_tools: >-
       {{
         fedora_system_cli_packages
         | selectattr('package', 'in', ansible_facts['packages'].keys())
