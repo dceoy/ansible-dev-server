@@ -1,10 +1,23 @@
 ---
-go_cli_tools:
-  - github.com/golangci/golangci-lint/cmd/golangci-lint
-  - github.com/mikefarah/yq/v4
-  - github.com/pelletier/go-toml/v2/cmd/tomll
-  - github.com/rhysd/actionlint/cmd/actionlint
-  - github.com/securego/gosec/v2/cmd/gosec
-  - github.com/terraform-linters/tflint
-  - golang.org/x/vuln/cmd/govulncheck
-  - mvdan.cc/sh/v3/cmd/shfmt
+go_cli_tools_by_os:
+  MacOSX:
+    - github.com/pelletier/go-toml/v2/cmd/tomll
+    - github.com/rhysd/actionlint/cmd/actionlint
+  Ubuntu:
+    - github.com/pelletier/go-toml/v2/cmd/tomll
+    - github.com/rhysd/actionlint/cmd/actionlint
+    - github.com/terraform-linters/tflint
+    - github.com/golangci/golangci-lint/cmd/golangci-lint
+    - github.com/mikefarah/yq/v4
+    - github.com/securego/gosec/v2/cmd/gosec
+  Fedora:
+    - github.com/pelletier/go-toml/v2/cmd/tomll
+    - github.com/rhysd/actionlint/cmd/actionlint
+    - github.com/terraform-linters/tflint
+  CentOS:
+    - github.com/pelletier/go-toml/v2/cmd/tomll
+    - github.com/rhysd/actionlint/cmd/actionlint
+    - github.com/terraform-linters/tflint
+    - github.com/golangci/golangci-lint/cmd/golangci-lint
+    - github.com/securego/gosec/v2/cmd/gosec
+    - mvdan.cc/sh/v3/cmd/shfmt

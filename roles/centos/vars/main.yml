@@ -6,6 +6,7 @@ centos_yum_packages:
   - atlas-devel
   - autoconf
   - automake
+  - bats
   - binutils
   - bison
   - blas-devel
@@ -29,7 +30,6 @@ centos_yum_packages:
   - doxygen
   - elfutils
   - elixir
-  - epel-release
   - expect
   - fd-find
   - fftw-devel
@@ -51,6 +51,7 @@ centos_yum_packages:
   - gnome-terminal
   - gnuplot
   - go
+  - govulncheck
   - gsl-devel
   - hdf5-devel
   - htop
@@ -94,7 +95,6 @@ centos_yum_packages:
   - nkf
   - nmap
   - nodejs
-  - npm
   - octave
   - opencv-devel
   - openmpi-devel
@@ -133,12 +133,14 @@ centos_yum_packages:
   - transfig
   - tree
   - units
+  - uv
   - v8-devel
   - valgrind
   - vim-enhanced
   - wget
   - whois
   - xfig
+  - yamllint
   - yq
   - zsh
 centos_users:

@@ -2,8 +2,10 @@
 ubuntu_apt_packages:
   - 7zip
   - ant
+  - ansible-lint
   - apt-file
   - apt-utils
+  - bats
   - bridge-utils
   - build-essential
   - bzip2
@@ -13,6 +15,7 @@ ubuntu_apt_packages:
   - cmake
   - colordiff
   - curl
+  - csvkit
   - dkms
   - elixir
   - ethtool
@@ -31,6 +34,8 @@ ubuntu_apt_packages:
   - git
   - gnome-terminal
   - golang
+  - govulncheck
+  - grip
   - htop
   - hugo
   - ibus-mozc
@@ -87,7 +92,7 @@ ubuntu_apt_packages:
   - nkf
   - nmap
   - nodejs
-  - npm
+  - node-typescript
   - pamtester
   - pandoc
   - patch
@@ -105,8 +110,10 @@ ubuntu_apt_packages:
   - ripgrep
   - ruby-dev
   - scala
+  - shfmt
   - shellcheck
   - shunit2
+  - sqlfluff
   - software-properties-common
   - sqlite3
   - sudo
@@ -125,8 +132,10 @@ ubuntu_apt_packages:
   - tree
   - unzip
   - vim-gtk3
+  - vulture
   - wakeonlan
   - wget
+  - yamllint
   - whois
   - yq
   - zip

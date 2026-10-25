@@ -1,19 +1,54 @@
 ---
-python_uv_version: "0.12.5"
-python_uv_tools:
-  - ansible-lint
-  - cfn-lint
-  - checkov
-  - csvkit
-  - cutadapt
-  - grip
-  - ipython
-  - marimo
-  - pyinstaller
-  - pyright
-  - ruff
-  - semgrep
-  - ty
-  - vulture
-  - yamllint
-  - zizmor
+python_uv_tools_by_os:
+  MacOSX:
+    - cfn-lint
+    - cutadapt
+    - ipython
+    - marimo
+    - pyinstaller
+    - ruff
+    - ty
+  Ubuntu:
+    - cfn-lint
+    - cutadapt
+    - ipython
+    - marimo
+    - pyinstaller
+    - ruff
+    - ty
+    - checkov
+    - pyright
+    - semgrep
+    - zizmor
+  Fedora:
+    - cfn-lint
+    - cutadapt
+    - ipython
+    - marimo
+    - pyinstaller
+    - ruff
+    - ty
+    - checkov
+    - pyright
+    - semgrep
+    - zizmor
+    - csvkit
+    - grip
+    - sqlfluff
+  CentOS:
+    - cfn-lint
+    - cutadapt
+    - ipython
+    - marimo
+    - pyinstaller
+    - ruff
+    - ty
+    - checkov
+    - pyright
+    - semgrep
+    - zizmor
+    - ansible-lint
+    - csvkit
+    - grip
+    - sqlfluff
+    - vulture

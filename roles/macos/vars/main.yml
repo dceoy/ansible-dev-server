@@ -78,7 +78,7 @@ macos_brew_packages:
   - pdf2svg
   - pigz
   - pinact
-  - prettier
+  - pnpm
   - pyright
   - python
   - quicktype
@@ -92,6 +92,7 @@ macos_brew_packages:
   - shellcheck
   - shfmt
   - shunit2
+  - sqlfluff
   - sqlite
   - steipete/tap/oracle
   - stylelint

@@ -6,6 +6,7 @@ fedora_dnf_packages:
   - atlas-devel
   - autoconf
   - automake
+  - bats
   - binutils
   - bison
   - blas-devel
@@ -51,6 +52,9 @@ fedora_dnf_packages:
   - gnome-terminal
   - gnuplot
   - go
+  - golangci-lint
+  - gosec
+  - govulncheck
   - gsl-devel
   - hdf5-devel
   - hunspell-devel
@@ -83,6 +87,7 @@ fedora_dnf_packages:
   - lua-devel
   - luajit-devel
   - make
+  - markdownlint-cli2
   - mariadb-devel
   - mariadb-connector-c-devel
   - maxima
@@ -96,7 +101,6 @@ fedora_dnf_packages:
   - nkf
   - nmap
   - nodejs
-  - npm
   - octave
   - opencv-devel
   - openmpi-devel
@@ -111,10 +115,13 @@ fedora_dnf_packages:
   - pciutils
   - pigz
   - pkgconfig
+  - pnpm
   - postgresql-devel
   - proj-devel
   - protobuf-devel
   - python3-devel
+  - python3-ansible-lint
+  - python3-vulture
   - R-devel
   - rcs
   - readline-devel
@@ -124,6 +131,7 @@ fedora_dnf_packages:
   - sbt
   - scala
   - ShellCheck
+  - shfmt
   - shunit2
   - snappy-devel
   - speedcrunch
@@ -139,7 +147,9 @@ fedora_dnf_packages:
   - traceroute
   - transfig
   - tree
+  - typescript
   - units
+  - uv
   - v8-devel
   - valgrind
   - vim-enhanced
@@ -148,6 +158,7 @@ fedora_dnf_packages:
   - whois
   - wxMaxima
   - xfig
+  - yamllint
   - yq
   - zsh
 fedora_users:

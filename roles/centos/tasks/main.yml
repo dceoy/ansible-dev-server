@@ -45,6 +45,13 @@
     state: latest  # noqa: package-latest
   notify: Notify updates of the system via Slack
 
+- name: Enable EPEL before installing CentOS packages
+  become: true
+  ansible.builtin.dnf:
+    name: epel-release
+    state: present
+  notify: Notify updates of the system via Slack
+
 - name: Install packages
   when: centos_yum_packages is defined
   become: true

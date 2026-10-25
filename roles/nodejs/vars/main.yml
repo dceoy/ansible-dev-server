@@ -1,14 +1,38 @@
 ---
-nodejs_cli_tools:
-  - '@biomejs/biome'
-  - '@puppeteer/browsers'
-  - ajv-cli
-  - bats
-  - htmlhint
-  - oxlint
-  - markdownlint-cli2
-  - prettier
-  - pnpm
-  - stylelint
-  - typescript
-  - wscat
+nodejs_cli_tools_by_os:
+  MacOSX:
+    - '@puppeteer/browsers'
+    - ajv-cli
+    - oxlint
+    - oxfmt
+    - wscat
+  Ubuntu:
+    - '@puppeteer/browsers'
+    - ajv-cli
+    - oxlint
+    - oxfmt
+    - wscat
+    - '@biomejs/biome'
+    - htmlhint
+    - markdownlint-cli2
+    - stylelint
+  Fedora:
+    - '@puppeteer/browsers'
+    - ajv-cli
+    - oxlint
+    - oxfmt
+    - wscat
+    - '@biomejs/biome'
+    - htmlhint
+    - stylelint
+  CentOS:
+    - '@puppeteer/browsers'
+    - ajv-cli
+    - oxlint
+    - oxfmt
+    - wscat
+    - '@biomejs/biome'
+    - htmlhint
+    - markdownlint-cli2
+    - stylelint
+    - typescript
