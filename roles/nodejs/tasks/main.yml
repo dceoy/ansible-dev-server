@@ -3,6 +3,16 @@
   ansible.builtin.set_fact:
     nodejs_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
 
+- name: Install pnpm where no OS package is available
+  when: ansible_facts['distribution'] in ['Ubuntu', 'CentOS']
+  environment:
+    PATH: "{{ nodejs_path }}"
+  community.general.npm:
+    name: pnpm
+    global: true
+    state: latest  # noqa: package-latest
+  notify: Notify updates of Node.js via Slack
+
 - name: Install and update Node.js command-line tools
   when: nodejs_cli_tools_by_os is defined
   environment:

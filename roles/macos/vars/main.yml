@@ -78,6 +78,7 @@ macos_brew_packages:
   - pdf2svg
   - pigz
   - pinact
+  - pnpm
   - pyright
   - python
   - quicktype

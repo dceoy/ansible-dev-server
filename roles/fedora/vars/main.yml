@@ -116,6 +116,7 @@ fedora_dnf_packages:
   - pciutils
   - pigz
   - pkgconfig
+  - pnpm
   - postgresql-devel
   - proj-devel
   - protobuf-devel

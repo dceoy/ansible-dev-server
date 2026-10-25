@@ -5,14 +5,12 @@ nodejs_cli_tools_by_os:
     - ajv-cli
     - oxlint
     - oxfmt
-    - pnpm
     - wscat
   Ubuntu:
     - '@puppeteer/browsers'
     - ajv-cli
     - oxlint
     - oxfmt
-    - pnpm
     - wscat
     - '@biomejs/biome'
     - htmlhint
@@ -23,7 +21,6 @@ nodejs_cli_tools_by_os:
     - ajv-cli
     - oxlint
     - oxfmt
-    - pnpm
     - wscat
     - '@biomejs/biome'
     - htmlhint
@@ -33,7 +30,6 @@ nodejs_cli_tools_by_os:
     - ajv-cli
     - oxlint
     - oxfmt
-    - pnpm
     - wscat
     - '@biomejs/biome'
     - htmlhint
