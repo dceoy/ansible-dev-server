@@ -164,7 +164,7 @@
     mode: "0644"
     state: present
     block: |
-      {% if ansible_facts['distribution'] == 'MacOSX' %}
+      {% if ansible_facts['distribution'] == 'MacOSX' or (ansible_facts['distribution'] == 'Ubuntu' and ansible_facts['distribution_version'] is version('26.04', '>=')) %}
       export PATH="${PATH}:${HOME}/.local/bin"
       {% else %}
       export PATH="${HOME}/.local/bin:${PATH}"

@@ -19,7 +19,7 @@
     state: present
     block: |
       export GOPATH="{{ go_gopath }}"
-      {% if ansible_facts['distribution'] == 'MacOSX' %}
+      {% if ansible_facts['distribution'] == 'MacOSX' or (ansible_facts['distribution'] == 'Ubuntu' and ansible_facts['distribution_version'] is version('26.04', '>=')) %}
       export PATH="${PATH}:${GOPATH}/bin"
       {% else %}
       export PATH="${GOPATH}/bin:${PATH}"
