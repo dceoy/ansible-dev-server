@@ -90,8 +90,22 @@
   register: nodejs_pnpm_installed_tools
   changed_when: false
 
-- name: Check outdated global Node.js tools
+- name: Select installed global Node.js tools
   when: nodejs_cli_tools_by_os is defined
+  ansible.builtin.set_fact:
+    nodejs_pnpm_installed_names: >-
+      {{
+        nodejs_pnpm_installed_tools.stdout | from_json
+        | selectattr('dependencies', 'defined')
+        | map(attribute='dependencies')
+        | map('dict2items') | flatten
+        | map(attribute='key') | list
+      }}
+
+- name: Check outdated global Node.js tools
+  when:
+    - nodejs_cli_tools_by_os is defined
+    - nodejs_pnpm_installed_names | length > 0
   environment:
     PNPM_HOME: "{{ nodejs_pnpm_home }}"
     PATH: "{{ nodejs_path }}:{{ nodejs_pnpm_home }}/bin:{{ nodejs_pnpm_home }}"
@@ -108,17 +122,9 @@
     or (nodejs_pnpm_outdated_tools.rc == 1
       and not (nodejs_pnpm_outdated_tools.stdout | trim).startswith('{'))
 
-- name: Select missing or outdated global Node.js tools
+- name: Select outdated global Node.js tools
   when: nodejs_cli_tools_by_os is defined
   ansible.builtin.set_fact:
-    nodejs_pnpm_installed_names: >-
-      {{
-        nodejs_pnpm_installed_tools.stdout | from_json
-        | selectattr('dependencies', 'defined')
-        | map(attribute='dependencies')
-        | map('dict2items') | flatten
-        | map(attribute='key') | list
-      }}
     nodejs_pnpm_outdated_names: >-
       {{
         nodejs_pnpm_outdated_tools.stdout | trim | default('{}', true) | from_json
