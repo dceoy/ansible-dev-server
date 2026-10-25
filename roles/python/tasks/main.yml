@@ -16,8 +16,8 @@
 - name: Select uv executable and tool packages
   when: python_uv_tools_by_os is defined
   ansible.builtin.set_fact:
-    python_uv_standalone: "{{ ansible_facts['distribution'] != 'MacOSX' and not (python_system_uv.stat.exists | default(false)) }}"
-    python_uv_executable: "{{ python_homebrew_prefix.stdout ~ '/bin/uv' if ansible_facts['distribution'] == 'MacOSX' else '/usr/bin/uv' if (python_system_uv.stat.exists | default(false)) else ansible_facts['env']['HOME'] ~ '/.local/bin/uv' }}"
+    python_uv_standalone: "{{ ansible_facts['distribution'] != 'MacOSX' and not ((python_system_uv.stat | default({})).exists | default(false)) }}"
+    python_uv_executable: "{{ python_homebrew_prefix.stdout ~ '/bin/uv' if ansible_facts['distribution'] == 'MacOSX' else '/usr/bin/uv' if ((python_system_uv.stat | default({})).exists | default(false)) else ansible_facts['env']['HOME'] ~ '/.local/bin/uv' }}"
     python_uv_selected_tools: "{{ python_uv_tools_by_os[ansible_facts['distribution']] }}"
 
 - name: Check standalone uv installation
