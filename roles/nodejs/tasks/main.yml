@@ -50,14 +50,14 @@
     state: present
     block: |
       export PNPM_HOME="${HOME}/{{ 'Library/pnpm' if ansible_facts['distribution'] == 'MacOSX' else '.local/share/pnpm' }}"
-      export PATH="${PATH}:${PNPM_HOME}/bin"
+      export PATH="${PATH}:${PNPM_HOME}/bin:${PNPM_HOME}"
   notify: Notify updates of Node.js via Slack
 
 - name: Install and update Node.js command-line tools with pnpm
   when: nodejs_cli_tools_by_os is defined
   environment:
     PNPM_HOME: "{{ nodejs_pnpm_home }}"
-    PATH: "{{ nodejs_path }}:{{ nodejs_pnpm_home }}/bin"
+    PATH: "{{ nodejs_path }}:{{ nodejs_pnpm_home }}/bin:{{ nodejs_pnpm_home }}"
   ansible.builtin.command:
     argv:
       - "{{ nodejs_pnpm_executable }}"
