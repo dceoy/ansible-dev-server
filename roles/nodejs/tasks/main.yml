@@ -4,13 +4,13 @@
     nodejs_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
 
 - name: Install and update Node.js command-line tools
-  when: nodejs_cli_tools is defined
+  when: nodejs_cli_tools_by_os is defined
   environment:
     PATH: "{{ nodejs_path }}"
   community.general.npm:
     name: "{{ item }}"
     global: true
     state: latest  # noqa: package-latest
-  loop: "{{ nodejs_cli_tools + nodejs_cli_tools_by_os[ansible_facts['distribution']] }}"
+  loop: "{{ nodejs_cli_tools_by_os[ansible_facts['distribution']] }}"
   failed_when: false
   notify: Notify updates of Node.js via Slack
