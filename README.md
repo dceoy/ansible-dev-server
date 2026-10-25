@@ -47,8 +47,10 @@ packages. Ubuntu's APT `yq` is not Mike Farah's Go implementation, so Ubuntu
 continues to install the Go-based `yq` separately.
 
 On macOS, Homebrew takes precedence over language-specific package managers.
+SQLFluff is installed via Homebrew on macOS, APT on Ubuntu, and uv on Fedora/CentOS.
 Oxfmt is installed through npm to retain its Prettier-backed HTML formatter.
-The Vim role uses Homebrew Vim on macOS and builds Vim only on Linux.
+The Vim role uses the same source-build installer on all operating systems,
+including macOS, regardless of whether a system Vim is also installed.
 
 Already installed duplicate binaries are not automatically uninstalled; review
 `npm ls -g --depth=0`, `uv tool list`, and `~/.go/bin` before removing them.

@@ -91,6 +91,7 @@ macos_brew_packages:
   - shellcheck
   - shfmt
   - shunit2
+  - sqlfluff
   - sqlite
   - steipete/tap/oracle
   - stylelint

@@ -114,6 +114,7 @@ ubuntu_apt_packages:
   - shfmt
   - shellcheck
   - shunit2
+  - sqlfluff
   - software-properties-common
   - sqlite3
   - sudo

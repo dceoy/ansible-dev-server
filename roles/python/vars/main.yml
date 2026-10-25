@@ -16,8 +16,10 @@ python_uv_tools_non_macos:
 python_uv_tools_fedora:
   - csvkit
   - grip
+  - sqlfluff
 python_uv_tools_centos:
   - ansible-lint
   - csvkit
   - grip
+  - sqlfluff
   - vulture
