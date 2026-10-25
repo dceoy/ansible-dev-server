@@ -2,8 +2,10 @@
 ubuntu_apt_packages:
   - 7zip
   - ant
+  - ansible-lint
   - apt-file
   - apt-utils
+  - bats
   - bridge-utils
   - build-essential
   - bzip2
@@ -13,6 +15,7 @@ ubuntu_apt_packages:
   - cmake
   - colordiff
   - curl
+  - csvkit
   - dkms
   - elixir
   - ethtool
@@ -31,6 +34,8 @@ ubuntu_apt_packages:
   - git
   - gnome-terminal
   - golang
+  - govulncheck
+  - grip
   - htop
   - hugo
   - ibus-mozc
@@ -87,6 +92,7 @@ ubuntu_apt_packages:
   - nkf
   - nmap
   - nodejs
+  - node-typescript
   - npm
   - pamtester
   - pandoc
@@ -105,6 +111,7 @@ ubuntu_apt_packages:
   - ripgrep
   - ruby-dev
   - scala
+  - shfmt
   - shellcheck
   - shunit2
   - software-properties-common
@@ -125,24 +132,15 @@ ubuntu_apt_packages:
   - tree
   - unzip
   - vim-gtk3
+  - vulture
   - wakeonlan
   - wget
+  - yamllint
   - whois
   - yq
   - zip
   - zlib1g-dev
   - zsh
-# Available from Ubuntu 26.04 LTS onward; retain language-manager fallbacks on older releases.
-ubuntu_apt_cli_tools:
-  - ansible-lint
-  - bats
-  - csvkit
-  - govulncheck
-  - grip
-  - node-typescript
-  - shfmt
-  - vulture
-  - yamllint
 ubuntu_users:
   - name: dceoy
     groups: sudo

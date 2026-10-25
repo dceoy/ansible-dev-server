@@ -61,56 +61,6 @@
   failed_when: false
   notify: Notify updates of the system via Slack
 
-
-- name: Check available CentOS EPEL CLI packages
-  ansible.builtin.command:
-    argv:
-      - dnf
-      - -q
-      - info
-      - "{{ item.package }}"
-  loop: "{{ centos_system_cli_packages }}"
-  register: centos_cli_package_availability
-  changed_when: false
-  failed_when: false
-
-- name: Install available system CLI packages
-  become: true
-  ansible.builtin.dnf:
-    name: "{{ item.item.package }}"
-    state: latest  # noqa: package-latest
-  loop: "{{ centos_cli_package_availability.results | selectattr('rc', 'equalto', 0) | list }}"
-  failed_when: false  # Fallback to language managers if the RPM cannot be installed
-  notify: Notify updates of the system via Slack
-
-- name: Gather installed RPM package facts
-  ansible.builtin.package_facts:
-    manager: rpm
-
-- name: Prefer installed RPM tools over language-managed duplicates
-  ansible.builtin.set_fact:
-    centos_system_managed_nodejs_tools: >-
-      {{
-        centos_system_cli_packages
-        | selectattr('package', 'in', ansible_facts['packages'].keys())
-        | selectattr('manager', 'equalto', 'nodejs')
-        | map(attribute='tool') | list
-      }}
-    centos_system_managed_go_tools: >-
-      {{
-        centos_system_cli_packages
-        | selectattr('package', 'in', ansible_facts['packages'].keys())
-        | selectattr('manager', 'equalto', 'go')
-        | map(attribute='tool') | list
-      }}
-    centos_system_managed_python_tools: >-
-      {{
-        centos_system_cli_packages
-        | selectattr('package', 'in', ansible_facts['packages'].keys())
-        | selectattr('manager', 'equalto', 'python')
-        | map(attribute='tool') | list
-      }}
-
 - name: Set users
   when: centos_users is defined
   become: true

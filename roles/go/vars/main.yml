@@ -3,10 +3,12 @@ go_cli_tools:
   - github.com/pelletier/go-toml/v2/cmd/tomll
   - github.com/rhysd/actionlint/cmd/actionlint
 go_cli_tools_non_macos:
+  - github.com/terraform-linters/tflint
+go_cli_tools_ubuntu:
   - github.com/golangci/golangci-lint/cmd/golangci-lint
   - github.com/mikefarah/yq/v4
   - github.com/securego/gosec/v2/cmd/gosec
-  - github.com/terraform-linters/tflint
-go_cli_tools_ubuntu_apt:
-  - golang.org/x/vuln/cmd/govulncheck
+go_cli_tools_centos:
+  - github.com/golangci/golangci-lint/cmd/golangci-lint
+  - github.com/securego/gosec/v2/cmd/gosec
   - mvdan.cc/sh/v3/cmd/shfmt

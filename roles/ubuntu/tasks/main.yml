@@ -74,12 +74,7 @@
     autoremove: true
     name: "{{ item }}"
     state: latest  # noqa: package-latest
-  loop: >-
-    {{
-      ubuntu_apt_packages
-      + (ubuntu_apt_cli_tools | default([])
-         if ansible_facts['distribution_version'] is version('26.04', '>=') else [])
-    }}
+  loop: "{{ ubuntu_apt_packages }}"
   failed_when: false
   notify: Notify updates of the system via Slack
 

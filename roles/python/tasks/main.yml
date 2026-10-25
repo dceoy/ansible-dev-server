@@ -5,18 +5,10 @@
     python_uv_executable: "{{ macos_homebrew_bin ~ '/uv' if ansible_facts['distribution'] == 'MacOSX' else ansible_facts['env']['HOME'] ~ '/.local/bin/uv' }}"
     python_uv_selected_tools: >-
       {{
-        (
         python_uv_tools
-        + (python_uv_tools_non_macos | default([])
-           if ansible_facts['distribution'] != 'MacOSX' else [])
-        + (python_uv_tools_ubuntu_apt | default([])
-           if ansible_facts['distribution'] != 'MacOSX'
-           and (ansible_facts['distribution'] != 'Ubuntu'
-           or ansible_facts['distribution_version'] is version('26.04', '<')) else [])
-        )
-        | reject('in',
-        (fedora_system_managed_python_tools | default([]))
-        + (centos_system_managed_python_tools | default([]))) | list
+        + (python_uv_tools_non_macos if ansible_facts['distribution'] != 'MacOSX' else [])
+        + (python_uv_tools_fedora if ansible_facts['distribution'] == 'Fedora' else [])
+        + (python_uv_tools_centos if ansible_facts['distribution'] == 'CentOS' else [])
       }}
 
 - name: Check if uv is installed
@@ -169,9 +161,5 @@
     mode: "0644"
     state: present
     block: |
-      {% if ansible_facts['distribution'] in ['MacOSX', 'Fedora', 'CentOS'] or (ansible_facts['distribution'] == 'Ubuntu' and ansible_facts['distribution_version'] is version('26.04', '>=')) %}
       export PATH="${PATH}:${HOME}/.local/bin"
-      {% else %}
-      export PATH="${HOME}/.local/bin:${PATH}"
-      {% endif %}
   notify: Notify updates of Python via Slack

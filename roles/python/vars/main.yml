@@ -13,9 +13,11 @@ python_uv_tools_non_macos:
   - pyright
   - semgrep
   - zizmor
-python_uv_tools_ubuntu_apt:
+python_uv_tools_fedora:
+  - csvkit
+  - grip
+python_uv_tools_centos:
   - ansible-lint
   - csvkit
   - grip
   - vulture
-  - yamllint

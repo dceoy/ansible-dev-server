@@ -19,11 +19,7 @@
     state: present
     block: |
       export GOPATH="{{ go_gopath }}"
-      {% if ansible_facts['distribution'] in ['MacOSX', 'Fedora', 'CentOS'] or (ansible_facts['distribution'] == 'Ubuntu' and ansible_facts['distribution_version'] is version('26.04', '>=')) %}
       export PATH="${PATH}:${GOPATH}/bin"
-      {% else %}
-      export PATH="${GOPATH}/bin:${PATH}"
-      {% endif %}
   notify: Notify updates of Go via Slack
 
 - name: Install Go command-line tools
@@ -38,18 +34,10 @@
       - "{{ item }}@latest"
   loop: >-
     {{
-      (
       go_cli_tools
-      + (go_cli_tools_non_macos | default([])
-         if ansible_facts['distribution'] != 'MacOSX' else [])
-      + (go_cli_tools_ubuntu_apt | default([])
-         if ansible_facts['distribution'] != 'MacOSX'
-         and (ansible_facts['distribution'] != 'Ubuntu'
-           or ansible_facts['distribution_version'] is version('26.04', '<')) else [])
-      )
-      | reject('in',
-        (fedora_system_managed_go_tools | default([]))
-        + (centos_system_managed_go_tools | default([]))) | list
+      + (go_cli_tools_non_macos if ansible_facts['distribution'] != 'MacOSX' else [])
+      + (go_cli_tools_ubuntu if ansible_facts['distribution'] == 'Ubuntu' else [])
+      + (go_cli_tools_centos if ansible_facts['distribution'] == 'CentOS' else [])
     }}
   changed_when: true
   failed_when: false

@@ -37,27 +37,18 @@ ansible-playbook --vault-password-file ./.vault_password_file -K provision.yml
 
 ## Package installation policy
 
-On macOS, Homebrew supplies CLI tools already present in the brew package list;
-Go, npm, and uv install only tools without a Homebrew equivalent in this setup.
-Oxfmt is installed through npm so that its Prettier-backed HTML formatter works.
+Only the current stable Ubuntu (26.10), Fedora (44), and CentOS Stream (10)
+releases are supported. Older Linux releases do not have compatibility paths.
+
+On Linux, APT/DNF provides CLI tools available in the distribution repository.
+CentOS enables EPEL before installing system packages. Go, npm, and uv manage
+only the remaining tools, with no fallback installation for missing system
+packages. Ubuntu's APT `yq` is not Mike Farah's Go implementation, so Ubuntu
+continues to install the Go-based `yq` separately.
+
+On macOS, Homebrew takes precedence over language-specific package managers.
+Oxfmt is installed through npm to retain its Prettier-backed HTML formatter.
 The Vim role uses Homebrew Vim on macOS and builds Vim only on Linux.
-Previously installed duplicates are not automatically removed: review
-`npm ls -g --depth=0`, `uv tool list`, and `~/.go/bin` before cleaning up.
 
-
-On Ubuntu 26.04 LTS and later, nine supported CLI tools are installed from
-APT instead of Go, npm, or uv: `ansible-lint`, `bats`, `csvkit`,
-`govulncheck`, `grip`, `node-typescript` (the `tsc` CLI), `shfmt`,
-`vulture`, and `yamllint`. On older Ubuntu releases, the original
-language-specific installers remain in use. Ubuntu's `yq` package is a
-Python-based jq wrapper and cannot replace the Go-based `mikefarah/yq`.
-
-Fedora and CentOS prefer verified DNF packages for supported CLI tools.
-On Fedora, this includes Bats, Markdownlint, TypeScript, GolangCI-Lint,
-Gosec, Govulncheck, Shfmt, Mike Farah's yq, Ansible Lint, Vulture, and
-Yamllint. CentOS uses EPEL for Bats, Govulncheck, yq, and Yamllint.
-The OS roles first enable EPEL on CentOS, then probe DNF availability and
-install the available packages. Package facts determine which CLI tools
-are actually installed; npm, Go, or uv remains the fallback when an RPM
-cannot be installed. System binaries take priority in PATH, though
-previously installed duplicates must be removed separately.
+Already installed duplicate binaries are not automatically uninstalled; review
+`npm ls -g --depth=0`, `uv tool list`, and `~/.go/bin` before removing them.

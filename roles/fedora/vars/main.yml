@@ -6,6 +6,7 @@ fedora_dnf_packages:
   - atlas-devel
   - autoconf
   - automake
+  - bats
   - binutils
   - bison
   - blas-devel
@@ -51,6 +52,9 @@ fedora_dnf_packages:
   - gnome-terminal
   - gnuplot
   - go
+  - golangci-lint
+  - gosec
+  - govulncheck
   - gsl-devel
   - hdf5-devel
   - hunspell-devel
@@ -83,6 +87,7 @@ fedora_dnf_packages:
   - lua-devel
   - luajit-devel
   - make
+  - markdownlint-cli2
   - mariadb-devel
   - mariadb-connector-c-devel
   - maxima
@@ -115,6 +120,8 @@ fedora_dnf_packages:
   - proj-devel
   - protobuf-devel
   - python3-devel
+  - python3-ansible-lint
+  - python3-vulture
   - R-devel
   - rcs
   - readline-devel
@@ -124,6 +131,7 @@ fedora_dnf_packages:
   - sbt
   - scala
   - ShellCheck
+  - shfmt
   - shunit2
   - snappy-devel
   - speedcrunch
@@ -139,6 +147,7 @@ fedora_dnf_packages:
   - traceroute
   - transfig
   - tree
+  - typescript
   - units
   - v8-devel
   - valgrind
@@ -148,21 +157,9 @@ fedora_dnf_packages:
   - whois
   - wxMaxima
   - xfig
+  - yamllint
+  - yq
   - zsh
-# RPM equivalents of language-managed CLI tools (including the Go-based yq).
-# Only successfully installed packages suppress language-specific installation.
-fedora_system_cli_packages:
-  - {package: bats, manager: nodejs, tool: bats}
-  - {package: markdownlint-cli2, manager: nodejs, tool: markdownlint-cli2}
-  - {package: typescript, manager: nodejs, tool: typescript}
-  - {package: golangci-lint, manager: go, tool: github.com/golangci/golangci-lint/cmd/golangci-lint}
-  - {package: gosec, manager: go, tool: github.com/securego/gosec/v2/cmd/gosec}
-  - {package: govulncheck, manager: go, tool: golang.org/x/vuln/cmd/govulncheck}
-  - {package: shfmt, manager: go, tool: mvdan.cc/sh/v3/cmd/shfmt}
-  - {package: yq, manager: go, tool: github.com/mikefarah/yq/v4}
-  - {package: python3-ansible-lint, manager: python, tool: ansible-lint}
-  - {package: python3-vulture, manager: python, tool: vulture}
-  - {package: yamllint, manager: python, tool: yamllint}
 fedora_users:
   - name: dceoy
     groups: wheel
