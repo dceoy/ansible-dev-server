@@ -127,7 +127,7 @@
   ansible.builtin.set_fact:
     nodejs_pnpm_outdated_names: >-
       {{
-        nodejs_pnpm_outdated_tools.stdout | trim | default('{}', true) | from_json
+        nodejs_pnpm_outdated_tools.stdout | default('{}', true) | trim | from_json
         | default({}, true) | dict2items | map(attribute='key') | list
       }}
 
