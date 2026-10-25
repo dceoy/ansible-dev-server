@@ -13,6 +13,7 @@
            and (ansible_facts['distribution'] != 'Ubuntu'
            or ansible_facts['distribution_version'] is version('26.04', '<')) else [])
       }}
+      | reject('in', system_managed_python_tools | default([])) | list
 
 - name: Check if uv is installed
   when:
@@ -164,7 +165,7 @@
     mode: "0644"
     state: present
     block: |
-      {% if ansible_facts['distribution'] == 'MacOSX' or (ansible_facts['distribution'] == 'Ubuntu' and ansible_facts['distribution_version'] is version('26.04', '>=')) %}
+      {% if ansible_facts['distribution'] in ['MacOSX', 'Fedora', 'CentOS'] or (ansible_facts['distribution'] == 'Ubuntu' and ansible_facts['distribution_version'] is version('26.04', '>=')) %}
       export PATH="${PATH}:${HOME}/.local/bin"
       {% else %}
       export PATH="${HOME}/.local/bin:${PATH}"

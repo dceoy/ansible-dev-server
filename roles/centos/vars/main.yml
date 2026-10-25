@@ -29,7 +29,6 @@ centos_yum_packages:
   - doxygen
   - elfutils
   - elixir
-  - epel-release
   - expect
   - fd-find
   - fftw-devel
@@ -139,8 +138,13 @@ centos_yum_packages:
   - wget
   - whois
   - xfig
-  - yq
   - zsh
+# EPEL CLI packages; retain npm/Go/uv fallback if a package is unavailable.
+centos_system_cli_packages:
+  - {package: bats, manager: nodejs, tool: bats}
+  - {package: govulncheck, manager: go, tool: golang.org/x/vuln/cmd/govulncheck}
+  - {package: yq, manager: go, tool: github.com/mikefarah/yq/v4}
+  - {package: yamllint, manager: python, tool: yamllint}
 centos_users:
   - name: dceoy
     groups: wheel

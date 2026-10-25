@@ -51,3 +51,13 @@ APT instead of Go, npm, or uv: `ansible-lint`, `bats`, `csvkit`,
 `vulture`, and `yamllint`. On older Ubuntu releases, the original
 language-specific installers remain in use. Ubuntu's `yq` package is a
 Python-based jq wrapper and cannot replace the Go-based `mikefarah/yq`.
+
+Fedora and CentOS prefer verified DNF packages for supported CLI tools.
+On Fedora, this includes Bats, Markdownlint, TypeScript, GolangCI-Lint,
+Gosec, Govulncheck, Shfmt, Mike Farah's yq, Ansible Lint, Vulture, and
+Yamllint. CentOS uses EPEL for Bats, Govulncheck, yq, and Yamllint.
+The OS roles first enable EPEL on CentOS, then probe DNF availability and
+install the available packages. Package facts determine which CLI tools
+are actually installed; npm, Go, or uv remains the fallback when an RPM
+cannot be installed. System binaries take priority in PATH, though
+previously installed duplicates must be removed separately.
