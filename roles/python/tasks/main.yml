@@ -7,30 +7,37 @@
   register: python_homebrew_prefix
   changed_when: false
 
+- name: Check system-managed uv on Fedora and CentOS
+  when: ansible_facts['distribution'] in ['Fedora', 'CentOS']
+  ansible.builtin.stat:
+    path: /usr/bin/uv
+  register: python_system_uv
+
 - name: Select uv executable and tool packages
   when: python_uv_tools_by_os is defined
   ansible.builtin.set_fact:
-    python_uv_executable: "{{ python_homebrew_prefix.stdout ~ '/bin/uv' if ansible_facts['distribution'] == 'MacOSX' else '/usr/bin/uv' if ansible_facts['distribution'] in ['Fedora', 'CentOS'] else ansible_facts['env']['HOME'] ~ '/.local/bin/uv' }}"
+    python_uv_standalone: "{{ ansible_facts['distribution'] != 'MacOSX' and not (python_system_uv.stat.exists | default(false)) }}"
+    python_uv_executable: "{{ python_homebrew_prefix.stdout ~ '/bin/uv' if ansible_facts['distribution'] == 'MacOSX' else '/usr/bin/uv' if (python_system_uv.stat.exists | default(false)) else ansible_facts['env']['HOME'] ~ '/.local/bin/uv' }}"
     python_uv_selected_tools: "{{ python_uv_tools_by_os[ansible_facts['distribution']] }}"
 
-- name: Check standalone uv installation on Ubuntu
-  when: ansible_facts['distribution'] == 'Ubuntu'
+- name: Check standalone uv installation
+  when: python_uv_standalone
   ansible.builtin.stat:
     path: "{{ python_uv_executable }}"
   register: python_uv_installed
 
-- name: Download official uv installer on Ubuntu
+- name: Download official uv installer
   when:
-    - ansible_facts['distribution'] == 'Ubuntu'
+    - python_uv_standalone
     - not python_uv_installed.stat.exists
   ansible.builtin.get_url:
     url: https://astral.sh/uv/install.sh
     dest: /tmp/install.uv.sh
     mode: "0755"
 
-- name: Install standalone uv on Ubuntu
+- name: Install standalone uv
   when:
-    - ansible_facts['distribution'] == 'Ubuntu'
+    - python_uv_standalone
     - not python_uv_installed.stat.exists
   ansible.builtin.command: /tmp/install.uv.sh
   environment:
@@ -39,8 +46,8 @@
   changed_when: true
   notify: Notify updates of Python via Slack
 
-- name: Update standalone uv on Ubuntu
-  when: ansible_facts['distribution'] == 'Ubuntu'
+- name: Update standalone uv
+  when: python_uv_standalone
   ansible.builtin.command:
     argv:
       - "{{ python_uv_executable }}"

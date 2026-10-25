@@ -31,14 +31,37 @@
   changed_when: true
   notify: Notify updates of Node.js via Slack
 
+- name: Check standalone pnpm version before update
+  when: ansible_facts['distribution'] in ['Ubuntu', 'CentOS']
+  ansible.builtin.command:
+    argv:
+      - "{{ nodejs_pnpm_executable }}"
+      - --version
+  register: nodejs_pnpm_version_before
+  changed_when: false
+
 - name: Update standalone pnpm
   when: ansible_facts['distribution'] in ['Ubuntu', 'CentOS']
   ansible.builtin.command:
     argv:
       - "{{ nodejs_pnpm_executable }}"
       - self-update
-  register: nodejs_pnpm_self_update
-  changed_when: "'already up to date' not in (nodejs_pnpm_self_update.stdout ~ nodejs_pnpm_self_update.stderr) | lower"
+  changed_when: false
+
+- name: Check standalone pnpm version after update
+  when: ansible_facts['distribution'] in ['Ubuntu', 'CentOS']
+  ansible.builtin.command:
+    argv:
+      - "{{ nodejs_pnpm_executable }}"
+      - --version
+  register: nodejs_pnpm_version_after
+  changed_when: false
+
+- name: Report standalone pnpm version changes
+  when: ansible_facts['distribution'] in ['Ubuntu', 'CentOS']
+  ansible.builtin.debug:
+    msg: "pnpm {{ nodejs_pnpm_version_before.stdout }} -> {{ nodejs_pnpm_version_after.stdout }}"
+  changed_when: nodejs_pnpm_version_before.stdout != nodejs_pnpm_version_after.stdout
   notify: Notify updates of Node.js via Slack
 
 - name: Add pnpm global binaries to PATH
@@ -53,8 +76,59 @@
       export PATH="${PATH}:${PNPM_HOME}/bin:${PNPM_HOME}"
   notify: Notify updates of Node.js via Slack
 
-- name: Install and update Node.js command-line tools with pnpm
+- name: List installed global Node.js tools
   when: nodejs_cli_tools_by_os is defined
+  environment:
+    PNPM_HOME: "{{ nodejs_pnpm_home }}"
+    PATH: "{{ nodejs_path }}:{{ nodejs_pnpm_home }}/bin:{{ nodejs_pnpm_home }}"
+  ansible.builtin.command:
+    argv:
+      - "{{ nodejs_pnpm_executable }}"
+      - list
+      - --global
+      - --json
+  register: nodejs_pnpm_installed_tools
+  changed_when: false
+
+- name: Check outdated global Node.js tools
+  when: nodejs_cli_tools_by_os is defined
+  environment:
+    PNPM_HOME: "{{ nodejs_pnpm_home }}"
+    PATH: "{{ nodejs_path }}:{{ nodejs_pnpm_home }}/bin:{{ nodejs_pnpm_home }}"
+  ansible.builtin.command:
+    argv:
+      - "{{ nodejs_pnpm_executable }}"
+      - outdated
+      - --global
+      - --format=json
+  register: nodejs_pnpm_outdated_tools
+  changed_when: false
+  failed_when: >-
+    nodejs_pnpm_outdated_tools.rc not in [0, 1]
+    or (nodejs_pnpm_outdated_tools.rc == 1
+      and not (nodejs_pnpm_outdated_tools.stdout | trim).startswith('{'))
+
+- name: Select missing or outdated global Node.js tools
+  when: nodejs_cli_tools_by_os is defined
+  ansible.builtin.set_fact:
+    nodejs_pnpm_installed_names: >-
+      {{
+        nodejs_pnpm_installed_tools.stdout | from_json
+        | selectattr('dependencies', 'defined')
+        | map(attribute='dependencies')
+        | map('dict2items') | flatten
+        | map(attribute='key') | list
+      }}
+    nodejs_pnpm_outdated_names: >-
+      {{
+        nodejs_pnpm_outdated_tools.stdout | trim | default('{}', true) | from_json
+        | default({}, true) | dict2items | map(attribute='key') | list
+      }}
+
+- name: Install and update Node.js command-line tools with pnpm
+  when:
+    - nodejs_cli_tools_by_os is defined
+    - item not in nodejs_pnpm_installed_names or item in nodejs_pnpm_outdated_names
   environment:
     PNPM_HOME: "{{ nodejs_pnpm_home }}"
     PATH: "{{ nodejs_path }}:{{ nodejs_pnpm_home }}/bin:{{ nodejs_pnpm_home }}"
