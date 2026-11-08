@@ -3,4 +3,3 @@ ruby_cli_tools:
   - bundler
   - rake
   - rubocop
-  - statelint
