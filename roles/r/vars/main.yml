@@ -5,24 +5,10 @@ r_repos:
 r_packages:
   cran:
     - data.table
-    - dbplyr
-    - doParallel
-    - dplyr
-    - foreach
-    - ggplot2
-    - ggpubr
     - lintr
-    - readr
     - renv
     - rmarkdown
     - roxygen2
-    - stringr
     - styler
-    - survminer
     - testthat
-    - tidyr
-  bioconductor:
-    - Biobase
-    - Biostrings
-    - GEOquery
-    - GenomicRanges
+    - tidyverse
