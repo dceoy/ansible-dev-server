@@ -1,4 +1,10 @@
 ---
+- name: Reject unsupported CentOS releases
+  ansible.builtin.assert:
+    that:
+      - ansible_facts['distribution_major_version'] | int >= 9
+    fail_msg: CentOS Linux 7/8 and CentOS Stream 8 are end-of-life; use a supported CentOS Stream release.
+
 - name: Set proxy at /etc/environment
   when: http_proxy is defined or https_proxy is defined
   become: true
