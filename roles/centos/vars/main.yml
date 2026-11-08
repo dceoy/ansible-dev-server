@@ -2,8 +2,6 @@
 centos_yum_packages:
   - '@Development tools'
   - 7zip
-  - ant
-  - atlas-devel
   - autoconf
   - automake
   - bats
@@ -11,18 +9,13 @@ centos_yum_packages:
   - bison
   - blas-devel
   - boost-devel
-  - bridge-utils
-  - byacc
   - bzip2-devel
-  - cabal-install
   - cairo-devel
   - ccache
+  - clang-tools-extra
   - cmake
-  - colordiff
-  - cscope
   - ctags
   - curl
-  - cvs
   - device-mapper-persistent-data
   - diffstat
   - dkms
@@ -43,7 +36,6 @@ centos_yum_packages:
   - gdb
   - gdbm-devel
   - gflags-devel
-  - ghc
   - git
   - glibc-devel
   - glog-devel
@@ -59,8 +51,8 @@ centos_yum_packages:
   - hunspell-devel
   - ImageMagick-c++-devel
   - ImageMagick-devel
-  - indent
   - inotify-tools
+  - iproute
   - jq
   - kernel-devel
   - kernel-headers
@@ -71,7 +63,6 @@ centos_yum_packages:
   - libgit2-devel
   - libpcap-devel
   - libpng-devel
-  - libsqlite3x-devel
   - libssh2-devel
   - librsvg2-devel
   - libtool
@@ -85,8 +76,6 @@ centos_yum_packages:
   - make
   - mariadb-devel
   - mariadb-connector-c-devel
-  - maxima
-  - mercurial
   - mesa-libGL-devel
   - mesa-libGLU-devel
   - mysql-devel
@@ -99,8 +88,6 @@ centos_yum_packages:
   - opencv-devel
   - openmpi-devel
   - openssl-devel
-  - oprofile
-  - pamtester
   - pandoc
   - parallel
   - patch
@@ -114,32 +101,25 @@ centos_yum_packages:
   - protobuf-devel
   - python3-devel
   - R-devel
-  - rcs
   - readline-devel
   - ruby-devel
   - ShellCheck
-  - shunit2
   - snappy-devel
   - sqlite-devel
   - strace
   - sudo
   - swig
-  - systemtap
-  - texmaker
   - time
   - tldr
   - tmux
   - traceroute
-  - transfig
   - tree
   - units
   - uv
-  - v8-devel
   - valgrind
   - vim-enhanced
   - wget
   - whois
-  - xfig
   - yamllint
   - yq
   - zsh
