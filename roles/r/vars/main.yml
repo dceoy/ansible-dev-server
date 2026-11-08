@@ -4,11 +4,23 @@ r_repos:
     - https://cran.rstudio.com/
 r_packages:
   cran:
-    - data.table
+    - dbplyr
+    - docopt
+    - doParallel
+    - dtplyr
+    - foreach
+    - ggpubr
+    - janitor
     - lintr
+    - nanoparquet
+    - pak
     - renv
     - rmarkdown
     - roxygen2
     - styler
     - testthat
     - tidyverse
+    - writexl
+    - yaml
+  bioconductor:
+    - qvalue
