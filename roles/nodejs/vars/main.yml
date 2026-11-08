@@ -1,13 +1,11 @@
 ---
 nodejs_cli_tools_by_os:
   MacOSX:
-    - '@puppeteer/browsers'
     - ajv-cli
     - oxlint
     - oxfmt
     - wscat
   Ubuntu:
-    - '@puppeteer/browsers'
     - ajv-cli
     - oxlint
     - oxfmt
@@ -17,7 +15,6 @@ nodejs_cli_tools_by_os:
     - markdownlint-cli2
     - stylelint
   Fedora:
-    - '@puppeteer/browsers'
     - ajv-cli
     - oxlint
     - oxfmt
@@ -26,7 +23,6 @@ nodejs_cli_tools_by_os:
     - htmlhint
     - stylelint
   CentOS:
-    - '@puppeteer/browsers'
     - ajv-cli
     - oxlint
     - oxfmt
