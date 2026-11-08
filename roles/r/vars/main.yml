@@ -11,7 +11,6 @@ r_packages:
     - binom
     - broom
     - brms
-    - caret
     - changepoint
     - coin
     - corrplot
@@ -25,7 +24,6 @@ r_packages:
     - doSNOW
     - dtplyr
     - fdrtool
-    - feather
     - foreach
     - formatR
     - fst
@@ -77,7 +75,6 @@ r_packages:
     - stringr
     - styler
     - survminer
-    - tensorflow
     - testthat
     - tidyverse
     - tm
