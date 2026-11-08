@@ -31,7 +31,6 @@ ubuntu_apt_packages:
   - htop
   - hugo
   - ibus-mozc
-  - igv
   - imagemagick
   - inotify-tools
   - iproute2
