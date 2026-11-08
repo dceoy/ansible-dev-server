@@ -63,6 +63,7 @@ macos_brew_packages:
   - ollama
   - osv-scanner
   - pandoc
+  - pbzip2
   - pdf2svg
   - pigz
   - pinact
