@@ -105,3 +105,4 @@ macos_brew_cask_packages:
   - microsoft-office
   - slack
   - visual-studio-code
+  - xquartz
