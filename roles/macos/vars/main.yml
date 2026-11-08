@@ -26,7 +26,6 @@ macos_brew_packages:
   - diffutils
   - direnv
   - dvc
-  - fcrackzip
   - fd
   - ffmpeg
   - findutils
@@ -45,7 +44,6 @@ macos_brew_packages:
   - govulncheck
   - groff
   - grep
-  - grip
   - grype
   - gzip
   - hadolint
@@ -58,13 +56,10 @@ macos_brew_packages:
   - hunspell
   - imagemagick
   - jq
-  - jsonlint
   - llm
   - lua
   - luajit
   - markdownlint-cli2
-  - md5sha1sum
-  - mercurial
   - mise
   - ncdu
   - nkf
@@ -72,7 +67,6 @@ macos_brew_packages:
   - node
   - ollama
   - osv-scanner
-  - p7zip
   - pandoc
   - pbzip2
   - pdf2svg
@@ -81,7 +75,6 @@ macos_brew_packages:
   - pnpm
   - pyright
   - python
-  - quicktype
   - r
   - rain
   - rename
@@ -89,6 +82,7 @@ macos_brew_packages:
   - rsync
   - ruby
   - semgrep
+  - sevenzip
   - shellcheck
   - shfmt
   - shunit2
@@ -130,7 +124,6 @@ macos_brew_cask_packages:
   - google-cloud-sdk
   - google-gemini
   - google-japanese-ime
-  - iterm2
   - microsoft-office
   - slack
   - visual-studio-code
