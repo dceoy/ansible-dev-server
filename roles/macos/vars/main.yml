@@ -71,7 +71,6 @@ macos_brew_packages:
   - node
   - ollama
   - osv-scanner
-  - p7zip
   - pandoc
   - pbzip2
   - pdf2svg
