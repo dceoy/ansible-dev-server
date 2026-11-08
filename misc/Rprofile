@@ -7,9 +7,7 @@
 }
 
 if(interactive()) {
-  sapply(c('dbplyr', 'doParallel', 'foreach', 'ggpubr',
-           'dplyr', 'ggplot2', 'readr', 'stringr', 'tidyr'),
-         require, character.only = TRUE, quietly = TRUE)
+  suppressPackageStartupMessages(library(tidyverse))
   select <- dplyr::select
   rename <- dplyr::rename
   filter <- dplyr::filter
