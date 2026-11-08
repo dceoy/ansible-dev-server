@@ -5,19 +5,28 @@ macos_brew_packages:
   - anomalyco/tap/opencode-v2
   - ansible
   - ansible-lint
+  - aria2
+  - aws-cdk
   - awscli
   - bash
   - bats-core
   - biome
+  - binutils
   - cairo
   - checkov
   - cloudflared
+  - cloudformation-guard
+  - colordiff
+  - container
   - copilot-cli
   - coreutils
   - cosign
   - csvkit
   - curl
+  - diffutils
   - direnv
+  - dvc
+  - fcrackzip
   - fd
   - ffmpeg
   - findutils
@@ -27,12 +36,18 @@ macos_brew_packages:
   - git
   - gnu-sed
   - gnu-tar
+  - gnu-which
   - go
   - golangci-lint
   - gopls
   - googleworkspace-cli
   - gosec
   - govulncheck
+  - groff
+  - grep
+  - grip
+  - grype
+  - gzip
   - hadolint
   - hdf5
   - herdr
@@ -43,9 +58,12 @@ macos_brew_packages:
   - hunspell
   - imagemagick
   - jq
+  - llm
   - lua
   - luajit
   - markdownlint-cli2
+  - md5sha1sum
+  - mercurial
   - mise
   - ncdu
   - nkf
@@ -53,27 +71,31 @@ macos_brew_packages:
   - node
   - ollama
   - osv-scanner
+  - p7zip
   - pandoc
+  - pbzip2
   - pdf2svg
   - pigz
   - pinact
   - pnpm
   - pyright
   - python
+  - quicktype
   - r
   - rename
   - ripgrep
   - rsync
   - ruby
   - semgrep
-  - sevenzip
   - shellcheck
   - shfmt
+  - shunit2
   - sqlfluff
   - sqlite
   - steipete/tap/oracle
   - stylelint
   - syft
+  - tenv
   - tflint
   - tig
   - tmux
@@ -82,12 +104,16 @@ macos_brew_packages:
   - typescript
   - uv
   - vim
+  - vulture
   - wakeonlan
   - watch
+  - wdiff
   - wget
   - yamllint
   - yq
+  - zip
   - zizmor
+  - zsh
 macos_brew_cask_packages:
   - antigravity
   - antigravity-cli
@@ -102,6 +128,7 @@ macos_brew_cask_packages:
   - google-cloud-sdk
   - google-gemini
   - google-japanese-ime
+  - iterm2
   - microsoft-office
   - slack
   - visual-studio-code
