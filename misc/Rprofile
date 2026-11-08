@@ -7,7 +7,8 @@
 }
 
 if(interactive()) {
-  sapply(c('dbplyr', 'doParallel', 'foreach', 'ggpubr', 'tidyverse'),
+  sapply(c('dbplyr', 'doParallel', 'foreach', 'ggpubr',
+           'dplyr', 'ggplot2', 'readr', 'stringr', 'tidyr'),
          require, character.only = TRUE, quietly = TRUE)
   select <- dplyr::select
   rename <- dplyr::rename
