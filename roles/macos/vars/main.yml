@@ -6,7 +6,6 @@ macos_brew_packages:
   - ansible
   - ansible-lint
   - aria2
-  - aws-cdk
   - awscli
   - bash
   - bats-core
@@ -25,7 +24,6 @@ macos_brew_packages:
   - curl
   - diffutils
   - direnv
-  - dvc
   - fcrackzip
   - fd
   - ffmpeg
@@ -43,7 +41,6 @@ macos_brew_packages:
   - googleworkspace-cli
   - gosec
   - govulncheck
-  - groff
   - grep
   - grip
   - grype
@@ -58,12 +55,9 @@ macos_brew_packages:
   - hunspell
   - imagemagick
   - jq
-  - llm
   - lua
   - luajit
   - markdownlint-cli2
-  - md5sha1sum
-  - mercurial
   - mise
   - ncdu
   - nkf
@@ -79,13 +73,13 @@ macos_brew_packages:
   - pnpm
   - pyright
   - python
-  - quicktype
   - r
   - rename
   - ripgrep
   - rsync
   - ruby
   - semgrep
+  - sevenzip
   - shellcheck
   - shfmt
   - shunit2
@@ -106,7 +100,6 @@ macos_brew_packages:
   - vulture
   - wakeonlan
   - watch
-  - wdiff
   - wget
   - yamllint
   - yq
@@ -127,7 +120,6 @@ macos_brew_cask_packages:
   - google-cloud-sdk
   - google-gemini
   - google-japanese-ime
-  - iterm2
   - microsoft-office
   - slack
   - visual-studio-code
