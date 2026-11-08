@@ -4,38 +4,25 @@ r_repos:
     - https://cran.rstudio.com/
 r_packages:
   cran:
-    - broom
-    - corrplot
     - data.table
     - dbplyr
     - doParallel
-    - dtplyr
+    - dplyr
     - foreach
+    - ggplot2
     - ggpubr
-    - glmnet
-    - knitr
     - lintr
-    - mlr3
-    - optparse
-    - patchwork
-    - ranger
+    - readr
     - renv
     - rmarkdown
     - roxygen2
-    - RSQLite
     - stringr
     - styler
     - survminer
     - testthat
-    - tidyverse
-    - uwot
-    - xgboost
-    - yaml
+    - tidyr
   bioconductor:
     - Biobase
     - Biostrings
-    - DNAcopy
     - GEOquery
     - GenomicRanges
-    - org.Hs.eg.db
-    - qvalue
