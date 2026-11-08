@@ -1,30 +1,41 @@
 ---
 ubuntu_apt_packages:
   - 7zip
+  - ant
   - ansible-lint
   - apt-file
   - apt-utils
   - bats
+  - bridge-utils
   - build-essential
   - bzip2
   - ca-certificates
+  - cabal-install
+  - cifs-utils
   - cmake
   - colordiff
   - curl
   - csvkit
+  - dkms
+  - elixir
   - ethtool
+  - exfat-fuse
   - exfatprogs
   - expect
+  - fcrackzip
   - fd-find
   - ffmpeg
   - freetds-dev
   - g++
   - gcc
+  - gdebi-core
   - gfortran
+  - ghc
   - git
   - gnome-terminal
   - golang
   - govulncheck
+  - grip
   - htop
   - hugo
   - ibus-mozc
@@ -33,6 +44,7 @@ ubuntu_apt_packages:
   - inotify-tools
   - jq
   - libapparmor1
+  - libatlas-base-dev
   - libblas-dev
   - libboost-all-dev
   - libbz2-dev
@@ -53,6 +65,7 @@ ubuntu_apt_packages:
   - libluajit-5.1-dev
   - libmagick++-dev
   - libncurses-dev
+  - libnode-dev
   - libopencv-dev
   - libopenmpi-dev
   - libpcap-dev
@@ -74,11 +87,13 @@ ubuntu_apt_packages:
   - locales
   - luajit
   - make
+  - mercurial
   - ncdu
   - nkf
   - nmap
   - nodejs
   - node-typescript
+  - pamtester
   - pandoc
   - patch
   - pdf2svg
@@ -89,10 +104,12 @@ ubuntu_apt_packages:
   - postgresql-client
   - protobuf-compiler
   - python3-dev
+  - qemu-user-static
   - r-base-dev
   - rename
   - ripgrep
   - ruby-dev
+  - scala
   - shfmt
   - shellcheck
   - shunit2
@@ -109,6 +126,7 @@ ubuntu_apt_packages:
   - texlive-xetex
   - time
   - tk-dev
+  - tldr
   - tmux
   - traceroute
   - tree
