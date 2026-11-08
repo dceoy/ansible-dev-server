@@ -13,9 +13,9 @@ macos_brew_packages:
   - binutils
   - cairo
   - checkov
+  - clang-format
   - cloudflared
   - cloudformation-guard
-  - colordiff
   - container
   - copilot-cli
   - coreutils
@@ -24,7 +24,6 @@ macos_brew_packages:
   - curl
   - diffutils
   - direnv
-  - fcrackzip
   - fd
   - ffmpeg
   - findutils
@@ -34,7 +33,6 @@ macos_brew_packages:
   - git
   - gnu-sed
   - gnu-tar
-  - gnu-which
   - go
   - golangci-lint
   - gopls
@@ -42,7 +40,6 @@ macos_brew_packages:
   - gosec
   - govulncheck
   - grep
-  - grip
   - grype
   - gzip
   - hadolint
@@ -66,7 +63,6 @@ macos_brew_packages:
   - ollama
   - osv-scanner
   - pandoc
-  - pbzip2
   - pdf2svg
   - pigz
   - pinact
@@ -82,7 +78,6 @@ macos_brew_packages:
   - sevenzip
   - shellcheck
   - shfmt
-  - shunit2
   - sqlfluff
   - sqlite
   - steipete/tap/oracle
