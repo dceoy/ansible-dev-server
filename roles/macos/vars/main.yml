@@ -2,7 +2,6 @@
 macos_brew_packages:
   - act
   - agent-browser
-  - anomalyco/tap/opencode-v2
   - ansible
   - ansible-lint
   - aria2
@@ -81,7 +80,6 @@ macos_brew_packages:
   - shfmt
   - sqlfluff
   - sqlite
-  - steipete/tap/oracle
   - stylelint
   - syft
   - tenv
@@ -103,11 +101,9 @@ macos_brew_packages:
   - zizmor
   - zsh
 macos_brew_cask_packages:
-  - antigravity
   - antigravity-cli
   - claude
   - claude-code
-  - codex
   - chatgpt
   - docker
   - drawio
