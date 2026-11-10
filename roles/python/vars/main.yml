@@ -2,18 +2,12 @@
 python_uv_tools_by_os:
   MacOSX:
     - cfn-lint
-    - cutadapt
     - ipython
-    - marimo
-    - pyinstaller
     - ruff
     - ty
   Ubuntu:
     - cfn-lint
-    - cutadapt
     - ipython
-    - marimo
-    - pyinstaller
     - ruff
     - ty
     - checkov
@@ -22,10 +16,7 @@ python_uv_tools_by_os:
     - zizmor
   Fedora:
     - cfn-lint
-    - cutadapt
     - ipython
-    - marimo
-    - pyinstaller
     - ruff
     - ty
     - checkov
@@ -37,10 +28,7 @@ python_uv_tools_by_os:
     - sqlfluff
   CentOS:
     - cfn-lint
-    - cutadapt
     - ipython
-    - marimo
-    - pyinstaller
     - ruff
     - ty
     - checkov

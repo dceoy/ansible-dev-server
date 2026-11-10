@@ -51,7 +51,6 @@
     autoremove: true
     update_cache: true
     name:
-      - aptitude
       - ca-certificates
       - python3-venv
     state: latest  # noqa: package-latest
