@@ -32,6 +32,7 @@ macos_brew_packages:
   - git
   - gnu-sed
   - gnu-tar
+  - gnu-which
   - go
   - golangci-lint
   - gopls
@@ -94,6 +95,7 @@ macos_brew_packages:
   - vulture
   - wakeonlan
   - watch
+  - wdiff
   - wget
   - yamllint
   - yq
