@@ -5,11 +5,13 @@ nodejs_cli_tools_by_os:
     - oxlint
     - oxfmt
     - wscat
+    - '@earendil-works/pi-coding-agent'
   Ubuntu:
     - ajv-cli
     - oxlint
     - oxfmt
     - wscat
+    - '@earendil-works/pi-coding-agent'
     - '@biomejs/biome'
     - htmlhint
     - markdownlint-cli2
@@ -19,6 +21,7 @@ nodejs_cli_tools_by_os:
     - oxlint
     - oxfmt
     - wscat
+    - '@earendil-works/pi-coding-agent'
     - '@biomejs/biome'
     - htmlhint
     - stylelint
@@ -27,6 +30,7 @@ nodejs_cli_tools_by_os:
     - oxlint
     - oxfmt
     - wscat
+    - '@earendil-works/pi-coding-agent'
     - '@biomejs/biome'
     - htmlhint
     - markdownlint-cli2
