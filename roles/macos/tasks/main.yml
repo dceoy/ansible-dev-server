@@ -9,14 +9,12 @@
       - --force
   changed_when: true
   failed_when: false
-  notify: Notify updates of the system via Slack
 
 - name: Update homebrew and upgrade all packages
   become: false
   community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
-  notify: Notify updates of the system via Slack
 
 - name: Install packages
   become: false
@@ -24,7 +22,6 @@
   community.general.homebrew:
     name: "{{ macos_brew_packages }}"
     state: latest  # noqa: package-latest
-  notify: Notify updates of the system via Slack
 
 - name: Install cask packages
   become: false
@@ -34,4 +31,3 @@
     state: latest  # noqa: package-latest
   failed_when: false
   loop: "{{ macos_brew_cask_packages }}"
-  notify: Notify updates of the system via Slack

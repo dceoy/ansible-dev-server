@@ -18,7 +18,6 @@
       http_proxy={{ http_proxy | default('') }}
       https_proxy={{ https_proxy | default('') }}
       no_proxy={{ no_proxy | default('') }}
-  notify: Notify updates of the system via Slack
 
 - name: Set proxy at /etc/yum.conf
   when: http_proxy is defined or https_proxy is defined
@@ -28,7 +27,6 @@
     state: present
     block: |
       proxy={{ http_proxy | default(https_proxy) }}
-  notify: Notify updates of the system via Slack
 
 - name: Write %wheel in /etc/sudoers
   when:
@@ -41,7 +39,6 @@
     block: |
       %wheel  ALL=(ALL)       NOPASSWD: ALL
     validate: 'visudo -cf %s'
-  notify: Notify updates of the system via Slack
 
 - name: Upgrade all packages
   become: true
@@ -49,14 +46,12 @@
     update_cache: true
     name: '*'
     state: latest  # noqa: package-latest
-  notify: Notify updates of the system via Slack
 
 - name: Enable EPEL before installing CentOS packages
   become: true
   ansible.builtin.dnf:
     name: epel-release
     state: present
-  notify: Notify updates of the system via Slack
 
 - name: Install packages
   when: centos_yum_packages is defined
@@ -65,7 +60,6 @@
     name: "{{ centos_yum_packages }}"
     state: latest  # noqa: package-latest
   failed_when: false
-  notify: Notify updates of the system via Slack
 
 - name: Set users
   when: centos_users is defined
@@ -76,4 +70,3 @@
     groups: "{{ item.groups }}"
     append: true
   loop: "{{ centos_users }}"
-  notify: Notify updates of the system via Slack

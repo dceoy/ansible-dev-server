@@ -13,4 +13,3 @@
     state: latest  # noqa: package-latest
   loop: "{{ ruby_cli_tools }}"
   failed_when: false
-  notify: Notify updates of Ruby via Slack

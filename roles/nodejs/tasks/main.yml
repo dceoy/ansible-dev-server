@@ -29,7 +29,6 @@
     PNPM_HOME: "{{ nodejs_pnpm_home }}"
     SHELL: /bin/zsh
   changed_when: true
-  notify: Notify updates of Node.js via Slack
 
 - name: Check standalone pnpm version before update
   when: ansible_facts['distribution'] in ['Ubuntu', 'CentOS']
@@ -62,7 +61,6 @@
   ansible.builtin.debug:
     msg: "pnpm {{ nodejs_pnpm_version_before.stdout }} -> {{ nodejs_pnpm_version_after.stdout }}"
   changed_when: nodejs_pnpm_version_before.stdout != nodejs_pnpm_version_after.stdout
-  notify: Notify updates of Node.js via Slack
 
 - name: Add pnpm global binaries to PATH
   ansible.builtin.blockinfile:
@@ -74,7 +72,6 @@
     block: |
       export PNPM_HOME="${HOME}/{{ 'Library/pnpm' if ansible_facts['distribution'] == 'MacOSX' else '.local/share/pnpm' }}"
       export PATH="${PATH}:${PNPM_HOME}/bin:${PNPM_HOME}"
-  notify: Notify updates of Node.js via Slack
 
 - name: List installed global Node.js tools
   when: nodejs_cli_tools_by_os is defined
@@ -146,4 +143,3 @@
       - "{{ item }}@latest"
   loop: "{{ nodejs_cli_tools_by_os[ansible_facts['distribution']] }}"
   changed_when: true
-  notify: Notify updates of Node.js via Slack
