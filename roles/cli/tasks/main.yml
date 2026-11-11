@@ -28,7 +28,6 @@
       value: "{{ git_user_name }}"
     - name: user.email
       value: "{{ git_user_email }}"
-  notify: Notify updates of CLI via Slack
 
 - name: Set proxy for git
   when: http_proxy is defined or https_proxy is defined
@@ -41,7 +40,6 @@
       value: "{{ http_proxy | default('') }}"
     - name: https.proxy
       value: "{{ https_proxy | default('') }}"
-  notify: Notify updates of CLI via Slack
 
 - name: Set proxy at ~/.zprofile
   when: http_proxy is defined or https_proxy is defined
@@ -58,7 +56,6 @@
       export http_proxy="${HTTP_PROXY}"
       export https_proxy="${HTTPS_PROXY}"
       export no_proxy="${NO_PROXY}"
-  notify: Notify updates of CLI via Slack
 
 - name: Check if oh-my-zsh is installed
   ansible.builtin.stat:
@@ -78,7 +75,6 @@
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/d42209f2afa8ec3e6971e5b4695ff27f9d5670d2/tools/install.sh
     dest: "{{ cli_ohmyzsh_installer.path }}"
     mode: '0755'
-  notify: Notify updates of CLI via Slack
 
 - name: Install oh-my-zsh
   when: not cli_ohmyzsh.stat.exists
@@ -86,7 +82,6 @@
   environment:
     RUNZSH: 'no'
   changed_when: true
-  notify: Notify updates of CLI via Slack
 
 - name: Remove the oh-my-zsh installer
   when: not cli_ohmyzsh.stat.exists
@@ -99,7 +94,6 @@
     repo: https://github.com/dceoy/litmus-zsh-theme.git
     dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/litmus-zsh-theme"
     version: main  # noqa: latest
-  notify: Notify updates of CLI via Slack
 
 - name: Symlink litmus.zsh-theme in ~/.oh-my-zsh/custom/themes
   ansible.builtin.file:
@@ -107,7 +101,6 @@
     path: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/litmus.zsh-theme"
     state: link
     force: true
-  notify: Notify updates of CLI via Slack
 
 - name: Set ZSH_THEME in ~/.zshrc
   ansible.builtin.lineinfile:
@@ -115,7 +108,6 @@
     regexp: '^ZSH_THEME='
     line: ZSH_THEME='litmus'
     state: present
-  notify: Notify updates of CLI via Slack
 
 - name: Enable colors in ~/.zshrc
   ansible.builtin.blockinfile:
@@ -125,4 +117,3 @@
       alias ls='ls --color=always'
       alias grep='grep --color=always'
       alias zgrep='zgrep --color=always'
-  notify: Notify updates of CLI via Slack

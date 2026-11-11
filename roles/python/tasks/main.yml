@@ -44,7 +44,6 @@
     UV_INSTALL_DIR: "{{ ansible_facts['env']['HOME'] }}/.local/bin"
     UV_NO_MODIFY_PATH: "1"
   changed_when: true
-  notify: Notify updates of Python via Slack
 
 - name: Update standalone uv
   when: python_uv_standalone
@@ -57,7 +56,6 @@
     UV_NO_MODIFY_PATH: "1"
   register: python_uv_self_update
   changed_when: "'updated' in (python_uv_self_update.stdout ~ python_uv_self_update.stderr) | lower"
-  notify: Notify updates of Python via Slack
 
 - name: Verify uv executable
   when: python_uv_tools_by_os is defined
@@ -89,7 +87,6 @@
       - "{{ item }}"
   loop: "{{ python_uv_selected_tools }}"
   changed_when: true
-  notify: Notify updates of Python via Slack
 
 - name: Upgrade Python command-line tools with uv
   when: python_uv_tools_by_os is defined
@@ -101,7 +98,6 @@
       - --all
   register: python_uv_tool_upgrade
   changed_when: "'Nothing to upgrade' not in (python_uv_tool_upgrade.stdout + python_uv_tool_upgrade.stderr)"
-  notify: Notify updates of Python via Slack
 
 - name: Add uv tools to PATH
   ansible.builtin.blockinfile:
@@ -112,4 +108,3 @@
     state: present
     block: |
       export PATH="${PATH}:${HOME}/.local/bin"
-  notify: Notify updates of Python via Slack

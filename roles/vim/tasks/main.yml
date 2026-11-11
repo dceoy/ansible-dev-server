@@ -4,7 +4,6 @@
     src: vimrc
     dest: "{{ ansible_facts['env']['HOME'] }}/.vimrc"
     mode: "0644"
-  notify: Notify updates of Vim via Slack
 
 - name: Create a temporary file for the install-latest-vim installer
   ansible.builtin.tempfile:
@@ -27,7 +26,6 @@
       - --vim-plug
   changed_when: true
   failed_when: false
-  notify: Notify updates of Vim via Slack
 
 - name: Remove install-latest-vim installer
   ansible.builtin.file:
@@ -43,4 +41,3 @@
     state: present
     block: |
       export PATH="${HOME}/.vim/bin:${PATH}"
-  notify: Notify updates of Vim via Slack

@@ -20,7 +20,6 @@
     block: |
       export GOPATH="{{ go_gopath }}"
       export PATH="${PATH}:${GOPATH}/bin"
-  notify: Notify updates of Go via Slack
 
 - name: Install Go command-line tools
   when: go_cli_tools_by_os is defined
@@ -35,4 +34,3 @@
   loop: "{{ go_cli_tools_by_os[ansible_facts['distribution']] }}"
   changed_when: true
   failed_when: false
-  notify: Notify updates of Go via Slack

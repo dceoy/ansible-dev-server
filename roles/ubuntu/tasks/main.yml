@@ -14,7 +14,6 @@
       http_proxy={{ http_proxy | default('') }}
       https_proxy={{ https_proxy | default('') }}
       no_proxy={{ no_proxy | default('') }}
-  notify: Notify updates of the system via Slack
 
 - name: Set proxy at /etc/apt/apt.conf
   when: http_proxy is defined or https_proxy is defined
@@ -27,7 +26,6 @@
     block: |
       Acquire::http::proxy "{{ http_proxy | default('') }}";
       Acquire::https::proxy "{{ https_proxy | default('') }}";
-  notify: Notify updates of the system via Slack
 
 - name: Write %sudo in /etc/sudoers.d/ansible-nopasswd
   when:
@@ -42,7 +40,6 @@
     block: |
       %sudo ALL=(ALL:ALL) NOPASSWD: ALL
     validate: 'visudo -cf %s'
-  notify: Notify updates of the system via Slack
 
 - name: Install required packages
   become: true
@@ -54,7 +51,6 @@
       - ca-certificates
       - python3-venv
     state: latest  # noqa: package-latest
-  notify: Notify updates of the system via Slack
 
 - name: Upgrade all packages
   become: true
@@ -63,7 +59,6 @@
     autoremove: true
     upgrade: dist
     update_cache: true
-  notify: Notify updates of the system via Slack
 
 - name: Install packages
   when: ubuntu_apt_packages is defined
@@ -75,7 +70,6 @@
     state: latest  # noqa: package-latest
   loop: "{{ ubuntu_apt_packages }}"
   failed_when: false
-  notify: Notify updates of the system via Slack
 
 - name: Set users
   when: ubuntu_users is defined
@@ -86,4 +80,3 @@
     groups: "{{ item.groups }}"
     append: true
   loop: "{{ ubuntu_users }}"
-  notify: Notify updates of the system via Slack
