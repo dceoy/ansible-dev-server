@@ -3,6 +3,7 @@ python_uv_tools_by_os:
   MacOSX:
     - cfn-lint
     - ipython
+    - pyright
     - ruff
     - ty
   Ubuntu:
