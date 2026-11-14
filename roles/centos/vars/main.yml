@@ -16,7 +16,6 @@ centos_yum_packages:
   - cmake
   - ctags
   - curl
-  - device-mapper-persistent-data
   - diffstat
   - dkms
   - dnf-plugins-core
@@ -74,9 +73,9 @@ centos_yum_packages:
   - luajit-devel
   - lvm2
   - make
+  - mariadb-connector-c-devel
   - mesa-libGL-devel
   - mesa-libGLU-devel
-  - mysql-devel
   - ncdu
   - ncurses-devel
   - nkf
