@@ -74,8 +74,6 @@ centos_yum_packages:
   - luajit-devel
   - lvm2
   - make
-  - mariadb-connector-c-devel
-  - mariadb-devel
   - mesa-libGL-devel
   - mesa-libGLU-devel
   - mysql-devel
