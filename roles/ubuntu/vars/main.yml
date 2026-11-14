@@ -46,7 +46,7 @@ ubuntu_apt_packages:
   - libgflags-dev
   - libgit2-dev
   - libgoogle-glog-dev
-  - libhdf5-serial-dev
+  - libhdf5-dev
   - libhunspell-dev
   - liblapack-dev
   - libleveldb-dev
@@ -55,7 +55,6 @@ ubuntu_apt_packages:
   - libluajit-5.1-dev
   - libmagick++-dev
   - libncurses-dev
-  - libnode-dev
   - libopencv-dev
   - libopenmpi-dev
   - libpcap-dev
@@ -118,7 +117,6 @@ ubuntu_apt_packages:
   - wakeonlan
   - wget
   - whois
-  - yq
   - zip
   - zlib1g-dev
   - zsh
