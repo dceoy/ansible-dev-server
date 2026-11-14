@@ -1,0 +1,19 @@
+---
+- name: Check installed dependents of {{ macos_brew_formula }}
+  become: false
+  ansible.builtin.command:
+    argv:
+      - brew
+      - uses
+      - --installed
+      - --recursive
+      - "{{ macos_brew_formula }}"
+  register: macos_brew_formula_dependents
+  changed_when: false
+
+- name: Uninstall {{ macos_brew_formula }} only when unused
+  become: false
+  when: macos_brew_formula_dependents.stdout | trim | length == 0
+  community.general.homebrew:
+    name: "{{ macos_brew_formula }}"
+    state: absent
