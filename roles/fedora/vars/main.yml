@@ -78,7 +78,6 @@ fedora_dnf_packages:
   - lua-devel
   - luajit-devel
   - make
-  - markdownlint-cli2
   - mariadb-devel
   - mariadb-connector-c-devel
   - mesa-libGL-devel
@@ -108,7 +107,6 @@ fedora_dnf_packages:
   - protobuf-devel
   - python3-devel
   - python3-ansible-lint
-  - python3-vulture
   - R-devel
   - readline-devel
   - redhat-rpm-config
@@ -126,7 +124,6 @@ fedora_dnf_packages:
   - tmux
   - traceroute
   - tree
-  - typescript
   - units
   - uv
   - valgrind
@@ -134,7 +131,6 @@ fedora_dnf_packages:
   - wol
   - wget
   - whois
-  - yamllint
   - yq
   - zsh
 fedora_users:
