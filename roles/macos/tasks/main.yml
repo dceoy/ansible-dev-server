@@ -16,12 +16,6 @@
     update_homebrew: true
     upgrade_all: true
 
-- name: Remove unwanted Homebrew formulae without installed dependents
-  ansible.builtin.include_tasks: remove_unused_brew_formula.yml
-  loop: "{{ macos_brew_packages_to_remove | default([]) }}"
-  loop_control:
-    loop_var: macos_brew_formula
-
 - name: Install packages
   become: false
   when: macos_brew_packages is defined
