@@ -117,7 +117,6 @@ fedora_dnf_packages:
   - wget
   - whois
   - wol
-  - yq
   - zsh
 fedora_users:
   - name: dceoy
