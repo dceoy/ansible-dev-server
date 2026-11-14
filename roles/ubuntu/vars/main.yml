@@ -12,7 +12,6 @@ ubuntu_apt_packages:
   - clang-format
   - cmake
   - curl
-  - csvkit
   - dkms
   - elixir
   - ethtool
@@ -82,7 +81,6 @@ ubuntu_apt_packages:
   - nkf
   - nmap
   - nodejs
-  - node-typescript
   - pandoc
   - patch
   - pdf2svg
@@ -100,7 +98,6 @@ ubuntu_apt_packages:
   - ruby-dev
   - shfmt
   - shellcheck
-  - sqlfluff
   - software-properties-common
   - sqlite3
   - sudo
@@ -118,10 +115,8 @@ ubuntu_apt_packages:
   - tree
   - unzip
   - vim-gtk3
-  - vulture
   - wakeonlan
   - wget
-  - yamllint
   - whois
   - yq
   - zip
