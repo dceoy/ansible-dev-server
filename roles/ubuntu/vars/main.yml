@@ -8,12 +8,10 @@ ubuntu_apt_packages:
   - build-essential
   - bzip2
   - ca-certificates
-  - cifs-utils
   - clang-format
   - cmake
   - curl
   - dkms
-  - elixir
   - ethtool
   - exfatprogs
   - expect
@@ -24,7 +22,6 @@ ubuntu_apt_packages:
   - gcc
   - gfortran
   - git
-  - gnome-terminal
   - golang
   - govulncheck
   - htop
@@ -55,8 +52,6 @@ ubuntu_apt_packages:
   - libluajit-5.1-dev
   - libmagick++-dev
   - libncurses-dev
-  - libopencv-dev
-  - libopenmpi-dev
   - libpcap-dev
   - libpng-dev
   - libpq-dev
@@ -90,7 +85,6 @@ ubuntu_apt_packages:
   - postgresql-client
   - protobuf-compiler
   - python3-dev
-  - qemu-user-static
   - r-base-dev
   - rename
   - ripgrep
