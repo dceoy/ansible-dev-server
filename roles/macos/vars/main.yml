@@ -58,6 +58,7 @@ macos_brew_packages:
   - ncdu
   - nkf
   - nmap
+  - node
   - ollama
   - osv-scanner
   - pandoc
@@ -66,6 +67,7 @@ macos_brew_packages:
   - pigz
   - pinact
   - pnpm
+  - python
   - r
   - rename
   - ripgrep
