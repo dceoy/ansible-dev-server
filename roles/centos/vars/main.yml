@@ -120,7 +120,6 @@ centos_yum_packages:
   - vim-enhanced
   - wget
   - whois
-  - yamllint
   - yq
   - zsh
 centos_users:
