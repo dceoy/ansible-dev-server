@@ -1,6 +1,7 @@
 ---
 nodejs_cli_tools_by_os:
   MacOSX:
+    - agent-browser
     - ajv-cli
     - htmlhint
     - oxlint
