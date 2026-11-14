@@ -5,6 +5,9 @@ macos_brew_packages_to_remove:
   - gpgme
   - gnupg
   - openblas
+  - node
+  - pyright
+  - python@3.15
   - python@3.13
   - python@3.14
   - unbound
@@ -67,7 +70,6 @@ macos_brew_packages:
   - ncdu
   - nkf
   - nmap
-  - node
   - ollama
   - osv-scanner
   - pandoc
@@ -76,8 +78,6 @@ macos_brew_packages:
   - pigz
   - pinact
   - pnpm
-  - pyright
-  - python
   - r
   - rename
   - ripgrep
