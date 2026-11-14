@@ -8,13 +8,10 @@ ubuntu_apt_packages:
   - build-essential
   - bzip2
   - ca-certificates
-  - cifs-utils
   - clang-format
   - cmake
   - curl
-  - csvkit
   - dkms
-  - elixir
   - ethtool
   - exfatprogs
   - expect
@@ -25,7 +22,6 @@ ubuntu_apt_packages:
   - gcc
   - gfortran
   - git
-  - gnome-terminal
   - golang
   - govulncheck
   - htop
@@ -47,7 +43,7 @@ ubuntu_apt_packages:
   - libgflags-dev
   - libgit2-dev
   - libgoogle-glog-dev
-  - libhdf5-serial-dev
+  - libhdf5-dev
   - libhunspell-dev
   - liblapack-dev
   - libleveldb-dev
@@ -56,21 +52,18 @@ ubuntu_apt_packages:
   - libluajit-5.1-dev
   - libmagick++-dev
   - libncurses-dev
-  - libnode-dev
-  - libopencv-dev
-  - libopenmpi-dev
   - libpcap-dev
   - libpng-dev
   - libpq-dev
   - libproj-dev
   - libprotobuf-dev
   - libreadline-dev
+  - librsvg2-bin
+  - librsvg2-dev
   - libsnappy-dev
   - libsqlite3-dev
   - libssh2-1-dev
   - libssl-dev
-  - librsvg2-bin
-  - librsvg2-dev
   - libxml2-dev
   - libxslt1-dev
   - libzmq3-dev
@@ -82,25 +75,22 @@ ubuntu_apt_packages:
   - nkf
   - nmap
   - nodejs
-  - node-typescript
   - pandoc
   - patch
-  - pdf2svg
   - pbzip2
+  - pdf2svg
   - pigz
   - pkg-config
   - poppler-utils
   - postgresql-client
   - protobuf-compiler
   - python3-dev
-  - qemu-user-static
   - r-base-dev
   - rename
   - ripgrep
   - ruby-dev
-  - shfmt
   - shellcheck
-  - sqlfluff
+  - shfmt
   - software-properties-common
   - sqlite3
   - sudo
@@ -118,12 +108,9 @@ ubuntu_apt_packages:
   - tree
   - unzip
   - vim-gtk3
-  - vulture
   - wakeonlan
   - wget
-  - yamllint
   - whois
-  - yq
   - zip
   - zlib1g-dev
   - zsh

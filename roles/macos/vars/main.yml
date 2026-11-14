@@ -1,17 +1,14 @@
 ---
 macos_brew_packages:
   - act
-  - agent-browser
   - ansible
   - ansible-lint
   - aria2
   - awscli
   - bash
   - bats-core
-  - biome
   - binutils
   - cairo
-  - checkov
   - clang-format
   - cloudflared
   - cloudformation-guard
@@ -19,7 +16,6 @@ macos_brew_packages:
   - copilot-cli
   - coreutils
   - cosign
-  - csvkit
   - curl
   - diffutils
   - direnv
@@ -35,8 +31,8 @@ macos_brew_packages:
   - gnu-which
   - go
   - golangci-lint
-  - gopls
   - googleworkspace-cli
+  - gopls
   - gosec
   - govulncheck
   - grep
@@ -45,7 +41,6 @@ macos_brew_packages:
   - hadolint
   - hdf5
   - herdr
-  - hermes-agent
   - htop
   - hugo
   - hunspell
@@ -53,7 +48,6 @@ macos_brew_packages:
   - jq
   - lua
   - luajit
-  - markdownlint-cli2
   - mise
   - ncdu
   - nkf
@@ -73,11 +67,9 @@ macos_brew_packages:
   - ripgrep
   - rsync
   - ruby
-  - semgrep
   - sevenzip
   - shellcheck
   - shfmt
-  - sqlfluff
   - sqlite
   - syft
   - tenv
@@ -86,29 +78,25 @@ macos_brew_packages:
   - tmux
   - tree
   - trivy
-  - typescript
   - uv
   - vim
-  - vulture
   - wakeonlan
   - watch
   - wdiff
   - wget
-  - yamllint
   - yq
   - zip
-  - zizmor
   - zsh
 macos_brew_cask_packages:
   - antigravity-cli
+  - chatgpt
   - claude
   - claude-code
-  - chatgpt
   - docker-desktop
   - drawio
+  - gcloud-cli
   - ghostty
   - google-chrome
-  - gcloud-cli
   - google-gemini
   - google-japanese-ime
   - microsoft-office

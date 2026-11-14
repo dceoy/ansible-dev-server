@@ -19,11 +19,8 @@ fedora_dnf_packages:
   - curl
   - diffstat
   - dkms
-  - dnf-plugins-core
-  - dnf-plugin-system-upgrade
   - doxygen
   - elfutils
-  - elixir
   - expect
   - fd-find
   - fftw-devel
@@ -33,15 +30,12 @@ fedora_dnf_packages:
   - gcc
   - gcc-c++
   - gcc-gfortran
-  - gdal-devel
-  - gdb
   - gdbm-devel
   - gflags-devel
   - git
   - glibc-devel
   - glog-devel
   - gmp-devel
-  - gnome-terminal
   - gnuplot
   - go
   - golangci-lint
@@ -49,15 +43,14 @@ fedora_dnf_packages:
   - govulncheck
   - gsl-devel
   - hdf5-devel
-  - hunspell-devel
   - htop
   - hugo
+  - hunspell-devel
   - ImageMagick-c++-devel
   - ImageMagick-devel
   - inotify-tools
   - iproute
   - jq
-  - julia
   - kernel-devel
   - kernel-headers
   - lapack-devel
@@ -67,32 +60,24 @@ fedora_dnf_packages:
   - libgit2-devel
   - libpcap-devel
   - libpng-devel
-  - python3-libselinux
   - librsvg2-devel
   - libssh2-devel
   - libtool
   - libxml2-devel
   - libxslt-devel
   - lmdb-devel
-  - ltrace
   - lua-devel
   - luajit-devel
   - make
-  - markdownlint-cli2
-  - mariadb-devel
   - mariadb-connector-c-devel
   - mesa-libGL-devel
   - mesa-libGLU-devel
-  - mysql-devel
   - ncdu
   - ncurses-compat-libs
   - ncurses-devel
   - nkf
   - nmap
   - nodejs
-  - octave
-  - opencv-devel
-  - openmpi-devel
   - openssl-devel
   - pandoc
   - parallel
@@ -106,9 +91,9 @@ fedora_dnf_packages:
   - postgresql-devel
   - proj-devel
   - protobuf-devel
-  - python3-devel
   - python3-ansible-lint
-  - python3-vulture
+  - python3-devel
+  - python3-libselinux
   - R-devel
   - readline-devel
   - redhat-rpm-config
@@ -126,16 +111,12 @@ fedora_dnf_packages:
   - tmux
   - traceroute
   - tree
-  - typescript
   - units
   - uv
-  - valgrind
   - vim-enhanced
-  - wol
   - wget
   - whois
-  - yamllint
-  - yq
+  - wol
   - zsh
 fedora_users:
   - name: dceoy

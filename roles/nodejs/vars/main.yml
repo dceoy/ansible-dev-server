@@ -1,40 +1,47 @@
 ---
 nodejs_cli_tools_by_os:
   MacOSX:
-    - ajv-cli
-    - htmlhint
-    - oxlint
-    - oxfmt
-    - stylelint
-    - wscat
-    - '@earendil-works/pi-coding-agent'
-  Ubuntu:
-    - ajv-cli
-    - oxlint
-    - oxfmt
-    - wscat
-    - '@earendil-works/pi-coding-agent'
     - '@biomejs/biome'
+    - '@earendil-works/pi-coding-agent'
+    - agent-browser
+    - ajv-cli
     - htmlhint
     - markdownlint-cli2
-    - stylelint
-  Fedora:
-    - ajv-cli
-    - oxlint
     - oxfmt
-    - wscat
-    - '@earendil-works/pi-coding-agent'
-    - '@biomejs/biome'
-    - htmlhint
-    - stylelint
-  CentOS:
-    - ajv-cli
     - oxlint
-    - oxfmt
-    - wscat
-    - '@earendil-works/pi-coding-agent'
-    - '@biomejs/biome'
-    - htmlhint
-    - markdownlint-cli2
     - stylelint
     - typescript
+    - wscat
+  Ubuntu:
+    - '@biomejs/biome'
+    - '@earendil-works/pi-coding-agent'
+    - ajv-cli
+    - htmlhint
+    - markdownlint-cli2
+    - oxfmt
+    - oxlint
+    - stylelint
+    - typescript
+    - wscat
+  Fedora:
+    - '@biomejs/biome'
+    - '@earendil-works/pi-coding-agent'
+    - ajv-cli
+    - htmlhint
+    - markdownlint-cli2
+    - oxfmt
+    - oxlint
+    - stylelint
+    - typescript
+    - wscat
+  CentOS:
+    - '@biomejs/biome'
+    - '@earendil-works/pi-coding-agent'
+    - ajv-cli
+    - htmlhint
+    - markdownlint-cli2
+    - oxfmt
+    - oxlint
+    - stylelint
+    - typescript
+    - wscat
