@@ -5,7 +5,6 @@ nodejs_cli_tools_by_os:
     - htmlhint
     - oxlint
     - oxfmt
-    - pyright
     - stylelint
     - wscat
     - '@earendil-works/pi-coding-agent'
