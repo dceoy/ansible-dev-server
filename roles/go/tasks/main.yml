@@ -22,7 +22,7 @@
       export PATH="${PATH}:${GOPATH}/bin"
 
 - name: Install Go command-line tools
-  when: go_cli_tools_by_os is defined
+  when: go_cli_tools is defined
   environment:
     PATH: "{{ go_path }}"
     GOPATH: "{{ go_gopath }}"
@@ -31,6 +31,6 @@
       - go
       - install
       - "{{ item }}@latest"
-  loop: "{{ go_cli_tools_by_os[ansible_facts['distribution']] }}"
+  loop: "{{ go_cli_tools }}"
   changed_when: true
   failed_when: false

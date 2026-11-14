@@ -108,6 +108,7 @@ centos_yum_packages:
   - vim-enhanced
   - wget
   - whois
+  - yq
   - zsh
 centos_users:
   - name: dceoy

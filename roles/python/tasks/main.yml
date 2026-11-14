@@ -1,7 +1,7 @@
 ---
 - name: Find Homebrew prefix for Python tools
   when:
-    - python_uv_tools_by_os is defined
+    - python_uv_tools is defined
     - ansible_facts['distribution'] == 'MacOSX'
   ansible.builtin.command: brew --prefix
   register: python_homebrew_prefix
@@ -14,11 +14,11 @@
   register: python_system_uv
 
 - name: Select uv executable and tool packages
-  when: python_uv_tools_by_os is defined
+  when: python_uv_tools is defined
   ansible.builtin.set_fact:
     python_uv_standalone: "{{ ansible_facts['distribution'] != 'MacOSX' and not ((python_system_uv.stat | default({})).exists | default(false)) }}"
     python_uv_executable: "{{ python_homebrew_prefix.stdout ~ '/bin/uv' if ansible_facts['distribution'] == 'MacOSX' else '/usr/bin/uv' if ((python_system_uv.stat | default({})).exists | default(false)) else ansible_facts['env']['HOME'] ~ '/.local/bin/uv' }}"
-    python_uv_selected_tools: "{{ python_uv_tools_by_os[ansible_facts['distribution']] }}"
+    python_uv_selected_tools: "{{ python_uv_tools }}"
 
 - name: Check standalone uv installation
   when: python_uv_standalone
@@ -58,7 +58,7 @@
   changed_when: "'updated' in (python_uv_self_update.stdout ~ python_uv_self_update.stderr) | lower"
 
 - name: Verify uv executable
-  when: python_uv_tools_by_os is defined
+  when: python_uv_tools is defined
   ansible.builtin.command:
     argv:
       - "{{ python_uv_executable }}"
@@ -66,7 +66,7 @@
   changed_when: false
 
 - name: List installed uv tools
-  when: python_uv_tools_by_os is defined
+  when: python_uv_tools is defined
   ansible.builtin.command:
     argv:
       - "{{ python_uv_executable }}"
@@ -77,7 +77,7 @@
 
 - name: Install Python command-line tools with uv
   when:
-    - python_uv_tools_by_os is defined
+    - python_uv_tools is defined
     - (python_uv_tool_list.stdout_lines | select('match', '^' ~ item ~ ' ') | list | length) == 0
   ansible.builtin.command:
     argv:
@@ -89,7 +89,7 @@
   changed_when: true
 
 - name: Upgrade Python command-line tools with uv
-  when: python_uv_tools_by_os is defined
+  when: python_uv_tools is defined
   ansible.builtin.command:
     argv:
       - "{{ python_uv_executable }}"

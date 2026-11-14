@@ -1,6 +1,7 @@
 ---
 macos_brew_packages:
   - act
+  - actionlint
   - ansible
   - ansible-lint
   - aria2
