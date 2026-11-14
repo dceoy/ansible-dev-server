@@ -22,6 +22,7 @@ nodejs_cli_tools_by_os:
     - htmlhint
     - markdownlint-cli2
     - stylelint
+    - typescript
   Fedora:
     - ajv-cli
     - oxlint
@@ -30,7 +31,9 @@ nodejs_cli_tools_by_os:
     - '@earendil-works/pi-coding-agent'
     - '@biomejs/biome'
     - htmlhint
+    - markdownlint-cli2
     - stylelint
+    - typescript
   CentOS:
     - ajv-cli
     - oxlint
