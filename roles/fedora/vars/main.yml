@@ -19,8 +19,8 @@ fedora_dnf_packages:
   - curl
   - diffstat
   - dkms
-  - dnf-plugins-core
   - dnf-plugin-system-upgrade
+  - dnf-plugins-core
   - doxygen
   - elfutils
   - elixir
@@ -49,9 +49,9 @@ fedora_dnf_packages:
   - govulncheck
   - gsl-devel
   - hdf5-devel
-  - hunspell-devel
   - htop
   - hugo
+  - hunspell-devel
   - ImageMagick-c++-devel
   - ImageMagick-devel
   - inotify-tools
@@ -67,7 +67,6 @@ fedora_dnf_packages:
   - libgit2-devel
   - libpcap-devel
   - libpng-devel
-  - python3-libselinux
   - librsvg2-devel
   - libssh2-devel
   - libtool
@@ -78,8 +77,8 @@ fedora_dnf_packages:
   - lua-devel
   - luajit-devel
   - make
-  - mariadb-devel
   - mariadb-connector-c-devel
+  - mariadb-devel
   - mesa-libGL-devel
   - mesa-libGLU-devel
   - mysql-devel
@@ -105,8 +104,9 @@ fedora_dnf_packages:
   - postgresql-devel
   - proj-devel
   - protobuf-devel
-  - python3-devel
   - python3-ansible-lint
+  - python3-devel
+  - python3-libselinux
   - R-devel
   - readline-devel
   - redhat-rpm-config
@@ -128,9 +128,9 @@ fedora_dnf_packages:
   - uv
   - valgrind
   - vim-enhanced
-  - wol
   - wget
   - whois
+  - wol
   - yq
   - zsh
 fedora_users:
