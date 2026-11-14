@@ -23,7 +23,6 @@ ubuntu_apt_packages:
   - gfortran
   - git
   - golang
-  - golang-github-pelletier-go-toml
   - govulncheck
   - htop
   - hugo
