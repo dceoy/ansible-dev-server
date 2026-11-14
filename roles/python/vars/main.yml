@@ -2,10 +2,17 @@
 python_uv_tools_by_os:
   MacOSX:
     - cfn-lint
+    - checkov
+    - csvkit
     - ipython
     - pyright
     - ruff
+    - semgrep
+    - sqlfluff
     - ty
+    - vulture
+    - yamllint
+    - zizmor
   Ubuntu:
     - cfn-lint
     - ipython
