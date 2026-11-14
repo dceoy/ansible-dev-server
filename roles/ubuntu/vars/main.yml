@@ -111,7 +111,6 @@ ubuntu_apt_packages:
   - wakeonlan
   - wget
   - whois
-  - yq-go
   - zip
   - zlib1g-dev
   - zsh
