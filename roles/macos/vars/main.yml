@@ -107,11 +107,11 @@ macos_brew_cask_packages:
   - claude
   - claude-code
   - chatgpt
-  - docker
+  - docker-desktop
   - drawio
   - ghostty
   - google-chrome
-  - google-cloud-sdk
+  - gcloud-cli
   - google-gemini
   - google-japanese-ime
   - microsoft-office
