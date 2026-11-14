@@ -46,7 +46,6 @@ macos_brew_packages:
   - hdf5
   - herdr
   - hermes-agent
-  - htmlhint
   - htop
   - hugo
   - hunspell
@@ -68,7 +67,6 @@ macos_brew_packages:
   - pigz
   - pinact
   - pnpm
-  - pyright
   - python
   - r
   - rename
@@ -81,7 +79,6 @@ macos_brew_packages:
   - shfmt
   - sqlfluff
   - sqlite
-  - stylelint
   - syft
   - tenv
   - tflint
@@ -107,11 +104,11 @@ macos_brew_cask_packages:
   - claude
   - claude-code
   - chatgpt
-  - docker
+  - docker-desktop
   - drawio
   - ghostty
   - google-chrome
-  - google-cloud-sdk
+  - gcloud-cli
   - google-gemini
   - google-japanese-ime
   - microsoft-office

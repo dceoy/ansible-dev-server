@@ -2,8 +2,10 @@
 nodejs_cli_tools_by_os:
   MacOSX:
     - ajv-cli
+    - htmlhint
     - oxlint
     - oxfmt
+    - stylelint
     - wscat
     - '@earendil-works/pi-coding-agent'
   Ubuntu:
