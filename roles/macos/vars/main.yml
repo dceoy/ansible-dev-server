@@ -46,7 +46,6 @@ macos_brew_packages:
   - hdf5
   - herdr
   - hermes-agent
-  - htmlhint
   - htop
   - hugo
   - hunspell
@@ -81,7 +80,6 @@ macos_brew_packages:
   - shfmt
   - sqlfluff
   - sqlite
-  - stylelint
   - syft
   - tenv
   - tflint
