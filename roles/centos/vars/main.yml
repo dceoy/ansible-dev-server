@@ -63,8 +63,8 @@ centos_yum_packages:
   - libgit2-devel
   - libpcap-devel
   - libpng-devel
-  - libssh2-devel
   - librsvg2-devel
+  - libssh2-devel
   - libtool
   - libxml2-devel
   - libxslt-devel
@@ -74,8 +74,8 @@ centos_yum_packages:
   - luajit-devel
   - lvm2
   - make
-  - mariadb-devel
   - mariadb-connector-c-devel
+  - mariadb-devel
   - mesa-libGL-devel
   - mesa-libGLU-devel
   - mysql-devel
