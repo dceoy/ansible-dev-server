@@ -6,4 +6,3 @@ go_cli_tools:
   - github.com/rhysd/actionlint/cmd/actionlint
   - github.com/securego/gosec/v2/cmd/gosec
   - github.com/terraform-linters/tflint
-  - mvdan.cc/sh/v3/cmd/shfmt

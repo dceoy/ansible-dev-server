@@ -1,6 +1,7 @@
 ---
 ubuntu_apt_packages:
   - 7zip
+  - ansible-lint
   - apt-file
   - apt-utils
   - bats
@@ -89,6 +90,7 @@ ubuntu_apt_packages:
   - ripgrep
   - ruby-dev
   - shellcheck
+  - shfmt
   - software-properties-common
   - sqlite3
   - sudo

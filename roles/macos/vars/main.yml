@@ -2,6 +2,7 @@
 macos_brew_packages:
   - act
   - ansible
+  - ansible-lint
   - aria2
   - awscli
   - bash
@@ -66,6 +67,7 @@ macos_brew_packages:
   - ruby
   - sevenzip
   - shellcheck
+  - shfmt
   - sqlite
   - syft
   - tenv

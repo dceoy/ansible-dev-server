@@ -89,6 +89,7 @@ fedora_dnf_packages:
   - postgresql-devel
   - proj-devel
   - protobuf-devel
+  - python3-ansible-lint
   - python3-devel
   - python3-libselinux
   - R-devel
@@ -97,6 +98,7 @@ fedora_dnf_packages:
   - ruby-devel
   - rust
   - ShellCheck
+  - shfmt
   - snappy-devel
   - sqlite-devel
   - strace

@@ -1,6 +1,5 @@
 ---
 python_uv_tools:
-  - ansible-lint
   - cfn-lint
   - checkov
   - csvkit

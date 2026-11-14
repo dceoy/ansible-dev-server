@@ -88,11 +88,13 @@ centos_yum_packages:
   - postgresql-devel
   - proj-devel
   - protobuf-devel
+  - python3-ansible-lint
   - python3-devel
   - R-devel
   - readline-devel
   - ruby-devel
   - ShellCheck
+  - shfmt
   - snappy-devel
   - sqlite-devel
   - strace
