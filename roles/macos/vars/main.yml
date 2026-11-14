@@ -1,16 +1,4 @@
 ---
-# Formerly installed formulae; remove only when nothing installed depends on them.
-macos_brew_packages_to_remove:
-  - gpgmepp
-  - gpgme
-  - gnupg
-  - openblas
-  - pyright
-  - node
-  - python@3.13
-  - python@3.14
-  - python@3.15
-  - unbound
 macos_brew_packages:
   - act
   - agent-browser
