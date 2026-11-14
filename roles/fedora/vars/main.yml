@@ -38,6 +38,8 @@ fedora_dnf_packages:
   - gmp-devel
   - gnuplot
   - go
+  - golangci-lint
+  - gosec
   - govulncheck
   - gsl-devel
   - hdf5-devel
@@ -115,6 +117,7 @@ fedora_dnf_packages:
   - wget
   - whois
   - wol
+  - yq
   - zsh
 fedora_users:
   - name: dceoy
