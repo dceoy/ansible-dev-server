@@ -14,10 +14,6 @@ python_uv_tools_by_os:
     - yamllint
     - zizmor
   Ubuntu:
-    - csvkit
-    - sqlfluff
-    - vulture
-    - yamllint
     - cfn-lint
     - ipython
     - ruff
@@ -26,9 +22,11 @@ python_uv_tools_by_os:
     - pyright
     - semgrep
     - zizmor
-  Fedora:
+    - csvkit
+    - sqlfluff
     - vulture
     - yamllint
+  Fedora:
     - cfn-lint
     - ipython
     - ruff
@@ -40,8 +38,9 @@ python_uv_tools_by_os:
     - csvkit
     - grip
     - sqlfluff
-  CentOS:
+    - vulture
     - yamllint
+  CentOS:
     - cfn-lint
     - ipython
     - ruff
@@ -55,3 +54,4 @@ python_uv_tools_by_os:
     - grip
     - sqlfluff
     - vulture
+    - yamllint
