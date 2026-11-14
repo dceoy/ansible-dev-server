@@ -19,8 +19,6 @@ fedora_dnf_packages:
   - curl
   - diffstat
   - dkms
-  - dnf-plugin-system-upgrade
-  - dnf-plugins-core
   - doxygen
   - elfutils
   - elixir
@@ -77,9 +75,9 @@ fedora_dnf_packages:
   - lua-devel
   - luajit-devel
   - make
+  - mariadb-connector-c-devel
   - mesa-libGL-devel
   - mesa-libGLU-devel
-  - mysql-devel
   - ncdu
   - ncurses-compat-libs
   - ncurses-devel
