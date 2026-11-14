@@ -7,10 +7,8 @@ macos_brew_packages:
   - awscli
   - bash
   - bats-core
-  - biome
   - binutils
   - cairo
-  - checkov
   - clang-format
   - cloudflared
   - cloudformation-guard
@@ -18,7 +16,6 @@ macos_brew_packages:
   - copilot-cli
   - coreutils
   - cosign
-  - csvkit
   - curl
   - diffutils
   - direnv
@@ -51,7 +48,6 @@ macos_brew_packages:
   - jq
   - lua
   - luajit
-  - markdownlint-cli2
   - mise
   - ncdu
   - nkf
@@ -71,11 +67,9 @@ macos_brew_packages:
   - ripgrep
   - rsync
   - ruby
-  - semgrep
   - sevenzip
   - shellcheck
   - shfmt
-  - sqlfluff
   - sqlite
   - syft
   - tenv
@@ -84,18 +78,14 @@ macos_brew_packages:
   - tmux
   - tree
   - trivy
-  - typescript
   - uv
   - vim
-  - vulture
   - wakeonlan
   - watch
   - wdiff
   - wget
-  - yamllint
   - yq
   - zip
-  - zizmor
   - zsh
 macos_brew_cask_packages:
   - antigravity-cli
