@@ -21,7 +21,6 @@ centos_yum_packages:
   - dnf-plugins-core
   - doxygen
   - elfutils
-  - elixir
   - expect
   - fd-find
   - fftw-devel
@@ -31,15 +30,12 @@ centos_yum_packages:
   - gcc
   - gcc-c++
   - gcc-gfortran
-  - gdal-devel
-  - gdb
   - gdbm-devel
   - gflags-devel
   - git
   - glibc-devel
   - glog-devel
   - gmp-devel
-  - gnome-terminal
   - gnuplot
   - go
   - govulncheck
@@ -68,7 +64,6 @@ centos_yum_packages:
   - libxml2-devel
   - libxslt-devel
   - lmdb-devel
-  - ltrace
   - lua-devel
   - luajit-devel
   - lvm2
@@ -81,9 +76,6 @@ centos_yum_packages:
   - nkf
   - nmap
   - nodejs
-  - octave
-  - opencv-devel
-  - openmpi-devel
   - openssl-devel
   - pandoc
   - parallel
@@ -113,7 +105,6 @@ centos_yum_packages:
   - tree
   - units
   - uv
-  - valgrind
   - vim-enhanced
   - wget
   - whois
