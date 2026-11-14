@@ -5,11 +5,11 @@ macos_brew_packages_to_remove:
   - gpgme
   - gnupg
   - openblas
-  - node
   - pyright
-  - python@3.15
+  - node
   - python@3.13
   - python@3.14
+  - python@3.15
   - unbound
 macos_brew_packages:
   - act
