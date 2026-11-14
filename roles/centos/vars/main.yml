@@ -38,6 +38,7 @@ centos_yum_packages:
   - gmp-devel
   - gnuplot
   - go
+  - golang-github-pelletier-toml-2
   - govulncheck
   - gsl-devel
   - hdf5-devel
