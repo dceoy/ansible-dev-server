@@ -64,12 +64,12 @@ ubuntu_apt_packages:
   - libproj-dev
   - libprotobuf-dev
   - libreadline-dev
+  - librsvg2-bin
+  - librsvg2-dev
   - libsnappy-dev
   - libsqlite3-dev
   - libssh2-1-dev
   - libssl-dev
-  - librsvg2-bin
-  - librsvg2-dev
   - libxml2-dev
   - libxslt1-dev
   - libzmq3-dev
@@ -83,8 +83,8 @@ ubuntu_apt_packages:
   - nodejs
   - pandoc
   - patch
-  - pdf2svg
   - pbzip2
+  - pdf2svg
   - pigz
   - pkg-config
   - poppler-utils
@@ -96,8 +96,8 @@ ubuntu_apt_packages:
   - rename
   - ripgrep
   - ruby-dev
-  - shfmt
   - shellcheck
+  - shfmt
   - software-properties-common
   - sqlite3
   - sudo
