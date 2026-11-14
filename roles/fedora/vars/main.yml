@@ -21,7 +21,6 @@ fedora_dnf_packages:
   - dkms
   - doxygen
   - elfutils
-  - elixir
   - expect
   - fd-find
   - fftw-devel
@@ -31,15 +30,12 @@ fedora_dnf_packages:
   - gcc
   - gcc-c++
   - gcc-gfortran
-  - gdal-devel
-  - gdb
   - gdbm-devel
   - gflags-devel
   - git
   - glibc-devel
   - glog-devel
   - gmp-devel
-  - gnome-terminal
   - gnuplot
   - go
   - golangci-lint
@@ -55,7 +51,6 @@ fedora_dnf_packages:
   - inotify-tools
   - iproute
   - jq
-  - julia
   - kernel-devel
   - kernel-headers
   - lapack-devel
@@ -71,7 +66,6 @@ fedora_dnf_packages:
   - libxml2-devel
   - libxslt-devel
   - lmdb-devel
-  - ltrace
   - lua-devel
   - luajit-devel
   - make
@@ -84,9 +78,6 @@ fedora_dnf_packages:
   - nkf
   - nmap
   - nodejs
-  - octave
-  - opencv-devel
-  - openmpi-devel
   - openssl-devel
   - pandoc
   - parallel
@@ -122,7 +113,6 @@ fedora_dnf_packages:
   - tree
   - units
   - uv
-  - valgrind
   - vim-enhanced
   - wget
   - whois
