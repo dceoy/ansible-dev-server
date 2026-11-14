@@ -4,20 +4,20 @@ go_cli_tools_by_os:
     - github.com/pelletier/go-toml/v2/cmd/tomll
     - github.com/rhysd/actionlint/cmd/actionlint
   Ubuntu:
-    - github.com/pelletier/go-toml/v2/cmd/tomll
-    - github.com/rhysd/actionlint/cmd/actionlint
-    - github.com/terraform-linters/tflint
     - github.com/golangci/golangci-lint/cmd/golangci-lint
     - github.com/mikefarah/yq/v4
+    - github.com/pelletier/go-toml/v2/cmd/tomll
+    - github.com/rhysd/actionlint/cmd/actionlint
     - github.com/securego/gosec/v2/cmd/gosec
+    - github.com/terraform-linters/tflint
   Fedora:
     - github.com/pelletier/go-toml/v2/cmd/tomll
     - github.com/rhysd/actionlint/cmd/actionlint
     - github.com/terraform-linters/tflint
   CentOS:
+    - github.com/golangci/golangci-lint/cmd/golangci-lint
     - github.com/pelletier/go-toml/v2/cmd/tomll
     - github.com/rhysd/actionlint/cmd/actionlint
-    - github.com/terraform-linters/tflint
-    - github.com/golangci/golangci-lint/cmd/golangci-lint
     - github.com/securego/gosec/v2/cmd/gosec
+    - github.com/terraform-linters/tflint
     - mvdan.cc/sh/v3/cmd/shfmt
