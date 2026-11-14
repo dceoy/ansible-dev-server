@@ -1,7 +1,52 @@
 ---
+- name: Check global mise Node.js LTS configuration on macOS
+  when: ansible_facts['distribution'] == 'MacOSX'
+  ansible.builtin.command:
+    argv:
+      - mise
+      - use
+      - --global
+      - --dry-run-code
+      - node@lts
+  register: nodejs_mise_node_plan
+  changed_when: false
+  failed_when: nodejs_mise_node_plan.rc not in [0, 1]
+
+- name: Install and configure global Node.js LTS with mise on macOS
+  when:
+    - ansible_facts['distribution'] == 'MacOSX'
+    - nodejs_mise_node_plan.rc == 1
+  ansible.builtin.command:
+    argv:
+      - mise
+      - use
+      - --global
+      - node@lts
+  changed_when: true
+
+- name: Get mise-managed Node.js directory on macOS
+  when: ansible_facts['distribution'] == 'MacOSX'
+  ansible.builtin.command:
+    argv:
+      - mise
+      - where
+      - node
+  register: nodejs_mise_node_directory
+  changed_when: false
+
+- name: Activate mise in interactive zsh shells on macOS
+  when: ansible_facts['distribution'] == 'MacOSX'
+  ansible.builtin.blockinfile:
+    create: true
+    dest: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: mise"
+    mode: "0644"
+    block: |
+      eval "$(mise activate zsh)"
+
 - name: Set variables
   ansible.builtin.set_fact:
-    nodejs_path: "{{ ansible_facts['env']['PATH'] }}:/usr/local/bin"
+    nodejs_path: "{{ (nodejs_mise_node_directory.stdout ~ '/bin:' if ansible_facts['distribution'] == 'MacOSX' else '') ~ ansible_facts['env']['PATH'] ~ ':/usr/local/bin' }}"
     nodejs_pnpm_home: "{{ ansible_facts['env']['HOME'] }}/{{ 'Library/pnpm' if ansible_facts['distribution'] == 'MacOSX' else '.local/share/pnpm' }}"
     nodejs_pnpm_executable: "{{ 'pnpm' if ansible_facts['distribution'] in ['MacOSX', 'Fedora'] else ansible_facts['env']['HOME'] ~ '/.local/share/pnpm/bin/pnpm' }}"
 
