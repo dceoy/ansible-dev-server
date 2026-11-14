@@ -21,34 +21,16 @@
       export GOPATH="{{ go_gopath }}"
       export PATH="${PATH}:${GOPATH}/bin"
 
-- name: Find existing Go CLI tools
+- name: Install Go command-line tools
   when: go_cli_tools is defined
   environment:
-    PATH: "{{ go_path }}:{{ go_gopath }}/bin"
-  ansible.builtin.command:
-    argv:
-      - /bin/sh
-      - -c
-      - 'command -v "$1"'
-      - sh
-      - "{{ 'yq' if item == 'github.com/mikefarah/yq/v4' else item | basename }}"
-  loop: "{{ go_cli_tools }}"
-  register: go_cli_existing_binaries
-  changed_when: false
-  failed_when: false
-
-- name: Install Go CLI tools not managed externally
-  when:
-    - go_cli_tools is defined
-    - item.rc != 0 or item.stdout.startswith(go_gopath ~ '/bin/')
-  environment:
-    PATH: "{{ go_path }}:{{ go_gopath }}/bin"
+    PATH: "{{ go_path }}"
     GOPATH: "{{ go_gopath }}"
   ansible.builtin.command:
     argv:
       - go
       - install
-      - "{{ item.item }}@latest"
-  loop: "{{ go_cli_existing_binaries.results }}"
+      - "{{ item }}@latest"
+  loop: "{{ go_cli_tools }}"
   changed_when: true
   failed_when: false
