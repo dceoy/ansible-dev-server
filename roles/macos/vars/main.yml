@@ -2,7 +2,6 @@
 macos_brew_packages:
   - act
   - ansible
-  - ansible-lint
   - aria2
   - awscli
   - bash
@@ -30,10 +29,8 @@ macos_brew_packages:
   - gnu-tar
   - gnu-which
   - go
-  - golangci-lint
   - googleworkspace-cli
   - gopls
-  - gosec
   - govulncheck
   - grep
   - grype
@@ -69,11 +66,9 @@ macos_brew_packages:
   - ruby
   - sevenzip
   - shellcheck
-  - shfmt
   - sqlite
   - syft
   - tenv
-  - tflint
   - tig
   - tmux
   - tree
@@ -84,7 +79,6 @@ macos_brew_packages:
   - watch
   - wdiff
   - wget
-  - yq
   - zip
   - zsh
 macos_brew_cask_packages:

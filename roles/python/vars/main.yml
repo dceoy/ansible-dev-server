@@ -1,57 +1,16 @@
 ---
-python_uv_tools_by_os:
-  MacOSX:
-    - cfn-lint
-    - checkov
-    - csvkit
-    - ipython
-    - pyright
-    - ruff
-    - semgrep
-    - sqlfluff
-    - ty
-    - vulture
-    - yamllint
-    - zizmor
-  Ubuntu:
-    - cfn-lint
-    - checkov
-    - csvkit
-    - ipython
-    - pyright
-    - ruff
-    - semgrep
-    - sqlfluff
-    - ty
-    - vulture
-    - yamllint
-    - zizmor
-  Fedora:
-    - cfn-lint
-    - checkov
-    - csvkit
-    - grip
-    - ipython
-    - pyright
-    - ruff
-    - semgrep
-    - sqlfluff
-    - ty
-    - vulture
-    - yamllint
-    - zizmor
-  CentOS:
-    - ansible-lint
-    - cfn-lint
-    - checkov
-    - csvkit
-    - grip
-    - ipython
-    - pyright
-    - ruff
-    - semgrep
-    - sqlfluff
-    - ty
-    - vulture
-    - yamllint
-    - zizmor
+python_uv_tools:
+  - ansible-lint
+  - cfn-lint
+  - checkov
+  - csvkit
+  - grip
+  - ipython
+  - pyright
+  - ruff
+  - semgrep
+  - sqlfluff
+  - ty
+  - vulture
+  - yamllint
+  - zizmor
