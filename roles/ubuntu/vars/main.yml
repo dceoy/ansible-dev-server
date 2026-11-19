@@ -91,6 +91,7 @@ ubuntu_apt_packages:
   - ruby-dev
   - shellcheck
   - shfmt
+  - socat
   - software-properties-common
   - sqlite3
   - sudo
