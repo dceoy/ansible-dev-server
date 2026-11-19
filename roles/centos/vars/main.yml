@@ -94,6 +94,7 @@ centos_yum_packages:
   - ruby-devel
   - ShellCheck
   - snappy-devel
+  - socat
   - sqlite-devel
   - strace
   - sudo
