@@ -103,6 +103,7 @@ fedora_dnf_packages:
   - ShellCheck
   - shfmt
   - snappy-devel
+  - socat
   - sqlite-devel
   - strace
   - sudo
