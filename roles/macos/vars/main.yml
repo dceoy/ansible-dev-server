@@ -1,6 +1,7 @@
 ---
 macos_brew_packages:
   - act
+  - actionlint
   - ansible
   - ansible-lint
   - aria2
@@ -30,7 +31,6 @@ macos_brew_packages:
   - gnu-tar
   - gnu-which
   - go
-  - golangci-lint
   - googleworkspace-cli
   - gopls
   - govulncheck
@@ -41,7 +41,6 @@ macos_brew_packages:
   - hdf5
   - herdr
   - htop
-  - hugo
   - hunspell
   - imagemagick
   - jq
@@ -71,6 +70,7 @@ macos_brew_packages:
   - shfmt
   - sqlite
   - syft
+  - tflint
   - tenv
   - tig
   - tmux
