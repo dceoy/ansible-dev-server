@@ -41,6 +41,7 @@ macos_brew_packages:
   - hdf5
   - herdr
   - htop
+  - hugo
   - hunspell
   - imagemagick
   - jq
@@ -70,8 +71,8 @@ macos_brew_packages:
   - shfmt
   - sqlite
   - syft
-  - tflint
   - tenv
+  - tflint
   - tig
   - tmux
   - tree
